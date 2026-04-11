@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KOVA — Automatizaciones & IA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/styles.css" />
+</head>
+<body>
+
+  <!-- PAGE LOADER -->
+  <div class="loader" id="loader">
+    <div class="loader__logo">KOVA</div>
+    <div class="loader__bar"><div class="loader__fill"></div></div>
+  </div>
+
+  <!-- CURSOR GLOW -->
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav__logo">KOVA</div>
+    <ul class="nav__links">
+      <li><a href="#servicios" class="nav__link">Servicios</a></li>
+      <li><a href="#proceso" class="nav__link">Proceso</a></li>
+      <li><a href="#contacto" class="nav__link">Contacto</a></li>
+    </ul>
+    <a href="#contacto" class="btn btn--outline">Hablemos</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__content">
+      <span class="hero__tag" id="heroTag">Automatizaciones · IA · Eficiencia</span>
+      <h1 class="hero__title" id="heroTitle">Tu negocio en<br><span class="hero__title--accent">piloto automático.</span></h1>
+      <p class="hero__subtitle" id="heroSub">Diseñamos e implementamos sistemas de automatización con IA que eliminan tareas repetitivas y escalan tus operaciones sin contratar más gente.</p>
+      <div class="hero__cta" id="heroCta">
+        <a href="#contacto" class="btn btn--primary magnetic">Quiero automatizar</a>
+        <a href="#servicios" class="btn btn--ghost magnetic">Ver servicios</a>
+      </div>
+    </div>
+    <div class="hero__visual">
+      <div class="orb orb--1"></div>
+      <div class="orb orb--2"></div>
+      <div class="orb orb--3"></div>
+      <canvas class="hero__canvas" id="heroCanvas"></canvas>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats">
+    <div class="container stats__grid">
+      <div class="stat">
+        <span class="stat__num" data-count="80">0</span><span class="stat__unit">%</span>
+        <p class="stat__label">reducción de tareas manuales</p>
+      </div>
+      <div class="stat">
+        <span class="stat__num" data-count="3">0</span><span class="stat__unit">x</span>
+        <p class="stat__label">más rápido que un equipo humano</p>
+      </div>
+      <div class="stat">
+        <span class="stat__num" data-count="24">0</span><span class="stat__unit">/7</span>
+        <p class="stat__label">operando sin intervención</p>
+      </div>
+      <div class="stat">
+        <span class="stat__num" data-count="48">0</span><span class="stat__unit">h</span>
+        <p class="stat__label">tiempo promedio de implementación</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section class="servicios" id="servicios">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title reveal-text">Lo que construimos</h2>
+        <p class="section__sub reveal-text">Soluciones reales para problemas reales. Sin hype.</p>
+      </div>
+      <div class="cards">
+        <div class="card tilt-card">
+          <div class="card__glow"></div>
+          <div class="card__icon">⚡</div>
+          <h3>Automatización de procesos</h3>
+          <p>Conectamos tus herramientas y eliminamos el trabajo manual. CRM, emails, reportes, facturación — todo en automático.</p>
+          <div class="card__line"></div>
+        </div>
+        <div class="card tilt-card">
+          <div class="card__glow"></div>
+          <div class="card__icon">🤖</div>
+          <h3>Agentes con IA</h3>
+          <p>Asistentes inteligentes que responden clientes, califican leads y toman decisiones sin intervención humana.</p>
+          <div class="card__line"></div>
+        </div>
+        <div class="card tilt-card">
+          <div class="card__glow"></div>
+          <div class="card__icon">📊</div>
+          <h3>Dashboards & datos</h3>
+          <p>Toda la información de tu negocio centralizada y actualizada en tiempo real. Tomá decisiones con datos, no con intuición.</p>
+          <div class="card__line"></div>
+        </div>
+        <div class="card tilt-card">
+          <div class="card__glow"></div>
+          <div class="card__icon">🔗</div>
+          <h3>Integraciones</h3>
+          <p>Unimos sistemas que no hablan entre sí. n8n, Make, GoHighLevel, Notion, Sheets — lo que uses, lo conectamos.</p>
+          <div class="card__line"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESO -->
+  <section class="proceso" id="proceso">
+    <div class="container">
+      <h2 class="section__title reveal-text">Cómo trabajamos</h2>
+      <div class="steps">
+        <div class="step">
+          <span class="step__num">01</span>
+          <h3>Diagnóstico</h3>
+          <p>Entendemos tu operación y detectamos dónde estás perdiendo tiempo y plata.</p>
+        </div>
+        <div class="step__arrow">→</div>
+        <div class="step">
+          <span class="step__num">02</span>
+          <h3>Diseño</h3>
+          <p>Mapeamos la solución exacta. Sin tecnología de más, sin complicaciones innecesarias.</p>
+        </div>
+        <div class="step__arrow">→</div>
+        <div class="step">
+          <span class="step__num">03</span>
+          <h3>Implementación</h3>
+          <p>Construimos, testeamos y dejamos todo funcionando. Con documentación y soporte.</p>
+        </div>
+        <div class="step__arrow">→</div>
+        <div class="step">
+          <span class="step__num">04</span>
+          <h3>Escala</h3>
+          <p>Una vez que funciona, lo escalamos. Más automatizaciones, más ahorro, más crecimiento.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="contacto" id="contacto">
+    <div class="container contacto__inner">
+      <h2 class="section__title reveal-text">¿Listo para automatizar?</h2>
+      <p class="section__sub reveal-text">Contanos qué querés resolver y te decimos cómo lo hacemos.</p>
+      <form class="form" id="contactoForm">
+        <div class="form__row">
+          <div class="input-wrap">
+            <input type="text" placeholder="Tu nombre" required />
+            <div class="input-line"></div>
+          </div>
+          <div class="input-wrap">
+            <input type="email" placeholder="Tu email" required />
+            <div class="input-line"></div>
+          </div>
+        </div>
+        <div class="input-wrap">
+          <input type="text" placeholder="¿Qué querés automatizar?" required />
+          <div class="input-line"></div>
+        </div>
+        <div class="input-wrap">
+          <textarea placeholder="Contanos más sobre tu negocio y el problema que querés resolver..." rows="4"></textarea>
+          <div class="input-line"></div>
+        </div>
+        <button type="submit" class="btn btn--primary magnetic">Enviar mensaje</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span class="footer__logo">KOVA</span>
+      <span class="footer__copy">© 2026 KOVA. Todos los derechos reservados.</span>
+    </div>
+  </footer>
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="src/main.js"></script>
+</body>
+</html>
