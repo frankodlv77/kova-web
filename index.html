@@ -6,7 +6,8 @@
   <title>KOVA — Automatizaciones & IA</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=DM+Sans:wght@300;400;500&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/tokens.css" />
   <link rel="stylesheet" href="src/styles.css" />
 </head>
 <body>
@@ -22,9 +23,10 @@
 
   <!-- NAV -->
   <nav class="nav" id="nav">
-    <div class="nav__logo">KOVA</div>
+    <a href="index.html" class="nav__logo">KOVA</a>
     <ul class="nav__links">
-      <li><a href="#servicios" class="nav__link">Servicios</a></li>
+      <li><a href="index.html" class="nav__link">Inicio</a></li>
+      <li><a href="servicios.html" class="nav__link">Servicios</a></li>
       <li><a href="#proceso" class="nav__link">Proceso</a></li>
       <li><a href="#contacto" class="nav__link">Contacto</a></li>
     </ul>
@@ -39,7 +41,7 @@
       <p class="hero__subtitle" id="heroSub">Diseñamos e implementamos sistemas de automatización con IA que eliminan tareas repetitivas y escalan tus operaciones sin contratar más gente.</p>
       <div class="hero__cta" id="heroCta">
         <a href="#contacto" class="btn btn--primary magnetic">Quiero automatizar</a>
-        <a href="#servicios" class="btn btn--ghost magnetic">Ver servicios</a>
+        <a href="#servicios" class="btn btn--ghost magnetic">Como funciona</a>
       </div>
     </div>
     <div class="hero__visual">
@@ -48,6 +50,39 @@
       <div class="orb orb--3"></div>
       <canvas class="hero__canvas" id="heroCanvas"></canvas>
     </div>
+
+    <!-- HERO FORM CARD -->
+    <div class="hero__form-card" id="heroFormCard">
+      <span class="hfc__eyebrow">Empezá hoy</span>
+      <h3 class="hfc__title">¿Listo para escalar?</h3>
+      <p class="hfc__sub">Dejá tus datos y te respondemos en menos de 24hs.</p>
+      <form class="hfc__form" id="heroContactForm">
+        <div class="hfc__field">
+          <input type="text" placeholder="Tu nombre" required />
+        </div>
+        <div class="hfc__field">
+          <input type="email" placeholder="Tu email" required />
+        </div>
+        <div class="hfc__field">
+          <input type="text" placeholder="¿Qué querés automatizar?" required />
+        </div>
+        <button type="submit" class="btn btn--primary hfc__btn">Quiero empezar →</button>
+      </form>
+      <p class="hfc__note">Sin spam · Respondemos en menos de 24hs</p>
+    </div>
+
+    <!-- SCROLL INDICATOR -->
+    <div class="scroll-hint" id="scrollHint">
+      <div class="scroll-hint__mouse">
+        <div class="scroll-hint__wheel"></div>
+      </div>
+      <div class="scroll-hint__chevron">
+        <svg width="18" height="11" viewBox="0 0 18 11" fill="none">
+          <path d="M1 1l8 8 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+
   </section>
 
   <!-- STATS -->
@@ -66,11 +101,61 @@
         <p class="stat__label">operando sin intervención</p>
       </div>
       <div class="stat">
-        <span class="stat__num" data-count="48">0</span><span class="stat__unit">h</span>
+        <span class="stat__num" data-count="72">0</span><span class="stat__unit">h</span>
         <p class="stat__label">tiempo promedio de implementación</p>
       </div>
     </div>
   </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <div class="marquee-inner marquee-inner--fwd">
+        <div class="marquee-set">
+          <span class="m-tag">Automatización <em>·</em></span>
+          <span class="m-tag">Inteligencia Artificial <em>·</em></span>
+          <span class="m-tag">Eficiencia Operativa <em>·</em></span>
+          <span class="m-tag">CRM Automatizado <em>·</em></span>
+          <span class="m-tag">Email Marketing <em>·</em></span>
+          <span class="m-tag">Generación de Leads <em>·</em></span>
+          <span class="m-tag">Reportes en Tiempo Real <em>·</em></span>
+        </div>
+        <div class="marquee-set" aria-hidden="true">
+          <span class="m-tag">Automatización <em>·</em></span>
+          <span class="m-tag">Inteligencia Artificial <em>·</em></span>
+          <span class="m-tag">Eficiencia Operativa <em>·</em></span>
+          <span class="m-tag">CRM Automatizado <em>·</em></span>
+          <span class="m-tag">Email Marketing <em>·</em></span>
+          <span class="m-tag">Generación de Leads <em>·</em></span>
+          <span class="m-tag">Reportes en Tiempo Real <em>·</em></span>
+        </div>
+      </div>
+    </div>
+    <div class="marquee-track">
+      <div class="marquee-inner marquee-inner--rev">
+        <div class="marquee-set">
+          <span class="m-tag m-tag--dim">Agentes con IA <em>·</em></span>
+          <span class="m-tag m-tag--dim">n8n <em>·</em></span>
+          <span class="m-tag m-tag--dim">Make <em>·</em></span>
+          <span class="m-tag m-tag--dim">GoHighLevel <em>·</em></span>
+          <span class="m-tag m-tag--dim">Notion <em>·</em></span>
+          <span class="m-tag m-tag--dim">Google Sheets <em>·</em></span>
+          <span class="m-tag m-tag--dim">Zapier <em>·</em></span>
+          <span class="m-tag m-tag--dim">Webhooks <em>·</em></span>
+        </div>
+        <div class="marquee-set" aria-hidden="true">
+          <span class="m-tag m-tag--dim">Agentes con IA <em>·</em></span>
+          <span class="m-tag m-tag--dim">n8n <em>·</em></span>
+          <span class="m-tag m-tag--dim">Make <em>·</em></span>
+          <span class="m-tag m-tag--dim">GoHighLevel <em>·</em></span>
+          <span class="m-tag m-tag--dim">Notion <em>·</em></span>
+          <span class="m-tag m-tag--dim">Google Sheets <em>·</em></span>
+          <span class="m-tag m-tag--dim">Zapier <em>·</em></span>
+          <span class="m-tag m-tag--dim">Webhooks <em>·</em></span>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- SERVICIOS -->
   <section class="servicios" id="servicios">
@@ -79,67 +164,216 @@
         <h2 class="section__title reveal-text">Lo que construimos</h2>
         <p class="section__sub reveal-text">Soluciones reales para problemas reales. Sin hype.</p>
       </div>
-      <div class="cards">
+      <div class="cards bento">
+
+        <!-- 01 · Automatización (wide) -->
         <div class="card tilt-card">
           <div class="card__glow"></div>
-          <div class="card__icon">⚡</div>
+          <span class="card__num">01</span>
+          <div class="card__visual">
+            <div class="visual-flow">
+              <div class="flow-node">DIAGNOSTICO</div>
+              <div class="flow-connector">
+                <div class="flow-line"></div>
+                <div class="flow-dot"></div>
+              </div>
+              <div class="flow-node flow-node--accent">ESTRATEGIA</div>
+              <div class="flow-connector">
+                <div class="flow-line"></div>
+                <div class="flow-dot" style="animation-delay:.6s"></div>
+              </div>
+              <div class="flow-node">SOLUCIÓN</div>
+            </div>
+          </div>
           <h3>Automatización de procesos</h3>
           <p>Conectamos tus herramientas y eliminamos el trabajo manual. CRM, emails, reportes, facturación — todo en automático.</p>
+          <span class="card__tag">Workflows · n8n · Make</span>
           <div class="card__line"></div>
         </div>
+
+        <!-- 02 · Agentes IA (narrow) -->
         <div class="card tilt-card">
           <div class="card__glow"></div>
-          <div class="card__icon">🤖</div>
+          <span class="card__num">02</span>
+          <div class="card__visual">
+            <div class="visual-chat">
+              <div class="chat-msg chat-msg--user">¿Cuál es el precio?</div>
+              <div class="chat-msg chat-msg--ai">El plan incluye acceso completo a...</div>
+              <div class="chat-typing"><span></span><span></span><span></span></div>
+            </div>
+          </div>
           <h3>Agentes con IA</h3>
           <p>Asistentes inteligentes que responden clientes, califican leads y toman decisiones sin intervención humana.</p>
+          <span class="card__tag">24/7 · GPT · Claude</span>
           <div class="card__line"></div>
         </div>
+
+        <!-- 03 · Dashboards (narrow) -->
         <div class="card tilt-card">
           <div class="card__glow"></div>
-          <div class="card__icon">📊</div>
+          <span class="card__num">03</span>
+          <div class="card__visual">
+            <div class="visual-chart">
+              <span class="chart-metric">+94% <em>este mes</em></span>
+              <div class="chart-bars">
+                <div class="chart-bar" style="--bh:45%"></div>
+                <div class="chart-bar" style="--bh:68%"></div>
+                <div class="chart-bar" style="--bh:52%"></div>
+                <div class="chart-bar" style="--bh:81%"></div>
+                <div class="chart-bar chart-bar--hi" style="--bh:94%"></div>
+              </div>
+            </div>
+          </div>
           <h3>Dashboards & datos</h3>
           <p>Toda la información de tu negocio centralizada y actualizada en tiempo real. Tomá decisiones con datos, no con intuición.</p>
+          <span class="card__tag">Graficos · Sheets · Metricas</span>
           <div class="card__line"></div>
         </div>
+
+        <!-- 04 · Integraciones (wide) -->
         <div class="card tilt-card">
           <div class="card__glow"></div>
-          <div class="card__icon">🔗</div>
+          <span class="card__num">04</span>
+          <div class="card__visual">
+            <div class="visual-integrations">
+              <div class="int-chip" style="--d:0s">n8n</div>
+              <div class="int-chip" style="--d:.4s">Make</div>
+              <div class="int-chip int-chip--core" style="--d:.8s">KOVA</div>
+              <div class="int-chip" style="--d:1.2s">GHL</div>
+              <div class="int-chip" style="--d:1.6s">Notion</div>
+              <div class="int-chip" style="--d:2s">Sheets</div>
+            </div>
+          </div>
           <h3>Integraciones</h3>
           <p>Unimos sistemas que no hablan entre sí. n8n, Make, GoHighLevel, Notion, Sheets — lo que uses, lo conectamos.</p>
+          <span class="card__tag">APIs · Webhooks · No-code</span>
           <div class="card__line"></div>
         </div>
+
       </div>
     </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       KOVA LIVE — Sistema en vivo
+  ═══════════════════════════════════════════ -->
+  <section class="kova-live" id="kova-live">
+
+    <div class="container">
+      <div class="kl-header">
+        <span class="kl-kicker">Sistema en vivo</span>
+        <h2 class="kl-title">Esto pasa <em>ahora mismo</em><br>en los negocios de nuestros clientes.</h2>
+      </div>
+    </div>
+
+    <div class="kl-stage">
+      <!-- connection line -->
+      <div class="kl-connline"></div>
+
+      <!-- left: incoming tasks -->
+      <div class="kl-col kl-col--in" id="klIn">
+        <span class="kl-col__label">Tareas entrando</span>
+      </div>
+
+      <!-- center: brain -->
+      <div class="kl-brain">
+        <div class="kl-brain__rings" aria-hidden="true">
+          <div class="kl-ring kl-ring--1"></div>
+          <div class="kl-ring kl-ring--2"></div>
+          <div class="kl-ring kl-ring--3"></div>
+        </div>
+        <div class="kl-brain__core">
+          <span class="kl-brain__logo">KOVA</span>
+          <span class="kl-brain__sub">IA activa</span>
+        </div>
+        <div class="kl-brain__counter">
+          <span id="klCount">0</span>
+          <span class="kl-brain__counter-lbl">procesadas</span>
+        </div>
+      </div>
+
+      <!-- right: outputs -->
+      <div class="kl-col kl-col--out" id="klOut">
+        <span class="kl-col__label">Automatizado</span>
+      </div>
+    </div>
+
+    <div class="kl-stats">
+      <div class="kl-stat">
+        <span class="kl-stat__num">80<span style="font-size:28px;color:var(--color-acento)">%</span></span>
+        <span class="kl-stat__label">Menos trabajo manual</span>
+      </div>
+      <div class="kl-stat">
+        <span class="kl-stat__num">3<span style="font-size:28px;color:var(--color-acento)">x</span></span>
+        <span class="kl-stat__label">Más velocidad operativa</span>
+      </div>
+      <div class="kl-stat">
+        <span class="kl-stat__num">24<span style="font-size:28px;color:var(--color-acento)">/7</span></span>
+        <span class="kl-stat__label">Sin intervención humana</span>
+      </div>
+      <div class="kl-stat">
+        <span class="kl-stat__num">72<span style="font-size:28px;color:var(--color-acento)">h</span></span>
+        <span class="kl-stat__label">Implementación promedio</span>
+      </div>
+    </div>
+
   </section>
 
   <!-- PROCESO -->
   <section class="proceso" id="proceso">
     <div class="container">
-      <h2 class="section__title reveal-text">Cómo trabajamos</h2>
-      <div class="steps">
-        <div class="step">
-          <span class="step__num">01</span>
-          <h3>Diagnóstico</h3>
-          <p>Entendemos tu operación y detectamos dónde estás perdiendo tiempo y plata.</p>
+      <span class="proceso__label reveal-text">Nuestro método</span>
+      <h2 class="section__title reveal-text">Solo <span class="proceso__accent">3 pasos</span> para automatizar</h2>
+      <p class="section__sub reveal-text">En menos de 48 horas tu sistema ya está funcionando.</p>
+    </div>
+
+    <div class="proceso__stage-wrap">
+      <div class="proceso__stage">
+
+        <!-- Números fantasma -->
+        <span class="ghost-num ghost-num--1">1</span>
+        <span class="ghost-num ghost-num--2">2</span>
+        <span class="ghost-num ghost-num--3">3</span>
+
+        <!-- Path SVG animado -->
+        <svg class="proceso__svg" viewBox="0 0 1200 560" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path class="proceso__path-bg" d="M 120 320 C 310 320 450 165 600 165 C 750 165 890 40 1090 40"/>
+          <path id="procesoPath"  class="proceso__path"    d="M 120 320 C 310 320 450 165 600 165 C 750 165 890 40 1090 40"/>
+          <g class="dot-group" id="dotGroup1">
+            <circle cx="120" cy="320" r="18" fill="var(--color-acento)"/>
+            <path d="M 112 320 l 5 5 l 11 -11" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </g>
+          <g class="dot-group" id="dotGroup2">
+            <circle cx="600" cy="165" r="18" fill="var(--color-acento)"/>
+            <path d="M 592 165 l 5 5 l 11 -11" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </g>
+          <g class="dot-group" id="dotGroup3">
+            <circle cx="1090" cy="40" r="18" fill="var(--color-acento)"/>
+            <path d="M 1082 40 l 5 5 l 11 -11" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </g>
+        </svg>
+
+        <!-- Paso 1 -->
+        <div class="paso paso--1">
+          <h3 class="paso__title">Diagnóstico</h3>
+          <p class="paso__desc">Entendemos tu operación y detectamos dónde estás perdiendo tiempo y plata.</p>
+          <span class="paso__time">*(Tiempo: 30 min)</span>
         </div>
-        <div class="step__arrow">→</div>
-        <div class="step">
-          <span class="step__num">02</span>
-          <h3>Diseño</h3>
-          <p>Mapeamos la solución exacta. Sin tecnología de más, sin complicaciones innecesarias.</p>
+
+        <!-- Paso 2 -->
+        <div class="paso paso--2">
+          <h3 class="paso__title">Diseño</h3>
+          <p class="paso__desc">Mapeamos la solución exacta. Sin tecnología de más, sin complicaciones innecesarias.</p>
+          <span class="paso__time">*(Tiempo: 24 horas)</span>
         </div>
-        <div class="step__arrow">→</div>
-        <div class="step">
-          <span class="step__num">03</span>
-          <h3>Implementación</h3>
-          <p>Construimos, testeamos y dejamos todo funcionando. Con documentación y soporte.</p>
+
+        <!-- Paso 3 -->
+        <div class="paso paso--3">
+          <h3 class="paso__title">En marcha</h3>
+          <p class="paso__desc">Construimos, testeamos y dejamos todo funcionando. Con documentación y soporte.</p>
+          <span class="paso__time">*(Tiempo: 48 horas)</span>
         </div>
-        <div class="step__arrow">→</div>
-        <div class="step">
-          <span class="step__num">04</span>
-          <h3>Escala</h3>
-          <p>Una vez que funciona, lo escalamos. Más automatizaciones, más ahorro, más crecimiento.</p>
-        </div>
+
       </div>
     </div>
   </section>
@@ -172,6 +406,30 @@
       </form>
     </div>
   </section>
+
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="ticker__inner">
+      <div class="ticker__set">
+        <span class="ticker__item">Ventas<span class="ticker__sep">·</span></span>
+        <span class="ticker__item">Agentes de IA<span class="ticker__sep">·</span></span>
+        <span class="ticker__item">Marketing<span class="ticker__sep">·</span></span>
+        <span class="ticker__item">Posicionamiento<span class="ticker__sep">·</span></span>
+        <span class="ticker__item">SEO<span class="ticker__sep">·</span></span>
+        <span class="ticker__item">Automatizaciones<span class="ticker__sep">·</span></span>
+        <span class="ticker__item">Ahorro de Tiempo<span class="ticker__sep">·</span></span>
+      </div>
+      <div class="ticker__set" aria-hidden="true">
+        <span class="ticker__item">Ventas<span class="ticker__sep">·</span></span>
+        <span class="ticker__item">Agentes de IA<span class="ticker__sep">·</span></span>
+        <span class="ticker__item">Marketing<span class="ticker__sep">·</span></span>
+        <span class="ticker__item">Posicionamiento<span class="ticker__sep">·</span></span>
+        <span class="ticker__item">SEO<span class="ticker__sep">·</span></span>
+        <span class="ticker__item">Automatizaciones<span class="ticker__sep">·</span></span>
+        <span class="ticker__item">Ahorro de Tiempo<span class="ticker__sep">·</span></span>
+      </div>
+    </div>
+  </div>
 
   <!-- FOOTER -->
   <footer class="footer">

@@ -1,0 +1,52 @@
+/* ============================================================
+   KOVA — Design Tokens v1
+
+   Toda la identidad visual centralizada aquí.
+   Para cambiar un color o tipografía en toda la página,
+   modificá el valor correspondiente y listo.
+   ============================================================ */
+
+:root {
+
+  /* ─────────────────────────────────────
+     FONDOS
+     ───────────────────────────────────── */
+  --color-fondo:        #0A0A0A;  /* Fondo principal de la página */
+  --color-superficie:   #1A1A1A;  /* Cards, secciones alternativas */
+  --color-fondo-claro:  #F5F5F5;  /* Versión light / fondo marca personal */
+
+  /* ─────────────────────────────────────
+     COLOR DE ACENTO (el color de marca)
+     Cambiá --color-acento y todo se actualiza.
+     ───────────────────────────────────── */
+  --color-acento:       #E8501A;                 /* Botones, highlights, links activos */
+  --color-acento-hover: #C04010;                 /* Hover y estados activos */
+  --color-acento-suave: rgba(232, 80, 26, 0.15); /* Chips, tags, fondos sutiles */
+
+  /* ─────────────────────────────────────
+     TEXTOS
+     ───────────────────────────────────── */
+  --color-texto:           #FFFFFF;  /* Texto principal sobre fondos oscuros */
+  --color-texto-secundario: #8A8A8A; /* Subtítulos, nombre de marca */
+  --color-texto-muted:     #B0B0B0;  /* Fechas, etiquetas apagadas */
+  --color-texto-tenue:     #555555;  /* Texto muy secundario / UI inactivo */
+
+  /* ─────────────────────────────────────
+     BORDES
+     ───────────────────────────────────── */
+  --color-borde:       #222222;  /* Bordes y divisores */
+  --color-borde-suave: #2A2A2A;  /* Bordes más sutiles */
+
+  /* ─────────────────────────────────────
+     TIPOGRAFÍAS
+     ───────────────────────────────────── */
+
+  /* Títulos / Display — Bold / ExtraBold */
+  --fuente-titulo: 'Barlow Condensed', condensed, sans-serif;
+
+  /* Cuerpo / Subtítulos — Light / Regular / Medium */
+  --fuente-cuerpo: 'DM Sans', system-ui, -apple-system, sans-serif;
+
+  /* Etiquetas / Datos / UI — Regular / Bold */
+  --fuente-ui: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+}

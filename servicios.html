@@ -1,0 +1,2659 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KOVA — Servicios</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=DM+Sans:wght@300;400;500&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/tokens.css" />
+  <link rel="stylesheet" href="src/styles.css" />
+
+  <style>
+    /* ═══════════════════════════════════════════════════
+       SERVICIOS — Page Styles
+    ═══════════════════════════════════════════════════ */
+
+    /* ── HERO ─────────────────────────────────────── */
+    .sv-hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sv-hero__split {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      pointer-events: none;
+    }
+
+    .sv-hero__half {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sv-hero__half--left {
+      border-right: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .sv-float {
+      position: absolute;
+      font-family: var(--fuente-ui);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(180, 180, 180, 0.22);
+      white-space: nowrap;
+      animation: sv-drift 9s ease-in-out infinite;
+    }
+
+    @keyframes sv-drift {
+      0%, 100% { transform: translateY(0) rotate(var(--rot, 0deg)); }
+      50%       { transform: translateY(-14px) rotate(var(--rot, 0deg)); }
+    }
+
+    .sv-hero__content {
+      position: relative;
+      z-index: 2;
+      max-width: 860px;
+      padding: 160px 40px 100px;
+      text-align: center;
+    }
+
+    .sv-hero__kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      font-family: var(--fuente-ui);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-acento);
+      margin-bottom: 36px;
+      opacity: 0;
+    }
+
+    .sv-hero__kicker::before,
+    .sv-hero__kicker::after {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--color-acento);
+    }
+
+    .sv-hero__title {
+      font-family: var(--fuente-titulo);
+      font-size: clamp(72px, 11vw, 130px);
+      font-weight: 800;
+      line-height: 1.05;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      color: var(--color-texto);
+      margin-bottom: 36px;
+      opacity: 0;
+    }
+
+    .sv-hero__title em {
+      font-style: normal;
+      color: var(--color-acento);
+      display: block;
+    }
+
+    .sv-hero__sub {
+      font-size: 21px;
+      font-weight: 300;
+      color: var(--color-texto-secundario);
+      margin-bottom: 60px;
+      line-height: 1.6;
+      opacity: 0;
+    }
+
+    .sv-hero__pills {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      opacity: 0;
+    }
+
+    .sv-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 26px;
+      border: 1px solid var(--color-borde);
+      border-radius: 100px;
+      font-family: var(--fuente-ui);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-texto);
+      text-decoration: none;
+      transition: border-color 0.3s, color 0.3s, background 0.3s;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .sv-pill:hover {
+      border-color: var(--color-acento);
+      color: var(--color-acento);
+      background: rgba(232,80,26,0.06);
+    }
+
+    .sv-pill__num {
+      font-size: 10px;
+      color: var(--color-acento);
+      opacity: 0.6;
+    }
+
+    /* ── CATEGORY SECTION ───────────────────────── */
+    .sv-cat {
+      padding: 120px 0;
+      position: relative;
+    }
+
+    .sv-cat--tech {
+      background: #060606;
+    }
+
+    .sv-cat--tech::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--color-acento), transparent);
+      opacity: 0.4;
+    }
+
+    .sv-cat__header {
+      max-width: 1400px;
+      margin: 0 auto 80px;
+      padding: 0 60px;
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 60px;
+      align-items: end;
+    }
+
+    .sv-cat__left {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .sv-cat__ghost {
+      font-family: var(--fuente-titulo);
+      font-size: 110px;
+      font-weight: 800;
+      line-height: 1;
+      color: rgba(232, 80, 26, 0.06);
+      letter-spacing: -0.04em;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .sv-cat__badge {
+      display: inline-block;
+      padding: 6px 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 100px;
+      font-family: var(--fuente-ui);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-texto-muted);
+    }
+
+    .sv-cat__lead {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--fuente-ui);
+      font-size: 12px;
+      color: var(--color-texto-tenue);
+    }
+
+    .sv-cat__lead::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #555;
+      display: block;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 0.5; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.3); }
+    }
+
+    .sv-cat__title {
+      font-family: var(--fuente-titulo);
+      font-size: clamp(48px, 5.5vw, 88px);
+      font-weight: 800;
+      text-transform: uppercase;
+      line-height: 0.93;
+      color: var(--color-texto);
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+
+    .sv-cat__desc {
+      font-size: 19px;
+      font-weight: 300;
+      color: var(--color-texto-secundario);
+      line-height: 1.65;
+      max-width: 580px;
+    }
+
+    /* ── BENTO GRID ─────────────────────────────── */
+    .sv-bento {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 60px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .sv-card {
+      background: var(--color-superficie);
+      border: 1px solid var(--color-borde);
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      transition: border-color 0.35s, transform 0.35s, box-shadow 0.35s;
+      cursor: default;
+    }
+
+    .sv-card:hover {
+      border-color: rgba(232, 80, 26, 0.45);
+      transform: translateY(-5px);
+      box-shadow: 0 24px 64px rgba(232, 80, 26, 0.09);
+    }
+
+    /* Wide card spans 2 columns */
+    .sv-card--wide {
+      grid-column: span 2;
+    }
+
+    .sv-card--wide .sv-card__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 280px;
+    }
+
+    .sv-card--wide .sv-card__text {
+      padding: 44px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .sv-card--wide .sv-card__vis {
+      height: auto;
+      min-height: 280px;
+      border-left: 1px solid var(--color-borde);
+      border-bottom: none;
+    }
+
+    /* Normal card layout */
+    .sv-card__vis {
+      height: 200px;
+      border-bottom: 1px solid var(--color-borde);
+      position: relative;
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sv-card__text {
+      padding: 28px 32px 30px;
+    }
+
+    .sv-card__tag {
+      font-family: var(--fuente-ui);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-texto-tenue);
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .sv-card__name {
+      font-family: var(--fuente-titulo);
+      font-size: 26px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--color-texto);
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+
+    .sv-card--wide .sv-card__name {
+      font-size: 34px;
+    }
+
+    .sv-card__desc {
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--color-texto-secundario);
+      font-weight: 300;
+    }
+
+    /* ══════════════════════════════════════════════
+       CARD VISUALS
+    ══════════════════════════════════════════════ */
+
+    /* ── 1. VENN / Posicionamiento ────────────── */
+    .vis-venn {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .venn-c {
+      position: absolute;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(232, 80, 26, 0.45);
+      background: rgba(232, 80, 26, 0.04);
+    }
+
+    .venn-c:nth-child(1) { transform: translate(-36px, -20px); animation: venn-b 4s ease-in-out infinite 0s; }
+    .venn-c:nth-child(2) { transform: translate(36px, -20px);  animation: venn-b 4s ease-in-out infinite 0.6s; }
+    .venn-c:nth-child(3) { transform: translate(0px, 22px);    animation: venn-b 4s ease-in-out infinite 1.2s; }
+
+    @keyframes venn-b {
+      0%, 100% { opacity: 0.55; }
+      50%       { opacity: 1; }
+    }
+
+    .venn-label {
+      position: absolute;
+      font-family: var(--fuente-titulo);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-acento);
+      background: rgba(26, 26, 26, 0.92);
+      padding: 5px 10px;
+      border-radius: 6px;
+      z-index: 2;
+    }
+
+    /* ── 2. ICP Persona ───────────────────────── */
+    .vis-icp {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 16px;
+    }
+
+    .icp-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--color-acento), #ff8c4a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--fuente-titulo);
+      font-size: 15px;
+      font-weight: 800;
+      color: white;
+    }
+
+    .icp-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: center;
+    }
+
+    .icp-tag {
+      font-family: var(--fuente-ui);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 100px;
+      background: rgba(232, 80, 26, 0.1);
+      border: 1px solid rgba(232, 80, 26, 0.22);
+      color: var(--color-acento);
+      animation: tag-pop 0.5s var(--ease-back) both;
+    }
+
+    .icp-tag:nth-child(1) { animation-delay: 0.1s; }
+    .icp-tag:nth-child(2) { animation-delay: 0.2s; }
+    .icp-tag:nth-child(3) { animation-delay: 0.3s; }
+    .icp-tag:nth-child(4) { animation-delay: 0.4s; }
+    .icp-tag:nth-child(5) { animation-delay: 0.5s; }
+
+    @keyframes tag-pop {
+      from { opacity: 0; transform: scale(0.75); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    /* ── 3. Content Calendar ──────────────────── */
+    .vis-cal {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+      width: 100%;
+      max-width: 196px;
+    }
+
+    .cal-day {
+      font-family: var(--fuente-ui);
+      font-size: 7px;
+      font-weight: 700;
+      color: var(--color-texto-tenue);
+      text-align: center;
+      padding: 2px 0 4px;
+      text-transform: uppercase;
+    }
+
+    .cal-cell {
+      aspect-ratio: 1;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .cal-cell--on {
+      background: var(--color-acento);
+      animation: cal-glow 2.5s ease-in-out infinite;
+    }
+
+    .cal-cell--dim {
+      background: rgba(232, 80, 26, 0.28);
+    }
+
+    @keyframes cal-glow {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.6; }
+    }
+
+    /* ── 4. RRSS Platforms ────────────────────── */
+    .vis-rrss {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 22px;
+    }
+
+    .rrss-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .rrss-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 16px;
+      background: rgba(232, 80, 26, 0.1);
+      border: 1px solid rgba(232, 80, 26, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--fuente-titulo);
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--color-acento);
+      position: relative;
+    }
+
+    .rrss-icon::after {
+      content: '';
+      position: absolute;
+      inset: -5px;
+      border-radius: 18px;
+      border: 1px solid rgba(232, 80, 26, 0.18);
+      animation: rrss-ring 2.5s ease-in-out infinite;
+    }
+
+    .rrss-notif {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: var(--color-acento);
+      font-size: 7px;
+      font-weight: 700;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--fuente-ui);
+      animation: notif-pop 0.8s ease-in-out infinite alternate;
+    }
+
+    @keyframes rrss-ring {
+      0%, 100% { opacity: 0.5; transform: scale(1); }
+      50%       { opacity: 0; transform: scale(1.35); }
+    }
+
+    @keyframes notif-pop {
+      from { transform: scale(1); }
+      to   { transform: scale(1.2); }
+    }
+
+    .rrss-lbl {
+      font-family: var(--fuente-ui);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--color-texto-secundario);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── 5. Competition Analysis ──────────────── */
+    .vis-analysis {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 16px 24px 24px;
+      gap: 6px;
+    }
+
+    .an-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      flex: 1;
+    }
+
+    .an-bar-wrap {
+      width: 100%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      height: 90px;
+    }
+
+    .an-bar {
+      width: 26px;
+      border-radius: 4px 4px 0 0;
+    }
+
+    .an-bar--them { background: rgba(255,255,255,0.1); }
+    .an-bar--h1   { height: 38px; }
+    .an-bar--h2   { height: 55px; }
+    .an-bar--h3   { height: 26px; }
+
+    .an-bar--you {
+      background: linear-gradient(to top, var(--color-acento), #ff8c4a);
+      height: 72px;
+      animation: you-grow 2.5s ease-in-out infinite alternate;
+      box-shadow: 0 4px 16px rgba(232, 80, 26, 0.25);
+    }
+
+    @keyframes you-grow {
+      from { height: 72px; }
+      to   { height: 88px; }
+    }
+
+    .an-lbl {
+      font-family: var(--fuente-ui);
+      font-size: 8px;
+      font-weight: 700;
+      color: var(--color-texto-tenue);
+      text-transform: uppercase;
+    }
+
+    .an-lbl--you { color: var(--color-acento); }
+
+    /* ── 6. Launch Timeline (wide) ────────────── */
+    .vis-launch {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+      gap: 20px;
+    }
+
+    .launch-day {
+      font-family: var(--fuente-titulo);
+      font-size: 44px;
+      font-weight: 800;
+      color: var(--color-acento);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .launch-day span {
+      font-size: 16px;
+      font-family: var(--fuente-ui);
+      color: var(--color-texto-secundario);
+    }
+
+    .launch-line-row {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      width: 100%;
+    }
+
+    .launch-node {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .launch-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-borde-suave);
+      border: 2px solid var(--color-borde);
+    }
+
+    .launch-dot--done {
+      background: rgba(232, 80, 26, 0.4);
+      border-color: rgba(232, 80, 26, 0.4);
+    }
+
+    .launch-dot--live {
+      background: var(--color-acento);
+      border-color: var(--color-acento);
+      box-shadow: 0 0 10px rgba(232, 80, 26, 0.5);
+    }
+
+    .launch-seg {
+      flex: 1;
+      height: 1px;
+      background: var(--color-borde);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .launch-seg::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; bottom: 0;
+      background: var(--color-acento);
+      animation: seg-fill 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes seg-fill {
+      from { width: 20%; }
+      to   { width: 80%; }
+    }
+
+    .launch-lbl {
+      font-family: var(--fuente-ui);
+      font-size: 8px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--color-texto-tenue);
+      text-align: center;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+    }
+
+    .launch-lbl--live { color: var(--color-acento); }
+
+    /* ── 7. Browser / Presencia Digital ──────── */
+    .vis-browser {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .br-frame {
+      width: 220px;
+      border: 1px solid var(--color-borde);
+      border-radius: 9px;
+      overflow: hidden;
+      background: rgba(0,0,0,0.45);
+    }
+
+    .br-bar {
+      height: 22px;
+      background: rgba(255,255,255,0.03);
+      border-bottom: 1px solid var(--color-borde);
+      display: flex;
+      align-items: center;
+      padding: 0 8px;
+      gap: 4px;
+    }
+
+    .br-dot { width: 6px; height: 6px; border-radius: 50%; }
+    .br-dot:nth-child(1) { background: #ff5f57; }
+    .br-dot:nth-child(2) { background: #febc2e; }
+    .br-dot:nth-child(3) { background: #28c840; }
+
+    .br-body { padding: 8px; }
+
+    .br-result {
+      padding: 5px 7px;
+      border-radius: 5px;
+      margin-bottom: 4px;
+      border: 1px solid transparent;
+    }
+
+    .br-result--top {
+      border-color: rgba(232, 80, 26, 0.3);
+      background: rgba(232, 80, 26, 0.06);
+    }
+
+    .br-title { font-family: var(--fuente-ui); font-size: 11px; font-weight: 700; color: #5aafff; margin-bottom: 2px; }
+    .br-url   { font-family: var(--fuente-ui); font-size: 9px; color: #4a9a4a; }
+    .br-bar2  { width: 100%; height: 4px; background: rgba(255,255,255,0.06); border-radius: 2px; margin-top: 4px; }
+
+    /* ── 8. n8n Node Flow (wide) ──────────────── */
+    .vis-n8n {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      gap: 0;
+    }
+
+    .n8n-node {
+      width: 54px;
+      height: 54px;
+      border-radius: 13px;
+      background: rgba(232, 80, 26, 0.08);
+      border: 1px solid rgba(232, 80, 26, 0.28);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 2px;
+      position: relative;
+      z-index: 2;
+      flex-shrink: 0;
+    }
+
+    .n8n-node--main {
+      width: 62px;
+      height: 62px;
+      background: var(--color-acento);
+      border-color: var(--color-acento);
+      box-shadow: 0 0 24px rgba(232, 80, 26, 0.35);
+    }
+
+    .n8n-icon {
+      font-family: var(--fuente-titulo);
+      font-size: 9px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-acento);
+    }
+
+    .n8n-node--main .n8n-icon { color: white; font-size: 10px; }
+
+    .n8n-conn {
+      flex: 1;
+      height: 1px;
+      background: rgba(232, 80, 26, 0.18);
+      position: relative;
+      overflow: visible;
+    }
+
+    .n8n-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--color-acento);
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      animation: n8n-travel 2.2s linear infinite;
+      box-shadow: 0 0 6px rgba(232, 80, 26, 0.7);
+    }
+
+    @keyframes n8n-travel {
+      from { left: -7px; opacity: 0; }
+      8%   { opacity: 1; }
+      90%  { opacity: 1; }
+      to   { left: 100%; opacity: 0; }
+    }
+
+    /* ── 9. Chatbot / IA ──────────────────────── */
+    .vis-chat {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 14px 16px;
+      gap: 7px;
+    }
+
+    .chat-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 6px;
+      animation: chat-in 0.4s ease both;
+    }
+
+    .chat-row--out { flex-direction: row-reverse; }
+
+    @keyframes chat-in {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .chat-row:nth-child(1) { animation-delay: 0.1s; }
+    .chat-row:nth-child(2) { animation-delay: 0.5s; }
+    .chat-row:nth-child(3) { animation-delay: 0.9s; }
+    .chat-row:nth-child(4) { animation-delay: 1.3s; }
+
+    .chat-av {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--fuente-titulo);
+      font-size: 9px;
+      font-weight: 800;
+    }
+
+    .chat-av--bot  { background: var(--color-acento); color: white; }
+    .chat-av--user { background: rgba(255,255,255,0.07); color: var(--color-texto-secundario); }
+
+    .chat-bub {
+      padding: 6px 10px;
+      border-radius: 10px;
+      font-family: var(--fuente-ui);
+      font-size: 10px;
+      line-height: 1.4;
+      max-width: 155px;
+    }
+
+    .chat-bub--bot {
+      background: rgba(232, 80, 26, 0.1);
+      border: 1px solid rgba(232, 80, 26, 0.2);
+      color: var(--color-texto);
+      border-bottom-left-radius: 2px;
+    }
+
+    .chat-bub--user {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--color-borde);
+      color: var(--color-texto-secundario);
+      border-bottom-right-radius: 2px;
+    }
+
+    .chat-typing {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      padding: 7px 10px;
+    }
+
+    .chat-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--color-acento);
+      animation: typing 0.9s ease-in-out infinite;
+    }
+
+    .chat-dot:nth-child(2) { animation-delay: 0.15s; }
+    .chat-dot:nth-child(3) { animation-delay: 0.3s; }
+
+    @keyframes typing {
+      0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+      30%            { transform: translateY(-4px); opacity: 1; }
+    }
+
+    /* ── 10. GHL Pipeline ─────────────────────── */
+    .vis-ghl {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 16px 18px;
+      gap: 5px;
+    }
+
+    .ghl-stage {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 7px;
+      border: 1px solid var(--color-borde);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ghl-stage::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      background: rgba(232, 80, 26, 0.08);
+    }
+
+    .ghl-stage--a::before { width: 100%; }
+    .ghl-stage--b::before { width: 62%; }
+    .ghl-stage--c::before { width: 33%; }
+    .ghl-stage--d::before { width: 14%; animation: pipeline-grow 2.5s ease-in-out infinite alternate; }
+
+    @keyframes pipeline-grow {
+      from { width: 8%; }
+      to   { width: 22%; }
+    }
+
+    .ghl-lbl {
+      font-family: var(--fuente-ui);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--color-texto-secundario);
+      position: relative;
+      z-index: 1;
+    }
+
+    .ghl-count {
+      margin-left: auto;
+      font-family: var(--fuente-titulo);
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--color-acento);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── 11. Integrations Hub ─────────────────── */
+    .vis-hub {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hub-center {
+      width: 52px;
+      height: 52px;
+      border-radius: 13px;
+      background: var(--color-acento);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--fuente-titulo);
+      font-size: 11px;
+      font-weight: 800;
+      color: white;
+      position: relative;
+      z-index: 3;
+      box-shadow: 0 0 22px rgba(232, 80, 26, 0.35);
+    }
+
+    .hub-spoke {
+      position: absolute;
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--color-borde);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--fuente-ui);
+      font-size: 8px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--color-texto-tenue);
+      animation: spoke-pulse 2.5s ease-in-out infinite;
+    }
+
+    .hub-spoke:nth-child(2) { top: 16px;  left: 50%; transform: translateX(-72px); animation-delay: 0s; }
+    .hub-spoke:nth-child(3) { top: 16px;  right: 16px; animation-delay: 0.4s; }
+    .hub-spoke:nth-child(4) { bottom: 16px; left: 16px; animation-delay: 0.8s; }
+    .hub-spoke:nth-child(5) { bottom: 16px; right: 50%; transform: translateX(72px); animation-delay: 1.2s; }
+    .hub-spoke:nth-child(6) { top: 50%;  left: 16px; transform: translateY(-50%); animation-delay: 1.6s; }
+
+    @keyframes spoke-pulse {
+      0%, 100% { border-color: var(--color-borde); }
+      50%       { border-color: rgba(232, 80, 26, 0.3); }
+    }
+
+    /* ── 12. Telegram Bot ─────────────────────── */
+    .vis-tg {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+    }
+
+    .tg-phone {
+      width: 96px;
+      border: 1px solid var(--color-borde);
+      border-radius: 14px;
+      background: rgba(0,0,0,0.5);
+      padding: 10px 8px;
+      position: relative;
+    }
+
+    .tg-head {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 8px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--color-borde);
+    }
+
+    .tg-av {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2AABEE, #229ED9);
+    }
+
+    .tg-name {
+      font-family: var(--fuente-ui);
+      font-size: 8px;
+      font-weight: 700;
+      color: var(--color-texto);
+    }
+
+    .tg-online {
+      margin-left: auto;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #22c55e;
+      animation: tg-blink 1.5s ease-in-out infinite;
+    }
+
+    @keyframes tg-blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.3; }
+    }
+
+    .tg-msg {
+      background: rgba(255,255,255,0.04);
+      border-radius: 6px;
+      padding: 4px 6px;
+      margin-bottom: 4px;
+    }
+
+    .tg-msg-txt  { font-family: var(--fuente-ui); font-size: 7px; color: var(--color-texto-secundario); line-height: 1.35; }
+    .tg-msg-time { font-size: 6px; color: var(--color-texto-tenue); text-align: right; margin-top: 2px; }
+
+    .tg-badge {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: var(--color-acento);
+      border-radius: 10px;
+      padding: 3px 7px;
+      font-family: var(--fuente-ui);
+      font-size: 8px;
+      font-weight: 700;
+      color: white;
+      white-space: nowrap;
+      animation: badge-bounce 0.5s ease both;
+    }
+
+    @keyframes badge-bounce {
+      from { opacity: 0; transform: scale(0.5) translateY(-6px); }
+      to   { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    /* ── 13. 24/7 Response (wide) ─────────────── */
+    .vis-247 {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 36px;
+      padding: 28px;
+    }
+
+    .clock-wrap {
+      position: relative;
+      width: 84px;
+      height: 84px;
+      flex-shrink: 0;
+    }
+
+    .clock-face {
+      width: 84px;
+      height: 84px;
+      border-radius: 50%;
+      border: 2px solid rgba(232, 80, 26, 0.3);
+      position: relative;
+    }
+
+    .clock-sweep {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      border-top-color: var(--color-acento);
+      animation: clock-spin 4s linear infinite;
+    }
+
+    @keyframes clock-spin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    .clock-hour {
+      position: absolute;
+      bottom: 50%;
+      left: calc(50% - 1px);
+      width: 2px;
+      height: 22px;
+      background: var(--color-acento);
+      border-radius: 2px;
+      transform-origin: bottom center;
+      animation: h-hand 60s linear infinite;
+    }
+
+    .clock-min {
+      position: absolute;
+      bottom: 50%;
+      left: calc(50% - 1px);
+      width: 2px;
+      height: 30px;
+      background: rgba(232, 80, 26, 0.5);
+      border-radius: 2px;
+      transform-origin: bottom center;
+      animation: m-hand 8s linear infinite;
+    }
+
+    @keyframes h-hand { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes m-hand { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+    .clock-center-dot {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--color-acento);
+    }
+
+    .resp-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .resp-stat-num {
+      font-family: var(--fuente-titulo);
+      font-size: 34px;
+      font-weight: 800;
+      color: var(--color-acento);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .resp-stat-lbl {
+      font-family: var(--fuente-ui);
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--color-texto-tenue);
+      display: block;
+      margin-top: 2px;
+    }
+
+    /* ── 14. Lead Sequence ────────────────────── */
+    .vis-seq {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 14px;
+      gap: 5px;
+    }
+
+    .seq-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 11px;
+      border-radius: 7px;
+      border: 1px solid var(--color-borde);
+      animation: seq-slide 0.5s ease both;
+    }
+
+    .seq-row:nth-child(1) { animation-delay: 0.1s; }
+    .seq-row:nth-child(2) { animation-delay: 0.25s; }
+    .seq-row:nth-child(3) { animation-delay: 0.4s; }
+    .seq-row:nth-child(4) { animation-delay: 0.55s; }
+
+    @keyframes seq-slide {
+      from { opacity: 0; transform: translateX(-8px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    .seq-check {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 7px;
+    }
+
+    .seq-check--ok {
+      background: rgba(34,197,94,0.12);
+      border: 1px solid rgba(34,197,94,0.3);
+      color: #22c55e;
+    }
+
+    .seq-check--next {
+      background: rgba(232,80,26,0.1);
+      border: 1px solid rgba(232,80,26,0.25);
+      color: var(--color-acento);
+      animation: next-pulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes next-pulse {
+      0%, 100% { opacity: 0.5; }
+      50%       { opacity: 1; }
+    }
+
+    .seq-info { flex: 1; }
+    .seq-name { font-family: var(--fuente-ui); font-size: 13px; font-weight: 700; color: var(--color-texto); }
+    .seq-time { font-family: var(--fuente-ui); font-size: 10px; color: var(--color-texto-tenue); }
+    .seq-pct  { font-family: var(--fuente-titulo); font-size: 20px; font-weight: 800; color: var(--color-acento); }
+
+    /* ── STATS STRIP ─────────────────────────── */
+    .sv-strip {
+      background: rgba(232, 80, 26, 0.05);
+      border-top: 1px solid rgba(232, 80, 26, 0.12);
+      border-bottom: 1px solid rgba(232, 80, 26, 0.12);
+      padding: 64px 0;
+    }
+
+    .sv-strip__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      text-align: center;
+    }
+
+    .sv-strip__num {
+      font-family: var(--fuente-titulo);
+      font-size: 68px;
+      font-weight: 800;
+      color: var(--color-acento);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      display: block;
+    }
+
+    .sv-strip__lbl {
+      font-family: var(--fuente-ui);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-texto-tenue);
+      display: block;
+      margin-top: 6px;
+    }
+
+    /* ── FINAL CTA ───────────────────────────── */
+    .sv-cta {
+      padding: 140px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sv-cta::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 640px;
+      height: 640px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(232,80,26,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .sv-cta__inner {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .sv-cta__kicker {
+      display: inline-block;
+      font-family: var(--fuente-ui);
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-acento);
+      margin-bottom: 26px;
+    }
+
+    .sv-cta__title {
+      font-family: var(--fuente-titulo);
+      font-size: clamp(64px, 9vw, 124px);
+      font-weight: 800;
+      text-transform: uppercase;
+      line-height: 0.88;
+      letter-spacing: -0.02em;
+      color: var(--color-texto);
+      margin-bottom: 30px;
+    }
+
+    .sv-cta__sub {
+      font-size: 20px;
+      font-weight: 300;
+      color: var(--color-texto-secundario);
+      line-height: 1.65;
+      margin-bottom: 52px;
+    }
+
+    .sv-cta__btns {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    /* ══════════════════════════════════════════════
+       DECISION MACHINE — WOW section
+    ══════════════════════════════════════════════ */
+    .dm-section {
+      background: #020202;
+      padding: 130px 0 100px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dm-dots {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+    }
+
+    .dm-section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+    }
+
+    /* radial glow center */
+    .dm-section::after {
+      content: '';
+      position: absolute;
+      top: 40%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 800px; height: 600px;
+      background: radial-gradient(ellipse, rgba(232,80,26,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .dm-header {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 80px;
+      padding: 0 40px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .dm-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--fuente-ui);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-texto-tenue);
+      margin-bottom: 24px;
+    }
+
+    .dm-kicker__dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #e8501a;
+      animation: kl-blink 1.4s ease-in-out infinite;
+    }
+
+    .dm-title {
+      font-family: var(--fuente-titulo);
+      font-size: clamp(36px, 5vw, 68px);
+      font-weight: 800;
+      text-transform: uppercase;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--color-texto);
+      margin-bottom: 20px;
+    }
+
+    .dm-title em {
+      font-style: normal;
+      text-decoration: line-through;
+      text-decoration-color: rgba(232,80,26,0.6);
+      color: rgba(255,255,255,0.4);
+    }
+
+    .dm-sub {
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--color-texto-secundario);
+      line-height: 1.6;
+    }
+
+    /* ── comparison grid ── */
+    .dm-compare {
+      display: grid;
+      grid-template-columns: 1fr 80px 1fr;
+      gap: 0;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .dm-side {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .dm-side__label {
+      margin-bottom: 24px;
+    }
+
+    .dm-side__badge {
+      font-family: var(--fuente-ui);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 100px;
+    }
+
+    .dm-side__badge--red {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239,68,68,0.25);
+      color: #ef4444;
+    }
+
+    .dm-side__badge--green {
+      background: rgba(34,197,94,0.08);
+      border: 1px solid rgba(34,197,94,0.25);
+      color: #22c55e;
+    }
+
+    /* ── timeline ── */
+    .dm-timeline {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .dm-event {
+      display: grid;
+      grid-template-columns: 36px 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 14px 18px;
+      border-radius: 12px;
+      border: 1px solid transparent;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: border-color 0.35s;
+    }
+
+    .dm-event--bad {
+      background: rgba(239,68,68,0.04);
+      border-color: rgba(239,68,68,0.1);
+    }
+
+    .dm-event--good {
+      background: rgba(34,197,94,0.04);
+      border-color: rgba(34,197,94,0.1);
+    }
+
+    .dm-event--bad:hover  { border-color: rgba(239,68,68,0.3); }
+    .dm-event--good:hover { border-color: rgba(34,197,94,0.3); }
+
+    .dm-event__icon {
+      font-size: 20px;
+      text-align: center;
+    }
+
+    .dm-event__title {
+      font-family: var(--fuente-ui);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-texto);
+      display: block;
+    }
+
+    .dm-event__time {
+      font-family: var(--fuente-ui);
+      font-size: 11px;
+      color: var(--color-texto-tenue);
+      display: block;
+      margin-top: 2px;
+    }
+
+    .dm-event__status {
+      font-family: var(--fuente-ui);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+
+    .dm-event__status--wait { background: rgba(255,255,255,0.04); color: var(--color-texto-tenue); }
+    .dm-event__status--lost { background: rgba(239,68,68,0.12); color: #ef4444; }
+    .dm-event__status--ok   { background: rgba(34,197,94,0.1); color: #22c55e; }
+    .dm-event__status--win  {
+      background: rgba(34,197,94,0.15);
+      color: #22c55e;
+      box-shadow: 0 0 10px rgba(34,197,94,0.2);
+      animation: win-pulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes win-pulse {
+      0%, 100% { box-shadow: 0 0 10px rgba(34,197,94,0.2); }
+      50%       { box-shadow: 0 0 20px rgba(34,197,94,0.4); }
+    }
+
+    /* ── connectors ── */
+    .dm-connector {
+      width: 2px;
+      height: 28px;
+      margin: 4px auto 4px;
+      border-radius: 2px;
+      position: relative;
+    }
+
+    .dm-connector--bad  { background: rgba(239,68,68,0.2); margin-left: 28px; }
+    .dm-connector--good { background: rgba(34,197,94,0.25); margin-left: 28px; overflow: hidden; }
+
+    .dm-connector__dot {
+      position: absolute;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #22c55e;
+      left: 50%; transform: translateX(-50%);
+      animation: conn-travel 1.2s ease-in-out infinite;
+      box-shadow: 0 0 6px rgba(34,197,94,0.8);
+    }
+
+    @keyframes conn-travel {
+      from { top: -6px; opacity: 0; }
+      10%  { opacity: 1; }
+      90%  { opacity: 1; }
+      to   { top: 28px; opacity: 0; }
+    }
+
+    /* ── result boxes ── */
+    .dm-result {
+      margin-top: 24px;
+      padding: 20px 24px;
+      border-radius: 14px;
+      text-align: center;
+    }
+
+    .dm-result--bad {
+      background: rgba(239,68,68,0.06);
+      border: 1px solid rgba(239,68,68,0.18);
+    }
+
+    .dm-result--good {
+      background: rgba(34,197,94,0.06);
+      border: 1px solid rgba(34,197,94,0.2);
+      box-shadow: 0 8px 32px rgba(34,197,94,0.08);
+    }
+
+    .dm-result__num {
+      font-family: var(--fuente-titulo);
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      display: block;
+    }
+
+    .dm-result--bad  .dm-result__num { color: #ef4444; }
+    .dm-result--good .dm-result__num { color: #22c55e; }
+
+    .dm-result__lbl {
+      font-family: var(--fuente-ui);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-texto-tenue);
+      display: block;
+      margin-top: 6px;
+    }
+
+    /* ── VS divider ── */
+    .dm-vs {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 40px 0;
+    }
+
+    .dm-vs__line {
+      flex: 1;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.08), transparent);
+    }
+
+    .dm-vs__label {
+      font-family: var(--fuente-titulo);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      color: var(--color-texto-tenue);
+      background: #0a0a0a;
+      padding: 8px 4px;
+      writing-mode: vertical-lr;
+    }
+
+    /* ── footer message ── */
+    .dm-footer-msg {
+      text-align: center;
+      max-width: 680px;
+      margin: 64px auto 0;
+      padding: 0 40px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .dm-footer-msg p {
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--color-texto-secundario);
+      line-height: 1.65;
+      margin-bottom: 36px;
+    }
+
+    .dm-footer-msg strong {
+      color: var(--color-texto);
+      font-weight: 700;
+    }
+
+    @media (max-width: 768px) {
+      .dm-compare {
+        grid-template-columns: 1fr;
+        padding: 0 24px;
+      }
+      .dm-vs { flex-direction: row; padding: 24px 0; }
+      .dm-vs__line { flex: 1; height: 1px; width: auto; background: linear-gradient(to right, transparent, rgba(255,255,255,0.08), transparent); }
+      .dm-vs__label { writing-mode: horizontal-tb; }
+    }
+
+    /* ── RESPONSIVE ──────────────────────────── */
+    @media (max-width: 960px) {
+      .sv-bento {
+        grid-template-columns: 1fr 1fr;
+        padding: 0 24px;
+      }
+      .sv-card--wide {
+        grid-column: span 2;
+      }
+      .sv-card--wide .sv-card__inner {
+        grid-template-columns: 1fr;
+      }
+      .sv-card--wide .sv-card__vis {
+        height: 220px;
+        min-height: unset;
+        border-left: none;
+        border-top: 1px solid var(--color-borde);
+      }
+      .sv-cat__header {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 0 24px;
+      }
+      .sv-cat__ghost { font-size: 72px; }
+      .sv-strip__inner { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 600px) {
+      .sv-bento { grid-template-columns: 1fr; }
+      .sv-card--wide { grid-column: span 1; }
+      .sv-hero__content { padding: 130px 24px 80px; }
+      .sv-hero__split { display: none; }
+      .sv-strip__inner { grid-template-columns: 1fr 1fr; gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- LOADER -->
+  <div class="loader" id="loader">
+    <div class="loader__logo">KOVA</div>
+    <div class="loader__bar"><div class="loader__fill"></div></div>
+  </div>
+
+  <!-- CURSOR GLOW -->
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <a href="index.html" class="nav__logo">KOVA</a>
+    <ul class="nav__links">
+      <li><a href="index.html" class="nav__link">Inicio</a></li>
+      <li><a href="servicios.html" class="nav__link nav__link--active">Servicios</a></li>
+      <li><a href="index.html#proceso" class="nav__link">Proceso</a></li>
+      <li><a href="index.html#contacto" class="nav__link">Contacto</a></li>
+    </ul>
+    <a href="index.html#contacto" class="btn btn--outline">Hablemos</a>
+  </nav>
+
+  <!-- ─── HERO ─────────────────────────────────────── -->
+  <section class="sv-hero">
+    <!-- split background decoration -->
+    <div class="sv-hero__split" aria-hidden="true">
+      <div class="sv-hero__half sv-hero__half--left">
+        <span class="sv-float" style="top:18%;left:8%;--rot:-4deg">Posicionamiento</span>
+        <span class="sv-float" style="top:38%;left:6%;--rot:2deg;animation-delay:1.2s">Contenido</span>
+        <span class="sv-float" style="top:58%;left:10%;--rot:-2deg;animation-delay:2.1s">ICP</span>
+        <span class="sv-float" style="top:76%;left:7%;--rot:3deg;animation-delay:0.6s">Lanzamiento</span>
+      </div>
+      <div class="sv-hero__half sv-hero__half--right">
+        <span class="sv-float" style="top:20%;right:8%;--rot:4deg;animation-delay:0.4s">n8n</span>
+        <span class="sv-float" style="top:40%;right:6%;--rot:-2deg;animation-delay:1.6s">GoHighLevel</span>
+        <span class="sv-float" style="top:60%;right:10%;--rot:2deg;animation-delay:0.9s">Chatbots IA</span>
+        <span class="sv-float" style="top:78%;right:7%;--rot:-3deg;animation-delay:2.4s">Automatización</span>
+      </div>
+    </div>
+
+    <!-- canvas particles -->
+    <canvas class="hero__canvas" id="heroCanvas"></canvas>
+    <div class="orb orb--1"></div>
+    <div class="orb orb--2"></div>
+
+    <div class="sv-hero__content">
+      <span class="sv-hero__kicker" id="svKicker">Lo que hacemos</span>
+      <h1 class="sv-hero__title" id="svTitle">
+        Estrategia.<br>
+        Tecnología.<br>
+        <em>Resultados.</em>
+      </h1>
+      <p class="sv-hero__sub" id="svSub">
+        Un equipo. Dos disciplinas. Una sola dirección para tu negocio.
+      </p>
+      <div class="sv-hero__pills" id="svPills">
+        <a href="#svc-marketing" class="sv-pill magnetic">
+          <span class="sv-pill__num">01</span>
+          Estrategia &amp; Marketing
+          <span>↓</span>
+        </a>
+        <a href="#svc-automation" class="sv-pill magnetic">
+          <span class="sv-pill__num">02</span>
+          Tecnología &amp; Automatización
+          <span>↓</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── STRATEGY & MARKETING ─────────────────────── -->
+  <section class="sv-cat" id="svc-marketing">
+    <div class="sv-cat__header">
+      <div class="sv-cat__left">
+        <span class="sv-cat__ghost" aria-hidden="true">01</span>
+        <span class="sv-cat__badge">Estrategia &amp; Marketing</span>
+        <span class="sv-cat__lead">Noelia · Líder de Estrategia</span>
+      </div>
+      <div class="sv-cat__right">
+        <h2 class="sv-cat__title">Para que el mundo sepa<br>lo que tenés.</h2>
+        <p class="sv-cat__desc">Tenés algo valioso. El problema es que el mercado aún no lo sabe. Ahí entramos nosotros.</p>
+      </div>
+    </div>
+
+    <div class="sv-bento">
+
+      <!-- ①  Posicionamiento de Marca — WIDE -->
+      <div class="sv-card sv-card--wide">
+        <div class="sv-card__inner">
+          <div class="sv-card__text">
+            <span class="sv-card__tag">Marca</span>
+            <h3 class="sv-card__name">Posicionamiento<br>de Marca</h3>
+            <p class="sv-card__desc">Cuando sabés exactamente quién sos y para quién sos, cada mensaje hace efecto. Definimos tu lugar único en la mente del mercado.</p>
+          </div>
+          <div class="sv-card__vis">
+            <div class="vis-venn">
+              <div class="venn-c"></div>
+              <div class="venn-c"></div>
+              <div class="venn-c"></div>
+              <span class="venn-label">Tu Marca</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ②  Definición del ICP -->
+      <div class="sv-card">
+        <div class="sv-card__vis">
+          <div class="vis-icp">
+            <div class="icp-avatar">ICP</div>
+            <div class="icp-tags">
+              <span class="icp-tag">Dolor claro</span>
+              <span class="icp-tag">Deseo real</span>
+              <span class="icp-tag">Presupuesto</span>
+              <span class="icp-tag">Decisor</span>
+              <span class="icp-tag">Urgencia</span>
+            </div>
+          </div>
+        </div>
+        <div class="sv-card__text">
+          <span class="sv-card__tag">Audiencia</span>
+          <h3 class="sv-card__name">Definición del ICP</h3>
+          <p class="sv-card__desc">Identificamos quién es tu cliente ideal para que cada mensaje llegue a quien más importa.</p>
+        </div>
+      </div>
+
+      <!-- ③  Planificación de Contenido -->
+      <div class="sv-card">
+        <div class="sv-card__vis">
+          <div class="vis-cal">
+            <div class="cal-grid">
+              <span class="cal-day">L</span><span class="cal-day">M</span><span class="cal-day">X</span><span class="cal-day">J</span><span class="cal-day">V</span><span class="cal-day">S</span><span class="cal-day">D</span>
+              <div class="cal-cell cal-cell--dim"></div><div class="cal-cell"></div><div class="cal-cell cal-cell--on"></div><div class="cal-cell"></div><div class="cal-cell cal-cell--dim"></div><div class="cal-cell"></div><div class="cal-cell"></div>
+              <div class="cal-cell"></div><div class="cal-cell cal-cell--on"></div><div class="cal-cell cal-cell--dim"></div><div class="cal-cell"></div><div class="cal-cell cal-cell--on"></div><div class="cal-cell"></div><div class="cal-cell cal-cell--dim"></div>
+              <div class="cal-cell cal-cell--dim"></div><div class="cal-cell"></div><div class="cal-cell cal-cell--on"></div><div class="cal-cell cal-cell--dim"></div><div class="cal-cell"></div><div class="cal-cell cal-cell--on"></div><div class="cal-cell"></div>
+            </div>
+          </div>
+        </div>
+        <div class="sv-card__text">
+          <span class="sv-card__tag">Contenido</span>
+          <h3 class="sv-card__name">Planificación de Contenido</h3>
+          <p class="sv-card__desc">Tu marca activa, consistente y relevante. Sin improvisar, con una estrategia editorial clara.</p>
+        </div>
+      </div>
+
+      <!-- ④  Estrategia de Redes -->
+      <div class="sv-card">
+        <div class="sv-card__vis">
+          <div class="vis-rrss">
+            <div class="rrss-item">
+              <div class="rrss-icon">IG<span class="rrss-notif">3</span></div>
+              <span class="rrss-lbl">Instagram</span>
+            </div>
+            <div class="rrss-item">
+              <div class="rrss-icon" style="animation-delay:.5s">LI<span class="rrss-notif">7</span></div>
+              <span class="rrss-lbl">LinkedIn</span>
+            </div>
+            <div class="rrss-item">
+              <div class="rrss-icon" style="animation-delay:1s">TK<span class="rrss-notif">2</span></div>
+              <span class="rrss-lbl">TikTok</span>
+            </div>
+          </div>
+        </div>
+        <div class="sv-card__text">
+          <span class="sv-card__tag">Social</span>
+          <h3 class="sv-card__name">Estrategia de Redes</h3>
+          <p class="sv-card__desc">Cada red tiene su lógica. Definimos qué plataformas usar, cómo y con qué objetivo concreto.</p>
+        </div>
+      </div>
+
+      <!-- ⑤  Análisis de Competencia -->
+      <div class="sv-card">
+        <div class="sv-card__vis">
+          <div class="vis-analysis">
+            <div class="an-col">
+              <div class="an-bar-wrap"><div class="an-bar an-bar--them an-bar--h1"></div></div>
+              <span class="an-lbl">Ellos</span>
+            </div>
+            <div class="an-col">
+              <div class="an-bar-wrap"><div class="an-bar an-bar--them an-bar--h2"></div></div>
+              <span class="an-lbl">Ellos</span>
+            </div>
+            <div class="an-col">
+              <div class="an-bar-wrap"><div class="an-bar an-bar--you"></div></div>
+              <span class="an-lbl an-lbl--you">Vos</span>
+            </div>
+            <div class="an-col">
+              <div class="an-bar-wrap"><div class="an-bar an-bar--them an-bar--h3"></div></div>
+              <span class="an-lbl">Ellos</span>
+            </div>
+          </div>
+        </div>
+        <div class="sv-card__text">
+          <span class="sv-card__tag">Mercado</span>
+          <h3 class="sv-card__name">Análisis de Competencia</h3>
+          <p class="sv-card__desc">Mapeamos el mercado y encontramos los espacios donde tu marca puede ganar terreno.</p>
+        </div>
+      </div>
+
+      <!-- ⑥  Estrategia de Lanzamiento — WIDE -->
+      <div class="sv-card sv-card--wide">
+        <div class="sv-card__inner">
+          <div class="sv-card__text">
+            <span class="sv-card__tag">Lanzamiento</span>
+            <h3 class="sv-card__name">Estrategia de<br>Lanzamiento</h3>
+            <p class="sv-card__desc">El plan para salir al mercado con impacto real. Timing, canales, mensajes y secuencia coordinados para que tu lanzamiento no pase desapercibido.</p>
+          </div>
+          <div class="sv-card__vis">
+            <div class="vis-launch">
+              <div class="launch-day">D<span>ía</span> 01</div>
+              <div class="launch-line-row">
+                <div class="launch-node">
+                  <div class="launch-dot launch-dot--done"></div>
+                  <span class="launch-lbl">Estrategia</span>
+                </div>
+                <div class="launch-seg"></div>
+                <div class="launch-node">
+                  <div class="launch-dot launch-dot--done"></div>
+                  <span class="launch-lbl">Contenido</span>
+                </div>
+                <div class="launch-seg"></div>
+                <div class="launch-node">
+                  <div class="launch-dot launch-dot--live"></div>
+                  <span class="launch-lbl launch-lbl--live">Lanzamiento</span>
+                </div>
+                <div class="launch-seg"></div>
+                <div class="launch-node">
+                  <div class="launch-dot"></div>
+                  <span class="launch-lbl">Escala</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ⑦  Presencia Digital -->
+      <div class="sv-card">
+        <div class="sv-card__vis">
+          <div class="vis-browser">
+            <div class="br-frame">
+              <div class="br-bar">
+                <div class="br-dot"></div>
+                <div class="br-dot"></div>
+                <div class="br-dot"></div>
+              </div>
+              <div class="br-body">
+                <div class="br-result br-result--top">
+                  <div class="br-title">Tu Negocio — Página Principal</div>
+                  <div class="br-url">tunegocio.com · #1 en Google</div>
+                  <div class="br-bar2"></div>
+                </div>
+                <div class="br-result">
+                  <div class="br-title">Competidor A</div>
+                  <div class="br-url">competidor.com</div>
+                  <div class="br-bar2"></div>
+                </div>
+                <div class="br-result">
+                  <div class="br-title">Competidor B</div>
+                  <div class="br-url">otro.com</div>
+                  <div class="br-bar2"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="sv-card__text">
+          <span class="sv-card__tag">Digital</span>
+          <h3 class="sv-card__name">Presencia Digital</h3>
+          <p class="sv-card__desc">Auditamos y mejoramos todo lo que el mercado ve de vos: web, redes, Google. Coherente y visible.</p>
+        </div>
+      </div>
+
+    </div><!-- /sv-bento -->
+  </section>
+
+  <!-- ─── STATS STRIP ──────────────────────────────── -->
+  <div class="sv-strip">
+    <div class="sv-strip__inner">
+      <div>
+        <span class="sv-strip__num">14</span>
+        <span class="sv-strip__lbl">Servicios disponibles</span>
+      </div>
+      <div>
+        <span class="sv-strip__num">2</span>
+        <span class="sv-strip__lbl">Especialidades clave</span>
+      </div>
+      <div>
+        <span class="sv-strip__num">24/7</span>
+        <span class="sv-strip__lbl">Sistemas activos</span>
+      </div>
+      <div>
+        <span class="sv-strip__num">100%</span>
+        <span class="sv-strip__lbl">Medible y escalable</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── TECHNOLOGY & AUTOMATION ─────────────────── -->
+  <section class="sv-cat sv-cat--tech" id="svc-automation">
+    <div class="sv-cat__header">
+      <div class="sv-cat__left">
+        <span class="sv-cat__ghost" aria-hidden="true">02</span>
+        <span class="sv-cat__badge">Tecnología &amp; Automatización</span>
+        <span class="sv-cat__lead">Franco · Líder de Tecnología</span>
+      </div>
+      <div class="sv-cat__right">
+        <h2 class="sv-cat__title">Tu negocio corriendo solo,<br>las 24 horas.</h2>
+        <p class="sv-cat__desc">Menos tiempo en tareas repetitivas. Más energía para crecer. Sin contratar más gente.</p>
+      </div>
+    </div>
+
+    <div class="sv-bento">
+
+      <!-- ①  n8n Automatización — WIDE -->
+      <div class="sv-card sv-card--wide">
+        <div class="sv-card__inner">
+          <div class="sv-card__text">
+            <span class="sv-card__tag">Automatización</span>
+            <h3 class="sv-card__name">Automatización<br>con n8n</h3>
+            <p class="sv-card__desc">Conectamos tus herramientas y automatizamos tus flujos. Tareas que hoy hacés a mano, mañana corren solas — sin código, sin fricción.</p>
+          </div>
+          <div class="sv-card__vis">
+            <div class="vis-n8n">
+              <div class="n8n-node"><span class="n8n-icon">CRM</span></div>
+              <div class="n8n-conn">
+                <div class="n8n-dot"></div>
+                <div class="n8n-dot" style="animation-delay:.6s"></div>
+              </div>
+              <div class="n8n-node n8n-node--main"><span class="n8n-icon">KOVA</span></div>
+              <div class="n8n-conn">
+                <div class="n8n-dot" style="animation-delay:.3s"></div>
+                <div class="n8n-dot" style="animation-delay:.9s"></div>
+              </div>
+              <div class="n8n-node"><span class="n8n-icon">Email</span></div>
+              <div class="n8n-conn">
+                <div class="n8n-dot" style="animation-delay:.5s"></div>
+                <div class="n8n-dot" style="animation-delay:1.1s"></div>
+              </div>
+              <div class="n8n-node"><span class="n8n-icon">Slack</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ②  Chatbots IA -->
+      <div class="sv-card">
+        <div class="sv-card__vis">
+          <div class="vis-chat">
+            <div class="chat-row">
+              <div class="chat-av chat-av--user">U</div>
+              <div class="chat-bub chat-bub--user">Quiero info sobre precios</div>
+            </div>
+            <div class="chat-row chat-row--out">
+              <div class="chat-av chat-av--bot">AI</div>
+              <div class="chat-bub chat-bub--bot">Hola! Te cuento todo sobre nuestros planes...</div>
+            </div>
+            <div class="chat-row">
+              <div class="chat-av chat-av--user">U</div>
+              <div class="chat-bub chat-bub--user">¿Hay prueba gratis?</div>
+            </div>
+            <div class="chat-row chat-row--out">
+              <div class="chat-av chat-av--bot">AI</div>
+              <div class="chat-bub chat-bub--bot">
+                <div class="chat-typing">
+                  <div class="chat-dot"></div>
+                  <div class="chat-dot"></div>
+                  <div class="chat-dot"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="sv-card__text">
+          <span class="sv-card__tag">Inteligencia Artificial</span>
+          <h3 class="sv-card__name">Chatbots y<br>Asistentes IA</h3>
+          <p class="sv-card__desc">Asistentes que responden, califican leads y convierten consultas en clientes. Las 24 horas.</p>
+        </div>
+      </div>
+
+      <!-- ③  GoHighLevel -->
+      <div class="sv-card">
+        <div class="sv-card__vis">
+          <div class="vis-ghl">
+            <div class="ghl-stage ghl-stage--a">
+              <span class="ghl-lbl">Leads Nuevos</span>
+              <span class="ghl-count">24</span>
+            </div>
+            <div class="ghl-stage ghl-stage--b">
+              <span class="ghl-lbl">En Contacto</span>
+              <span class="ghl-count">14</span>
+            </div>
+            <div class="ghl-stage ghl-stage--c">
+              <span class="ghl-lbl">Propuesta</span>
+              <span class="ghl-count">6</span>
+            </div>
+            <div class="ghl-stage ghl-stage--d">
+              <span class="ghl-lbl">Ganados</span>
+              <span class="ghl-count">2</span>
+            </div>
+          </div>
+        </div>
+        <div class="sv-card__text">
+          <span class="sv-card__tag">CRM</span>
+          <h3 class="sv-card__name">Configuración de GoHighLevel</h3>
+          <p class="sv-card__desc">Tu CRM configurado para que ningún lead se pierda. Pipelines, seguimientos y reportes.</p>
+        </div>
+      </div>
+
+      <!-- ④  Integraciones -->
+      <div class="sv-card">
+        <div class="sv-card__vis">
+          <div class="vis-hub">
+            <div class="hub-center">KOVA</div>
+            <div class="hub-spoke">GHL</div>
+            <div class="hub-spoke">Mail</div>
+            <div class="hub-spoke">n8n</div>
+            <div class="hub-spoke">Slack</div>
+            <div class="hub-spoke">CRM</div>
+          </div>
+        </div>
+        <div class="sv-card__text">
+          <span class="sv-card__tag">Integraciones</span>
+          <h3 class="sv-card__name">Integraciones entre Plataformas</h3>
+          <p class="sv-card__desc">Conectamos todo tu stack para que trabaje unificado. CRM, email, e-commerce y más.</p>
+        </div>
+      </div>
+
+      <!-- ⑤  Telegram Bots -->
+      <div class="sv-card">
+        <div class="sv-card__vis">
+          <div class="vis-tg">
+            <div class="tg-phone">
+              <div class="tg-head">
+                <div class="tg-av"></div>
+                <span class="tg-name">KOVA Bot</span>
+                <div class="tg-online"></div>
+              </div>
+              <div class="tg-msg">
+                <div class="tg-msg-txt">🔔 Nuevo lead: Juan P.</div>
+                <div class="tg-msg-time">ahora</div>
+              </div>
+              <div class="tg-msg">
+                <div class="tg-msg-txt">💰 Venta cerrada: $480</div>
+                <div class="tg-msg-time">hace 2 min</div>
+              </div>
+              <div class="tg-badge">+3 alertas</div>
+            </div>
+          </div>
+        </div>
+        <div class="sv-card__text">
+          <span class="sv-card__tag">Bots</span>
+          <h3 class="sv-card__name">Telegram Bots Personalizados</h3>
+          <p class="sv-card__desc">Alertas de ventas, reportes automáticos y atención al cliente en el canal que ya usás.</p>
+        </div>
+      </div>
+
+      <!-- ⑥  Respuesta Automática — WIDE -->
+      <div class="sv-card sv-card--wide">
+        <div class="sv-card__inner">
+          <div class="sv-card__text">
+            <span class="sv-card__tag">Automatización</span>
+            <h3 class="sv-card__name">Sistemas de Respuesta<br>Automática</h3>
+            <p class="sv-card__desc">Reciben una consulta, responden, filtran y actúan — sin que tengas que estar presente. Tu negocio nunca duerme.</p>
+          </div>
+          <div class="sv-card__vis">
+            <div class="vis-247">
+              <div class="clock-wrap">
+                <div class="clock-face">
+                  <div class="clock-sweep"></div>
+                </div>
+                <div class="clock-hour"></div>
+                <div class="clock-min"></div>
+                <div class="clock-center-dot"></div>
+              </div>
+              <div class="resp-stats">
+                <div>
+                  <span class="resp-stat-num">24/7</span>
+                  <span class="resp-stat-lbl">Disponibilidad</span>
+                </div>
+                <div>
+                  <span class="resp-stat-num">&lt;2s</span>
+                  <span class="resp-stat-lbl">Tiempo de respuesta</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ⑦  Seguimiento de Leads -->
+      <div class="sv-card">
+        <div class="sv-card__vis">
+          <div class="vis-seq">
+            <div class="seq-row">
+              <div class="seq-check seq-check--ok">✓</div>
+              <div class="seq-info">
+                <div class="seq-name">Email Bienvenida</div>
+                <div class="seq-time">Día 0 · Inmediato</div>
+              </div>
+              <span class="seq-pct">94%</span>
+            </div>
+            <div class="seq-row">
+              <div class="seq-check seq-check--ok">✓</div>
+              <div class="seq-info">
+                <div class="seq-name">Seguimiento de Valor</div>
+                <div class="seq-time">Día 2 · 10:00am</div>
+              </div>
+              <span class="seq-pct">71%</span>
+            </div>
+            <div class="seq-row">
+              <div class="seq-check seq-check--ok">✓</div>
+              <div class="seq-info">
+                <div class="seq-name">Oferta Especial</div>
+                <div class="seq-time">Día 5 · 9:00am</div>
+              </div>
+              <span class="seq-pct">58%</span>
+            </div>
+            <div class="seq-row">
+              <div class="seq-check seq-check--next">→</div>
+              <div class="seq-info">
+                <div class="seq-name">Cierre Final</div>
+                <div class="seq-time">Día 7 · Próximo</div>
+              </div>
+              <span class="seq-pct" style="opacity:0.35">—</span>
+            </div>
+          </div>
+        </div>
+        <div class="sv-card__text">
+          <span class="sv-card__tag">Prospectos</span>
+          <h3 class="sv-card__name">Seguimiento Automático de Leads</h3>
+          <p class="sv-card__desc">El mensaje correcto en el momento correcto. Más conversiones, sin más trabajo.</p>
+        </div>
+      </div>
+
+    </div><!-- /sv-bento tech -->
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       DECISION MACHINE — sección WOW
+  ════════════════════════════════════════════════════ -->
+  <section class="dm-section">
+
+    <!-- dot grid bg -->
+    <div class="dm-dots" aria-hidden="true"></div>
+
+    <!-- header -->
+    <div class="dm-header">
+      <span class="dm-kicker">
+        <span class="dm-kicker__dot"></span>
+        Comparativa real
+      </span>
+      <h2 class="dm-title">¿Qué pasa cuando <em>no</em> automatizás?</h2>
+      <p class="dm-sub">Dos negocios. El mismo punto de partida. Resultados completamente distintos.</p>
+    </div>
+
+    <!-- comparison -->
+    <div class="dm-compare" id="dmCompare">
+
+      <!-- WITHOUT -->
+      <div class="dm-side dm-side--without">
+        <div class="dm-side__label">
+          <span class="dm-side__badge dm-side__badge--red">Sin KOVA</span>
+        </div>
+        <div class="dm-timeline">
+          <div class="dm-event dm-event--bad" data-delay="0">
+            <div class="dm-event__icon">📩</div>
+            <div class="dm-event__body">
+              <span class="dm-event__title">Lead entra al negocio</span>
+              <span class="dm-event__time">Lunes · 09:00</span>
+            </div>
+            <div class="dm-event__status dm-event__status--wait">Esperando…</div>
+          </div>
+          <div class="dm-connector dm-connector--bad"></div>
+          <div class="dm-event dm-event--bad" data-delay="200">
+            <div class="dm-event__icon">😴</div>
+            <div class="dm-event__body">
+              <span class="dm-event__title">Sin respuesta</span>
+              <span class="dm-event__time">+3 horas después</span>
+            </div>
+            <div class="dm-event__status dm-event__status--wait">Perdido</div>
+          </div>
+          <div class="dm-connector dm-connector--bad"></div>
+          <div class="dm-event dm-event--bad" data-delay="400">
+            <div class="dm-event__icon">📞</div>
+            <div class="dm-event__body">
+              <span class="dm-event__title">Seguimiento manual</span>
+              <span class="dm-event__time">Martes · 14:00</span>
+            </div>
+            <div class="dm-event__status dm-event__status--wait">1 día tarde</div>
+          </div>
+          <div class="dm-connector dm-connector--bad"></div>
+          <div class="dm-event dm-event--bad" data-delay="600">
+            <div class="dm-event__icon">❌</div>
+            <div class="dm-event__body">
+              <span class="dm-event__title">Lead se fue a la competencia</span>
+              <span class="dm-event__time">Martes · 16:30</span>
+            </div>
+            <div class="dm-event__status dm-event__status--lost">Perdido</div>
+          </div>
+        </div>
+        <div class="dm-result dm-result--bad">
+          <span class="dm-result__num">−$0</span>
+          <span class="dm-result__lbl">Oportunidad perdida</span>
+        </div>
+      </div>
+
+      <!-- divider -->
+      <div class="dm-vs">
+        <div class="dm-vs__line"></div>
+        <span class="dm-vs__label">VS</span>
+        <div class="dm-vs__line"></div>
+      </div>
+
+      <!-- WITH -->
+      <div class="dm-side dm-side--with">
+        <div class="dm-side__label">
+          <span class="dm-side__badge dm-side__badge--green">Con KOVA</span>
+        </div>
+        <div class="dm-timeline">
+          <div class="dm-event dm-event--good" data-delay="0">
+            <div class="dm-event__icon">📩</div>
+            <div class="dm-event__body">
+              <span class="dm-event__title">Lead entra al negocio</span>
+              <span class="dm-event__time">Lunes · 09:00</span>
+            </div>
+            <div class="dm-event__status dm-event__status--ok">Detectado</div>
+          </div>
+          <div class="dm-connector dm-connector--good">
+            <div class="dm-connector__dot"></div>
+          </div>
+          <div class="dm-event dm-event--good" data-delay="200">
+            <div class="dm-event__icon">⚡</div>
+            <div class="dm-event__body">
+              <span class="dm-event__title">Respuesta automática enviada</span>
+              <span class="dm-event__time">09:00:04 — 4 segundos</span>
+            </div>
+            <div class="dm-event__status dm-event__status--ok">✓ Hecho</div>
+          </div>
+          <div class="dm-connector dm-connector--good">
+            <div class="dm-connector__dot"></div>
+          </div>
+          <div class="dm-event dm-event--good" data-delay="400">
+            <div class="dm-event__icon">🤖</div>
+            <div class="dm-event__body">
+              <span class="dm-event__title">IA califica al lead</span>
+              <span class="dm-event__time">09:00:08 — automático</span>
+            </div>
+            <div class="dm-event__status dm-event__status--ok">✓ Calificado</div>
+          </div>
+          <div class="dm-connector dm-connector--good">
+            <div class="dm-connector__dot"></div>
+          </div>
+          <div class="dm-event dm-event--good" data-delay="600">
+            <div class="dm-event__icon">💰</div>
+            <div class="dm-event__body">
+              <span class="dm-event__title">Propuesta enviada y cerrada</span>
+              <span class="dm-event__time">Lunes · 11:20</span>
+            </div>
+            <div class="dm-event__status dm-event__status--win">¡Vendido!</div>
+          </div>
+        </div>
+        <div class="dm-result dm-result--good">
+          <span class="dm-result__num" id="dmRevNum">+$0</span>
+          <span class="dm-result__lbl">Ingreso generado</span>
+        </div>
+      </div>
+
+    </div><!-- /dm-compare -->
+
+    <!-- bottom message -->
+    <div class="dm-footer-msg">
+      <p>Cada hora sin automatización es una oportunidad que no vuelve. <strong>Ya arrancamos esta semana.</strong></p>
+      <a href="index.html#contacto" class="btn btn--primary magnetic">Quiero empezar →</a>
+    </div>
+
+  </section>
+
+  <!-- ─── CTA FINAL ─────────────────────────────────── -->
+  <section class="sv-cta">
+    <div class="sv-cta__inner">
+      <span class="sv-cta__kicker">¿Te identificás?</span>
+      <h2 class="sv-cta__title">Empezamos<br>esta semana.</h2>
+      <p class="sv-cta__sub">
+        Sin contratos largos, sin procesos complicados.<br>
+        Una conversación y arrancamos.
+      </p>
+      <div class="sv-cta__btns">
+        <a href="index.html#contacto" class="btn btn--primary magnetic">Hablemos →</a>
+        <a href="index.html" class="btn btn--outline magnetic">Ver el proceso</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="ticker__inner">
+      <div class="ticker__set">
+        <span class="ticker__item">Posicionamiento<span class="ticker__sep">·</span></span>
+        <span class="ticker__item">Automatización<span class="ticker__sep">·</span></span>
+        <span class="ticker__item">Chatbots IA<span class="ticker__sep">·</span></span>
+        <span class="ticker__item">n8n Flows<span class="ticker__sep">·</span></span>
+        <span class="ticker__item">GoHighLevel<span class="ticker__sep">·</span></span>
+        <span class="ticker__item">Estrategia Digital<span class="ticker__sep">·</span></span>
+        <span class="ticker__item">Leads en Piloto Automático<span class="ticker__sep">·</span></span>
+      </div>
+      <div class="ticker__set" aria-hidden="true">
+        <span class="ticker__item">Posicionamiento<span class="ticker__sep">·</span></span>
+        <span class="ticker__item">Automatización<span class="ticker__sep">·</span></span>
+        <span class="ticker__item">Chatbots IA<span class="ticker__sep">·</span></span>
+        <span class="ticker__item">n8n Flows<span class="ticker__sep">·</span></span>
+        <span class="ticker__item">GoHighLevel<span class="ticker__sep">·</span></span>
+        <span class="ticker__item">Estrategia Digital<span class="ticker__sep">·</span></span>
+        <span class="ticker__item">Leads en Piloto Automático<span class="ticker__sep">·</span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span class="footer__logo">KOVA</span>
+      <span class="footer__copy">© 2026 KOVA. Todos los derechos reservados.</span>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+  <script src="src/main.js"></script>
+
+  <script>
+    /* ── PAGE-SPECIFIC ANIMATIONS ─────────────────── */
+    window.onPageInit = function () {
+
+      // Hero entrance
+      gsap.fromTo(
+        ['#svKicker', '#svTitle', '#svSub', '#svPills'],
+        { opacity: 0, y: 56 },
+        { opacity: 1, y: 0, duration: 0.9, stagger: 0.14, ease: 'power3.out' }
+      );
+
+      // Floating background words
+      gsap.from('.sv-float', {
+        opacity: 0,
+        duration: 1.8,
+        stagger: 0.25,
+        ease: 'power2.out',
+        delay: 0.7
+      });
+
+      // Category headers (both)
+      gsap.utils.toArray('.sv-cat__header').forEach(header => {
+        gsap.from(header.querySelector('.sv-cat__ghost'), {
+          scrollTrigger: { trigger: header, start: 'top 85%' },
+          opacity: 0, x: -50, duration: 1, ease: 'power3.out'
+        });
+        gsap.from(header.querySelectorAll('.sv-cat__badge, .sv-cat__lead, .sv-cat__title, .sv-cat__desc'), {
+          scrollTrigger: { trigger: header, start: 'top 80%' },
+          opacity: 0, y: 32, duration: 0.75, stagger: 0.1, ease: 'power3.out'
+        });
+      });
+
+      // Bento cards — stagger per section
+      gsap.utils.toArray('.sv-cat').forEach(cat => {
+        gsap.from(cat.querySelectorAll('.sv-card'), {
+          scrollTrigger: { trigger: cat.querySelector('.sv-bento'), start: 'top 82%' },
+          opacity: 0,
+          y: 48,
+          scale: 0.97,
+          duration: 0.7,
+          stagger: 0.09,
+          ease: 'power3.out'
+        });
+      });
+
+      // Stats strip
+      gsap.from('.sv-strip__inner > *', {
+        scrollTrigger: { trigger: '.sv-strip', start: 'top 88%' },
+        opacity: 0, y: 28, duration: 0.65, stagger: 0.1, ease: 'power3.out'
+      });
+
+      // CTA
+      gsap.from('.sv-cta__inner > *', {
+        scrollTrigger: { trigger: '.sv-cta', start: 'top 82%' },
+        opacity: 0, y: 40, duration: 0.8, stagger: 0.13, ease: 'power3.out'
+      });
+    };
+
+    /* ── DECISION MACHINE ANIMATION ──────────────────── */
+    (function() {
+      ScrollTrigger.create({
+        trigger: '.dm-section',
+        start: 'top 75%',
+        once: true,
+        onEnter: () => {
+
+          // Header entrance
+          gsap.fromTo('.dm-header > *',
+            { opacity: 0, y: 28 },
+            { opacity: 1, y: 0, duration: 0.75, stagger: 0.13, ease: 'power3.out' }
+          );
+
+          // Stagger both sides' events in with delay
+          const badEvents  = document.querySelectorAll('.dm-event--bad');
+          const goodEvents = document.querySelectorAll('.dm-event--good');
+
+          gsap.to([...badEvents, ...goodEvents], {
+            opacity: 1, y: 0, duration: 0.55,
+            stagger: { each: 0.18, from: 'start' },
+            ease: 'power3.out',
+            delay: 0.35
+          });
+
+          // Animate the revenue counter
+          const revEl = document.getElementById('dmRevNum');
+          if (revEl) {
+            const obj = { val: 0 };
+            gsap.to(obj, {
+              val: 4800,
+              duration: 2.4,
+              ease: 'power2.out',
+              delay: 1.6,
+              onUpdate: () => {
+                revEl.textContent = '+$' + Math.round(obj.val).toLocaleString('es-AR');
+              }
+            });
+          }
+
+          // footer msg
+          gsap.fromTo('.dm-footer-msg > *',
+            { opacity: 0, y: 20 },
+            { opacity: 1, y: 0, duration: 0.65, stagger: 0.14, ease: 'power3.out', delay: 1.2 }
+          );
+        }
+      });
+    })();
+
+    /* ── SMOOTH SCROLL for on-page anchors ─────────── */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) gsap.to(window, { duration: 0.55, scrollTo: { y: target, offsetY: 80 }, ease: 'power2.inOut' });
+      });
+    });
+  </script>
+
+</body>
+</html>

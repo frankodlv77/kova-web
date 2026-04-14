@@ -36,6 +36,7 @@ function initAnimations() {
   orbsIn();
   navIn();
   setupScrollAnimations();
+  setupProceso();
   setupCanvas();
   setupCursorGlow();
   setupCardTilt();
@@ -43,6 +44,8 @@ function initAnimations() {
   setupCounters();
   setupNav();
   setupForm();
+  setupKovaLive();
+  if (window.onPageInit) window.onPageInit();
 }
 
 /* =====================
@@ -54,7 +57,15 @@ function heroAnimation() {
   tl.to('#heroTag', { opacity: 1, y: 0, duration: 0.7, delay: 0.1 })
     .to('#heroTitle', { opacity: 1, y: 0, duration: 0.9 }, '-=0.4')
     .to('#heroSub', { opacity: 1, y: 0, duration: 0.8 }, '-=0.5')
-    .to('#heroCta', { opacity: 1, y: 0, duration: 0.7 }, '-=0.4');
+    .to('#heroCta', { opacity: 1, y: 0, duration: 0.7 }, '-=0.4')
+    .fromTo('#heroFormCard', { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.9, ease: 'power3.out' }, '-=0.3')
+    .to('#scrollHint', { opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.2');
+
+  // Hide scroll hint on scroll
+  window.addEventListener('scroll', () => {
+    const hint = document.getElementById('scrollHint');
+    if (hint) hint.style.opacity = window.scrollY > 80 ? '0' : '';
+  }, { passive: true });
 }
 
 /* =====================
@@ -130,32 +141,22 @@ function setupScrollAnimations() {
     ease: 'power3.out'
   });
 
-  // Steps stagger
-  gsap.from('.step', {
-    scrollTrigger: {
-      trigger: '.steps',
-      start: 'top 80%',
-      toggleActions: 'play none none reverse'
-    },
-    opacity: 0,
-    y: 40,
-    duration: 0.6,
-    stagger: 0.15,
-    ease: 'power3.out'
+  // Chart bars grow on scroll
+  ScrollTrigger.create({
+    trigger: '.visual-chart',
+    start: 'top 85%',
+    once: true,
+    onEnter: () => {
+      gsap.to('.chart-bar', {
+        scaleY: 1,
+        duration: 0.9,
+        stagger: 0.08,
+        ease: 'power3.out',
+        transformOrigin: 'bottom'
+      });
+    }
   });
 
-  gsap.from('.step__arrow', {
-    scrollTrigger: {
-      trigger: '.steps',
-      start: 'top 80%',
-      toggleActions: 'play none none reverse'
-    },
-    opacity: 0,
-    duration: 0.4,
-    stagger: 0.15,
-    delay: 0.3,
-    ease: 'power2.out'
-  });
 
   // Form
   gsap.from('.input-wrap, .form .btn', {
@@ -306,6 +307,57 @@ function setupMagnetic() {
 }
 
 /* =====================
+   PROCESO — PATH ANIMATION
+   ===================== */
+function setupProceso() {
+  const path = document.getElementById('procesoPath');
+  if (!path) return;
+
+  // On mobile the SVG is hidden — skip GSAP and let CSS show the steps
+  if (window.innerWidth <= 768) return;
+
+  const length = path.getTotalLength();
+  gsap.set(path, { strokeDasharray: length, strokeDashoffset: length });
+  gsap.set(['.dot-group', '.paso'], { opacity: 0 });
+  gsap.set('.paso', { y: 18 });
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: '.proceso__stage-wrap',
+      start: 'top 80%',
+      end: 'top 10%',
+      scrub: 0.5
+    }
+  });
+
+  tl
+    // Path draws left → right
+    .to(path, { strokeDashoffset: 0, ease: 'none', duration: 3 }, 0)
+    // Dot 1 + Step 1 appear early
+    .to('#dotGroup1', { opacity: 1, duration: 0.3, ease: 'power2.out' }, 0.1)
+    .to('.paso--1',   { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' }, 0.2)
+    // Dot 2 + Step 2 appear at mid-path
+    .to('#dotGroup2', { opacity: 1, duration: 0.3, ease: 'power2.out' }, 1.35)
+    .to('.paso--2',   { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' }, 1.45)
+    // Dot 3 + Step 3 appear near end
+    .to('#dotGroup3', { opacity: 1, duration: 0.3, ease: 'power2.out' }, 2.65)
+    .to('.paso--3',   { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' }, 2.75);
+
+  // Ghost numbers fade in on scroll enter
+  gsap.from('.ghost-num', {
+    opacity: 0,
+    y: 40,
+    stagger: 0.2,
+    duration: 1.2,
+    ease: 'power2.out',
+    scrollTrigger: {
+      trigger: '.proceso__stage-wrap',
+      start: 'top 80%'
+    }
+  });
+}
+
+/* =====================
    HERO CANVAS (particles)
    ===================== */
 function setupCanvas() {
@@ -343,7 +395,7 @@ function setupCanvas() {
 
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(150, 140, 255, ${p.alpha})`;
+      ctx.fillStyle = `rgba(232, 80, 26, ${p.alpha * 0.7})`;
       ctx.fill();
     });
 
@@ -355,7 +407,7 @@ function setupCanvas() {
         const dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < 100) {
           ctx.beginPath();
-          ctx.strokeStyle = `rgba(108, 99, 255, ${0.12 * (1 - dist / 100)})`;
+          ctx.strokeStyle = `rgba(232, 80, 26, ${0.10 * (1 - dist / 100)})`;
           ctx.lineWidth = 0.5;
           ctx.moveTo(particles[i].x, particles[i].y);
           ctx.lineTo(particles[j].x, particles[j].y);
@@ -369,6 +421,98 @@ function setupCanvas() {
   window.addEventListener('resize', resize);
   resize();
   draw();
+}
+
+/* =====================
+   KOVA LIVE
+   ===================== */
+function setupKovaLive() {
+  const colIn  = document.getElementById('klIn');
+  const colOut = document.getElementById('klOut');
+  const countEl = document.getElementById('klCount');
+  if (!colIn || !colOut || !countEl) return;
+
+  const incoming = [
+    { icon: '📩', text: 'Nuevo lead recibido' },
+    { icon: '📋', text: 'Formulario completado' },
+    { icon: '💬', text: 'Consulta en WhatsApp' },
+    { icon: '📞', text: 'Llamada perdida' },
+    { icon: '🛒', text: 'Carrito abandonado' },
+    { icon: '📧', text: 'Email sin respuesta' },
+    { icon: '📊', text: 'Reporte semanal pendiente' },
+    { icon: '🔔', text: 'Alerta de vencimiento' },
+    { icon: '👤', text: 'Nuevo registro de usuario' },
+    { icon: '📱', text: 'Mensaje de Instagram' },
+  ];
+
+  const outgoing = [
+    { icon: '✓', text: 'Bienvenida enviada' },
+    { icon: '✓', text: 'Lead calificado y asignado' },
+    { icon: '✓', text: 'Respuesta automática enviada' },
+    { icon: '✓', text: 'Follow-up programado' },
+    { icon: '✓', text: 'CRM actualizado' },
+    { icon: '✓', text: 'Notificación Telegram enviada' },
+    { icon: '✓', text: 'Reporte generado' },
+    { icon: '✓', text: 'Factura emitida automáticamente' },
+    { icon: '✓', text: 'Secuencia de emails iniciada' },
+    { icon: '✓', text: 'Ticket de soporte creado' },
+  ];
+
+  let count = 0;
+  const MAX_VISIBLE = 5;
+
+  function addTask() {
+    const idx = count % incoming.length;
+
+    // Create IN chip
+    const inChip = document.createElement('div');
+    inChip.className = 'kl-task kl-task--in';
+    inChip.innerHTML = `<span class="kl-task__icon">${incoming[idx].icon}</span>${incoming[idx].text}`;
+    colIn.appendChild(inChip);
+
+    // After short delay, add OUT chip
+    setTimeout(() => {
+      const outChip = document.createElement('div');
+      outChip.className = 'kl-task kl-task--out';
+      outChip.innerHTML = `<span class="kl-task__check">✓</span>${outgoing[idx].text}`;
+      colOut.appendChild(outChip);
+
+      // increment counter with animation
+      count++;
+      gsap.fromTo(countEl, { scale: 1.4, color: '#ffffff' }, { scale: 1, color: '#E8501A', duration: 0.35, ease: 'power2.out' });
+      countEl.textContent = count;
+
+      // remove oldest chips if too many
+      const inChips  = colIn.querySelectorAll('.kl-task');
+      const outChips = colOut.querySelectorAll('.kl-task');
+      if (inChips.length > MAX_VISIBLE) {
+        inChips[1].classList.add('kl-task--exit');
+        setTimeout(() => inChips[1].remove(), 400);
+      }
+      if (outChips.length > MAX_VISIBLE) {
+        outChips[1].classList.add('kl-task--exit');
+        setTimeout(() => outChips[1].remove(), 400);
+      }
+    }, 600);
+  }
+
+  // Start only when visible
+  ScrollTrigger.create({
+    trigger: '.kova-live',
+    start: 'top 80%',
+    once: true,
+    onEnter: () => {
+      // entrance animation
+      gsap.from('.kl-header > *', { opacity: 0, y: 30, duration: 0.7, stagger: 0.15, ease: 'power3.out' });
+      gsap.from('.kl-brain__core', { opacity: 0, scale: 0.7, duration: 0.8, ease: 'back.out(1.6)', delay: 0.3 });
+      gsap.from('.kl-stat', { opacity: 0, y: 24, duration: 0.6, stagger: 0.1, ease: 'power3.out', delay: 0.5 });
+      gsap.from(['.kl-col__label'], { opacity: 0, duration: 0.5, delay: 0.4 });
+
+      // kick off task loop
+      addTask();
+      setInterval(addTask, 1800);
+    }
+  });
 }
 
 /* =====================
@@ -392,4 +536,23 @@ function setupForm() {
       form.reset();
     }, 3000);
   });
+
+  // Hero form submit
+  const heroForm = document.getElementById('heroContactForm');
+  if (heroForm) {
+    heroForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const btn = heroForm.querySelector('button[type="submit"]');
+      gsap.to(btn, { scale: 0.96, duration: 0.1, yoyo: true, repeat: 1 });
+      btn.textContent = '¡Te contactamos pronto!';
+      btn.style.background = '#22c55e';
+      btn.disabled = true;
+      setTimeout(() => {
+        btn.textContent = 'Quiero empezar →';
+        btn.style.background = '';
+        btn.disabled = false;
+        heroForm.reset();
+      }, 3000);
+    });
+  }
 }
