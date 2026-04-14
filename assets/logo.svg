@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" width="1080" height="1080">
+  <defs>
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&display=swap');
+    </style>
+
+    <!-- Gradiente ring naranja 3D -->
+    <radialGradient id="ringGrad" cx="30%" cy="22%" r="72%" gradientUnits="objectBoundingBox">
+      <stop offset="0%"   stop-color="#ffb87a"/>
+      <stop offset="15%"  stop-color="#ff6b2e"/>
+      <stop offset="40%"  stop-color="#E8501A"/>
+      <stop offset="70%"  stop-color="#7a2200"/>
+      <stop offset="100%" stop-color="#150500"/>
+    </radialGradient>
+
+    <!-- Highlight arco superior -->
+    <linearGradient id="arcHL" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="rgba(255,210,160,0)"/>
+      <stop offset="30%"  stop-color="rgba(255,210,160,0.55)"/>
+      <stop offset="70%"  stop-color="rgba(255,210,160,0.55)"/>
+      <stop offset="100%" stop-color="rgba(255,210,160,0)"/>
+    </linearGradient>
+
+    <!-- Glow sutil -->
+    <radialGradient id="glowGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#E8501A" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#E8501A" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Mask dona: ring size proporcional a la letra O -->
+    <mask id="ringMask">
+      <rect width="1080" height="1080" fill="black"/>
+      <ellipse cx="468" cy="490" rx="118" ry="112" fill="white"/>
+      <ellipse cx="468" cy="490" rx="62"  ry="59"  fill="black"/>
+    </mask>
+
+    <!-- Mask highlight solo mitad superior -->
+    <mask id="hlMask">
+      <rect width="1080" height="1080" fill="black"/>
+      <ellipse cx="468" cy="490" rx="118" ry="112" fill="white"/>
+      <ellipse cx="468" cy="490" rx="62"  ry="59"  fill="black"/>
+      <rect x="0" y="490" width="1080" height="600" fill="black"/>
+    </mask>
+
+  </defs>
+
+  <!-- FONDO -->
+  <rect width="1080" height="1080" fill="#0A0A0A"/>
+
+  <!-- GLOW detrás del ring -->
+  <ellipse cx="468" cy="490" rx="200" ry="190" fill="url(#glowGrad)"/>
+
+  <!-- TEXTO KOVA — grande, ancho completo, gris plateado -->
+  <!--
+    Fuente: Barlow Condensed ExtraBold
+    Si en Figma aparece otra fuente, seleccioná el texto y cambiá a "Barlow Condensed" peso 800
+    Color: #8A8A8A (Gris plateado — tipografía marca oficial KOVA)
+  -->
+  <text
+    x="540"
+    y="570"
+    text-anchor="middle"
+    font-family="'Barlow Condensed', 'Arial Narrow', Impact, sans-serif"
+    font-weight="800"
+    font-size="290"
+    fill="#8A8A8A"
+    letter-spacing="10"
+  >KOVA</text>
+
+  <!-- RING naranja 3D sobre la O -->
+  <g mask="url(#ringMask)">
+    <ellipse cx="468" cy="490" rx="118" ry="112" fill="url(#ringGrad)"/>
+  </g>
+
+  <!-- HIGHLIGHT arco superior -->
+  <g mask="url(#hlMask)">
+    <ellipse cx="468" cy="490" rx="118" ry="112" fill="url(#arcHL)" opacity="0.7"/>
+  </g>
+
+  <!-- Borde exterior sutil -->
+  <ellipse cx="468" cy="490" rx="118" ry="112"
+    fill="none"
+    stroke="rgba(255,130,60,0.15)"
+    stroke-width="1.5"/>
+
+  <!-- Borde interior profundidad -->
+  <ellipse cx="468" cy="490" rx="62" ry="59"
+    fill="none"
+    stroke="rgba(232,80,26,0.4)"
+    stroke-width="1.5"/>
+
+</svg>
