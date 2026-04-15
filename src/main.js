@@ -45,6 +45,9 @@ function initAnimations() {
   setupNav();
   setupForm();
   setupKovaLive();
+  setupSpeedRace();
+  setupROI();
+  setupDiag();
   if (window.onPageInit) window.onPageInit();
 }
 
@@ -555,4 +558,339 @@ function setupForm() {
       }, 3000);
     });
   }
+}
+
+/* =====================
+   SPEED RACE ANIMATION
+   ===================== */
+function runRace() {
+  const humanBar       = document.getElementById('raceHuman');
+  const kovaBar        = document.getElementById('raceKova');
+  const humanTime      = document.getElementById('raceTimeHuman');
+  const kovaTime       = document.getElementById('raceTimeKova');
+  if (!humanBar || !kovaBar) return;
+
+  // Reset
+  gsap.set([humanBar, kovaBar], { width: '0%' });
+  gsap.set([humanTime, kovaTime], { opacity: 0, scale: 0.8 });
+  kovaBar.classList.remove('done');
+
+  const tl = gsap.timeline();
+
+  // 1. Lanes slide in
+  tl.from('.race-lane', { opacity: 0, x: -40, duration: 0.5, stagger: 0.15, ease: 'power3.out' }, 0)
+    .from('.race-label', { opacity: 0, duration: 0.3, stagger: 0.1 }, 0.2);
+
+  // 2. KOVA bar: blazes instantly to 8% (2h out of 72h max)
+  tl.fromTo(kovaBar,
+    { width: '0%' },
+    { width: '8%', duration: 0.45, ease: 'power4.out' },
+    0.5
+  );
+
+  // 3. KOVA time pops in immediately
+  tl.to(kovaTime, { opacity: 1, scale: 1, duration: 0.4, ease: 'back.out(2)' }, 0.85);
+
+  // 4. KOVA bar pulse glow
+  tl.call(() => { kovaBar.classList.add('done'); }, [], 0.95);
+
+  // 5. Human bar: slowly crawls to 100% over 2.8s (painful)
+  tl.fromTo(humanBar,
+    { width: '0%' },
+    { width: '100%', duration: 2.8, ease: 'power1.in' },
+    0.6
+  );
+
+  // 6. Human time appears when bar finishes
+  tl.to(humanTime, { opacity: 1, scale: 1, duration: 0.4, ease: 'back.out(1.5)' }, 3.2);
+
+  // 7. Task cards stagger in
+  tl.from('.race-task', {
+    opacity: 0, y: 28, scale: 0.95,
+    duration: 0.55, stagger: 0.1, ease: 'power3.out'
+  }, 0.8);
+
+  // 8. Replay button fades in
+  tl.from('#raceReplay', { opacity: 0, y: 10, duration: 0.4 }, 3.4);
+
+  return tl;
+}
+
+window.replayRace = function() {
+  const kovaBar = document.getElementById('raceKova');
+  if (kovaBar) kovaBar.classList.remove('done');
+  runRace();
+};
+
+function setupSpeedRace() {
+  const humanBar = document.getElementById('raceHuman');
+  if (!humanBar) return;
+
+  // Initial state
+  gsap.set('.race-lane', { opacity: 0 });
+  gsap.set('#raceReplay', { opacity: 0 });
+
+  // Also animate header in
+  ScrollTrigger.create({
+    trigger: '.speed-race',
+    start: 'top 72%',
+    once: true,
+    onEnter: () => {
+      gsap.from('.speed-race__header > *', {
+        opacity: 0, y: 36, duration: 0.7, stagger: 0.15, ease: 'power3.out'
+      });
+      // start race after header animates
+      setTimeout(runRace, 600);
+    }
+  });
+}
+
+/* =====================
+   ROI CALCULATOR
+   ===================== */
+function setupROI() {
+  const inputs = {
+    personas: document.getElementById('roiPersonas'),
+    horas:    document.getElementById('roiHoras'),
+    costo:    document.getElementById('roiCosto')
+  };
+  const outputs = {
+    personasVal: document.getElementById('roiPersonasVal'),
+    horasVal:    document.getElementById('roiHorasVal'),
+    costoVal:    document.getElementById('roiCostoVal'),
+    total:       document.getElementById('roiTotal'),
+    horasYear:   document.getElementById('roiHorasYear'),
+    weekCost:    document.getElementById('roiWeekCost'),
+    saving:      document.getElementById('roiSaving')
+  };
+
+  if (!inputs.personas) return;
+
+  function fmt(n) {
+    return n >= 1000 ? '$' + (n / 1000).toFixed(1).replace('.0','') + 'K' : '$' + n;
+  }
+  function fmtNum(n) {
+    return n.toLocaleString('en-US');
+  }
+
+  function calc() {
+    const p = parseInt(inputs.personas.value);
+    const h = parseInt(inputs.horas.value);
+    const c = parseInt(inputs.costo.value);
+
+    const weeklyHours = p * h;
+    const weeklyCost  = weeklyHours * c;
+    const yearlyHours = weeklyHours * 52;
+    const yearlyCost  = weeklyCost * 52;
+    const saving      = Math.round(yearlyCost * 0.8);
+
+    outputs.personasVal.textContent = p;
+    outputs.horasVal.textContent    = h + 'h';
+    outputs.costoVal.textContent    = '$' + c;
+    outputs.total.textContent       = '$' + fmtNum(yearlyCost);
+    outputs.horasYear.textContent   = fmtNum(yearlyHours);
+    outputs.weekCost.textContent    = '$' + fmtNum(weeklyCost);
+    outputs.saving.textContent      = '$' + fmtNum(saving) + '/año';
+
+    // pulse animation on result
+    gsap.fromTo(outputs.total, { scale: 1.04 }, { scale: 1, duration: 0.3, ease: 'power2.out' });
+  }
+
+  Object.values(inputs).forEach(el => el.addEventListener('input', calc));
+
+  // Trigger once visible
+  ScrollTrigger.create({
+    trigger: '.roi-calc',
+    start: 'top 80%',
+    once: true,
+    onEnter: () => {
+      gsap.from('.roi__control', { opacity: 0, x: -30, duration: 0.6, stagger: 0.15, ease: 'power3.out' });
+      gsap.from('.roi__result-card', { opacity: 0, x: 30, duration: 0.7, ease: 'power3.out', delay: 0.2 });
+    }
+  });
+}
+
+
+/* ============================================================
+   DIAGNÓSTICO INTERACTIVO
+   ============================================================ */
+function setupDiag() {
+  if (!document.getElementById('diagCard')) return;
+
+  const AUTO = {
+    leads:     { name: 'Nurturing de Leads',        desc: 'Secuencias automáticas que siguen cada lead hasta cerrar. Ningún prospecto se pierde.', hours: 8  },
+    reportes:  { name: 'Dashboard Automático',       desc: 'Métricas de tu negocio actualizadas en tiempo real. Cero tiempo armando reportes.',    hours: 5  },
+    onboarding:{ name: 'Onboarding Automático',      desc: 'Bienvenida, contratos y accesos entregados solos — sin que estés presente.',           hours: 6  },
+    factura:   { name: 'Admin sin Fricción',          desc: 'Facturas, cobros y recordatorios que se ejecutan solos en el momento exacto.',         hours: 4  },
+    contenido: { name: 'Pipeline de Contenido IA',   desc: 'Generá, programá y publicá en todas las redes con IA y cero esfuerzo manual.',         hours: 7  },
+    atencion:  { name: 'Agente IA 24/7',             desc: 'Responde, califica y agenda sin que vos estés. Tu negocio nunca duerme.',              hours: 12 },
+    crm:       { name: 'CRM Inteligente',            desc: 'Tu CRM actualizado, segmentado y con seguimientos automáticos en cada etapa.',          hours: 6  },
+    captacion: { name: 'Captación Automatizada',     desc: 'Campañas que atraen, califican y registran leads sin intervención humana.',            hours: 9  },
+    agenda:    { name: 'Agendamiento Inteligente',   desc: 'Reuniones coordinadas y confirmadas automáticamente. Sin idas y vueltas por email.',    hours: 3  }
+  };
+
+  const state = { tipo: null, problems: new Set(), mult: 1, factura: null };
+  const $ = id => document.getElementById(id);
+
+  function setProgress(pct, label) {
+    $('diagProgFill').style.width = pct + '%';
+    $('diagProgLabel').textContent = label;
+  }
+
+  function goTo(fromId, toId, dir) {
+    dir = dir || 1; // 1 = forward, -1 = backward
+    const fromEl = $(fromId);
+    const toEl   = $(toId);
+    if (!fromEl || !toEl) return;
+
+    gsap.to(fromEl, {
+      opacity: 0, x: dir * -50, duration: 0.28, ease: 'power2.in',
+      onComplete: () => {
+        fromEl.classList.add('diag__step--hidden');
+        gsap.set(fromEl, { clearProps: 'all' });
+        toEl.classList.remove('diag__step--hidden');
+        gsap.fromTo(toEl,
+          { opacity: 0, x: dir * 50 },
+          { opacity: 1, x: 0, duration: 0.4, ease: 'power3.out' }
+        );
+        // stagger children — only direct visible ones
+        const kids = Array.from(toEl.querySelectorAll('.diag__opt, .diag__q, .diag__result-header, .diag__result-sub, .diag__result-cards, .diag__result-cta, .diag__back-btn, .diag__actions'));
+        if (kids.length) {
+          gsap.fromTo(kids,
+            { opacity: 0, y: 14 },
+            { opacity: 1, y: 0, duration: 0.38, stagger: 0.04, ease: 'power3.out', delay: 0.1 }
+          );
+        }
+      }
+    });
+  }
+
+  // Paso 1
+  document.querySelectorAll('.diag__opt[data-step="1"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.diag__opt[data-step="1"]').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      state.tipo = btn.dataset.val;
+      setProgress(33, 'Paso 1 de 3 — listo ✓');
+      setTimeout(() => { setProgress(66, 'Paso 2 de 3'); goTo('dStep1','dStep2', 1); }, 300);
+    });
+  });
+
+  // Paso 2 — multi-select
+  document.querySelectorAll('.diag__opt[data-step="2"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.classList.toggle('selected');
+      const v = btn.dataset.val;
+      state.problems.has(v) ? state.problems.delete(v) : state.problems.add(v);
+      $('diagNext2').disabled = state.problems.size === 0;
+    });
+  });
+
+  $('diagNext2').addEventListener('click', () => {
+    setProgress(66, 'Paso 2 de 3 — listo ✓');
+    setTimeout(() => { setProgress(100, 'Paso 3 de 3'); goTo('dStep2','dStep3', 1); }, 200);
+  });
+
+  // Volver 2 → 1
+  ['diagBack2','diagBack2b'].forEach(id => {
+    const el = $(id); if (!el) return;
+    el.addEventListener('click', () => {
+      setProgress(33, 'Paso 1 de 3');
+      goTo('dStep2', 'dStep1', -1);
+    });
+  });
+
+  // Paso 3 — equipo (auto-avanza cuando eligen las dos)
+  let teamSelected = false;
+  let facturaSelected = false;
+
+  function checkStep3Done() {
+    if (teamSelected && facturaSelected) setTimeout(showResult, 320);
+  }
+
+  document.querySelectorAll('.diag__opt[data-step="3"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.diag__opt[data-step="3"]').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      state.mult = parseInt(btn.dataset.mult);
+      teamSelected = true;
+      checkStep3Done();
+    });
+  });
+
+  document.querySelectorAll('.diag__opt[data-step="3b"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.diag__opt[data-step="3b"]').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      state.factura = btn.dataset.val;
+      facturaSelected = true;
+      checkStep3Done();
+    });
+  });
+
+  // Volver 3 → 2
+  const back3 = $('diagBack3');
+  if (back3) back3.addEventListener('click', () => {
+    teamSelected = false; facturaSelected = false;
+    setProgress(66, 'Paso 2 de 3');
+    goTo('dStep3', 'dStep2', -1);
+  });
+
+  // ── Mostrar resultado ─────────────────────────────────────
+  function showResult() {
+    const sorted = [...state.problems]
+      .filter(v => AUTO[v])
+      .map(v => ({ ...AUTO[v], key: v }))
+      .sort((a,b) => b.hours - a.hours)
+      .slice(0, 3);
+
+    const fallbacks = ['leads','captacion','atencion','crm'].filter(v => !state.problems.has(v));
+    while (sorted.length < 3 && fallbacks.length) sorted.push({ ...AUTO[fallbacks.shift()] });
+
+    const totalHours = sorted.reduce((s,a) => s + a.hours, 0) * state.mult;
+
+    const labels = { agencia:'agencia', ecommerce:'e-commerce', servicios:'empresa de servicios', saas:'producto SaaS', inmobiliaria:'inmobiliaria', salud:'clínica', educacion:'escuela de cursos', otro:'negocio' };
+    $('diagResultTitle').innerHTML = 'Tu ' + (labels[state.tipo] || 'negocio') + ' puede recuperar <em>' + totalHours + 'h</em> semanales.';
+
+    const container = $('diagResultCards');
+    container.innerHTML = sorted.map((a,i) => `
+      <div class="diag__rec-card" style="opacity:0;transform:translateY(24px)">
+        <span class="diag__rec-num">0${i+1} — prioridad ${i===0?'alta':i===1?'media':'normal'}</span>
+        <h4 class="diag__rec-name">${a.name}</h4>
+        <p class="diag__rec-desc">${a.desc}</p>
+        <div class="diag__rec-saving">
+          <span class="diag__rec-saving-num">~${a.hours * state.mult}h</span>
+          <span class="diag__rec-saving-lbl">&nbsp;/semana recuperadas</span>
+        </div>
+      </div>
+    `).join('');
+
+    setProgress(100, 'Diagnóstico listo ✓');
+    goTo('dStep3', 'dResult', 1);
+
+    setTimeout(() => {
+      container.querySelectorAll('.diag__rec-card').forEach((c,i) => {
+        gsap.to(c, { opacity:1, y:0, duration:0.5, delay: i*0.13, ease:'power3.out' });
+      });
+    }, 450);
+  }
+
+  // Reset
+  $('diagReset').addEventListener('click', () => {
+    state.tipo = null; state.problems.clear(); state.mult = 1; state.factura = null;
+    teamSelected = false; facturaSelected = false;
+    document.querySelectorAll('.diag__opt').forEach(b => b.classList.remove('selected'));
+    $('diagNext2').disabled = true;
+    setProgress(33, 'Paso 1 de 3');
+    goTo('dResult', 'dStep1', -1);
+  });
+
+  // Entrada en pantalla
+  ScrollTrigger.create({
+    trigger: '.diag', start: 'top 75%', once: true,
+    onEnter: () => {
+      gsap.from('.diag__header > *', { opacity:0, y:36, duration:0.7, stagger:0.14, ease:'power3.out' });
+      gsap.from('.diag__card', { opacity:0, y:48, scale:0.97, duration:0.8, ease:'power3.out', delay:0.3 });
+    }
+  });
 }

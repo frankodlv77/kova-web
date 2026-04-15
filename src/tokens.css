@@ -1,41 +1,75 @@
 /* ============================================================
-   KOVA — Design Tokens v1
+   KOVA — Design Tokens v2
 
-   Toda la identidad visual centralizada aquí.
-   Para cambiar un color o tipografía en toda la página,
-   modificá el valor correspondiente y listo.
+   REGLA: todo valor visual va acá como variable.
+   Para cambiar un color en toda la página: editá este archivo.
    ============================================================ */
 
 :root {
 
   /* ─────────────────────────────────────
-     FONDOS
+     FONDOS — de más oscuro a más claro
      ───────────────────────────────────── */
-  --color-fondo:        #0A0A0A;  /* Fondo principal de la página */
-  --color-superficie:   #1A1A1A;  /* Cards, secciones alternativas */
-  --color-fondo-claro:  #F5F5F5;  /* Versión light / fondo marca personal */
+  --color-fondo-max:      #030303;  /* Sección kova-live (máxima profundidad) */
+  --color-fondo-ultra:    #060606;  /* Speed race */
+  --color-fondo-profundo: #080808;  /* ROI Calculator */
+  --color-fondo:          #0A0A0A;  /* Fondo principal del body */
+  --color-fondo-2:        #0F0F0F;  /* Stats, race tasks, variante sutil */
+  --color-fondo-3:        #0D0D0D;  /* Servicios, secciones intermedias */
+  --color-fondo-4:        #101010;  /* Proceso */
+  --color-fondo-5:        #111111;  /* Marquee, secciones alternativas */
+  --color-fondo-6:        #0E0E0E;  /* Gradientes internos */
+  --color-superficie:     #1A1A1A;  /* Cards, dropdowns */
+  --color-fondo-claro:    #F5F5F5;  /* Tools band, fondo light */
 
   /* ─────────────────────────────────────
-     COLOR DE ACENTO (el color de marca)
-     Cambiá --color-acento y todo se actualiza.
+     CARDS Y UI INTERNA
      ───────────────────────────────────── */
-  --color-acento:       #E8501A;                 /* Botones, highlights, links activos */
-  --color-acento-hover: #C04010;                 /* Hover y estados activos */
-  --color-acento-suave: rgba(232, 80, 26, 0.15); /* Chips, tags, fondos sutiles */
-
-  /* ─────────────────────────────────────
-     TEXTOS
-     ───────────────────────────────────── */
-  --color-texto:           #FFFFFF;  /* Texto principal sobre fondos oscuros */
-  --color-texto-secundario: #8A8A8A; /* Subtítulos, nombre de marca */
-  --color-texto-muted:     #B0B0B0;  /* Fechas, etiquetas apagadas */
-  --color-texto-tenue:     #555555;  /* Texto muy secundario / UI inactivo */
+  --color-card-fondo:     #141414;  /* Fondo de inputs y cards secundarias */
+  --color-card-borde:     #1E1E1E;  /* Bordes de tarjetas de comparación */
 
   /* ─────────────────────────────────────
      BORDES
      ───────────────────────────────────── */
-  --color-borde:       #222222;  /* Bordes y divisores */
-  --color-borde-suave: #2A2A2A;  /* Bordes más sutiles */
+  --color-borde:          #222222;  /* Bordes y divisores */
+  --color-borde-suave:    #2A2A2A;  /* Bordes más sutiles */
+  --color-borde-claro:    #E0E0E0;  /* Bordes sobre fondos claros */
+
+  /* ─────────────────────────────────────
+     COLOR DE ACENTO (marca KOVA)
+     Cambiá --color-acento y todo se actualiza.
+     ───────────────────────────────────── */
+  --color-acento:         #E8501A;                  /* Botones, highlights, links activos */
+  --color-acento-hover:   #C04010;                  /* Hover y estados activos */
+  --color-acento-claro:   #FF7040;                  /* Extremo claro de gradientes naranja */
+  --color-acento-naranja: #FF8C4A;                  /* Gradiente secundario (ROI, etc.) */
+  --color-acento-profundo:#8B2500;                  /* Extremo oscuro de gradientes hero */
+  --color-acento-suave:   rgba(232, 80, 26, 0.15);  /* Chips, tags, fondos sutiles */
+
+  /* ─────────────────────────────────────
+     TEXTOS — sobre fondos oscuros
+     ───────────────────────────────────── */
+  --color-texto:           #FFFFFF;  /* Texto principal */
+  --color-texto-claro:     #F5F5F5;  /* Blanco humo — números grandes, display */
+  --color-texto-secundario:#8A8A8A;  /* Gris plateado — subtítulos, kickers */
+  --color-texto-muted:     #B0B0B0;  /* Gris claro — texto apagado */
+  --color-texto-tenue:     #555555;  /* Texto muy secundario / UI inactivo */
+
+  /* ─────────────────────────────────────
+     TEXTOS — sobre fondos claros
+     ───────────────────────────────────── */
+  --color-texto-sobre-claro: #1A1A1A;  /* Texto oscuro para tools band / light sections */
+
+  /* ─────────────────────────────────────
+     UI GRISES (race, card numbers, elementos estructurales)
+     ───────────────────────────────────── */
+  --color-ui-oscuro:  #3A3A3A;  /* Card numbers, barra humana gradient inicio */
+  --color-ui-medio:   #4A4A4A;  /* Barra humana gradient fin, race human time */
+
+  /* ─────────────────────────────────────
+     ESTADOS
+     ───────────────────────────────────── */
+  --color-exito: #22C55E;  /* Verde — confirmaciones, savings, checkmarks */
 
   /* ─────────────────────────────────────
      TIPOGRAFÍAS

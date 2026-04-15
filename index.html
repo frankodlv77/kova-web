@@ -23,11 +23,12 @@
 
   <!-- NAV -->
   <nav class="nav" id="nav">
-    <a href="index.html" class="nav__logo">KOVA</a>
+    <a href="index.html" class="nav__logo">
+      <img src="src/logo.svg" alt="KOVA" class="nav__logo-img" />
+    </a>
     <ul class="nav__links">
       <li><a href="index.html" class="nav__link">Inicio</a></li>
       <li><a href="servicios.html" class="nav__link">Servicios</a></li>
-      <li><a href="#proceso" class="nav__link">Proceso</a></li>
       <li><a href="#contacto" class="nav__link">Contacto</a></li>
     </ul>
     <a href="#contacto" class="btn btn--outline">Hablemos</a>
@@ -49,6 +50,39 @@
       <div class="orb orb--2"></div>
       <div class="orb orb--3"></div>
       <canvas class="hero__canvas" id="heroCanvas"></canvas>
+    </div>
+
+    <!-- HERO DECORATIVE SVG NETWORK -->
+    <div class="hero__network" aria-hidden="true">
+      <svg viewBox="0 0 520 480" fill="none" xmlns="http://www.w3.org/2000/svg" class="hero__net-svg">
+        <!-- Lines -->
+        <line x1="260" y1="240" x2="80" y2="100" stroke="rgba(232,80,26,0.18)" stroke-width="1"/>
+        <line x1="260" y1="240" x2="440" y2="100" stroke="rgba(232,80,26,0.18)" stroke-width="1"/>
+        <line x1="260" y1="240" x2="80" y2="380" stroke="rgba(138,138,138,0.12)" stroke-width="1"/>
+        <line x1="260" y1="240" x2="440" y2="380" stroke="rgba(138,138,138,0.12)" stroke-width="1"/>
+        <line x1="260" y1="240" x2="160" y2="50" stroke="rgba(232,80,26,0.10)" stroke-width="1"/>
+        <line x1="260" y1="240" x2="360" y2="50" stroke="rgba(232,80,26,0.10)" stroke-width="1"/>
+        <line x1="260" y1="240" x2="50" y2="240" stroke="rgba(138,138,138,0.10)" stroke-width="1"/>
+        <line x1="260" y1="240" x2="470" y2="240" stroke="rgba(138,138,138,0.10)" stroke-width="1"/>
+        <line x1="80" y1="100" x2="160" y2="50" stroke="rgba(232,80,26,0.08)" stroke-width="1"/>
+        <line x1="440" y1="100" x2="360" y2="50" stroke="rgba(232,80,26,0.08)" stroke-width="1"/>
+        <!-- Outer nodes -->
+        <circle cx="80"  cy="100" r="5" fill="rgba(232,80,26,0.4)"/>
+        <circle cx="440" cy="100" r="5" fill="rgba(232,80,26,0.4)"/>
+        <circle cx="80"  cy="380" r="4" fill="rgba(138,138,138,0.35)"/>
+        <circle cx="440" cy="380" r="4" fill="rgba(138,138,138,0.35)"/>
+        <circle cx="160" cy="50"  r="3.5" fill="rgba(232,80,26,0.3)"/>
+        <circle cx="360" cy="50"  r="3.5" fill="rgba(232,80,26,0.3)"/>
+        <circle cx="50"  cy="240" r="3"   fill="rgba(138,138,138,0.25)"/>
+        <circle cx="470" cy="240" r="3"   fill="rgba(138,138,138,0.25)"/>
+        <!-- Center core -->
+        <circle cx="260" cy="240" r="28" fill="rgba(232,80,26,0.08)" stroke="rgba(232,80,26,0.35)" stroke-width="1.5"/>
+        <circle cx="260" cy="240" r="18" fill="rgba(232,80,26,0.12)" stroke="rgba(232,80,26,0.5)" stroke-width="1"/>
+        <circle cx="260" cy="240" r="8"  fill="rgba(232,80,26,0.7)"/>
+        <!-- Pulse ring -->
+        <circle cx="260" cy="240" r="40" fill="none" stroke="rgba(232,80,26,0.15)" stroke-width="1" class="net-pulse"/>
+        <circle cx="260" cy="240" r="60" fill="none" stroke="rgba(232,80,26,0.08)" stroke-width="1" class="net-pulse net-pulse--2"/>
+      </svg>
     </div>
 
     <!-- HERO FORM CARD -->
@@ -153,6 +187,23 @@
           <span class="m-tag m-tag--dim">Zapier <em>·</em></span>
           <span class="m-tag m-tag--dim">Webhooks <em>·</em></span>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BAND — herramientas -->
+  <div class="tools-band">
+    <div class="container">
+      <span class="tools-band__label">Trabajamos con las herramientas que ya usás</span>
+      <div class="tools-band__logos">
+        <span>n8n</span>
+        <span>GoHighLevel</span>
+        <span>Make</span>
+        <span>Notion</span>
+        <span>Google Sheets</span>
+        <span>OpenAI</span>
+        <span>Supabase</span>
+        <span>Zapier</span>
       </div>
     </div>
   </div>
@@ -300,23 +351,200 @@
 
     <div class="kl-stats">
       <div class="kl-stat">
-        <span class="kl-stat__num">80<span style="font-size:28px;color:var(--color-acento)">%</span></span>
+        <span class="kl-stat__num">80<span style="font-size:34px;color:var(--color-acento)">%</span></span>
         <span class="kl-stat__label">Menos trabajo manual</span>
       </div>
       <div class="kl-stat">
-        <span class="kl-stat__num">3<span style="font-size:28px;color:var(--color-acento)">x</span></span>
+        <span class="kl-stat__num">3<span style="font-size:34px;color:var(--color-acento)">x</span></span>
         <span class="kl-stat__label">Más velocidad operativa</span>
       </div>
       <div class="kl-stat">
-        <span class="kl-stat__num">24<span style="font-size:28px;color:var(--color-acento)">/7</span></span>
+        <span class="kl-stat__num">24<span style="font-size:34px;color:var(--color-acento)">/7</span></span>
         <span class="kl-stat__label">Sin intervención humana</span>
       </div>
       <div class="kl-stat">
-        <span class="kl-stat__num">72<span style="font-size:28px;color:var(--color-acento)">h</span></span>
+        <span class="kl-stat__num">72<span style="font-size:34px;color:var(--color-acento)">h</span></span>
         <span class="kl-stat__label">Implementación promedio</span>
       </div>
     </div>
 
+  </section>
+
+  <!-- DIAGNÓSTICO INTERACTIVO -->
+  <section class="diag" id="diagnostico">
+    <div class="diag__bg-grid" aria-hidden="true"></div>
+
+    <div class="container">
+
+      <!-- Header -->
+      <div class="diag__header">
+        <span class="diag__kicker">
+          <span class="diag__kicker-dot"></span>
+          Gratuito · 30 segundos
+        </span>
+        <h2 class="diag__title">Diagnosticá tu<br><em>negocio ahora.</em></h2>
+        <p class="diag__sub">Tres preguntas. Un plan concreto. Gratis.</p>
+      </div>
+
+      <!-- Card principal -->
+      <div class="diag__card" id="diagCard">
+
+        <!-- Progress -->
+        <div class="diag__prog-wrap">
+          <div class="diag__prog-track">
+            <div class="diag__prog-fill" id="diagProgFill"></div>
+          </div>
+          <span class="diag__prog-label" id="diagProgLabel">Paso 1 de 3</span>
+        </div>
+
+        <!-- ── PASO 1 ── -->
+        <div class="diag__step" id="dStep1">
+          <p class="diag__q">¿Qué tipo de negocio tenés?</p>
+          <div class="diag__grid diag__grid--4">
+            <button class="diag__opt" data-step="1" data-val="agencia">
+              <span class="diag__opt-icon">🏢</span>
+              <span class="diag__opt-label">Agencia de marketing</span>
+            </button>
+            <button class="diag__opt" data-step="1" data-val="ecommerce">
+              <span class="diag__opt-icon">🛒</span>
+              <span class="diag__opt-label">E-commerce / Tienda</span>
+            </button>
+            <button class="diag__opt" data-step="1" data-val="servicios">
+              <span class="diag__opt-icon">💼</span>
+              <span class="diag__opt-label">Empresa de servicios</span>
+            </button>
+            <button class="diag__opt" data-step="1" data-val="saas">
+              <span class="diag__opt-icon">⚙️</span>
+              <span class="diag__opt-label">SaaS / Tech</span>
+            </button>
+            <button class="diag__opt" data-step="1" data-val="inmobiliaria">
+              <span class="diag__opt-icon">🏠</span>
+              <span class="diag__opt-label">Inmobiliaria</span>
+            </button>
+            <button class="diag__opt" data-step="1" data-val="salud">
+              <span class="diag__opt-icon">🏥</span>
+              <span class="diag__opt-label">Salud / Bienestar</span>
+            </button>
+            <button class="diag__opt" data-step="1" data-val="educacion">
+              <span class="diag__opt-icon">🎓</span>
+              <span class="diag__opt-label">Educación / Cursos</span>
+            </button>
+            <button class="diag__opt" data-step="1" data-val="otro">
+              <span class="diag__opt-icon">✨</span>
+              <span class="diag__opt-label">Otro rubro</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ── PASO 2 ── -->
+        <div class="diag__step diag__step--hidden" id="dStep2">
+          <button class="diag__back-btn" id="diagBack2">← Volver</button>
+          <p class="diag__q">¿Qué te come más tiempo? <span class="diag__q-hint">(elegí todos los que apliquen)</span></p>
+          <div class="diag__grid diag__grid--3">
+            <button class="diag__opt diag__opt--multi" data-step="2" data-val="leads" data-hours="8">
+              <span class="diag__opt-icon">📩</span>
+              <span class="diag__opt-label">Seguimiento de leads</span>
+            </button>
+            <button class="diag__opt diag__opt--multi" data-step="2" data-val="reportes" data-hours="5">
+              <span class="diag__opt-icon">📊</span>
+              <span class="diag__opt-label">Reportes y métricas</span>
+            </button>
+            <button class="diag__opt diag__opt--multi" data-step="2" data-val="onboarding" data-hours="6">
+              <span class="diag__opt-icon">🤝</span>
+              <span class="diag__opt-label">Onboarding de clientes</span>
+            </button>
+            <button class="diag__opt diag__opt--multi" data-step="2" data-val="factura" data-hours="4">
+              <span class="diag__opt-icon">🧾</span>
+              <span class="diag__opt-label">Facturación y admin</span>
+            </button>
+            <button class="diag__opt diag__opt--multi" data-step="2" data-val="contenido" data-hours="7">
+              <span class="diag__opt-icon">📱</span>
+              <span class="diag__opt-label">Publicar contenido</span>
+            </button>
+            <button class="diag__opt diag__opt--multi" data-step="2" data-val="atencion" data-hours="12">
+              <span class="diag__opt-icon">💬</span>
+              <span class="diag__opt-label">Atención al cliente</span>
+            </button>
+            <button class="diag__opt diag__opt--multi" data-step="2" data-val="crm" data-hours="6">
+              <span class="diag__opt-icon">🗂️</span>
+              <span class="diag__opt-label">Gestión del CRM</span>
+            </button>
+            <button class="diag__opt diag__opt--multi" data-step="2" data-val="captacion" data-hours="9">
+              <span class="diag__opt-icon">🎯</span>
+              <span class="diag__opt-label">Captación de leads</span>
+            </button>
+            <button class="diag__opt diag__opt--multi" data-step="2" data-val="agenda" data-hours="3">
+              <span class="diag__opt-icon">📅</span>
+              <span class="diag__opt-label">Agendar reuniones</span>
+            </button>
+          </div>
+          <div class="diag__actions">
+            <button class="diag__back-btn" id="diagBack2b">← Volver</button>
+            <button class="btn btn--primary diag__next-btn" id="diagNext2" disabled>Continuar →</button>
+          </div>
+        </div>
+
+        <!-- ── PASO 3 ── -->
+        <div class="diag__step diag__step--hidden" id="dStep3">
+          <button class="diag__back-btn" id="diagBack3">← Volver</button>
+          <p class="diag__q">¿Cuántas personas hay en tu equipo?</p>
+          <div class="diag__grid diag__grid--4">
+            <button class="diag__opt" data-step="3" data-val="solo" data-mult="1">
+              <span class="diag__opt-icon">🙋</span>
+              <span class="diag__opt-label">Solo yo</span>
+            </button>
+            <button class="diag__opt" data-step="3" data-val="2-5" data-mult="3">
+              <span class="diag__opt-icon">👥</span>
+              <span class="diag__opt-label">2 a 5 personas</span>
+            </button>
+            <button class="diag__opt" data-step="3" data-val="5-15" data-mult="8">
+              <span class="diag__opt-icon">🏬</span>
+              <span class="diag__opt-label">5 a 15 personas</span>
+            </button>
+            <button class="diag__opt" data-step="3" data-val="15+" data-mult="18">
+              <span class="diag__opt-icon">🏢</span>
+              <span class="diag__opt-label">Más de 15</span>
+            </button>
+          </div>
+          <p class="diag__q" style="margin-top:36px">¿Cuánto facturás por mes? <span class="diag__q-hint">(aproximado)</span></p>
+          <div class="diag__grid diag__grid--4">
+            <button class="diag__opt" data-step="3b" data-val="menos5k">
+              <span class="diag__opt-icon">🌱</span>
+              <span class="diag__opt-label">Menos de $5K</span>
+            </button>
+            <button class="diag__opt" data-step="3b" data-val="5k-20k">
+              <span class="diag__opt-icon">📈</span>
+              <span class="diag__opt-label">$5K – $20K</span>
+            </button>
+            <button class="diag__opt" data-step="3b" data-val="20k-100k">
+              <span class="diag__opt-icon">🚀</span>
+              <span class="diag__opt-label">$20K – $100K</span>
+            </button>
+            <button class="diag__opt" data-step="3b" data-val="mas100k">
+              <span class="diag__opt-icon">💎</span>
+              <span class="diag__opt-label">Más de $100K</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ── RESULTADO ── -->
+        <div class="diag__step diag__step--hidden" id="dResult">
+          <div class="diag__result-header">
+            <span class="diag__result-badge">✓ Diagnóstico listo</span>
+            <h3 class="diag__result-title" id="diagResultTitle">Tu negocio tiene <em id="diagHoras">—</em> horas semanales recuperables.</h3>
+          </div>
+          <p class="diag__result-sub">Estas son las 3 automatizaciones que más impacto tendrían en tu operación:</p>
+          <div class="diag__result-cards" id="diagResultCards">
+            <!-- JS-generated -->
+          </div>
+          <div class="diag__result-cta">
+            <a href="#contacto" class="btn btn--primary magnetic diag__cta-btn">Quiero mi sistema personalizado →</a>
+            <button class="diag__reset" id="diagReset">Hacer de nuevo</button>
+          </div>
+        </div>
+
+      </div><!-- /diag__card -->
+    </div>
   </section>
 
   <!-- PROCESO -->
@@ -378,6 +606,117 @@
     </div>
   </section>
 
+  <!-- SPEED RACE — WOW section -->
+  <section class="speed-race" id="velocidad">
+    <div class="container">
+      <div class="speed-race__header">
+        <span class="speed-race__kicker">⚡ Velocidad Real</span>
+        <h2 class="section__title">Tu equipo humano <em style="color:var(--color-acento);font-style:normal">vs KOVA</em></h2>
+        <p class="section__sub" style="max-width:520px;margin:0 auto 0">Mismo trabajo. Diferente velocidad. Esto no es teoría.</p>
+      </div>
+    </div>
+
+    <div class="speed-race__track" id="raceTrack">
+      <div class="race-lane race-lane--human">
+        <span class="race-label race-label--human">Tu equipo</span>
+        <div class="race-bar-wrap">
+          <div class="race-bar race-bar--human" id="raceHuman"></div>
+        </div>
+        <span class="race-time race-time--human" id="raceTimeHuman" style="opacity:0">72h</span>
+      </div>
+      <div class="race-lane race-lane--kova">
+        <span class="race-label race-label--kova">KOVA IA</span>
+        <div class="race-bar-wrap">
+          <div class="race-bar race-bar--kova" id="raceKova"></div>
+        </div>
+        <span class="race-time race-time--kova" id="raceTimeKova" style="opacity:0">2h</span>
+      </div>
+    </div>
+
+    <button class="race-replay" id="raceReplay" onclick="replayRace()">↺ Repetir carrera</button>
+
+    <div class="race-tasks">
+      <div class="race-task">
+        <span class="race-task__icon">📩</span>
+        <span class="race-task__title">Responder leads</span>
+        <div class="race-task__times">
+          <span class="race-task__t race-task__t--human">4h</span>
+          <span class="race-task__arrow">→</span>
+          <span class="race-task__t race-task__t--kova">2s</span>
+        </div>
+      </div>
+      <div class="race-task">
+        <span class="race-task__icon">📊</span>
+        <span class="race-task__title">Reporte semanal</span>
+        <div class="race-task__times">
+          <span class="race-task__t race-task__t--human">3h</span>
+          <span class="race-task__arrow">→</span>
+          <span class="race-task__t race-task__t--kova">auto</span>
+        </div>
+      </div>
+      <div class="race-task">
+        <span class="race-task__icon">🎯</span>
+        <span class="race-task__title">Calificar leads</span>
+        <div class="race-task__times">
+          <span class="race-task__t race-task__t--human">2h</span>
+          <span class="race-task__arrow">→</span>
+          <span class="race-task__t race-task__t--kova">1s</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROI CALCULATOR -->
+  <section class="roi-calc" id="roi">
+    <div class="container">
+      <div class="section__header" style="text-align:center">
+        <span class="roi__kicker">Calculá ahora</span>
+        <h2 class="section__title">¿Cuánto te cuesta <span style="color:var(--color-acento)">no automatizar?</span></h2>
+        <p class="section__sub" style="max-width:580px;margin:0 auto 56px">Poné los datos de tu negocio y mirá el número real. Sin adornos.</p>
+      </div>
+      <div class="roi__grid">
+        <!-- sliders -->
+        <div class="roi__sliders">
+          <div class="roi__control">
+            <label>Personas haciendo tareas manuales repetitivas</label>
+            <div class="roi__slider-wrap">
+              <input type="range" min="1" max="20" value="3" id="roiPersonas">
+              <span class="roi__val" id="roiPersonasVal">3</span>
+            </div>
+          </div>
+          <div class="roi__control">
+            <label>Horas semanales perdidas en esas tareas (por persona)</label>
+            <div class="roi__slider-wrap">
+              <input type="range" min="1" max="40" value="15" id="roiHoras">
+              <span class="roi__val" id="roiHorasVal">15h</span>
+            </div>
+          </div>
+          <div class="roi__control">
+            <label>Costo hora promedio de tu equipo (USD)</label>
+            <div class="roi__slider-wrap">
+              <input type="range" min="5" max="150" value="20" step="5" id="roiCosto">
+              <span class="roi__val" id="roiCostoVal">$20</span>
+            </div>
+          </div>
+        </div>
+        <!-- result card -->
+        <div class="roi__result">
+          <div class="roi__result-card">
+            <span class="roi__result-label">Perdés por año</span>
+            <div class="roi__result-num" id="roiTotal">$46,800</div>
+            <div class="roi__result-breakdown">
+              <div><span id="roiHorasYear">2,340</span> horas/año desperdiciadas</div>
+              <div>= <span id="roiWeekCost">$900</span> por semana</div>
+            </div>
+            <div class="roi__result-kova">Con KOVA recuperás el <span>80%</span></div>
+            <div class="roi__result-saving" id="roiSaving">$37,440/año</div>
+            <a href="#contacto" class="btn btn--primary magnetic" style="width:100%;justify-content:center;margin-top:8px;font-size:16px;padding:16px 28px">Quiero recuperar ese dinero →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CONTACTO -->
   <section class="contacto" id="contacto">
     <div class="container contacto__inner">
@@ -434,7 +773,7 @@
   <!-- FOOTER -->
   <footer class="footer">
     <div class="container footer__inner">
-      <span class="footer__logo">KOVA</span>
+      <img src="src/logo.svg" alt="KOVA" style="height:34px;width:auto;opacity:0.7;" />
       <span class="footer__copy">© 2026 KOVA. Todos los derechos reservados.</span>
     </div>
   </footer>
