@@ -894,3 +894,163 @@ function setupDiag() {
     }
   });
 }
+
+/* ============================================================
+   SCROLL PROGRESS BAR
+   ============================================================ */
+function setupScrollProgress() {
+  const bar = document.getElementById('scrollProgress');
+  if (!bar) return;
+  window.addEventListener('scroll', () => {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (window.scrollY / max * 100) + '%';
+  }, { passive: true });
+}
+
+/* ============================================================
+   HERO TAG — CYCLING TYPEWRITER
+   ============================================================ */
+function setupHeroTypewriter() {
+  const tag = document.getElementById('heroTag');
+  if (!tag) return;
+  const words = ['Marketing Digital', 'RRSS & Algoritmo', 'SEO & Posicionamiento', 'Marca Personal', 'Automatización & IA'];
+  let i = 0;
+  tag.textContent = words[0];
+  setInterval(() => {
+    gsap.to(tag, { opacity: 0, y: -8, duration: 0.25, ease: 'power2.in', onComplete: () => {
+      i = (i + 1) % words.length;
+      tag.textContent = words[i];
+      gsap.to(tag, { opacity: 1, y: 0, duration: 0.35, ease: 'power3.out' });
+    }});
+  }, 2200);
+}
+
+/* ============================================================
+   DESAFÍO TABS — Interactive selector
+   ============================================================ */
+function setupDesafioTabs() {
+  const tabs   = document.querySelectorAll('.dtab');
+  const panels = document.querySelectorAll('.dpanel');
+  if (!tabs.length) return;
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.tab;
+      const current = document.querySelector('.dpanel.active');
+      const next = document.querySelector(`.dpanel[data-panel="${target}"]`);
+      if (!next || next === current) return;
+
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      gsap.to(current, { opacity: 0, x: -20, duration: 0.22, ease: 'power2.in', onComplete: () => {
+        current.classList.remove('active');
+        next.classList.add('active');
+        gsap.fromTo(next, { opacity: 0, x: 28 }, { opacity: 1, x: 0, duration: 0.4, ease: 'power3.out' });
+      }});
+    });
+  });
+
+  // Animate in on scroll
+  ScrollTrigger.create({
+    trigger: '.desafio', start: 'top 75%', once: true,
+    onEnter: () => {
+      gsap.from('.desafio__header > *', { opacity: 0, y: 32, duration: 0.7, stagger: 0.12, ease: 'power3.out' });
+      gsap.from('.desafio__layout', { opacity: 0, y: 48, duration: 0.8, ease: 'power3.out', delay: 0.3 });
+    }
+  });
+}
+
+/* ============================================================
+   FAQ ACCORDION
+   ============================================================ */
+function setupFAQ() {
+  const items = document.querySelectorAll('.faq__item');
+  if (!items.length) return;
+
+  items.forEach(item => {
+    const trigger = item.querySelector('.faq__trigger');
+    trigger.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+
+      // Close all
+      items.forEach(i => i.classList.remove('open'));
+
+      // Toggle clicked
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Animate in
+  ScrollTrigger.create({
+    trigger: '.faq', start: 'top 75%', once: true,
+    onEnter: () => {
+      gsap.from('.faq__sticky > *', { opacity: 0, x: -32, duration: 0.7, stagger: 0.12, ease: 'power3.out' });
+      gsap.from('.faq__item', { opacity: 0, y: 24, duration: 0.5, stagger: 0.08, ease: 'power3.out', delay: 0.2 });
+    }
+  });
+}
+
+/* ============================================================
+   RESULTADOS — Scroll animations
+   ============================================================ */
+function setupResultados() {
+  ScrollTrigger.create({
+    trigger: '.resultados', start: 'top 75%', once: true,
+    onEnter: () => {
+      gsap.from('.resultados .section__header > *', { opacity: 0, y: 32, duration: 0.7, stagger: 0.12, ease: 'power3.out' });
+      gsap.from('.res-card', { opacity: 0, y: 60, duration: 0.7, stagger: 0.15, ease: 'power3.out', delay: 0.3 });
+    }
+  });
+}
+
+/* ============================================================
+   PLANES — Scroll animations
+   ============================================================ */
+function setupPlanes() {
+  ScrollTrigger.create({
+    trigger: '.planes', start: 'top 75%', once: true,
+    onEnter: () => {
+      gsap.from('.planes .section__title, .planes .section__sub', { opacity: 0, y: 32, duration: 0.7, stagger: 0.12, ease: 'power3.out' });
+      gsap.from('.plan-card', { opacity: 0, y: 60, scale: 0.96, duration: 0.7, stagger: 0.15, ease: 'power3.out', delay: 0.3 });
+    }
+  });
+}
+
+/* ============================================================
+   INIT — hook into existing initAnimations via onPageInit
+   ============================================================ */
+setupScrollProgress(); // scroll bar runs immediately, no loader needed
+
+window.onPageInit = function() {
+  setupHeroTypewriter();
+  setupDesafioTabs();
+  setupFAQ();
+  setupResultados();
+  setupPlanes();
+};
+
+/* ============================================================
+   HAMBURGER MENU
+   ============================================================ */
+function setupHamburger() {
+  const btn  = document.getElementById('navHamburger');
+  const menu = document.getElementById('navMobileMenu');
+  if (!btn || !menu) return;
+
+  btn.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    document.body.classList.toggle('nav-open', open);
+    btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+  });
+
+  // Close on any link click inside the menu
+  menu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      menu.classList.remove('open');
+      document.body.classList.remove('nav-open');
+    });
+  });
+}
+
+setupHamburger();
