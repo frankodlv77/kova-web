@@ -1109,83 +1109,86 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════
-       URGENCIA — Disponibilidad del mes
-  ═══════════════════════════════════════════ -->
-  <section class="urgencia" id="disponibilidad">
+  <!-- BLOG PREVIEW -->
+  <section class="blog-preview" id="blog">
     <div class="container">
-      <div class="urgencia__inner">
-
-        <!-- Col izquierda -->
-        <div class="urgencia__left">
-          <span class="urgencia__kicker">
-            <span class="urgencia__kicker-dot"></span>
-            Disponibilidad Mayo 2026
-          </span>
-          <h2 class="urgencia__title">Solo quedan <em>2 lugares</em><br>disponibles este mes.</h2>
-          <p class="urgencia__desc">Trabajamos con pocos clientes a la vez para garantizar resultados reales. No somos una agencia de volumen — somos tu equipo dedicado.</p>
-
-          <div class="urgencia__countdown">
-            <span>El mes cierra en</span>
-            <span class="urgencia__countdown-num" id="urgDays">—</span>
-            <span class="urgencia__countdown-sep">d</span>
-            <span class="urgencia__countdown-num" id="urgHours">—</span>
-            <span class="urgencia__countdown-sep">h</span>
-            <span class="urgencia__countdown-num" id="urgMins">—</span>
-            <span class="urgencia__countdown-sep">m</span>
-          </div>
-
-          <a href="#contacto" class="btn btn--primary magnetic" style="font-size:16px;padding:18px 36px">
-            Reservar mi lugar →
-          </a>
+      <div class="blog-preview__header">
+        <div>
+          <span class="blog-preview__kicker">Del equipo KOVA</span>
+          <h2 class="blog-preview__title">Ideas que generan<br><em>resultados reales</em></h2>
         </div>
+        <a href="blog.html" class="blog-preview__all">Ver todos los artículos →</a>
+      </div>
+      <div class="blog-preview__grid" id="blogPreviewGrid">
 
-        <!-- Col derecha -->
-        <div class="urgencia__slots">
-          <p class="urgencia__slots-title">Lugares — Mayo 2026</p>
-
-          <div class="urgencia__slots-grid">
-            <div class="urgencia__slot urgencia__slot--taken">
-              <span class="urgencia__slot-icon"></span>
-              <span class="urgencia__slot-label">Cliente — E-commerce</span>
-              <span class="urgencia__slot-badge">Ocupado</span>
-            </div>
-            <div class="urgencia__slot urgencia__slot--taken">
-              <span class="urgencia__slot-icon"></span>
-              <span class="urgencia__slot-label">Cliente — Consultora</span>
-              <span class="urgencia__slot-badge">Ocupado</span>
-            </div>
-            <div class="urgencia__slot urgencia__slot--taken">
-              <span class="urgencia__slot-icon"></span>
-              <span class="urgencia__slot-label">Cliente — Coach</span>
-              <span class="urgencia__slot-badge">Ocupado</span>
-            </div>
-            <div class="urgencia__slot urgencia__slot--available">
-              <span class="urgencia__slot-icon"></span>
-              <span class="urgencia__slot-label">Disponible para vos</span>
-              <span class="urgencia__slot-badge">Libre</span>
-            </div>
-            <div class="urgencia__slot urgencia__slot--available">
-              <span class="urgencia__slot-icon"></span>
-              <span class="urgencia__slot-label">Disponible para vos</span>
-              <span class="urgencia__slot-badge">Libre</span>
+        <!-- Post 1 -->
+        <article class="bpv-card">
+          <div class="bpv-card__vis">
+            <div class="bpv-vis bpv-vis--rrss">
+              <div class="bpv-bar" style="height:40%;animation-delay:0.1s;background:rgba(255,255,255,.1)"></div>
+              <div class="bpv-bar" style="height:60%;animation-delay:0.2s;background:rgba(255,255,255,.1)"></div>
+              <div class="bpv-bar" style="height:78%;animation-delay:0.3s;background:linear-gradient(to top,var(--color-acento),#ff8c4a)"></div>
+              <div class="bpv-bar" style="height:95%;animation-delay:0.4s;background:linear-gradient(to top,var(--color-acento),#ff8c4a)"></div>
             </div>
           </div>
+          <div class="bpv-card__body">
+            <span class="bpv-cat">RRSS</span>
+            <h3 class="bpv-card__title">Cómo triplicamos el alcance orgánico de un cliente en 90 días</h3>
+            <p class="bpv-card__excerpt">Sin publicidad paga. Solo estrategia de contenido, algoritmo y consistencia.</p>
+            <a href="blog.html" class="bpv-card__link">Leer artículo →</a>
+          </div>
+        </article>
 
-          <div class="urgencia__bar-wrap">
-            <div class="urgencia__bar-label">
-              <span>Capacidad del mes</span>
-              <span>60% ocupado</span>
-            </div>
-            <div class="urgencia__bar-track">
-              <div class="urgencia__bar-fill" id="urgBarFill"></div>
+        <!-- Post 2 -->
+        <article class="bpv-card">
+          <div class="bpv-card__vis">
+            <div class="bpv-vis bpv-vis--seo" style="flex-direction:column;gap:8px;padding:20px;">
+              <div style="width:100%;max-width:200px;height:24px;border-radius:6px;background:rgba(232,80,26,.12);border:1px solid rgba(232,80,26,.35);display:flex;align-items:center;padding:0 10px;gap:8px;font-family:var(--fuente-ui);font-size:11px;">
+                <span style="color:var(--color-acento);font-weight:800;">#1</span>
+                <span style="color:var(--color-texto-secundario);">Tu negocio</span>
+              </div>
+              <div style="width:85%;max-width:200px;height:24px;border-radius:6px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;padding:0 10px;gap:8px;font-family:var(--fuente-ui);font-size:11px;">
+                <span style="color:var(--color-texto-tenue);font-weight:800;">#2</span>
+                <span style="color:var(--color-texto-tenue);">competidor-a</span>
+              </div>
+              <div style="width:70%;max-width:200px;height:24px;border-radius:6px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;padding:0 10px;gap:8px;font-family:var(--fuente-ui);font-size:11px;">
+                <span style="color:var(--color-texto-tenue);font-weight:800;">#3</span>
+                <span style="color:var(--color-texto-tenue);">competidor-b</span>
+              </div>
             </div>
           </div>
+          <div class="bpv-card__body">
+            <span class="bpv-cat">SEO</span>
+            <h3 class="bpv-card__title">Guía SEO 2026: cómo rankear en Google sin gastar en ads</h3>
+            <p class="bpv-card__excerpt">Las reglas del SEO cambiaron con la IA. La estrategia actualizada para aparecer primero.</p>
+            <a href="blog.html" class="bpv-card__link">Leer artículo →</a>
+          </div>
+        </article>
 
-          <a href="#contacto" class="btn btn--outline magnetic" style="width:100%;justify-content:center">
-            Quiero uno de esos lugares →
-          </a>
-        </div>
+        <!-- Post 3 -->
+        <article class="bpv-card">
+          <div class="bpv-card__vis">
+            <div class="bpv-vis" style="flex-direction:column;gap:10px;">
+              <div style="display:flex;align-items:center;gap:0;">
+                <div style="width:42px;height:42px;border-radius:10px;border:1px solid rgba(232,80,26,.3);background:rgba(232,80,26,.07);display:flex;align-items:center;justify-content:center;font-size:18px;">📧</div>
+                <div style="width:28px;height:1px;background:rgba(232,80,26,.4);position:relative;"><div style="position:absolute;right:-1px;top:-3px;width:6px;height:6px;border-top:1px solid rgba(232,80,26,.6);border-right:1px solid rgba(232,80,26,.6);transform:rotate(45deg)"></div></div>
+                <div style="width:48px;height:48px;border-radius:12px;border:1px solid rgba(232,80,26,.45);background:rgba(232,80,26,.1);display:flex;align-items:center;justify-content:center;font-size:22px;">⚡</div>
+                <div style="width:28px;height:1px;background:rgba(232,80,26,.4);position:relative;"><div style="position:absolute;right:-1px;top:-3px;width:6px;height:6px;border-top:1px solid rgba(232,80,26,.6);border-right:1px solid rgba(232,80,26,.6);transform:rotate(45deg)"></div></div>
+                <div style="width:42px;height:42px;border-radius:10px;border:1px solid rgba(232,80,26,.3);background:rgba(232,80,26,.07);display:flex;align-items:center;justify-content:center;font-size:18px;">📊</div>
+              </div>
+              <div style="text-align:center;">
+                <div style="font-family:var(--fuente-titulo);font-size:26px;font-weight:800;color:var(--color-acento);">12 hs</div>
+                <div style="font-family:var(--fuente-ui);font-size:10px;color:var(--color-texto-tenue);text-transform:uppercase;letter-spacing:.1em;">ahorradas por semana</div>
+              </div>
+            </div>
+          </div>
+          <div class="bpv-card__body">
+            <span class="bpv-cat">Automatización</span>
+            <h3 class="bpv-card__title">5 procesos que deberías automatizar ya mismo</h3>
+            <p class="bpv-card__excerpt">Seguimiento de leads, reportes, respuestas — estas automatizaciones liberan horas para crecer.</p>
+            <a href="blog.html" class="bpv-card__link">Leer artículo →</a>
+          </div>
+        </article>
 
       </div>
     </div>

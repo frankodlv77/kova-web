@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KOVA — Blog</title>
+  <meta name="description" content="Estrategias reales de marketing digital, RRSS, SEO, marca personal y automatización para hacer crecer tu negocio." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=DM+Sans:wght@300;400;500&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/tokens.css" />
+  <link rel="stylesheet" href="src/styles.css" />
+
+  <style>
+    /* ═══════════════════════════════════════════════════
+       BLOG — Page Styles
+    ═══════════════════════════════════════════════════ */
+
+    /* ── HERO ─────────────────────────────────────────── */
+    .bl-hero {
+      padding: clamp(120px, 18vh, 180px) 0 clamp(64px, 10vh, 100px);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .bl-hero__bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 0%, rgba(232,80,26,0.09) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .bl-hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--fuente-ui);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-acento);
+      border: 1px solid rgba(232,80,26,0.28);
+      border-radius: 100px;
+      padding: 7px 18px;
+      margin-bottom: 32px;
+    }
+
+    .bl-hero__badge::before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-acento);
+      animation: pulse-dot 1.8s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.6); }
+    }
+
+    .bl-hero__title {
+      font-family: var(--fuente-titulo);
+      font-size: clamp(48px, 8vw, 96px);
+      font-weight: 800;
+      text-transform: uppercase;
+      line-height: 0.92;
+      letter-spacing: -0.02em;
+      color: var(--color-texto);
+      margin-bottom: 24px;
+    }
+
+    .bl-hero__title em {
+      font-style: normal;
+      -webkit-text-stroke: 1px rgba(232,80,26,0.6);
+      color: transparent;
+    }
+
+    .bl-hero__sub {
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--color-texto-secundario);
+      line-height: 1.65;
+      max-width: 520px;
+      margin: 0 auto 40px;
+    }
+
+    .bl-hero__tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .bl-tag {
+      font-family: var(--fuente-ui);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-texto-tenue);
+      border: 1px solid var(--color-borde);
+      border-radius: 100px;
+      padding: 6px 16px;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+    }
+
+    .bl-tag:hover,
+    .bl-tag--active {
+      color: var(--color-acento);
+      border-color: rgba(232,80,26,0.4);
+      background: rgba(232,80,26,0.06);
+    }
+
+    /* ── DIVIDER LINE ─────────────────────────────────── */
+    .bl-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--color-borde), transparent);
+      margin-bottom: 0;
+    }
+
+    /* ── FEATURED POST ────────────────────────────────── */
+    .bl-featured {
+      padding: clamp(64px, 10vh, 100px) 0;
+      border-bottom: 1px solid var(--color-borde);
+    }
+
+    .bl-featured__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .bl-featured__vis {
+      height: 380px;
+      border-radius: 16px;
+      border: 1px solid var(--color-borde);
+      background: rgba(0,0,0,0.25);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .bl-featured__vis-inner {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    /* Featured visual: graph growth */
+    .feat-graph {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 40px 40px 60px;
+      gap: 0;
+    }
+
+    .feat-axis-x {
+      position: absolute;
+      bottom: 60px;
+      left: 40px;
+      right: 40px;
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .feat-axis-y {
+      position: absolute;
+      top: 40px;
+      bottom: 60px;
+      left: 40px;
+      width: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .feat-path {
+      position: absolute;
+      bottom: 60px;
+      left: 40px;
+      right: 40px;
+      height: 200px;
+    }
+
+    .feat-path svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    .feat-line {
+      stroke-dasharray: 600;
+      stroke-dashoffset: 600;
+      animation: draw-line 2.5s ease-out 0.5s forwards;
+    }
+
+    .feat-area {
+      opacity: 0;
+      animation: fade-in-area 0.8s ease-out 2.8s forwards;
+    }
+
+    @keyframes draw-line {
+      to { stroke-dashoffset: 0; }
+    }
+
+    @keyframes fade-in-area {
+      to { opacity: 1; }
+    }
+
+    .feat-dot {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--color-acento);
+      border: 2px solid #1a1a1a;
+      box-shadow: 0 0 12px rgba(232,80,26,0.6);
+      transform: translate(-50%, 50%);
+      animation: dot-pop 0.4s ease-out 3s both;
+    }
+
+    @keyframes dot-pop {
+      from { transform: translate(-50%, 50%) scale(0); }
+      to { transform: translate(-50%, 50%) scale(1); }
+    }
+
+    .feat-label {
+      position: absolute;
+      bottom: 20px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px;
+    }
+
+    .feat-label span {
+      font-family: var(--fuente-ui);
+      font-size: 10px;
+      color: var(--color-texto-tenue);
+    }
+
+    .feat-badge {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: rgba(232,80,26,0.12);
+      border: 1px solid rgba(232,80,26,0.3);
+      border-radius: 8px;
+      padding: 8px 14px;
+    }
+
+    .feat-badge__num {
+      font-family: var(--fuente-titulo);
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--color-acento);
+      line-height: 1;
+    }
+
+    .feat-badge__lbl {
+      font-family: var(--fuente-ui);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-texto-tenue);
+    }
+
+    .bl-featured__content {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .bl-featured__meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .bl-cat-badge {
+      font-family: var(--fuente-ui);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-acento);
+      border: 1px solid rgba(232,80,26,0.3);
+      border-radius: 100px;
+      padding: 4px 12px;
+    }
+
+    .bl-meta-dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: var(--color-texto-tenue);
+    }
+
+    .bl-meta-date {
+      font-family: var(--fuente-ui);
+      font-size: 11px;
+      color: var(--color-texto-tenue);
+    }
+
+    .bl-meta-read {
+      font-family: var(--fuente-ui);
+      font-size: 11px;
+      color: var(--color-texto-tenue);
+    }
+
+    .bl-featured__title {
+      font-family: var(--fuente-titulo);
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 800;
+      text-transform: uppercase;
+      line-height: 1.05;
+      color: var(--color-texto);
+    }
+
+    .bl-featured__excerpt {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--color-texto-secundario);
+      line-height: 1.7;
+    }
+
+    .bl-featured__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--fuente-ui);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-acento);
+      text-decoration: none;
+      transition: gap 0.2s;
+    }
+
+    .bl-featured__cta:hover { gap: 16px; }
+
+    /* ── ARTICLES GRID ────────────────────────────────── */
+    .bl-articles {
+      padding: clamp(64px, 10vh, 100px) 0;
+    }
+
+    .bl-articles__header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 48px;
+    }
+
+    .bl-articles__title {
+      font-family: var(--fuente-titulo);
+      font-size: 28px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--color-texto);
+    }
+
+    .bl-articles__count {
+      font-family: var(--fuente-ui);
+      font-size: 12px;
+      color: var(--color-texto-tenue);
+      letter-spacing: 0.1em;
+    }
+
+    .bl-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    /* ── ARTICLE CARD ─────────────────────────────────── */
+    .bl-card {
+      border: 1px solid var(--color-borde);
+      border-radius: 14px;
+      background: rgba(255,255,255,0.02);
+      overflow: hidden;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+      cursor: pointer;
+    }
+
+    .bl-card:hover {
+      border-color: rgba(232,80,26,0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.3);
+    }
+
+    .bl-card__vis {
+      height: 180px;
+      position: relative;
+      overflow: hidden;
+      background: rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .bl-card__body {
+      padding: 24px;
+    }
+
+    .bl-card__meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .bl-card__title {
+      font-family: var(--fuente-titulo);
+      font-size: 22px;
+      font-weight: 800;
+      text-transform: uppercase;
+      line-height: 1.1;
+      color: var(--color-texto);
+      margin-bottom: 12px;
+    }
+
+    .bl-card__excerpt {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--color-texto-secundario);
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+
+    .bl-card__link {
+      font-family: var(--fuente-ui);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-acento);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.2s;
+    }
+
+    .bl-card:hover .bl-card__link { gap: 10px; }
+
+    /* ── CARD VISUALS ─────────────────────────────────── */
+
+    /* 1. RRSS growth bars */
+    .vis-rrss {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 20px 30px;
+      gap: 10px;
+    }
+
+    .rrss-bar-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      flex: 1;
+    }
+
+    .rrss-bar {
+      width: 100%;
+      border-radius: 4px 4px 0 0;
+      animation: bar-rise 1.2s ease-out both;
+    }
+
+    .rrss-bar--kova { background: linear-gradient(to top, var(--color-acento), #ff8c4a); }
+    .rrss-bar--comp { background: rgba(255,255,255,0.1); }
+
+    @keyframes bar-rise {
+      from { transform: scaleY(0); transform-origin: bottom; }
+      to   { transform: scaleY(1); transform-origin: bottom; }
+    }
+
+    .rrss-bar-lbl {
+      font-family: var(--fuente-ui);
+      font-size: 9px;
+      color: var(--color-texto-tenue);
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    /* 2. SEO ranking visual */
+    .vis-seo {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 20px;
+    }
+
+    .seo-row {
+      width: 100%;
+      max-width: 220px;
+      height: 26px;
+      border-radius: 6px;
+      border: 1px solid;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      gap: 8px;
+    }
+
+    .seo-row--1 {
+      background: rgba(232,80,26,0.12);
+      border-color: rgba(232,80,26,0.35);
+      animation: seo-slide-in 0.8s ease-out 0.2s both;
+    }
+
+    .seo-row--2 {
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255,255,255,0.08);
+      animation: seo-slide-in 0.8s ease-out 0.4s both;
+    }
+
+    .seo-row--3 {
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255,255,255,0.08);
+      animation: seo-slide-in 0.8s ease-out 0.6s both;
+    }
+
+    @keyframes seo-slide-in {
+      from { transform: translateX(-20px); opacity: 0; }
+      to   { transform: translateX(0); opacity: 1; }
+    }
+
+    .seo-pos {
+      font-family: var(--fuente-titulo);
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--color-acento);
+      min-width: 20px;
+    }
+
+    .seo-pos--gray { color: var(--color-texto-tenue); }
+
+    .seo-title {
+      font-family: var(--fuente-ui);
+      font-size: 10px;
+      color: var(--color-texto-secundario);
+      flex: 1;
+    }
+
+    /* 3. Automation/robot */
+    .vis-auto {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .auto-flow {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    .auto-node {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      border: 1px solid rgba(232,80,26,0.3);
+      background: rgba(232,80,26,0.07);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      animation: node-pulse 2.4s ease-in-out infinite;
+    }
+
+    .auto-node:nth-child(3) { animation-delay: 0.6s; }
+    .auto-node:nth-child(5) { animation-delay: 1.2s; }
+
+    @keyframes node-pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(232,80,26,0); }
+      50% { box-shadow: 0 0 0 6px rgba(232,80,26,0.15); }
+    }
+
+    .auto-arrow {
+      width: 32px;
+      height: 1px;
+      background: rgba(232,80,26,0.4);
+      position: relative;
+    }
+
+    .auto-arrow::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: -3px;
+      width: 6px;
+      height: 6px;
+      border-top: 1px solid rgba(232,80,26,0.6);
+      border-right: 1px solid rgba(232,80,26,0.6);
+      transform: rotate(45deg);
+    }
+
+    .auto-stat {
+      font-family: var(--fuente-titulo);
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--color-acento);
+    }
+
+    .auto-stat-lbl {
+      font-family: var(--fuente-ui);
+      font-size: 10px;
+      color: var(--color-texto-tenue);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* 4. Personal Brand */
+    .vis-marca {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .marca-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(232,80,26,0.3), rgba(232,80,26,0.08));
+      border: 2px solid rgba(232,80,26,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      position: relative;
+    }
+
+    .marca-rings {
+      position: absolute;
+      inset: -8px;
+      border-radius: 50%;
+      border: 1px solid rgba(232,80,26,0.2);
+      animation: marca-ring 2s ease-out infinite;
+    }
+
+    .marca-rings::before {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border-radius: 50%;
+      border: 1px solid rgba(232,80,26,0.1);
+      animation: marca-ring 2s ease-out 0.5s infinite;
+    }
+
+    @keyframes marca-ring {
+      from { transform: scale(1); opacity: 0.6; }
+      to   { transform: scale(1.4); opacity: 0; }
+    }
+
+    .marca-name {
+      font-family: var(--fuente-titulo);
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--color-texto);
+      text-transform: uppercase;
+    }
+
+    .marca-followers {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .marca-num {
+      font-family: var(--fuente-ui);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-acento);
+    }
+
+    .marca-lbl {
+      font-family: var(--fuente-ui);
+      font-size: 11px;
+      color: var(--color-texto-tenue);
+    }
+
+    /* 5. Content strategy */
+    .vis-content {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 6px;
+      padding: 20px;
+    }
+
+    .cnt-tile {
+      border-radius: 8px;
+      border: 1px solid var(--color-borde);
+      background: rgba(255,255,255,0.02);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      transition: border-color 0.2s, background 0.2s;
+      animation: tile-pop 0.5s ease-out both;
+    }
+
+    .cnt-tile:nth-child(1) { animation-delay: 0.1s; }
+    .cnt-tile:nth-child(2) { animation-delay: 0.2s; grid-column: span 2; border-color: rgba(232,80,26,0.25); background: rgba(232,80,26,0.05); }
+    .cnt-tile:nth-child(3) { animation-delay: 0.3s; }
+    .cnt-tile:nth-child(4) { animation-delay: 0.4s; }
+    .cnt-tile:nth-child(5) { animation-delay: 0.5s; }
+
+    @keyframes tile-pop {
+      from { transform: scale(0.8); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+
+    /* 6. Leads funnel */
+    .vis-leads {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 4px;
+      padding: 20px;
+    }
+
+    .funnel-step {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      max-width: 200px;
+    }
+
+    .funnel-bar {
+      height: 24px;
+      border-radius: 4px;
+      background: rgba(232,80,26,0.12);
+      border: 1px solid rgba(232,80,26,0.25);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .funnel-bar::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(232,80,26,0.4), transparent);
+      animation: funnel-fill 1.5s ease-out both;
+    }
+
+    .funnel-step:nth-child(1) .funnel-bar { width: 100%; animation-delay: 0.1s; }
+    .funnel-step:nth-child(2) .funnel-bar { width: 75%; animation-delay: 0.3s; }
+    .funnel-step:nth-child(3) .funnel-bar { width: 50%; animation-delay: 0.5s; }
+    .funnel-step:nth-child(4) .funnel-bar { width: 28%; animation-delay: 0.7s; }
+
+    @keyframes funnel-fill {
+      from { transform: scaleX(0); transform-origin: left; }
+      to   { transform: scaleX(1); transform-origin: left; }
+    }
+
+    .funnel-lbl {
+      font-family: var(--fuente-ui);
+      font-size: 9px;
+      color: var(--color-texto-tenue);
+      text-transform: uppercase;
+      font-weight: 700;
+      white-space: nowrap;
+      flex: 1;
+    }
+
+    /* ── NEWSLETTER ───────────────────────────────────── */
+    .bl-newsletter {
+      padding: clamp(64px, 10vh, 100px) 0;
+      border-top: 1px solid var(--color-borde);
+    }
+
+    .bl-newsletter__inner {
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .bl-newsletter__icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background: rgba(232,80,26,0.1);
+      border: 1px solid rgba(232,80,26,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+
+    .bl-newsletter__title {
+      font-family: var(--fuente-titulo);
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--color-texto);
+      line-height: 1.05;
+    }
+
+    .bl-newsletter__sub {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--color-texto-secundario);
+      line-height: 1.65;
+    }
+
+    .bl-newsletter__form {
+      display: flex;
+      gap: 12px;
+      width: 100%;
+      max-width: 460px;
+    }
+
+    .bl-newsletter__input {
+      flex: 1;
+      height: 50px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--color-borde);
+      border-radius: 10px;
+      padding: 0 18px;
+      color: var(--color-texto);
+      font-family: var(--fuente-cuerpo);
+      font-size: 15px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .bl-newsletter__input::placeholder { color: var(--color-texto-tenue); }
+    .bl-newsletter__input:focus { border-color: rgba(232,80,26,0.4); }
+
+    .bl-newsletter__btn {
+      height: 50px;
+      padding: 0 28px;
+      background: var(--color-acento);
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      font-family: var(--fuente-ui);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      white-space: nowrap;
+    }
+
+    .bl-newsletter__btn:hover {
+      background: #c0360d;
+      transform: translateY(-1px);
+    }
+
+    .bl-newsletter__disclaimer {
+      font-family: var(--fuente-ui);
+      font-size: 11px;
+      color: var(--color-texto-tenue);
+    }
+
+    /* ── RESPONSIVE ───────────────────────────────────── */
+    @media (max-width: 900px) {
+      .bl-featured__inner {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+      .bl-featured__vis {
+        height: 260px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .bl-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .bl-grid {
+        grid-template-columns: 1fr;
+      }
+      .bl-newsletter__form {
+        flex-direction: column;
+      }
+      .bl-newsletter__btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- LOADER -->
+  <div class="loader" id="loader">
+    <div class="loader__logo">KOVA</div>
+    <div class="loader__bar"><div class="loader__fill"></div></div>
+  </div>
+
+  <!-- CURSOR GLOW -->
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <a href="index.html" class="nav__logo">KOVA</a>
+    <ul class="nav__links">
+      <li><a href="index.html" class="nav__link">Inicio</a></li>
+      <li><a href="servicios.html" class="nav__link">Servicios</a></li>
+      <li><a href="index.html#contacto" class="nav__link">Contacto</a></li>
+    </ul>
+    <a href="index.html#contacto" class="btn btn--outline">Hablemos</a>
+    <button class="nav__hamburger" id="navHamburger" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="nav__mobile-menu" id="navMobileMenu">
+    <ul class="nav__mobile-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="servicios.html">Servicios</a></li>
+      <li><a href="index.html#contacto">Contacto</a></li>
+    </ul>
+    <a href="index.html#contacto" class="btn btn--primary" style="font-size:16px;padding:16px 36px">Hablemos →</a>
+  </div>
+
+  <!-- ─── HERO ─────────────────────────────────────────── -->
+  <section class="bl-hero" id="blHero">
+    <div class="bl-hero__bg" aria-hidden="true"></div>
+    <div class="container" style="position:relative;z-index:1;">
+      <div class="bl-hero__badge">Ideas que generan resultados</div>
+      <h1 class="bl-hero__title">
+        El <em>Blog</em><br>de KOVA
+      </h1>
+      <p class="bl-hero__sub">
+        Estrategias reales de marketing digital, RRSS, SEO, marca personal y automatización — sin relleno, directo al grano.
+      </p>
+      <div class="bl-hero__tags">
+        <span class="bl-tag bl-tag--active">Todos</span>
+        <span class="bl-tag">RRSS</span>
+        <span class="bl-tag">SEO</span>
+        <span class="bl-tag">Automatización</span>
+        <span class="bl-tag">Marca Personal</span>
+        <span class="bl-tag">Contenido</span>
+        <span class="bl-tag">Leads</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="bl-divider"></div>
+
+  <!-- ─── FEATURED POST ─────────────────────────────────── -->
+  <section class="bl-featured">
+    <div class="container">
+      <div class="bl-featured__inner" id="blFeatured">
+        <!-- Visual -->
+        <div class="bl-featured__vis">
+          <div class="feat-graph">
+            <div class="feat-axis-x"></div>
+            <div class="feat-axis-y"></div>
+            <div class="feat-path">
+              <svg viewBox="0 0 300 200" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="lineGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="rgba(232,80,26,0.35)" />
+                    <stop offset="100%" stop-color="rgba(232,80,26,0)" />
+                  </linearGradient>
+                </defs>
+                <path class="feat-area"
+                  d="M0,180 C40,170 80,140 130,100 C160,76 200,50 240,30 C270,18 290,14 300,12 L300,200 L0,200 Z"
+                  fill="url(#lineGrad)" />
+                <path class="feat-line"
+                  d="M0,180 C40,170 80,140 130,100 C160,76 200,50 240,30 C270,18 290,14 300,12"
+                  fill="none" stroke="var(--color-acento)" stroke-width="2.5" stroke-linecap="round"/>
+              </svg>
+              <div class="feat-dot" style="bottom: 0; right: 0; transform: translate(50%, 50%)"></div>
+            </div>
+            <div class="feat-label">
+              <span>Ene</span><span>Mar</span><span>May</span><span>Jul</span><span>Sep</span><span>Dic</span>
+            </div>
+            <div class="feat-badge">
+              <div class="feat-badge__num">+340%</div>
+              <div class="feat-badge__lbl">Alcance orgánico</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="bl-featured__content">
+          <div class="bl-featured__meta">
+            <span class="bl-cat-badge">RRSS</span>
+            <div class="bl-meta-dot"></div>
+            <span class="bl-meta-date">Abril 2026</span>
+            <div class="bl-meta-dot"></div>
+            <span class="bl-meta-read">8 min de lectura</span>
+          </div>
+          <h2 class="bl-featured__title">
+            Cómo triplicamos el<br>alcance orgánico de<br>un cliente en 90 días
+          </h2>
+          <p class="bl-featured__excerpt">
+            Sin publicidad paga. Solo estrategia de contenido, algoritmo y consistencia. Te mostramos el proceso exacto que usamos con un cliente de servicios profesionales para pasar de 800 a 3.500 seguidores activos y multiplicar x4 sus consultas mensuales.
+          </p>
+          <a href="#" class="bl-featured__cta">
+            Leer artículo completo
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── ARTICLES GRID ─────────────────────────────────── -->
+  <section class="bl-articles">
+    <div class="container">
+      <div class="bl-articles__header">
+        <h2 class="bl-articles__title">Todos los artículos</h2>
+        <span class="bl-articles__count">6 artículos</span>
+      </div>
+
+      <div class="bl-grid" id="blGrid">
+
+        <!-- Card 1: RRSS -->
+        <article class="bl-card">
+          <div class="bl-card__vis">
+            <div class="vis-rrss">
+              <div class="rrss-bar-group">
+                <div class="rrss-bar rrss-bar--comp" style="height:40px;animation-delay:0.1s"></div>
+                <span class="rrss-bar-lbl">Ene</span>
+              </div>
+              <div class="rrss-bar-group">
+                <div class="rrss-bar rrss-bar--comp" style="height:52px;animation-delay:0.2s"></div>
+                <span class="rrss-bar-lbl">Mar</span>
+              </div>
+              <div class="rrss-bar-group">
+                <div class="rrss-bar rrss-bar--kova" style="height:70px;animation-delay:0.3s"></div>
+                <span class="rrss-bar-lbl">May</span>
+              </div>
+              <div class="rrss-bar-group">
+                <div class="rrss-bar rrss-bar--kova" style="height:96px;animation-delay:0.4s"></div>
+                <span class="rrss-bar-lbl">Jul</span>
+              </div>
+              <div class="rrss-bar-group">
+                <div class="rrss-bar rrss-bar--kova" style="height:118px;animation-delay:0.5s"></div>
+                <span class="rrss-bar-lbl">Sep</span>
+              </div>
+            </div>
+          </div>
+          <div class="bl-card__body">
+            <div class="bl-card__meta">
+              <span class="bl-cat-badge">RRSS</span>
+              <span class="bl-meta-read" style="font-size:11px;color:var(--color-texto-tenue)">6 min</span>
+            </div>
+            <h3 class="bl-card__title">El algoritmo no es tu enemigo — te lo explicamos</h3>
+            <p class="bl-card__excerpt">
+              Instagram, TikTok y LinkedIn priorizan señales específicas. Entendé cuáles son y creá contenido que el algoritmo distribuya gratis.
+            </p>
+            <a href="#" class="bl-card__link">
+              Leer →
+            </a>
+          </div>
+        </article>
+
+        <!-- Card 2: SEO -->
+        <article class="bl-card">
+          <div class="bl-card__vis">
+            <div class="vis-seo">
+              <div class="seo-row seo-row--1">
+                <span class="seo-pos">#1</span>
+                <span class="seo-title">Tu marca — kova-systems.com</span>
+              </div>
+              <div class="seo-row seo-row--2">
+                <span class="seo-pos seo-pos--gray">#2</span>
+                <span class="seo-title">competidor-a.com</span>
+              </div>
+              <div class="seo-row seo-row--3">
+                <span class="seo-pos seo-pos--gray">#3</span>
+                <span class="seo-title">competidor-b.com</span>
+              </div>
+            </div>
+          </div>
+          <div class="bl-card__body">
+            <div class="bl-card__meta">
+              <span class="bl-cat-badge">SEO</span>
+              <span class="bl-meta-read" style="font-size:11px;color:var(--color-texto-tenue)">10 min</span>
+            </div>
+            <h3 class="bl-card__title">Guía SEO 2026: cómo rankear en Google sin gastar en ads</h3>
+            <p class="bl-card__excerpt">
+              Las reglas del SEO cambiaron con la IA. Te mostramos la estrategia actualizada para aparecer primero en búsquedas de tus clientes ideales.
+            </p>
+            <a href="#" class="bl-card__link">
+              Leer →
+            </a>
+          </div>
+        </article>
+
+        <!-- Card 3: Automatización -->
+        <article class="bl-card">
+          <div class="bl-card__vis">
+            <div class="vis-auto">
+              <div class="auto-flow">
+                <div class="auto-node">📧</div>
+                <div class="auto-arrow"></div>
+                <div class="auto-node auto-node--main">⚡</div>
+                <div class="auto-arrow"></div>
+                <div class="auto-node">📊</div>
+              </div>
+              <div style="text-align:center">
+                <div class="auto-stat">12 hs</div>
+                <div class="auto-stat-lbl">ahorradas por semana</div>
+              </div>
+            </div>
+          </div>
+          <div class="bl-card__body">
+            <div class="bl-card__meta">
+              <span class="bl-cat-badge">Automatización</span>
+              <span class="bl-meta-read" style="font-size:11px;color:var(--color-texto-tenue)">7 min</span>
+            </div>
+            <h3 class="bl-card__title">5 procesos que deberías automatizar ya mismo</h3>
+            <p class="bl-card__excerpt">
+              Seguimiento de leads, respuestas automáticas, reportes semanales — estas automatizaciones liberan horas que podés dedicar a crecer.
+            </p>
+            <a href="#" class="bl-card__link">
+              Leer →
+            </a>
+          </div>
+        </article>
+
+        <!-- Card 4: Marca Personal -->
+        <article class="bl-card">
+          <div class="bl-card__vis">
+            <div class="vis-marca">
+              <div class="marca-avatar">
+                🧑‍💼
+                <div class="marca-rings"></div>
+              </div>
+              <div class="marca-name">Tu nombre</div>
+              <div class="marca-followers">
+                <span class="marca-num">12.4K</span>
+                <span class="marca-lbl">seguidores activos</span>
+              </div>
+            </div>
+          </div>
+          <div class="bl-card__body">
+            <div class="bl-card__meta">
+              <span class="bl-cat-badge">Marca Personal</span>
+              <span class="bl-meta-read" style="font-size:11px;color:var(--color-texto-tenue)">9 min</span>
+            </div>
+            <h3 class="bl-card__title">De profesional a referente: construí tu marca en 6 meses</h3>
+            <p class="bl-card__excerpt">
+              Posicionarte como experto en tu nicho no requiere miles de seguidores. Requiere consistencia, mensaje claro y estrategia. Así se hace.
+            </p>
+            <a href="#" class="bl-card__link">
+              Leer →
+            </a>
+          </div>
+        </article>
+
+        <!-- Card 5: Contenido -->
+        <article class="bl-card">
+          <div class="bl-card__vis">
+            <div class="vis-content">
+              <div class="cnt-tile">📹</div>
+              <div class="cnt-tile">✍️ <span style="font-family:var(--fuente-ui);font-size:9px;color:var(--color-acento);margin-left:4px;">Viral</span></div>
+              <div class="cnt-tile">🎙️</div>
+              <div class="cnt-tile">📸</div>
+              <div class="cnt-tile">📊</div>
+            </div>
+          </div>
+          <div class="bl-card__body">
+            <div class="bl-card__meta">
+              <span class="bl-cat-badge">Contenido</span>
+              <span class="bl-meta-read" style="font-size:11px;color:var(--color-texto-tenue)">5 min</span>
+            </div>
+            <h3 class="bl-card__title">Contenido que convierte: el framework que usamos con clientes</h3>
+            <p class="bl-card__excerpt">
+              No todo contenido vende. Te compartimos el modelo de contenido que usamos para que cada post tenga un objetivo claro y medible.
+            </p>
+            <a href="#" class="bl-card__link">
+              Leer →
+            </a>
+          </div>
+        </article>
+
+        <!-- Card 6: Leads -->
+        <article class="bl-card">
+          <div class="bl-card__vis">
+            <div class="vis-leads">
+              <div class="funnel-step">
+                <div class="funnel-bar" style="flex:1"></div>
+                <span class="funnel-lbl">Visitantes</span>
+              </div>
+              <div class="funnel-step">
+                <div class="funnel-bar" style="flex:0.75"></div>
+                <span class="funnel-lbl">Leads</span>
+              </div>
+              <div class="funnel-step">
+                <div class="funnel-bar" style="flex:0.5"></div>
+                <span class="funnel-lbl">Interesados</span>
+              </div>
+              <div class="funnel-step">
+                <div class="funnel-bar" style="flex:0.28"></div>
+                <span class="funnel-lbl">Clientes</span>
+              </div>
+            </div>
+          </div>
+          <div class="bl-card__body">
+            <div class="bl-card__meta">
+              <span class="bl-cat-badge">Leads</span>
+              <span class="bl-meta-read" style="font-size:11px;color:var(--color-texto-tenue)">8 min</span>
+            </div>
+            <h3 class="bl-card__title">Cómo generar 50 leads calificados por mes sin invertir en publicidad</h3>
+            <p class="bl-card__excerpt">
+              Orgánico, consistente y escalable. El sistema de generación de leads que implementamos para consultoras, coaches y freelancers.
+            </p>
+            <a href="#" class="bl-card__link">
+              Leer →
+            </a>
+          </div>
+        </article>
+
+      </div><!-- /bl-grid -->
+    </div>
+  </section>
+
+  <!-- ─── NEWSLETTER ─────────────────────────────────────── -->
+  <section class="bl-newsletter">
+    <div class="container">
+      <div class="bl-newsletter__inner" id="blNewsletter">
+        <div class="bl-newsletter__icon">✉️</div>
+        <h2 class="bl-newsletter__title">Estrategia directa<br>a tu bandeja</h2>
+        <p class="bl-newsletter__sub">
+          Cada semana, un artículo con estrategias concretas para hacer crecer tu negocio. Sin spam. Te podés dar de baja cuando quieras.
+        </p>
+        <form class="bl-newsletter__form" onsubmit="handleNewsletterSubmit(event)">
+          <input
+            type="email"
+            class="bl-newsletter__input"
+            placeholder="tu@email.com"
+            required
+          />
+          <button type="submit" class="bl-newsletter__btn">Suscribirme</button>
+        </form>
+        <p class="bl-newsletter__disclaimer">+500 suscriptores. Sin spam, nunca.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span class="footer__logo">KOVA</span>
+      <span class="footer__copy">© 2026 KOVA. Todos los derechos reservados.</span>
+    </div>
+  </footer>
+
+  <!-- WhatsApp float -->
+  <a href="https://wa.me/5491100000000?text=Hola%20KOVA%2C%20leí%20su%20blog%20y%20quiero%20saber%20más" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <!-- SCRIPTS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+  <script src="src/main.js"></script>
+
+  <script>
+    window.onPageInit = function () {
+
+      // Hero entrance
+      gsap.fromTo(
+        ['#blHero .bl-hero__badge', '#blHero .bl-hero__title', '#blHero .bl-hero__sub', '#blHero .bl-hero__tags'],
+        { opacity: 0, y: 48 },
+        { opacity: 1, y: 0, duration: 0.9, stagger: 0.14, ease: 'power3.out' }
+      );
+
+      // Featured section
+      gsap.from('#blFeatured > *', {
+        scrollTrigger: { trigger: '#blFeatured', start: 'top 80%' },
+        opacity: 0, y: 40, duration: 0.8, stagger: 0.15, ease: 'power3.out'
+      });
+
+      // Cards
+      gsap.from('#blGrid .bl-card', {
+        scrollTrigger: { trigger: '#blGrid', start: 'top 82%' },
+        opacity: 0, y: 48, scale: 0.97,
+        duration: 0.65, stagger: 0.1, ease: 'power3.out'
+      });
+
+      // Newsletter
+      gsap.from('#blNewsletter > *', {
+        scrollTrigger: { trigger: '#blNewsletter', start: 'top 82%' },
+        opacity: 0, y: 32, duration: 0.7, stagger: 0.12, ease: 'power3.out'
+      });
+    };
+
+    // Tag filtering (visual only — future extension)
+    document.querySelectorAll('.bl-tag').forEach(tag => {
+      tag.addEventListener('click', () => {
+        document.querySelectorAll('.bl-tag').forEach(t => t.classList.remove('bl-tag--active'));
+        tag.classList.add('bl-tag--active');
+      });
+    });
+
+    // Newsletter form
+    function handleNewsletterSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.bl-newsletter__btn');
+      btn.textContent = '¡Listo! ✓';
+      btn.style.background = '#22c55e';
+      e.target.reset();
+      setTimeout(() => {
+        btn.textContent = 'Suscribirme';
+        btn.style.background = '';
+      }, 3000);
+    }
+
+    // Smooth scroll for anchors
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) gsap.to(window, { duration: 0.55, scrollTo: { y: target, offsetY: 80 }, ease: 'power2.inOut' });
+      });
+    });
+  </script>
+
+</body>
+</html>
