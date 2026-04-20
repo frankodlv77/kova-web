@@ -4709,3 +4709,235 @@ html, body {
   .hero { padding: 88px 16px 48px !important; }
   .hero__form-card { max-width: 100% !important; padding: 24px 16px !important; }
 }
+
+/* ============================================================
+   URGENCIA — Disponibilidad del mes
+   ============================================================ */
+.urgencia {
+  padding: 100px 0;
+  background: var(--bg-2);
+  position: relative;
+  overflow: hidden;
+}
+
+.urgencia::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(232,80,26,0.08) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.urgencia__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+/* Left col */
+.urgencia__kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--fuente-ui);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+.urgencia__kicker-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: urge-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes urge-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.7); }
+}
+
+.urgencia__title {
+  font-family: var(--fuente-titulo);
+  font-size: clamp(32px, 3.5vw, 52px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+
+.urgencia__title em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.urgencia__desc {
+  font-size: 16px;
+  color: var(--text-muted);
+  line-height: 1.75;
+  margin-bottom: 36px;
+  max-width: 420px;
+}
+
+.urgencia__countdown {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--text-dim);
+  margin-bottom: 36px;
+}
+
+.urgencia__countdown-num {
+  font-family: var(--fuente-titulo);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text);
+  min-width: 32px;
+  text-align: center;
+}
+
+.urgencia__countdown-sep {
+  font-family: var(--fuente-titulo);
+  font-size: 18px;
+  color: var(--accent);
+}
+
+/* Right col */
+.urgencia__slots {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 44px 40px;
+}
+
+.urgencia__slots-title {
+  font-family: var(--fuente-ui);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 28px;
+}
+
+.urgencia__slots-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 36px;
+}
+
+.urgencia__slot {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+}
+
+.urgencia__slot--taken {
+  background: rgba(232,80,26,0.06);
+  border-color: rgba(232,80,26,0.2);
+  opacity: 0.7;
+}
+
+.urgencia__slot--available {
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(255,255,255,0.1);
+  animation: slot-glow 3s ease-in-out infinite;
+}
+
+@keyframes slot-glow {
+  0%, 100% { border-color: rgba(255,255,255,0.1); box-shadow: none; }
+  50% { border-color: rgba(232,80,26,0.35); box-shadow: 0 0 16px rgba(232,80,26,0.08); }
+}
+
+.urgencia__slot-icon {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.urgencia__slot--taken .urgencia__slot-icon { background: var(--accent); }
+.urgencia__slot--available .urgencia__slot-icon {
+  background: transparent;
+  border: 2px solid rgba(255,255,255,0.25);
+}
+
+.urgencia__slot-label {
+  font-size: 14px;
+  font-weight: 500;
+  flex: 1;
+}
+
+.urgencia__slot--taken .urgencia__slot-label { color: var(--text-muted); text-decoration: line-through; }
+.urgencia__slot--available .urgencia__slot-label { color: var(--text); }
+
+.urgencia__slot-badge {
+  font-family: var(--fuente-ui);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 100px;
+}
+
+.urgencia__slot--taken .urgencia__slot-badge {
+  background: rgba(232,80,26,0.15);
+  color: var(--accent);
+}
+
+.urgencia__slot--available .urgencia__slot-badge {
+  background: rgba(255,255,255,0.08);
+  color: var(--text-dim);
+}
+
+.urgencia__bar-wrap {
+  margin-bottom: 28px;
+}
+
+.urgencia__bar-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-bottom: 10px;
+}
+
+.urgencia__bar-label span:last-child { color: var(--accent); font-weight: 600; }
+
+.urgencia__bar-track {
+  height: 6px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.urgencia__bar-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent), #ff8c00);
+  border-radius: 6px;
+  transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .urgencia__inner { grid-template-columns: 1fr; gap: 40px; }
+  .urgencia__desc { max-width: 100%; }
+}
+
+@media (max-width: 768px) {
+  .urgencia { padding: 72px 0; }
+  .urgencia__slots { padding: 28px 20px; }
+  .urgencia__title { font-size: clamp(28px, 7vw, 42px); }
+}

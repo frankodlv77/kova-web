@@ -1054,3 +1054,48 @@ function setupHamburger() {
 }
 
 setupHamburger();
+
+/* ============================================================
+   URGENCIA — Countdown + barra animada
+   ============================================================ */
+function setupUrgencia() {
+  // Countdown al fin de mes
+  function updateCountdown() {
+    const now = new Date();
+    const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 1, 0, 0, 0);
+    const diff = endOfMonth - now;
+    const days  = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const mins  = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const d = document.getElementById('urgDays');
+    const h = document.getElementById('urgHours');
+    const m = document.getElementById('urgMins');
+    if (d) d.textContent = String(days).padStart(2,'0');
+    if (h) h.textContent = String(hours).padStart(2,'0');
+    if (m) m.textContent = String(mins).padStart(2,'0');
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 30000);
+
+  // Barra animada al hacer scroll
+  ScrollTrigger.create({
+    trigger: '.urgencia',
+    start: 'top 75%',
+    once: true,
+    onEnter: () => {
+      const fill = document.getElementById('urgBarFill');
+      if (fill) fill.style.width = '60%';
+
+      gsap.from('.urgencia__left > *', { opacity: 0, y: 32, duration: 0.7, stagger: 0.12, ease: 'power3.out' });
+      gsap.from('.urgencia__slots', { opacity: 0, x: 40, duration: 0.8, ease: 'power3.out', delay: 0.2 });
+      gsap.from('.urgencia__slot', { opacity: 0, y: 16, duration: 0.5, stagger: 0.1, ease: 'power3.out', delay: 0.4 });
+    }
+  });
+}
+
+// Agregar al onPageInit
+const _prevInit = window.onPageInit;
+window.onPageInit = function() {
+  if (_prevInit) _prevInit();
+  setupUrgencia();
+};
