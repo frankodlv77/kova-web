@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <!-- Orange radial glow -->
+    <radialGradient id="glow" cx="70%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#E8501A" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#E8501A" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Grid pattern -->
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="white" stroke-width="0.6" stroke-opacity="0.04"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0D0D0D"/>
+
+  <!-- Grid texture -->
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <!-- Orange glow -->
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- Left accent line -->
+  <line x1="80" y1="180" x2="80" y2="450" stroke="#E8501A" stroke-width="2" stroke-opacity="0.6"/>
+
+  <!-- KOVA text -->
+  <text
+    x="116"
+    y="370"
+    font-family="'Didot', 'GFS Didot', 'Bodoni MT', 'Playfair Display', Georgia, serif"
+    font-size="200"
+    font-weight="400"
+    letter-spacing="8"
+    fill="white">KOVA</text>
+
+  <!-- Orange underline under O (approximate position) -->
+  <line x1="316" y1="390" x2="518" y2="390" stroke="#E8501A" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Orange dot after A -->
+  <circle cx="940" cy="360" r="18" fill="#E8501A"/>
+
+  <!-- Tagline -->
+  <text
+    x="116"
+    y="460"
+    font-family="'DM Sans', 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif"
+    font-size="28"
+    font-weight="300"
+    letter-spacing="10"
+    fill="white"
+    fill-opacity="0.5">CRECIMIENTO DIGITAL</text>
+
+  <!-- URL bottom right -->
+  <text
+    x="1120"
+    y="580"
+    font-family="'Courier New', Courier, monospace"
+    font-size="18"
+    fill="white"
+    fill-opacity="0.28"
+    text-anchor="end">kova-systems.com</text>
+</svg>
