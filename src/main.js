@@ -1069,14 +1069,184 @@ function setupHamburger() {
 setupHamburger();
 
 /* ============================================================
-   LANGUAGE SWITCHER
+   LANGUAGE SWITCHER — Full translation system
    ============================================================ */
 (function() {
+
+  /* ── TRANSLATIONS DICTIONARY ─────────────────────────────
+     Key = CSS selector, Value = innerHTML for that language  */
+  const T = {
+    es: {
+      // NAV
+      '.nav__links li:nth-child(1) a': 'Inicio',
+      '.nav__links li:nth-child(2) a': 'Servicios',
+      '.nav__links li:nth-child(3) a': 'Contacto',
+      '.nav > .btn--outline': 'Hablemos',
+      // MOBILE MENU
+      '.nav__mobile-links li:nth-child(1) a': 'Inicio',
+      '.nav__mobile-links li:nth-child(2) a': 'Servicios',
+      '.nav__mobile-links li:nth-child(3) a': 'Planes',
+      '.nav__mobile-links li:nth-child(4) a': 'Contacto',
+      // HERO (index)
+      '#heroTag': 'Marketing · RRSS · SEO · Marca Personal · Automatización',
+      '#heroTitle': 'Tu marca crece.<br><span class="hero__title--accent">Tu negocio escala.</span>',
+      '#heroSub': 'Diseñamos estrategias de marketing digital, posicionamiento orgánico y sistemas inteligentes que hacen crecer tu marca y escalar tu negocio. Sin vueltas.',
+      '#heroCta': '<a href="#contacto" class="btn btn--primary magnetic">Quiero crecer</a><a href="#servicios" class="btn btn--ghost magnetic">¿Qué hacemos?</a>',
+      // HERO FORM CARD
+      '.hfc__eyebrow': 'Empezá hoy',
+      '.hfc__title': '¿Listo para crecer?',
+      '.hfc__sub': 'Dejá tus datos y te respondemos en menos de 24hs.',
+      '.hfc__submit': 'Quiero crecer →',
+      // SERVICIOS section
+      '.servicios .section__title': 'Lo que hacemos',
+      '.servicios .section__sub': 'Crecimiento real, estrategia concreta. Sin humo.',
+      // DESAFIO
+      '.desafio .section__title': '¿Cuál es tu mayor <span class="accent-heading">desafío hoy?</span>',
+      '.desafio .section__sub': 'Tocá el área donde querés avanzar y te mostramos exactamente qué haríamos.',
+      // RESULTADOS
+      '.resultados .section__title': 'Resultados que <span class="accent-heading">hablan solos.</span>',
+      '.resultados .section__sub': 'Negocios reales, números reales. Sin pantallazos editados.',
+      // PLANES
+      '.planes .section__title': 'Elegí tu plan.<br><span class="accent-heading">Empezá esta semana.</span>',
+      '.planes .section__sub': 'Sin contratos anuales, sin letra chica. Empezamos rápido y escalamos a tu ritmo.',
+      // SPEED RACE
+      '.speed-race .section__title': 'Tu equipo humano <em style="color:var(--color-acento);font-style:normal">vs KOVA</em>',
+      // PROCESO
+      '.proceso .section__title': 'Solo <span class="proceso__accent">3 pasos</span> para automatizar',
+      '.proceso .section__sub': 'En menos de 48 horas tu sistema ya está funcionando.',
+      // CONTACTO
+      '.contacto .section__title': '¿Listo para crecer en serio?',
+      '.contacto .section__sub': 'Contanos en qué área querés avanzar y armamos una estrategia para vos.',
+      // BLOG PREVIEW
+      '.blog-preview__kicker': 'Del equipo KOVA',
+      '.blog-preview__title': 'Ideas que generan<br><em>resultados reales</em>',
+      '.blog-preview__all': 'Ver todos los artículos →',
+      // FOOTER
+      '.footer__copy': '© 2026 KOVA. Todos los derechos reservados.',
+      // SERVICIOS page hero
+      '#sv2Kicker': 'Servicios KOVA',
+      '#sv2Title': 'Cada servicio.<br><span>Un resultado</span> concreto.',
+      '#sv2Sub': 'No vendemos paquetes genéricos. Trabajamos en las áreas donde tu negocio más necesita crecer — con estrategia, ejecución y métricas reales.',
+      '.sv2-services__title': 'Nuestros servicios',
+      '.sv2-services__count': '4 servicios disponibles',
+      '.sv2-proceso__kicker': 'Cómo trabajamos',
+      '.sv2-proceso__title': 'Del primer contacto<br>a resultados reales',
+      '.sv2-cta__title': '¿Por dónde<br>querés empezar?',
+      '.sv2-cta__sub': 'Contanos cuál es tu mayor desafío ahora mismo. En 24 horas te respondemos con un plan concreto — gratis.',
+      // BLOG page hero
+      '.bl-hero__title': 'El <em>Blog</em><br>de KOVA',
+      '.bl-hero__sub': 'Estrategias reales de marketing digital, RRSS, SEO, marca personal y automatización — sin relleno, directo al grano.',
+      '.bl-articles__title': 'Todos los artículos',
+      '.bl-newsletter__title': 'Estrategia directa<br>a tu bandeja',
+      '.bl-newsletter__sub': 'Cada semana, un artículo con estrategias concretas para hacer crecer tu negocio. Sin spam.',
+    },
+    en: {
+      // NAV
+      '.nav__links li:nth-child(1) a': 'Home',
+      '.nav__links li:nth-child(2) a': 'Services',
+      '.nav__links li:nth-child(3) a': 'Contact',
+      '.nav > .btn--outline': 'Let\'s talk',
+      // MOBILE MENU
+      '.nav__mobile-links li:nth-child(1) a': 'Home',
+      '.nav__mobile-links li:nth-child(2) a': 'Services',
+      '.nav__mobile-links li:nth-child(3) a': 'Plans',
+      '.nav__mobile-links li:nth-child(4) a': 'Contact',
+      // HERO (index)
+      '#heroTag': 'Marketing · Social Media · SEO · Personal Brand · Automation',
+      '#heroTitle': 'Your brand grows.<br><span class="hero__title--accent">Your business scales.</span>',
+      '#heroSub': 'We design digital marketing strategies, organic positioning and intelligent systems that grow your brand and scale your business. No fluff.',
+      '#heroCta': '<a href="#contacto" class="btn btn--primary magnetic">I want to grow</a><a href="#servicios" class="btn btn--ghost magnetic">What do we do?</a>',
+      // HERO FORM CARD
+      '.hfc__eyebrow': 'Start today',
+      '.hfc__title': 'Ready to grow?',
+      '.hfc__sub': 'Leave your details and we\'ll get back to you in less than 24hs.',
+      '.hfc__submit': 'Let\'s grow →',
+      // SERVICIOS section
+      '.servicios .section__title': 'What we do',
+      '.servicios .section__sub': 'Real growth, concrete strategy. No BS.',
+      // DESAFIO
+      '.desafio .section__title': 'What\'s your biggest <span class="accent-heading">challenge today?</span>',
+      '.desafio .section__sub': 'Tap the area where you want to move forward and we\'ll show you exactly what we\'d do.',
+      // RESULTADOS
+      '.resultados .section__title': 'Results that <span class="accent-heading">speak for themselves.</span>',
+      '.resultados .section__sub': 'Real businesses, real numbers. No edited screenshots.',
+      // PLANES
+      '.planes .section__title': 'Choose your plan.<br><span class="accent-heading">Start this week.</span>',
+      '.planes .section__sub': 'No annual contracts, no fine print. We start fast and scale at your pace.',
+      // SPEED RACE
+      '.speed-race .section__title': 'Your human team <em style="color:var(--color-acento);font-style:normal">vs KOVA</em>',
+      // PROCESO
+      '.proceso .section__title': 'Only <span class="proceso__accent">3 steps</span> to automate',
+      '.proceso .section__sub': 'In less than 48 hours your system is already running.',
+      // CONTACTO
+      '.contacto .section__title': 'Ready to grow for real?',
+      '.contacto .section__sub': 'Tell us which area you want to move forward in and we\'ll build a strategy for you.',
+      // BLOG PREVIEW
+      '.blog-preview__kicker': 'From the KOVA team',
+      '.blog-preview__title': 'Ideas that generate<br><em>real results</em>',
+      '.blog-preview__all': 'See all articles →',
+      // FOOTER
+      '.footer__copy': '© 2026 KOVA. All rights reserved.',
+      // SERVICIOS page hero
+      '#sv2Kicker': 'KOVA Services',
+      '#sv2Title': 'Each service.<br><span>One concrete</span> result.',
+      '#sv2Sub': 'We don\'t sell generic packages. We work in the areas where your business needs to grow most — with strategy, execution and real metrics.',
+      '.sv2-services__title': 'Our services',
+      '.sv2-services__count': '4 services available',
+      '.sv2-proceso__kicker': 'How we work',
+      '.sv2-proceso__title': 'From first contact<br>to real results',
+      '.sv2-cta__title': 'Where do you<br>want to start?',
+      '.sv2-cta__sub': 'Tell us your biggest challenge right now. In 24 hours we\'ll reply with a concrete plan — free.',
+      // BLOG page hero
+      '.bl-hero__title': 'The KOVA<br><em>Blog</em>',
+      '.bl-hero__sub': 'Real digital marketing strategies — social media, SEO, personal brand, automation. No filler, straight to the point.',
+      '.bl-articles__title': 'All articles',
+      '.bl-newsletter__title': 'Strategy straight<br>to your inbox',
+      '.bl-newsletter__sub': 'Every week, one article with concrete strategies to grow your business. No spam.',
+    }
+  };
+
+  // Apply translations to the page
+  function applyLang(lang) {
+    const dict = T[lang];
+    if (!dict) return;
+    Object.entries(dict).forEach(([selector, html]) => {
+      const el = document.querySelector(selector);
+      if (el) el.innerHTML = html;
+    });
+    document.documentElement.lang = lang;
+    localStorage.setItem('kova-lang', lang);
+  }
+
+  // Update the switcher UI
+  function updateSwitcherUI(lang, switcher, btn) {
+    const config = { es: { flag: '🇦🇷', label: 'ES' }, en: { flag: '🇺🇸', label: 'EN' } };
+    const c = config[lang];
+    btn.querySelector('.lang-switcher__flag').textContent = c.flag;
+    btn.querySelectorAll('span')[1].textContent = c.label;
+    switcher.querySelectorAll('.lang-switcher__option').forEach(o => {
+      o.classList.toggle('lang-switcher__option--active', o.dataset.lang === lang);
+    });
+    // Remove "Próximo" tag from options
+    switcher.querySelectorAll('.lang-switcher__option-tag').forEach(t => t.remove());
+  }
+
+  // Init
   const switcher = document.getElementById('langSwitcher');
   const btn      = document.getElementById('langBtn');
   if (!switcher || !btn) return;
 
-  // Toggle open/close
+  // Apply saved language on load
+  const saved = localStorage.getItem('kova-lang') || 'es';
+  if (saved !== 'es') {
+    applyLang(saved);
+    updateSwitcherUI(saved, switcher, btn);
+  } else {
+    // Remove "Próximo" tags in ES mode too
+    setTimeout(() => switcher.querySelectorAll('.lang-switcher__option-tag').forEach(t => t.remove()), 0);
+  }
+
+  // Toggle dropdown
   btn.addEventListener('click', (e) => {
     e.stopPropagation();
     const isOpen = switcher.classList.toggle('open');
@@ -1094,51 +1264,10 @@ setupHamburger();
     opt.addEventListener('click', (e) => {
       e.stopPropagation();
       const lang = opt.dataset.lang;
-
-      if (lang === 'en') {
-        // EN not available yet — show toast
-        showLangToast();
-        switcher.classList.remove('open');
-        return;
-      }
-
-      // Mark active
-      switcher.querySelectorAll('.lang-switcher__option').forEach(o => o.classList.remove('lang-switcher__option--active'));
-      opt.classList.add('lang-switcher__option--active');
-
-      // Update button display
-      const flag = opt.querySelector('.lang-switcher__option-flag').textContent;
-      btn.querySelector('.lang-switcher__flag').textContent = flag;
-      btn.querySelectorAll('span')[1].textContent = lang.toUpperCase();
-
+      applyLang(lang);
+      updateSwitcherUI(lang, switcher, btn);
       switcher.classList.remove('open');
       btn.setAttribute('aria-expanded', 'false');
     });
   });
-
-  function showLangToast() {
-    let toast = document.getElementById('langToast');
-    if (!toast) {
-      toast = document.createElement('div');
-      toast.id = 'langToast';
-      toast.style.cssText = `
-        position: fixed; bottom: 88px; left: 50%; transform: translateX(-50%) translateY(16px);
-        background: #1a1a1a; border: 1px solid rgba(232,80,26,0.3); border-radius: 10px;
-        padding: 12px 24px; font-family: var(--fuente-ui, sans-serif); font-size: 13px;
-        font-weight: 700; color: #fff; z-index: 9999; white-space: nowrap;
-        transition: opacity 0.3s, transform 0.3s; opacity: 0; pointer-events: none;
-        box-shadow: 0 8px 32px rgba(0,0,0,0.4);
-      `;
-      toast.textContent = '🇺🇸 English version coming soon!';
-      document.body.appendChild(toast);
-    }
-    requestAnimationFrame(() => {
-      toast.style.opacity = '1';
-      toast.style.transform = 'translateX(-50%) translateY(0)';
-    });
-    setTimeout(() => {
-      toast.style.opacity = '0';
-      toast.style.transform = 'translateX(-50%) translateY(16px)';
-    }, 2800);
-  }
 })();
