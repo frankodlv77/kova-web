@@ -161,19 +161,6 @@ function setupScrollAnimations() {
   });
 
 
-  // Form
-  gsap.from('.input-wrap, .form .btn', {
-    scrollTrigger: {
-      trigger: '.form',
-      start: 'top 85%',
-      toggleActions: 'play none none reverse'
-    },
-    opacity: 0,
-    y: 30,
-    duration: 0.6,
-    stagger: 0.08,
-    ease: 'power3.out'
-  });
 }
 
 /* =====================
@@ -519,43 +506,71 @@ function setupKovaLive() {
 }
 
 /* =====================
-   FORM SUBMIT
+   FORM SUBMIT — Google Sheets
    ===================== */
+const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbzmdl7ZM8nCzqEQNP7v7eSAUYBEONf3Q7z750v-qejfXtBqrOeDCNsy2jWaToFyimLkkg/exec';
+
+async function sendToSheets(data) {
+  // no-cors porque Apps Script no soporta CORS — la data llega igual
+  await fetch(SHEETS_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain' },
+    body: JSON.stringify(data)
+  });
+}
+
+function showFormSuccess(btn, successText, originalText, formEl) {
+  gsap.to(btn, { scale: 0.96, duration: 0.1, yoyo: true, repeat: 1 });
+  btn.textContent = successText;
+  btn.style.background = '#22c55e';
+  setTimeout(() => {
+    btn.textContent = originalText;
+    btn.style.background = '';
+    btn.disabled = false;
+    if (formEl) formEl.reset();
+  }, 3000);
+}
+
 function setupForm() {
   const form = document.getElementById('contactoForm');
   if (!form) return;
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const btn = form.querySelector('button[type="submit"]');
-    gsap.to(btn, { scale: 0.96, duration: 0.1, yoyo: true, repeat: 1 });
-    btn.textContent = '¡Mensaje enviado!';
-    btn.style.background = '#22c55e';
+    const originalText = btn.textContent;
+    btn.textContent = 'Enviando...';
     btn.disabled = true;
-    setTimeout(() => {
-      btn.textContent = 'Enviar mensaje';
-      btn.style.background = '';
-      btn.disabled = false;
-      form.reset();
-    }, 3000);
+
+    await sendToSheets({
+      nombre:  form.querySelector('[name="nombre"]').value,
+      email:   form.querySelector('[name="email"]').value,
+      area:    form.querySelector('[name="area"]').value,
+      mensaje: form.querySelector('[name="mensaje"]').value,
+      origen:  'formulario-contacto'
+    });
+
+    showFormSuccess(btn, '¡Mensaje enviado!', originalText, form);
   });
 
-  // Hero form submit
   const heroForm = document.getElementById('heroContactForm');
   if (heroForm) {
-    heroForm.addEventListener('submit', (e) => {
+    heroForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       const btn = heroForm.querySelector('button[type="submit"]');
-      gsap.to(btn, { scale: 0.96, duration: 0.1, yoyo: true, repeat: 1 });
-      btn.textContent = '¡Te contactamos pronto!';
-      btn.style.background = '#22c55e';
+      const originalText = btn.textContent;
+      btn.textContent = 'Enviando...';
       btn.disabled = true;
-      setTimeout(() => {
-        btn.textContent = 'Quiero empezar →';
-        btn.style.background = '';
-        btn.disabled = false;
-        heroForm.reset();
-      }, 3000);
+
+      await sendToSheets({
+        nombre: heroForm.querySelector('[name="nombre"]').value,
+        email:  heroForm.querySelector('[name="email"]').value,
+        area:   heroForm.querySelector('[name="area"]').value,
+        origen: 'hero-form'
+      });
+
+      showFormSuccess(btn, '¡Te contactamos pronto!', originalText, heroForm);
     });
   }
 }
