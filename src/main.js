@@ -1398,6 +1398,16 @@ setupHamburger();
       ? totalMin + ' días'
       : totalMin + '–' + totalMax + ' días';
 
+    // Build WhatsApp link with config summary
+    const featList = featureLabels.length > 0
+      ? featureLabels.map(f => f.name).join(', ')
+      : 'Ninguno';
+    const styleName = wcState.style ? STYLES[wcState.style] : 'Sin preferencia';
+    const daysText = totalMin === totalMax ? totalMin + ' días' : totalMin + '–' + totalMax + ' días';
+    const waMsg = `Hola KOVA! Usé el configurador y quiero:\n\n📌 Tipo: ${t.name}\n🎨 Estilo: ${styleName}\n✅ Extras: ${featList}\n💰 Presupuesto estimado: $${totalPrice.toLocaleString('es-AR')}\n⏱ Plazo estimado: ${daysText}\n\n¿Pueden contactarme para avanzar?`;
+    const waBtn = document.getElementById('wcWaBtn');
+    if (waBtn) waBtn.href = 'https://wa.me/542615336300?text=' + encodeURIComponent(waMsg);
+
     wcGoStep(4);
   };
 
