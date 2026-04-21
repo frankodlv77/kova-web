@@ -508,7 +508,7 @@ function setupKovaLive() {
 /* =====================
    FORM SUBMIT — Google Sheets
    ===================== */
-const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbzTkqYCpjrMhEw8fAnAokAinAyr59iyFCPQHg_aBaIIBuTfuJOty91f6XuPMqVMv_cJsQ/exec';
+const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbweyCgq-8O4rYQHvQ2GJaU_QrbsVTyJGfufNQbyTw4xtv2p6DlX99k6eDe6W5Qh3cRMxA/exec';
 
 async function sendToSheets(data) {
   const params = new URLSearchParams(data).toString();
