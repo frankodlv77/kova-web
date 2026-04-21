@@ -1271,3 +1271,132 @@ setupHamburger();
     });
   });
 })();
+
+/* ============================================================
+   WEB CONFIGURATOR
+   ============================================================ */
+(function() {
+  // Data
+  const TYPES = {
+    'landing-basica':  { name: 'Landing Básica',    price: 800,  minDays: 5,  maxDays: 7  },
+    'landing-avanzada':{ name: 'Landing Avanzada',  price: 1200, minDays: 7,  maxDays: 10 },
+    'sitio-3':         { name: 'Sitio 3 Páginas',   price: 1800, minDays: 10, maxDays: 14 },
+    'sitio-5':         { name: 'Sitio 5 Páginas',   price: 2500, minDays: 14, maxDays: 21 },
+    'ecommerce':       { name: 'Tienda Online',      price: 3500, minDays: 21, maxDays: 30 },
+    'portfolio':       { name: 'Portfolio',          price: 1200, minDays: 7,  maxDays: 10 },
+  };
+
+  const STYLES = {
+    'dark':  'Dark & Moderno',
+    'clean': 'Clean & Minimalista',
+    'bold':  'Creativo & Bold',
+    'corp':  'Corporativo',
+  };
+
+  window.wcState = { type: null, features: [], style: null };
+
+  // Step navigation
+  window.wcGoStep = function(n) {
+    document.querySelectorAll('.wc-step').forEach(s => s.classList.add('wc-step--hidden'));
+    const target = document.getElementById('wcStep' + n);
+    if (target) target.classList.remove('wc-step--hidden');
+    updateProgress(n);
+    document.getElementById('wcCard')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  function updateProgress(step) {
+    document.querySelectorAll('.wc-prog__item').forEach((item, i) => {
+      const s = i + 1;
+      item.classList.remove('wc-prog__item--active', 'wc-prog__item--done');
+      if (s < step)  item.classList.add('wc-prog__item--done');
+      if (s === step) item.classList.add('wc-prog__item--active');
+    });
+    document.querySelectorAll('.wc-prog__line').forEach((line, i) => {
+      line.classList.toggle('wc-prog__line--done', i + 2 <= step);
+    });
+  }
+
+  // Type selection (single)
+  window.wcSelectType = function(btn) {
+    document.querySelectorAll('#wcStep1 .wc-opt').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    wcState.type = btn.dataset.id;
+    const next = document.getElementById('wcNext1');
+    if (next) next.disabled = false;
+  };
+
+  // Feature toggle (multi)
+  window.wcToggleFeature = function(btn) {
+    btn.classList.toggle('selected');
+    const id = btn.dataset.id;
+    if (btn.classList.contains('selected')) {
+      if (!wcState.features.includes(id)) wcState.features.push(id);
+    } else {
+      wcState.features = wcState.features.filter(f => f !== id);
+    }
+  };
+
+  // Style selection (single)
+  window.wcSelectStyle = function(btn) {
+    document.querySelectorAll('.wc-style-opt').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    wcState.style = btn.dataset.id;
+    const next = document.getElementById('wcNext3');
+    if (next) next.disabled = false;
+  };
+
+  // Build result
+  window.wcShowResult = function() {
+    const t = TYPES[wcState.type];
+    if (!t) return;
+
+    // Calculate totals
+    let extraPrice = 0, extraDays = 0;
+    const featureLabels = [];
+    document.querySelectorAll('#wcStep2 .wc-opt.selected').forEach(btn => {
+      extraPrice += parseInt(btn.dataset.price || 0);
+      extraDays  += parseInt(btn.dataset.days  || 0);
+      featureLabels.push({ icon: btn.querySelector('.wc-opt__icon').textContent, name: btn.querySelector('.wc-opt__name').textContent });
+    });
+
+    const totalPrice = t.price + extraPrice;
+    const totalMin   = t.minDays + extraDays;
+    const totalMax   = t.maxDays + extraDays;
+
+    // Fill result UI
+    document.getElementById('wcResTitle').textContent = t.name;
+
+    // Features chips
+    const featsEl = document.getElementById('wcResFeatures');
+    if (featureLabels.length > 0) {
+      featsEl.innerHTML = featureLabels.map(f =>
+        `<span class="wc-feat-chip">${f.icon} ${f.name}</span>`
+      ).join('');
+    } else {
+      featsEl.innerHTML = '<span class="wc-feat-chip">✅ Sin extras</span>';
+    }
+
+    // Style
+    const styleEl = document.getElementById('wcResStyleRow');
+    if (wcState.style) styleEl.textContent = '🎨 Estilo: ' + STYLES[wcState.style];
+
+    // Price
+    document.getElementById('wcResPrice').textContent = '$' + totalPrice.toLocaleString('es-AR');
+
+    // Days
+    document.getElementById('wcResDays').textContent = totalMin === totalMax
+      ? totalMin + ' días'
+      : totalMin + '–' + totalMax + ' días';
+
+    wcGoStep(4);
+  };
+
+  // Reset
+  window.wcReset = function() {
+    wcState = { type: null, features: [], style: null };
+    document.querySelectorAll('.wc-opt, .wc-style-opt').forEach(b => b.classList.remove('selected'));
+    const n1 = document.getElementById('wcNext1'); if (n1) n1.disabled = true;
+    const n3 = document.getElementById('wcNext3'); if (n3) n3.disabled = true;
+    wcGoStep(1);
+  };
+})();

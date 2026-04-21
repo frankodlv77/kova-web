@@ -997,6 +997,234 @@
     </div>
   </section>
 
+
+  <!-- WEB CONFIGURATOR -->
+  <section class="wc-section" id="web-config">
+    <div class="container">
+
+      <div class="wc-header">
+        <span class="wc-kicker">✦ Nuevo servicio</span>
+        <h2 class="wc-title">Configurá tu<br><em>sitio web ideal</em></h2>
+        <p class="wc-sub">Elegí lo que necesitás paso a paso. Al final te decimos cuánto cuesta y cuándo está listo.</p>
+      </div>
+
+      <!-- Progress indicators -->
+      <div class="wc-progress" id="wcProgress">
+        <div class="wc-prog__item wc-prog__item--active" data-step="1">
+          <div class="wc-prog__dot">1</div>
+          <span class="wc-prog__label">Tipo</span>
+        </div>
+        <div class="wc-prog__line"></div>
+        <div class="wc-prog__item" data-step="2">
+          <div class="wc-prog__dot">2</div>
+          <span class="wc-prog__label">Funciones</span>
+        </div>
+        <div class="wc-prog__line"></div>
+        <div class="wc-prog__item" data-step="3">
+          <div class="wc-prog__dot">3</div>
+          <span class="wc-prog__label">Estilo</span>
+        </div>
+        <div class="wc-prog__line"></div>
+        <div class="wc-prog__item" data-step="4">
+          <div class="wc-prog__dot">✓</div>
+          <span class="wc-prog__label">Resultado</span>
+        </div>
+      </div>
+
+      <!-- Main card -->
+      <div class="wc-card" id="wcCard">
+
+        <!-- ── STEP 1: Type ─────────────────── -->
+        <div class="wc-step" id="wcStep1">
+          <div class="wc-step__head">
+            <h3 class="wc-step__title">¿Qué tipo de sitio necesitás?</h3>
+            <p class="wc-step__hint">Elegí uno</p>
+          </div>
+          <div class="wc-grid wc-grid--3">
+            <button class="wc-opt" data-id="landing-basica" onclick="wcSelectType(this)">
+              <span class="wc-opt__icon">🚀</span>
+              <span class="wc-opt__name">Landing Básica</span>
+              <span class="wc-opt__desc">1 página simple y efectiva. Presentación + contacto.</span>
+              <span class="wc-opt__price">Desde $800</span>
+            </button>
+            <button class="wc-opt" data-id="landing-avanzada" onclick="wcSelectType(this)">
+              <span class="wc-opt__icon">⚡</span>
+              <span class="wc-opt__name">Landing Avanzada</span>
+              <span class="wc-opt__desc">1 página con secciones premium, animaciones y más.</span>
+              <span class="wc-opt__price">Desde $1.200</span>
+            </button>
+            <button class="wc-opt" data-id="sitio-3" onclick="wcSelectType(this)">
+              <span class="wc-opt__icon">📄</span>
+              <span class="wc-opt__name">Sitio 3 Páginas</span>
+              <span class="wc-opt__desc">Home · Servicios · Contacto. Presencia completa.</span>
+              <span class="wc-opt__price">Desde $1.800</span>
+            </button>
+            <button class="wc-opt" data-id="sitio-5" onclick="wcSelectType(this)">
+              <span class="wc-opt__icon">🌐</span>
+              <span class="wc-opt__name">Sitio 5 Páginas</span>
+              <span class="wc-opt__desc">Presencia web profesional completa con blog.</span>
+              <span class="wc-opt__price">Desde $2.500</span>
+            </button>
+            <button class="wc-opt" data-id="ecommerce" onclick="wcSelectType(this)">
+              <span class="wc-opt__icon">🛒</span>
+              <span class="wc-opt__name">Tienda Online</span>
+              <span class="wc-opt__desc">Catálogo de productos + carrito + pagos online.</span>
+              <span class="wc-opt__price">Desde $3.500</span>
+            </button>
+            <button class="wc-opt" data-id="portfolio" onclick="wcSelectType(this)">
+              <span class="wc-opt__icon">🎨</span>
+              <span class="wc-opt__name">Portfolio</span>
+              <span class="wc-opt__desc">Mostrá tu trabajo con impacto visual máximo.</span>
+              <span class="wc-opt__price">Desde $1.200</span>
+            </button>
+          </div>
+          <div class="wc-nav wc-nav--right">
+            <button class="btn btn--primary" id="wcNext1" onclick="wcGoStep(2)" disabled>Siguiente →</button>
+          </div>
+        </div>
+
+        <!-- ── STEP 2: Features ─────────────── -->
+        <div class="wc-step wc-step--hidden" id="wcStep2">
+          <div class="wc-step__head">
+            <h3 class="wc-step__title">¿Qué funciones necesitás?</h3>
+            <p class="wc-step__hint">Podés elegir varias</p>
+          </div>
+          <div class="wc-grid wc-grid--4">
+            <button class="wc-opt wc-opt--sm wc-opt--multi" data-id="blog" data-price="300" data-days="3" onclick="wcToggleFeature(this)">
+              <span class="wc-opt__icon">📝</span>
+              <span class="wc-opt__name">Blog / Noticias</span>
+            </button>
+            <button class="wc-opt wc-opt--sm wc-opt--multi" data-id="galeria" data-price="150" data-days="2" onclick="wcToggleFeature(this)">
+              <span class="wc-opt__icon">🖼️</span>
+              <span class="wc-opt__name">Galería de fotos</span>
+            </button>
+            <button class="wc-opt wc-opt--sm wc-opt--multi" data-id="chat" data-price="100" data-days="1" onclick="wcToggleFeature(this)">
+              <span class="wc-opt__icon">💬</span>
+              <span class="wc-opt__name">Chat / WhatsApp</span>
+            </button>
+            <button class="wc-opt wc-opt--sm wc-opt--multi" data-id="animaciones" data-price="300" data-days="3" onclick="wcToggleFeature(this)">
+              <span class="wc-opt__icon">✨</span>
+              <span class="wc-opt__name">Animaciones premium</span>
+            </button>
+            <button class="wc-opt wc-opt--sm wc-opt--multi" data-id="turnos" data-price="400" data-days="3" onclick="wcToggleFeature(this)">
+              <span class="wc-opt__icon">📅</span>
+              <span class="wc-opt__name">Turnos / Reservas</span>
+            </button>
+            <button class="wc-opt wc-opt--sm wc-opt--multi" data-id="idiomas" data-price="400" data-days="3" onclick="wcToggleFeature(this)">
+              <span class="wc-opt__icon">🌍</span>
+              <span class="wc-opt__name">2 idiomas (ES + EN)</span>
+            </button>
+            <button class="wc-opt wc-opt--sm wc-opt--multi" data-id="seo" data-price="200" data-days="2" onclick="wcToggleFeature(this)">
+              <span class="wc-opt__icon">🔍</span>
+              <span class="wc-opt__name">SEO optimizado</span>
+            </button>
+            <button class="wc-opt wc-opt--sm wc-opt--multi" data-id="analytics" data-price="0" data-days="0" onclick="wcToggleFeature(this)">
+              <span class="wc-opt__icon">📊</span>
+              <span class="wc-opt__name">Google Analytics</span>
+            </button>
+          </div>
+          <div class="wc-nav">
+            <button class="btn btn--outline" onclick="wcGoStep(1)">← Volver</button>
+            <button class="btn btn--primary" onclick="wcGoStep(3)">Siguiente →</button>
+          </div>
+        </div>
+
+        <!-- ── STEP 3: Style ────────────────── -->
+        <div class="wc-step wc-step--hidden" id="wcStep3">
+          <div class="wc-step__head">
+            <h3 class="wc-step__title">¿Qué estilo te representa?</h3>
+            <p class="wc-step__hint">Elegí uno</p>
+          </div>
+          <div class="wc-grid wc-grid--2">
+            <button class="wc-style-opt" data-id="dark" onclick="wcSelectStyle(this)">
+              <div class="wc-style-opt__preview wc-style-opt__preview--dark">
+                <div class="wsp-bar wsp-bar--1"></div>
+                <div class="wsp-bar wsp-bar--2"></div>
+                <div class="wsp-dot"></div>
+              </div>
+              <div class="wc-style-opt__info">
+                <span class="wc-style-opt__name">Dark & Moderno</span>
+                <span class="wc-style-opt__desc">Oscuro, premium, impactante. Como esta web.</span>
+              </div>
+            </button>
+            <button class="wc-style-opt" data-id="clean" onclick="wcSelectStyle(this)">
+              <div class="wc-style-opt__preview wc-style-opt__preview--clean">
+                <div class="wsp-bar wsp-bar--1"></div>
+                <div class="wsp-bar wsp-bar--2"></div>
+                <div class="wsp-dot wsp-dot--dark"></div>
+              </div>
+              <div class="wc-style-opt__info">
+                <span class="wc-style-opt__name">Clean & Minimalista</span>
+                <span class="wc-style-opt__desc">Blanco, limpio, elegante. Menos es más.</span>
+              </div>
+            </button>
+            <button class="wc-style-opt" data-id="bold" onclick="wcSelectStyle(this)">
+              <div class="wc-style-opt__preview wc-style-opt__preview--bold">
+                <div class="wsp-bar wsp-bar--1"></div>
+                <div class="wsp-bar wsp-bar--2"></div>
+                <div class="wsp-dot"></div>
+              </div>
+              <div class="wc-style-opt__info">
+                <span class="wc-style-opt__name">Creativo & Bold</span>
+                <span class="wc-style-opt__desc">Colorido, con energía, diseño que se destaca.</span>
+              </div>
+            </button>
+            <button class="wc-style-opt" data-id="corp" onclick="wcSelectStyle(this)">
+              <div class="wc-style-opt__preview wc-style-opt__preview--corp">
+                <div class="wsp-bar wsp-bar--1"></div>
+                <div class="wsp-bar wsp-bar--2"></div>
+                <div class="wsp-dot wsp-dot--blue"></div>
+              </div>
+              <div class="wc-style-opt__info">
+                <span class="wc-style-opt__name">Corporativo</span>
+                <span class="wc-style-opt__desc">Serio, profesional, confiable. Empresas y pymes.</span>
+              </div>
+            </button>
+          </div>
+          <div class="wc-nav">
+            <button class="btn btn--outline" onclick="wcGoStep(2)">← Volver</button>
+            <button class="btn btn--primary" id="wcNext3" onclick="wcShowResult()" disabled>Ver mi presupuesto →</button>
+          </div>
+        </div>
+
+        <!-- ── STEP 4: Result ───────────────── -->
+        <div class="wc-step wc-step--hidden" id="wcStep4">
+          <div class="wc-result" id="wcResult">
+            <div class="wc-result__left">
+              <div class="wc-result__badge" id="wcResBadge">Tu sitio web</div>
+              <h3 class="wc-result__title" id="wcResTitle">—</h3>
+
+              <div class="wc-result__features" id="wcResFeatures"></div>
+
+              <div class="wc-result__style-row" id="wcResStyleRow"></div>
+            </div>
+
+            <div class="wc-result__right">
+              <div class="wc-result__metric">
+                <div class="wc-result__metric-label">Inversión estimada</div>
+                <div class="wc-result__metric-value" id="wcResPrice">—</div>
+                <div class="wc-result__metric-note">Precio final confirmado en la consulta</div>
+              </div>
+              <div class="wc-result__metric">
+                <div class="wc-result__metric-label">Tu sitio listo en</div>
+                <div class="wc-result__metric-value wc-result__metric-value--accent" id="wcResDays">—</div>
+                <div class="wc-result__metric-note">Días hábiles desde la aprobación</div>
+              </div>
+
+              <a href="#contacto" class="btn btn--primary wc-result__cta" style="width:100%;justify-content:center;font-size:16px;padding:16px 24px;">
+                Quiero este sitio →
+              </a>
+              <p class="wc-result__disclaimer">Consultá gratis. Sin compromiso.</p>
+
+              <button class="wc-result__reset" onclick="wcReset()">↺ Empezar de nuevo</button>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /wc-card -->
+    </div>
+  </section>
+
   <!-- ── CTA FINAL ───────────────────────────────────── -->
   <section class="sv2-cta">
     <div class="sv2-cta__glow" aria-hidden="true"></div>
