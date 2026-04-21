@@ -1067,3 +1067,78 @@ function setupHamburger() {
 }
 
 setupHamburger();
+
+/* ============================================================
+   LANGUAGE SWITCHER
+   ============================================================ */
+(function() {
+  const switcher = document.getElementById('langSwitcher');
+  const btn      = document.getElementById('langBtn');
+  if (!switcher || !btn) return;
+
+  // Toggle open/close
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = switcher.classList.toggle('open');
+    btn.setAttribute('aria-expanded', isOpen);
+  });
+
+  // Close on outside click
+  document.addEventListener('click', () => {
+    switcher.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+  });
+
+  // Handle option selection
+  switcher.querySelectorAll('.lang-switcher__option').forEach(opt => {
+    opt.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const lang = opt.dataset.lang;
+
+      if (lang === 'en') {
+        // EN not available yet — show toast
+        showLangToast();
+        switcher.classList.remove('open');
+        return;
+      }
+
+      // Mark active
+      switcher.querySelectorAll('.lang-switcher__option').forEach(o => o.classList.remove('lang-switcher__option--active'));
+      opt.classList.add('lang-switcher__option--active');
+
+      // Update button display
+      const flag = opt.querySelector('.lang-switcher__option-flag').textContent;
+      btn.querySelector('.lang-switcher__flag').textContent = flag;
+      btn.querySelectorAll('span')[1].textContent = lang.toUpperCase();
+
+      switcher.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  function showLangToast() {
+    let toast = document.getElementById('langToast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'langToast';
+      toast.style.cssText = `
+        position: fixed; bottom: 88px; left: 50%; transform: translateX(-50%) translateY(16px);
+        background: #1a1a1a; border: 1px solid rgba(232,80,26,0.3); border-radius: 10px;
+        padding: 12px 24px; font-family: var(--fuente-ui, sans-serif); font-size: 13px;
+        font-weight: 700; color: #fff; z-index: 9999; white-space: nowrap;
+        transition: opacity 0.3s, transform 0.3s; opacity: 0; pointer-events: none;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      `;
+      toast.textContent = '🇺🇸 English version coming soon!';
+      document.body.appendChild(toast);
+    }
+    requestAnimationFrame(() => {
+      toast.style.opacity = '1';
+      toast.style.transform = 'translateX(-50%) translateY(0)';
+    });
+    setTimeout(() => {
+      toast.style.opacity = '0';
+      toast.style.transform = 'translateX(-50%) translateY(16px)';
+    }, 2800);
+  }
+})();
