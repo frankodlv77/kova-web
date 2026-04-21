@@ -511,13 +511,8 @@ function setupKovaLive() {
 const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbzmdl7ZM8nCzqEQNP7v7eSAUYBEONf3Q7z750v-qejfXtBqrOeDCNsy2jWaToFyimLkkg/exec';
 
 async function sendToSheets(data) {
-  // no-cors porque Apps Script no soporta CORS — la data llega igual
-  await fetch(SHEETS_URL, {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'text/plain' },
-    body: JSON.stringify(data)
-  });
+  const params = new URLSearchParams(data).toString();
+  await fetch(`${SHEETS_URL}?${params}`, { method: 'GET', mode: 'no-cors' });
 }
 
 function showFormSuccess(btn, successText, originalText, formEl) {
