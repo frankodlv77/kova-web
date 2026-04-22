@@ -1231,9 +1231,9 @@
                 <div class="wc-result__metric-note">Días hábiles desde la aprobación</div>
               </div>
 
-              <a href="#" id="wcWaBtn" class="btn btn--primary wc-result__cta" target="_blank" rel="noopener" style="width:100%;justify-content:center;font-size:16px;padding:16px 24px;">
+              <button id="wcWaBtn" class="btn btn--primary wc-result__cta" onclick="if(this.dataset.url) window.open(this.dataset.url,'_blank')" style="width:100%;justify-content:center;font-size:16px;padding:16px 24px;cursor:pointer;border:none;">
                 Quiero este sitio por WhatsApp →
-              </a>
+              </button>
               <p class="wc-result__disclaimer">También podés <a href="index.html#contacto" style="color:var(--color-acento);text-decoration:underline">escribirnos por mail</a>. Sin compromiso.</p>
 
               <button class="wc-result__reset" onclick="wcReset()">↺ Empezar de nuevo</button>
