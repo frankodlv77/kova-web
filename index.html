@@ -94,59 +94,78 @@
     justify-content: center;
   }
   .aria-avatar {
-    width: 140px;
-    height: 140px;
+    width: 200px;
+    height: 200px;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  .aria-avatar svg {
+  #aria-face {
+    overflow: visible;
+    filter: drop-shadow(0 0 18px rgba(232,80,26,0.25));
     transition: filter 0.4s ease;
   }
-  .aria--idle .aria-avatar-ring {
-    animation: ariaIdleRing 3s ease-in-out infinite;
+  .aria--thinking #aria-face { filter: drop-shadow(0 0 28px rgba(232,80,26,0.5)); }
+  .aria--speaking #aria-face { filter: drop-shadow(0 0 22px rgba(232,80,26,0.4)); }
+  /* Ring animations */
+  .aria-ring-1 { animation: ariaRing1 3s ease-in-out infinite; }
+  .aria-ring-2 { animation: ariaRing2 3s ease-in-out infinite 0.4s; }
+  .aria-ring-3 { animation: ariaRing3 3s ease-in-out infinite 0.8s; }
+  .aria--thinking .aria-ring-1 { animation: ariaRingThink 0.9s ease-in-out infinite; }
+  .aria--thinking .aria-ring-2 { animation: ariaRingThink 0.9s ease-in-out infinite 0.3s; }
+  .aria--thinking .aria-ring-3 { animation: ariaRingThink 0.9s ease-in-out infinite 0.6s; }
+  .aria--speaking .aria-ring-1 { animation: ariaRingSpeak 0.5s ease-out infinite; }
+  .aria--speaking .aria-ring-2 { animation: ariaRingSpeak 0.5s ease-out infinite 0.16s; }
+  .aria--speaking .aria-ring-3 { animation: ariaRingSpeak 0.5s ease-out infinite 0.32s; }
+  @keyframes ariaRing1 {
+    0%,100% { opacity:0.35; r:88; }
+    50%      { opacity:0.65; r:91; }
   }
-  .aria--thinking .aria-avatar-ring {
-    animation: ariaThinkRing 1s ease-in-out infinite;
+  @keyframes ariaRing2 {
+    0%,100% { opacity:0.2; r:75; }
+    50%      { opacity:0.4; r:78; }
   }
-  .aria--speaking .aria-avatar-ring {
-    animation: ariaSpeakRing 0.6s ease-in-out infinite;
+  @keyframes ariaRing3 {
+    0%,100% { opacity:0.1; r:60; }
+    50%      { opacity:0.25; r:63; }
   }
-  .aria-avatar-particles {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
+  @keyframes ariaRingThink {
+    0%,100% { opacity:0.5; }
+    50%      { opacity:1; }
   }
-  .aria--thinking .aria-particle {
-    animation: ariaOrbit 2s linear infinite;
+  @keyframes ariaRingSpeak {
+    0%   { opacity:0.9; }
+    100% { opacity:0; }
   }
-  .aria-particle:nth-child(2) { animation-delay: -0.66s; }
-  .aria-particle:nth-child(3) { animation-delay: -1.33s; }
-  @keyframes ariaIdleRing {
-    0%, 100% { opacity: 0.4; transform: scale(1); }
-    50% { opacity: 0.8; transform: scale(1.05); }
+  /* Face shape bob */
+  #aria-face-shape {
+    animation: ariaFaceBob 4s ease-in-out infinite;
+    transform-origin: 100px 100px;
   }
-  @keyframes ariaThinkRing {
-    0%, 100% { opacity: 0.6; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.12); }
+  @keyframes ariaFaceBob {
+    0%,100% { transform: translateY(0); }
+    50%      { transform: translateY(-4px); }
   }
-  @keyframes ariaSpeakRing {
-    0% { opacity: 0; transform: scale(1); }
-    50% { opacity: 0.9; transform: scale(1.2); }
-    100% { opacity: 0; transform: scale(1.4); }
+  /* Eye groups - for blink */
+  #aria-eye-left, #aria-eye-right {
+    transition: transform 0.08s ease;
+    transform-box: fill-box;
+    transform-origin: center;
   }
-  @keyframes ariaOrbit {
-    from { transform: rotate(0deg) translateX(56px) rotate(0deg); }
-    to { transform: rotate(360deg) translateX(56px) rotate(-360deg); }
-  }
+  .aria-blink #aria-eye-left,
+  .aria-blink #aria-eye-right { transform: scaleY(0.08); }
+  /* Pupils move smoothly */
+  #aria-pupil-left, #aria-pupil-right,
+  #aria-pupil-left-hi, #aria-pupil-right-hi { transition: cx 0.1s ease, cy 0.1s ease; }
+  /* Core dot pulse */
+  .aria-core-dot { animation: ariaPulse 2.5s ease-in-out infinite; }
   @keyframes ariaPulse {
-    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 8px rgba(232,80,26,0.5)); }
-    50% { transform: scale(1.03); filter: drop-shadow(0 0 20px rgba(232,80,26,0.8)); }
+    0%,100% { opacity:0.7; r:4; }
+    50%      { opacity:1; r:6; }
   }
-  .aria-avatar svg .aria-core {
-    animation: ariaPulse 2.5s ease-in-out infinite;
-  }
+  /* Mouth transition */
+  #aria-mouth { transition: d 0.3s ease; }
   .aria-name {
     text-align: center;
     font-family: 'Barlow Condensed', sans-serif;
@@ -799,26 +818,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="aria-left">
           <div class="aria-avatar-wrap">
             <div class="aria-avatar aria--idle" id="aria-avatar">
-              <!-- Animated SVG diamond -->
-              <svg width="140" height="140" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Outer ring -->
-                <circle cx="70" cy="70" r="65" stroke="rgba(232,80,26,0.15)" stroke-width="1" class="aria-avatar-ring"/>
-                <!-- Middle ring -->
-                <circle cx="70" cy="70" r="50" stroke="rgba(232,80,26,0.25)" stroke-width="1" class="aria-avatar-ring"/>
-                <!-- Diamond shape -->
-                <polygon points="70,20 110,70 70,120 30,70" fill="rgba(232,80,26,0.12)" stroke="rgba(232,80,26,0.6)" stroke-width="1.5" class="aria-core"/>
-                <!-- Inner diamond -->
-                <polygon points="70,42 95,70 70,98 45,70" fill="rgba(232,80,26,0.2)" stroke="rgba(232,80,26,0.8)" stroke-width="1"/>
-                <!-- Core -->
-                <circle cx="70" cy="70" r="10" fill="#E8501A" opacity="0.9"/>
-                <circle cx="70" cy="70" r="5" fill="white" opacity="0.8"/>
+              <svg id="aria-face" width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <!-- Glow rings -->
+                <circle cx="100" cy="100" r="88" fill="none" stroke="rgba(232,80,26,0.12)" stroke-width="1" class="aria-ring-1"/>
+                <circle cx="100" cy="100" r="75" fill="none" stroke="rgba(232,80,26,0.18)" stroke-width="1" class="aria-ring-2"/>
+                <circle cx="100" cy="100" r="60" fill="none" stroke="rgba(232,80,26,0.1)" stroke-width="1" class="aria-ring-3"/>
+                <!-- Diamond face -->
+                <polygon id="aria-face-shape" points="100,12 178,100 100,188 22,100" fill="rgba(232,80,26,0.07)" stroke="rgba(232,80,26,0.45)" stroke-width="1.5"/>
+                <polygon points="100,38 155,100 100,162 45,100" fill="rgba(232,80,26,0.06)" stroke="rgba(232,80,26,0.2)" stroke-width="1"/>
+                <!-- Left eye -->
+                <g id="aria-eye-left">
+                  <circle cx="74" cy="90" r="15" fill="rgba(8,8,8,0.85)" stroke="rgba(232,80,26,0.5)" stroke-width="1.2"/>
+                  <circle id="aria-pupil-left" cx="74" cy="90" r="7" fill="#E8501A"/>
+                  <circle id="aria-pupil-left-hi" cx="76.5" cy="87.5" r="2.5" fill="rgba(255,255,255,0.55)"/>
+                </g>
+                <!-- Right eye -->
+                <g id="aria-eye-right">
+                  <circle cx="126" cy="90" r="15" fill="rgba(8,8,8,0.85)" stroke="rgba(232,80,26,0.5)" stroke-width="1.2"/>
+                  <circle id="aria-pupil-right" cx="126" cy="90" r="7" fill="#E8501A"/>
+                  <circle id="aria-pupil-right-hi" cx="128.5" cy="87.5" r="2.5" fill="rgba(255,255,255,0.55)"/>
+                </g>
+                <!-- Brows -->
+                <line id="aria-brow-left"  x1="61" y1="71" x2="83" y2="69" stroke="rgba(232,80,26,0.8)" stroke-width="2" stroke-linecap="round"/>
+                <line id="aria-brow-right" x1="117" y1="69" x2="139" y2="71" stroke="rgba(232,80,26,0.8)" stroke-width="2" stroke-linecap="round"/>
+                <!-- Mouth -->
+                <path id="aria-mouth" d="M 82 118 Q 100 126 118 118" fill="none" stroke="rgba(232,80,26,0.65)" stroke-width="1.8" stroke-linecap="round"/>
+                <!-- Core dot -->
+                <circle cx="100" cy="100" r="4" fill="#E8501A" class="aria-core-dot"/>
               </svg>
-              <!-- Orbiting particles (shown when thinking) -->
-              <div class="aria-avatar-particles">
-                <div class="aria-particle" style="position:absolute;top:50%;left:50%;width:6px;height:6px;margin:-3px;border-radius:50%;background:#E8501A;transform-origin:0 0"></div>
-                <div class="aria-particle" style="position:absolute;top:50%;left:50%;width:4px;height:4px;margin:-2px;border-radius:50%;background:#FF7040;transform-origin:0 0;animation-delay:-0.66s"></div>
-                <div class="aria-particle" style="position:absolute;top:50%;left:50%;width:5px;height:5px;margin:-2.5px;border-radius:50%;background:#E8501A;transform-origin:0 0;animation-delay:-1.33s"></div>
-              </div>
             </div>
           </div>
           <div>
@@ -841,9 +868,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <!-- Header -->
             <div class="aria-chat-header">
               <div class="aria-chat-header-avatar">
-                <svg width="18" height="18" viewBox="0 0 140 140" fill="none">
-                  <polygon points="70,20 110,70 70,120 30,70" fill="rgba(232,80,26,0.5)" stroke="#E8501A" stroke-width="2"/>
-                  <circle cx="70" cy="70" r="8" fill="#E8501A"/>
+                <svg width="20" height="20" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <polygon points="100,12 178,100 100,188 22,100" fill="rgba(232,80,26,0.15)" stroke="#E8501A" stroke-width="8"/>
+                  <circle cx="74" cy="90" r="18" fill="#0a0a0a"/>
+                  <circle cx="74" cy="90" r="10" fill="#E8501A"/>
+                  <circle cx="126" cy="90" r="18" fill="#0a0a0a"/>
+                  <circle cx="126" cy="90" r="10" fill="#E8501A"/>
                 </svg>
               </div>
               <div class="aria-chat-header-info">
@@ -985,6 +1015,98 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }, 800);
   }
 
+  /* ── Face expressions ── */
+  function setAriaFace(state) {
+    var browL  = document.getElementById('aria-brow-left');
+    var browR  = document.getElementById('aria-brow-right');
+    var mouth  = document.getElementById('aria-mouth');
+    if (!browL) return;
+    if (state === 'thinking') {
+      browL.setAttribute('x1','64'); browL.setAttribute('y1','74'); browL.setAttribute('x2','84'); browL.setAttribute('y2','69');
+      browR.setAttribute('x1','116'); browR.setAttribute('y1','69'); browR.setAttribute('x2','136'); browR.setAttribute('y2','74');
+      mouth.setAttribute('d','M 86 118 Q 100 118 114 118');
+    } else if (state === 'speaking') {
+      browL.setAttribute('x1','61'); browL.setAttribute('y1','71'); browL.setAttribute('x2','83'); browL.setAttribute('y2','69');
+      browR.setAttribute('x1','117'); browR.setAttribute('y1','69'); browR.setAttribute('x2','139'); browR.setAttribute('y2','71');
+      mouth.setAttribute('d','M 80 115 Q 100 128 120 115');
+    } else {
+      browL.setAttribute('x1','61'); browL.setAttribute('y1','71'); browL.setAttribute('x2','83'); browL.setAttribute('y2','69');
+      browR.setAttribute('x1','117'); browR.setAttribute('y1','69'); browR.setAttribute('x2','139'); browR.setAttribute('y2','71');
+      mouth.setAttribute('d','M 82 118 Q 100 126 118 118');
+    }
+  }
+
+  /* Patch setAriaState to also update face */
+  var _origSetAriaState = setAriaState;
+  setAriaState = function(state) {
+    _origSetAriaState(state);
+    setAriaFace(state);
+  };
+
+  /* ── Eye tracking ── */
+  function initAriaEyes() {
+    var face = document.getElementById('aria-face');
+    if (!face) return;
+
+    var eyes = [
+      { pupil: document.getElementById('aria-pupil-left'),  hi: document.getElementById('aria-pupil-left-hi'),  bx: 74,  by: 90, maxR: 6 },
+      { pupil: document.getElementById('aria-pupil-right'), hi: document.getElementById('aria-pupil-right-hi'), bx: 126, by: 90, maxR: 6 }
+    ];
+
+    document.addEventListener('mousemove', function(e) {
+      var rect = face.getBoundingClientRect();
+      if (!rect.width) return;
+      var sc = rect.width / 200;
+      eyes.forEach(function(eye) {
+        var ex = rect.left + eye.bx * sc;
+        var ey = rect.top  + eye.by * sc;
+        var dx = e.clientX - ex;
+        var dy = e.clientY - ey;
+        var dist = Math.sqrt(dx*dx + dy*dy) || 1;
+        var t = Math.min(dist, 120) / 120;
+        var mx = (dx/dist) * t * eye.maxR;
+        var my = (dy/dist) * t * eye.maxR;
+        eye.pupil.setAttribute('cx', eye.bx + mx);
+        eye.pupil.setAttribute('cy', eye.by + my);
+        eye.hi.setAttribute('cx', eye.bx + mx + 2.5);
+        eye.hi.setAttribute('cy', eye.by + my - 2.5);
+      });
+    });
+
+    /* Input focus → ARIA looks down at chat */
+    var inp = document.getElementById('aria-input');
+    if (inp) {
+      inp.addEventListener('focus', function() {
+        eyes.forEach(function(eye) {
+          eye.pupil.setAttribute('cx', eye.bx);
+          eye.pupil.setAttribute('cy', eye.by + 5);
+          eye.hi.setAttribute('cx', eye.bx + 2.5);
+          eye.hi.setAttribute('cy', eye.by + 2.5);
+        });
+      });
+      inp.addEventListener('blur', function() {
+        eyes.forEach(function(eye) {
+          eye.pupil.setAttribute('cx', eye.bx);
+          eye.pupil.setAttribute('cy', eye.by);
+          eye.hi.setAttribute('cx', eye.bx + 2.5);
+          eye.hi.setAttribute('cy', eye.by - 2.5);
+        });
+      });
+    }
+  }
+
+  /* ── Blink ── */
+  function initAriaBlink() {
+    var avatar = document.getElementById('aria-avatar');
+    if (!avatar) return;
+    function blink() {
+      avatar.classList.add('aria-blink');
+      setTimeout(function() { avatar.classList.remove('aria-blink'); }, 130);
+      setTimeout(blink, 2200 + Math.random() * 3800);
+    }
+    setTimeout(blink, 1800 + Math.random() * 2000);
+  }
+
   document.addEventListener('DOMContentLoaded', function() {
     var sendBtn = document.getElementById('aria-send');
     if (sendBtn) sendBtn.addEventListener('click', handleSend);
@@ -998,6 +1120,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
       });
     }
+
+    initAriaEyes();
+    initAriaBlink();
 
     var section = document.getElementById('aria-section');
     if (section) {
