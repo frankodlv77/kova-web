@@ -2,11 +2,11 @@
 <html lang="es">
 <head>
   <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-MWRKQDM6');</script>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":
+  new Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
+  "https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,"script","dataLayer","GTM-MWRKQDM6");</script>
   <!-- End Google Tag Manager -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -17,8 +17,6 @@
   <link rel="canonical" href="https://kova-systems.com/" />
   <link rel="icon" href="src/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="src/apple-touch-icon.png" />
-
-  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://kova-systems.com/" />
   <meta property="og:title" content="KOVA — Automatización e IA para tu negocio" />
@@ -26,14 +24,10 @@
   <meta property="og:image" content="https://kova-systems.com/src/og-image.svg" />
   <meta property="og:locale" content="es_AR" />
   <meta property="og:site_name" content="KOVA" />
-
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="KOVA — Automatización e IA para tu negocio" />
   <meta name="twitter:description" content="Automatizamos tu operación con IA. Leads, ventas, atención al cliente — en piloto automático." />
   <meta name="twitter:image" content="https://kova-systems.com/src/og-image.svg" />
-
-  <!-- Schema.org -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -43,202 +37,267 @@
     "description": "Automatizamos operaciones con IA y desarrollamos estrategias de marketing para que tu negocio escale sin sumar gente.",
     "areaServed": "AR",
     "inLanguage": "es",
-    "serviceType": ["Automatización", "Agentes IA", "Marketing Digital", "SEO", "Redes Sociales", "Marca Personal"],
+    "serviceType": ["Automatización","Agentes IA","Marketing Digital","SEO","Redes Sociales","Marca Personal"],
     "sameAs": ["https://www.instagram.com/kovasystems_ia/"]
   }
   </script>
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=DM+Sans:wght@300;400;500&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="src/tokens.css" />
-  <link rel="stylesheet" href="src/styles.css?v=4" />
+  <link rel="stylesheet" href="src/styles.css?v=5" />
 
   <style>
-  /* ══════════════════════════════════════════════════════
-     ARIA Section
-  ══════════════════════════════════════════════════════ */
-  .aria-section {
+  /* ═══════════════════════════════════════════════════════════
+     ARIA HERO — Full-page entry point
+  ═══════════════════════════════════════════════════════════ */
+  .aria-hero {
     min-height: 100vh;
     background: #050505;
     display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
     position: relative;
     overflow: hidden;
-    padding: clamp(80px, 12vh, 120px) 0;
+    padding: 120px 24px 80px;
   }
-  .aria-section::before {
-    content: '';
+  .aria-hero::before {
+    content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(232,80,26,0.06) 0%, transparent 70%);
+    background:
+      radial-gradient(ellipse 70% 55% at 30% 50%, rgba(232,80,26,0.07) 0%, transparent 65%),
+      radial-gradient(ellipse 50% 40% at 75% 60%, rgba(232,80,26,0.04) 0%, transparent 60%);
     pointer-events: none;
   }
-  .aria-inner {
-    max-width: 1200px;
+  .aria-hero__header {
+    text-align: center;
+    margin-bottom: 64px;
+    position: relative;
+    z-index: 2;
+  }
+  .aria-hero__kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #E8501A;
+    margin-bottom: 20px;
+  }
+  .aria-hero__kicker::before,
+  .aria-hero__kicker::after {
+    content: "";
+    width: 28px;
+    height: 1px;
+    background: #E8501A;
+    opacity: 0.5;
+  }
+  .aria-hero__title {
+    font-family: "Barlow Condensed", sans-serif;
+    font-size: clamp(44px, 7vw, 88px);
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #fff;
+    line-height: 0.93;
+    letter-spacing: -0.02em;
+    margin: 0 0 20px;
+  }
+  .aria-hero__title span { color: #E8501A; }
+  .aria-hero__sub {
+    font-family: "DM Sans", sans-serif;
+    font-size: clamp(15px, 2vw, 18px);
+    font-weight: 300;
+    color: #666;
+    max-width: 520px;
     margin: 0 auto;
-    padding: 0 24px;
-    width: 100%;
+    line-height: 1.65;
+  }
+  /* ── Grid: Robot + Chat ── */
+  .aria-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 80px;
+    gap: 72px;
+    max-width: 1160px;
+    width: 100%;
     align-items: center;
+    position: relative;
+    z-index: 2;
   }
-  .aria-left {
+  .aria-grid__left {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    align-items: center;
+    gap: 28px;
   }
-  .aria-avatar-wrap {
-    display: flex;
-    justify-content: center;
-  }
-  .aria-avatar {
-    width: 200px;
-    height: 200px;
+  .aria-grid__right {}
+
+  /* ═══════════════════════════════════════════════════════════
+     ROBOT AVATAR
+  ═══════════════════════════════════════════════════════════ */
+  .aria-robot-wrap {
     position: relative;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
   }
-  #aria-face {
+  #aria-robot {
+    width: 280px;
+    height: 360px;
     overflow: visible;
-    filter: drop-shadow(0 0 18px rgba(232,80,26,0.25));
-    transition: filter 0.4s ease;
+    filter: drop-shadow(0 0 32px rgba(232,80,26,0.22)) drop-shadow(0 0 80px rgba(232,80,26,0.08));
+    transition: filter 0.45s ease;
   }
-  .aria--thinking #aria-face { filter: drop-shadow(0 0 28px rgba(232,80,26,0.5)); }
-  .aria--speaking #aria-face { filter: drop-shadow(0 0 22px rgba(232,80,26,0.4)); }
-  /* Ring animations */
-  .aria-ring-1 { animation: ariaRing1 3s ease-in-out infinite; }
-  .aria-ring-2 { animation: ariaRing2 3s ease-in-out infinite 0.4s; }
-  .aria-ring-3 { animation: ariaRing3 3s ease-in-out infinite 0.8s; }
-  .aria--thinking .aria-ring-1 { animation: ariaRingThink 0.9s ease-in-out infinite; }
-  .aria--thinking .aria-ring-2 { animation: ariaRingThink 0.9s ease-in-out infinite 0.3s; }
-  .aria--thinking .aria-ring-3 { animation: ariaRingThink 0.9s ease-in-out infinite 0.6s; }
-  .aria--speaking .aria-ring-1 { animation: ariaRingSpeak 0.5s ease-out infinite; }
-  .aria--speaking .aria-ring-2 { animation: ariaRingSpeak 0.5s ease-out infinite 0.16s; }
-  .aria--speaking .aria-ring-3 { animation: ariaRingSpeak 0.5s ease-out infinite 0.32s; }
-  @keyframes ariaRing1 {
-    0%,100% { opacity:0.35; r:88; }
-    50%      { opacity:0.65; r:91; }
+  .aria--thinking #aria-robot {
+    filter: drop-shadow(0 0 50px rgba(232,80,26,0.5)) drop-shadow(0 0 100px rgba(232,80,26,0.15));
   }
-  @keyframes ariaRing2 {
-    0%,100% { opacity:0.2; r:75; }
-    50%      { opacity:0.4; r:78; }
+  .aria--speaking #aria-robot {
+    filter: drop-shadow(0 0 40px rgba(232,80,26,0.38)) drop-shadow(0 0 90px rgba(232,80,26,0.12));
   }
-  @keyframes ariaRing3 {
-    0%,100% { opacity:0.1; r:60; }
-    50%      { opacity:0.25; r:63; }
+  /* Robot gentle breathe */
+  @keyframes robot-breathe {
+    0%,100% { transform: translateY(0px); }
+    50%      { transform: translateY(-6px); }
   }
-  @keyframes ariaRingThink {
-    0%,100% { opacity:0.5; }
-    50%      { opacity:1; }
+  #aria-robot { animation: robot-breathe 4.5s ease-in-out infinite; }
+  .aria--thinking #aria-robot,
+  .aria--speaking #aria-robot { animation: none; }
+
+  /* Spinning ambient ring */
+  @keyframes ring-spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
   }
-  @keyframes ariaRingSpeak {
-    0%   { opacity:0.9; }
-    100% { opacity:0; }
-  }
-  /* Face shape bob */
-  #aria-face-shape {
-    animation: ariaFaceBob 4s ease-in-out infinite;
-    transform-origin: 100px 100px;
-  }
-  @keyframes ariaFaceBob {
-    0%,100% { transform: translateY(0); }
-    50%      { transform: translateY(-4px); }
-  }
-  /* Eye groups - for blink */
-  #aria-eye-left, #aria-eye-right {
-    transition: transform 0.08s ease;
+  #aria-spin-ring {
     transform-box: fill-box;
     transform-origin: center;
+    animation: ring-spin 16s linear infinite;
   }
-  .aria-blink #aria-eye-left,
-  .aria-blink #aria-eye-right { transform: scaleY(0.08); }
-  /* Pupils move smoothly */
-  #aria-pupil-left, #aria-pupil-right,
-  #aria-pupil-left-hi, #aria-pupil-right-hi { transition: cx 0.1s ease, cy 0.1s ease; }
-  /* Core dot pulse */
-  .aria-core-dot { animation: ariaPulse 2.5s ease-in-out infinite; }
-  @keyframes ariaPulse {
-    0%,100% { opacity:0.7; r:4; }
-    50%      { opacity:1; r:6; }
+  .aria--thinking #aria-spin-ring { animation-duration: 3.5s; }
+  .aria--speaking #aria-spin-ring { animation-duration: 6s; }
+
+  /* Visor LED idle glow */
+  @keyframes visor-idle {
+    0%,100% { opacity: 0.88; }
+    50%      { opacity: 0.52; }
   }
-  /* Mouth transition */
-  #aria-mouth { transition: d 0.3s ease; }
+  @keyframes visor-speak {
+    0%   { opacity: 1; }
+    18%  { opacity: 0.3; }
+    35%  { opacity: 1; }
+    58%  { opacity: 0.6; }
+    78%  { opacity: 1; }
+    100% { opacity: 1; }
+  }
+  .aria-visor-glow { animation: visor-idle 2.8s ease-in-out infinite; }
+  .aria--thinking .aria-visor-glow { animation: none; opacity: 0.28; }
+  .aria--speaking .aria-visor-glow { animation: visor-speak 0.55s ease-in-out infinite; }
+
+  /* Scan line for thinking */
+  @keyframes scan-sweep {
+    0%   { transform: translateX(0px); opacity: 0.9; }
+    100% { transform: translateX(112px); opacity: 0.9; }
+  }
+  .aria--thinking #aria-scanline {
+    display: block;
+    animation: scan-sweep 1.1s linear infinite;
+  }
+  #aria-scanline { display: none; }
+
+  /* Chest indicator lights */
+  @keyframes ind-a {
+    0%,100% { opacity: 0.85; }
+    50%      { opacity: 0.18; }
+  }
+  #aria-ind-1 { animation: ind-a 1.9s ease-in-out infinite; }
+  #aria-ind-2 { animation: ind-a 1.9s ease-in-out infinite 0.35s; }
+  #aria-ind-3 { animation: ind-a 1.9s ease-in-out infinite 0.7s; }
+  .aria--thinking #aria-ind-1 { animation-duration: 0.38s; }
+  .aria--thinking #aria-ind-2 { animation-duration: 0.38s; animation-delay: 0.12s; }
+  .aria--thinking #aria-ind-3 { animation-duration: 0.38s; animation-delay: 0.24s; }
+
+  /* Blink — visor off/on */
+  @keyframes visor-blink {
+    0%,100% { opacity: 1; }
+    50%      { opacity: 0; }
+  }
+  .aria-blink .aria-visor-glow { animation: visor-blink 0.12s steps(1) 1 !important; }
+
+  /* ── ARIA identity text ── */
+  .aria-identity { text-align: center; }
   .aria-name {
-    text-align: center;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 52px;
+    font-family: "Barlow Condensed", sans-serif;
+    font-size: 56px;
     font-weight: 800;
     text-transform: uppercase;
     color: #fff;
     letter-spacing: -0.02em;
     line-height: 1;
-    margin: 0;
+    margin: 0 0 6px;
   }
   .aria-subtitle {
-    text-align: center;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 12px;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 11px;
     font-weight: 700;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: #555;
-    margin: 0;
+    color: #444;
+    margin: 0 0 16px;
   }
   .aria-status {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
     gap: 8px;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: "Space Grotesk", sans-serif;
     font-size: 13px;
     font-weight: 500;
     color: #22C55E;
   }
   .aria-status-dot {
-    width: 8px;
-    height: 8px;
+    width: 8px; height: 8px;
     border-radius: 50%;
     background: #22C55E;
-    animation: statusPulse 2s ease-in-out infinite;
     flex-shrink: 0;
+    animation: dot-pulse 2s ease-in-out infinite;
   }
-  @keyframes statusPulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.4); }
-    50% { box-shadow: 0 0 0 6px rgba(34,197,94,0); }
+  @keyframes dot-pulse {
+    0%,100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.4); }
+    50%      { box-shadow: 0 0 0 6px rgba(34,197,94,0); }
   }
-  .aria-capabilities {
+  .aria-caps {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    margin-top: 8px;
+    gap: 10px;
+    width: 100%;
+    max-width: 320px;
   }
   .aria-cap {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 14px 20px;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.06);
+    padding: 13px 18px;
+    background: rgba(255,255,255,0.025);
+    border: 1px solid rgba(255,255,255,0.055);
     border-radius: 12px;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    color: #8A8A8A;
-    transition: border-color 0.25s, background 0.25s;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 13px;
+    color: #777;
+    transition: border-color 0.25s, color 0.25s;
   }
-  .aria-cap:hover {
-    border-color: rgba(232,80,26,0.25);
-    background: rgba(232,80,26,0.04);
-    color: #ccc;
-  }
+  .aria-cap:hover { border-color: rgba(232,80,26,0.3); color: #ccc; }
+
+  /* ═══════════════════════════════════════════════════════════
+     CHAT UI
+  ═══════════════════════════════════════════════════════════ */
   .aria-chat {
-    background: rgba(255,255,255,0.035);
+    background: rgba(255,255,255,0.03);
     border: 1px solid rgba(255,255,255,0.07);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
     border-radius: 24px;
     overflow: hidden;
     display: flex;
@@ -250,223 +309,141 @@
     align-items: center;
     gap: 12px;
     padding: 20px 24px;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.055);
     flex-shrink: 0;
   }
   .aria-chat-header-avatar {
-    width: 36px;
-    height: 36px;
+    width: 36px; height: 36px;
     border-radius: 50%;
-    background: rgba(232,80,26,0.15);
+    background: rgba(232,80,26,0.12);
     border: 1px solid rgba(232,80,26,0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
   }
   .aria-chat-header-info { flex: 1; }
   .aria-chat-header-name {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    color: #fff;
-    display: block;
-    line-height: 1.2;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 14px; font-weight: 700; color: #fff;
+    display: block; line-height: 1.2;
   }
   .aria-chat-header-status {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 11px;
-    color: #22C55E;
-    display: flex;
-    align-items: center;
-    gap: 5px;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 11px; color: #22C55E;
+    display: flex; align-items: center; gap: 5px;
   }
   .aria-chat-header-status::before {
-    content: '';
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: #22C55E;
-    display: block;
+    content: ""; width: 6px; height: 6px;
+    border-radius: 50%; background: #22C55E; display: block;
   }
   .aria-messages {
-    flex: 1;
-    overflow-y: auto;
+    flex: 1; overflow-y: auto;
     padding: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+    display: flex; flex-direction: column; gap: 16px;
     scroll-behavior: smooth;
   }
   .aria-messages::-webkit-scrollbar { width: 4px; }
   .aria-messages::-webkit-scrollbar-track { background: transparent; }
-  .aria-messages::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+  .aria-messages::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 2px; }
   .aria-bubble {
-    display: flex;
-    gap: 10px;
-    align-items: flex-end;
-    animation: bubbleIn 0.3s cubic-bezier(0.34,1.56,0.64,1) both;
+    display: flex; gap: 10px; align-items: flex-end;
+    animation: bubble-in 0.3s cubic-bezier(0.34,1.56,0.64,1) both;
   }
-  @keyframes bubbleIn {
+  @keyframes bubble-in {
     from { opacity: 0; transform: translateY(12px) scale(0.95); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
   }
   .aria-bubble__avatar {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: rgba(232,80,26,0.15);
-    border: 1px solid rgba(232,80,26,0.3);
-    flex-shrink: 0;
+    width: 28px; height: 28px; border-radius: 50%;
+    background: rgba(232,80,26,0.12);
+    border: 1px solid rgba(232,80,26,0.28); flex-shrink: 0;
   }
   .aria-bubble__content {
-    max-width: 80%;
-    padding: 12px 16px;
-    border-radius: 18px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    line-height: 1.6;
-    font-weight: 400;
+    max-width: 80%; padding: 12px 16px; border-radius: 18px;
+    font-family: "DM Sans", sans-serif;
+    font-size: 14px; line-height: 1.65; font-weight: 400;
   }
   .aria-bubble--agent .aria-bubble__content {
-    background: rgba(232,80,26,0.1);
-    border: 1px solid rgba(232,80,26,0.2);
-    color: #e0e0e0;
+    background: rgba(232,80,26,0.09);
+    border: 1px solid rgba(232,80,26,0.18);
+    color: #ddd;
     border-bottom-left-radius: 4px;
   }
-  .aria-bubble--user {
-    flex-direction: row-reverse;
-  }
+  .aria-bubble--user { flex-direction: row-reverse; }
   .aria-bubble--user .aria-bubble__content {
-    background: #E8501A;
-    color: #fff;
-    border-bottom-right-radius: 4px;
+    background: #E8501A; color: #fff; border-bottom-right-radius: 4px;
   }
   .aria-typing {
-    display: none;
-    align-items: center;
-    gap: 10px;
-    padding: 0 24px 8px;
+    display: none; align-items: center; gap: 10px; padding: 0 24px 8px;
   }
   .aria-typing__dots {
-    display: flex;
-    gap: 4px;
-    padding: 10px 14px;
-    background: rgba(232,80,26,0.08);
-    border: 1px solid rgba(232,80,26,0.15);
-    border-radius: 18px;
-    border-bottom-left-radius: 4px;
+    display: flex; gap: 4px; padding: 10px 14px;
+    background: rgba(232,80,26,0.07);
+    border: 1px solid rgba(232,80,26,0.14);
+    border-radius: 18px; border-bottom-left-radius: 4px;
   }
   .aria-typing__dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: rgba(232,80,26,0.6);
-    animation: typingBounce 1.2s ease-in-out infinite;
+    width: 6px; height: 6px; border-radius: 50%;
+    background: rgba(232,80,26,0.55);
+    animation: dot-bounce 1.2s ease-in-out infinite;
   }
   .aria-typing__dot:nth-child(2) { animation-delay: 0.2s; }
   .aria-typing__dot:nth-child(3) { animation-delay: 0.4s; }
-  @keyframes typingBounce {
-    0%, 60%, 100% { transform: translateY(0); }
-    30% { transform: translateY(-6px); }
+  @keyframes dot-bounce {
+    0%,60%,100% { transform: translateY(0); }
+    30%          { transform: translateY(-6px); }
   }
   .aria-input-area {
     padding: 16px 24px;
-    border-top: 1px solid rgba(255,255,255,0.06);
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    flex-shrink: 0;
+    border-top: 1px solid rgba(255,255,255,0.055);
+    display: flex; gap: 12px; align-items: center; flex-shrink: 0;
   }
   .aria-input {
     flex: 1;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 12px;
-    padding: 12px 16px;
-    color: #fff;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    outline: none;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px; padding: 12px 16px;
+    color: #fff; font-family: "DM Sans", sans-serif;
+    font-size: 14px; outline: none;
     transition: border-color 0.25s, background 0.25s;
   }
-  .aria-input::placeholder { color: #444; }
+  .aria-input::placeholder { color: #3a3a3a; }
   .aria-input:focus {
-    border-color: rgba(232,80,26,0.4);
+    border-color: rgba(232,80,26,0.38);
     background: rgba(232,80,26,0.04);
   }
   .aria-send {
-    width: 42px;
-    height: 42px;
-    border-radius: 12px;
-    background: #E8501A;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
+    width: 42px; height: 42px; border-radius: 12px;
+    background: #E8501A; border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; color: #fff;
     transition: background 0.2s, transform 0.15s;
-    color: #fff;
   }
-  .aria-send:hover { background: #C04010; transform: scale(1.05); }
+  .aria-send:hover  { background: #C04010; transform: scale(1.05); }
   .aria-send:active { transform: scale(0.97); }
   .aria-chat-footer {
     padding: 10px 24px;
-    border-top: 1px solid rgba(255,255,255,0.04);
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: #333;
-    text-align: center;
-    flex-shrink: 0;
+    border-top: 1px solid rgba(255,255,255,0.035);
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: #2a2a2a; text-align: center; flex-shrink: 0;
   }
-  .aria-section-header {
-    text-align: center;
-    margin-bottom: 72px;
-  }
-  .aria-section-kicker {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: #E8501A;
-    margin-bottom: 20px;
-  }
-  .aria-section-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: clamp(36px, 6vw, 72px);
-    font-weight: 800;
-    text-transform: uppercase;
-    color: #fff;
-    line-height: 0.95;
-    letter-spacing: -0.02em;
-  }
-  .aria-section-sub {
-    font-size: 17px;
-    font-weight: 300;
-    color: #555;
-    line-height: 1.7;
-    max-width: 480px;
-    margin: 20px auto 0;
-  }
-  @media (max-width: 900px) {
-    .aria-inner {
+
+  /* ═══════════════════════════════════════════════════════════
+     RESPONSIVE
+  ═══════════════════════════════════════════════════════════ */
+  @media (max-width: 860px) {
+    .aria-grid {
       grid-template-columns: 1fr;
       gap: 48px;
     }
+    #aria-robot { width: 220px; height: 280px; }
     .aria-chat { height: 480px; }
+    .aria-hero { padding: 100px 20px 60px; }
   }
-  @media (max-width: 600px) {
-    .aria-name { font-size: 40px; }
-    .aria-chat { height: 420px; }
-    .aria-messages { padding: 16px; }
+  @media (max-width: 480px) {
+    .aria-hero__header { margin-bottom: 40px; }
+    .aria-chat { height: 440px; }
     .aria-input-area { padding: 12px 16px; }
   }
   </style>
@@ -499,10 +476,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <li><a href="servicios.html" class="nav__link">Servicios</a></li>
       <li><a href="#contacto" class="nav__link">Contacto</a></li>
     </ul>
-    <!-- LANGUAGE SWITCHER -->
     <div class="lang-switcher" id="langSwitcher">
       <button class="lang-switcher__btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false">
-        <span class="lang-switcher__flag">🇦🇷</span>
+        <span class="lang-switcher__flag">&#127462;&#127479;</span>
         <span>ES</span>
         <svg class="lang-switcher__arrow" viewBox="0 0 10 10" fill="none">
           <path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -510,18 +486,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </button>
       <div class="lang-switcher__dropdown" role="listbox">
         <div class="lang-switcher__option lang-switcher__option--active" data-lang="es" role="option">
-          <span class="lang-switcher__option-flag">🇦🇷</span>
-          <span class="lang-switcher__option-label">Español</span>
+          <span class="lang-switcher__option-flag">&#127462;&#127479;</span>
+          <span class="lang-switcher__option-label">Espa&#241;ol</span>
           <span class="lang-switcher__option-tag">Activo</span>
         </div>
         <div class="lang-switcher__option" data-lang="en" role="option">
-          <span class="lang-switcher__option-flag">🇺🇸</span>
+          <span class="lang-switcher__option-flag">&#127482;&#127480;</span>
           <span class="lang-switcher__option-label">English</span>
         </div>
       </div>
     </div>
-    <a href="#contacto" class="btn btn--outline">Hablemos</a>
-    <button class="nav__hamburger" id="navHamburger" aria-label="Abrir menú">
+    <a href="#aria-section" class="btn btn--outline">Hablemos</a>
+    <button class="nav__hamburger" id="navHamburger" aria-label="Abrir men&#250;">
       <span></span><span></span><span></span>
     </button>
   </nav>
@@ -531,151 +507,520 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <ul class="nav__mobile-links">
       <li><a href="index.html">Inicio</a></li>
       <li><a href="servicios.html">Servicios</a></li>
-      <li><a href="#planes">Planes</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
-    <a href="#contacto" class="btn btn--primary" style="font-size:16px;padding:16px 36px">Hablemos →</a>
+    <a href="#aria-section" class="btn btn--primary" style="font-size:16px;padding:16px 36px">Habl&#225; con ARIA &#8594;</a>
   </div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero__content">
-      <span class="hero__tag" id="heroTag">Automatización · IA · Marketing · SEO</span>
-      <h1 class="hero__title" id="heroTitle">Tu negocio funciona solo.<br><span class="hero__title--accent">Nosotros lo armamos.</span></h1>
-      <p class="hero__subtitle" id="heroSub">Automatizamos procesos, desplegamos agentes de IA y conectamos tus herramientas para que escales sin sumar gente.</p>
-      <div class="hero__cta" id="heroCta">
-        <a href="#aria-section" class="btn btn--primary magnetic">Hablá con ARIA</a>
-        <a href="https://wa.me/542615336300?text=Hola%20KOVA%2C%20quiero%20info%20sobre%20sus%20servicios" class="btn btn--ghost magnetic" target="_blank" rel="noopener">Hablemos</a>
-      </div>
-    </div>
-    <div class="hero__visual">
-      <div class="orb orb--1"></div>
-      <div class="orb orb--2"></div>
-      <div class="orb orb--3"></div>
-      <canvas class="hero__canvas" id="heroCanvas"></canvas>
+  <!-- ═══════════════════════════════════════════════════════════
+       ARIA HERO — Lo primero que ven
+  ═══════════════════════════════════════════════════════════ -->
+  <section id="aria-section" class="aria-hero">
+
+    <div class="aria-hero__header">
+      <div class="aria-hero__kicker">Agente IA en vivo</div>
+      <h1 class="aria-hero__title">Tu negocio.<br><span>En piloto autom&#225;tico.</span></h1>
+      <p class="aria-hero__sub">ARIA analiza tu operaci&#243;n y te dice exactamente qu&#233; pod&#233;s automatizar. Gratis, ahora mismo.</p>
     </div>
 
-    <!-- HERO DECORATIVE SVG NETWORK -->
-    <div class="hero__network" aria-hidden="true">
-      <svg viewBox="0 0 520 480" fill="none" xmlns="http://www.w3.org/2000/svg" class="hero__net-svg">
-        <!-- Lines -->
-        <line x1="260" y1="240" x2="80" y2="100" stroke="rgba(232,80,26,0.18)" stroke-width="1"/>
-        <line x1="260" y1="240" x2="440" y2="100" stroke="rgba(232,80,26,0.18)" stroke-width="1"/>
-        <line x1="260" y1="240" x2="80" y2="380" stroke="rgba(138,138,138,0.12)" stroke-width="1"/>
-        <line x1="260" y1="240" x2="440" y2="380" stroke="rgba(138,138,138,0.12)" stroke-width="1"/>
-        <line x1="260" y1="240" x2="160" y2="50" stroke="rgba(232,80,26,0.10)" stroke-width="1"/>
-        <line x1="260" y1="240" x2="360" y2="50" stroke="rgba(232,80,26,0.10)" stroke-width="1"/>
-        <line x1="260" y1="240" x2="50" y2="240" stroke="rgba(138,138,138,0.10)" stroke-width="1"/>
-        <line x1="260" y1="240" x2="470" y2="240" stroke="rgba(138,138,138,0.10)" stroke-width="1"/>
-        <line x1="80" y1="100" x2="160" y2="50" stroke="rgba(232,80,26,0.08)" stroke-width="1"/>
-        <line x1="440" y1="100" x2="360" y2="50" stroke="rgba(232,80,26,0.08)" stroke-width="1"/>
-        <!-- Outer nodes -->
-        <circle cx="80"  cy="100" r="5" fill="rgba(232,80,26,0.4)"/>
-        <circle cx="440" cy="100" r="5" fill="rgba(232,80,26,0.4)"/>
-        <circle cx="80"  cy="380" r="4" fill="rgba(138,138,138,0.35)"/>
-        <circle cx="440" cy="380" r="4" fill="rgba(138,138,138,0.35)"/>
-        <circle cx="160" cy="50"  r="3.5" fill="rgba(232,80,26,0.3)"/>
-        <circle cx="360" cy="50"  r="3.5" fill="rgba(232,80,26,0.3)"/>
-        <circle cx="50"  cy="240" r="3"   fill="rgba(138,138,138,0.25)"/>
-        <circle cx="470" cy="240" r="3"   fill="rgba(138,138,138,0.25)"/>
-        <!-- Center core -->
-        <circle cx="260" cy="240" r="28" fill="rgba(232,80,26,0.08)" stroke="rgba(232,80,26,0.35)" stroke-width="1.5"/>
-        <circle cx="260" cy="240" r="18" fill="rgba(232,80,26,0.12)" stroke="rgba(232,80,26,0.5)" stroke-width="1"/>
-        <circle cx="260" cy="240" r="8"  fill="rgba(232,80,26,0.7)"/>
-        <!-- Pulse ring -->
-        <circle cx="260" cy="240" r="40" fill="none" stroke="rgba(232,80,26,0.15)" stroke-width="1" class="net-pulse"/>
-        <circle cx="260" cy="240" r="60" fill="none" stroke="rgba(232,80,26,0.08)" stroke-width="1" class="net-pulse net-pulse--2"/>
-      </svg>
-    </div>
+    <div class="aria-grid">
 
-    <!-- SCROLL INDICATOR -->
-    <div class="scroll-hint" id="scrollHint">
-      <div class="scroll-hint__mouse">
-        <div class="scroll-hint__wheel"></div>
+      <!-- LEFT: Robot + Identity -->
+      <div class="aria-grid__left">
+        <div class="aria-robot-wrap">
+          <div class="aria--idle" id="aria-avatar">
+
+            <!-- ═══ PREMIUM HUMANOID ROBOT SVG ═══ -->
+            <svg id="aria-robot" viewBox="0 0 280 370" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <!-- Head metallic radial gradient -->
+                <radialGradient id="rg-hd" cx="36%" cy="26%" r="72%">
+                  <stop offset="0%" stop-color="#464646"/>
+                  <stop offset="52%" stop-color="#1e1e1e"/>
+                  <stop offset="100%" stop-color="#080808"/>
+                </radialGradient>
+                <!-- Chest gradient -->
+                <linearGradient id="lg-ch" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#3c3c3c"/>
+                  <stop offset="100%" stop-color="#0c0c0c"/>
+                </linearGradient>
+                <!-- Left shoulder -->
+                <linearGradient id="lg-sl" x1="1" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#3a3a3a"/>
+                  <stop offset="100%" stop-color="#111"/>
+                </linearGradient>
+                <!-- Right shoulder -->
+                <linearGradient id="lg-sr" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#3a3a3a"/>
+                  <stop offset="100%" stop-color="#111"/>
+                </linearGradient>
+                <!-- Visor dark background -->
+                <linearGradient id="lg-vs" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%"   stop-color="#0e0403"/>
+                  <stop offset="50%"  stop-color="#2a0c00"/>
+                  <stop offset="100%" stop-color="#0e0403"/>
+                </linearGradient>
+                <!-- Glow filter -->
+                <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="4" result="b"/>
+                  <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+                <!-- Glow small -->
+                <filter id="glows" x="-30%" y="-30%" width="160%" height="160%">
+                  <feGaussianBlur stdDeviation="2.5" result="b"/>
+                  <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+                <!-- Bottom fade mask -->
+                <linearGradient id="lg-fade" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="58%" stop-color="white"/>
+                  <stop offset="100%" stop-color="black"/>
+                </linearGradient>
+                <mask id="m-fade">
+                  <rect width="280" height="370" fill="url(#lg-fade)"/>
+                </mask>
+              </defs>
+
+              <!-- ── Ambient rings ── -->
+              <circle cx="140" cy="162" r="122" stroke="rgba(232,80,26,0.055)" stroke-width="1"/>
+              <circle cx="140" cy="162" r="105" stroke="rgba(232,80,26,0.08)" stroke-width="0.8"/>
+              <circle cx="140" cy="162" r="88"  stroke="rgba(232,80,26,0.045)" stroke-width="0.7"/>
+              <!-- Spinning dashed ring -->
+              <g id="aria-spin-ring">
+                <circle cx="140" cy="162" r="122" stroke="rgba(232,80,26,0.2)" stroke-width="0.9"
+                        stroke-dasharray="13 21" fill="none"/>
+              </g>
+
+              <g mask="url(#m-fade)">
+
+                <!-- ── NECK ── -->
+                <rect x="112" y="186" width="56" height="34" rx="6" fill="url(#rg-hd)"/>
+                <rect x="118" y="188" width="10" height="30" rx="3" fill="rgba(255,255,255,0.03)"/>
+                <line x1="112" y1="196" x2="168" y2="196" stroke="rgba(232,80,26,0.1)"  stroke-width="0.5"/>
+                <line x1="112" y1="206" x2="168" y2="206" stroke="rgba(232,80,26,0.07)" stroke-width="0.5"/>
+
+                <!-- ── LEFT SHOULDER ── -->
+                <path d="M 4 262 Q 4 228 40 218 L 112 224 L 112 370 L 4 370 Z"
+                      fill="url(#lg-sl)" stroke="rgba(232,80,26,0.1)" stroke-width="0.6"/>
+                <!-- Shoulder cap -->
+                <ellipse cx="76" cy="221" rx="38" ry="13" fill="#2c2c2c" stroke="rgba(232,80,26,0.14)" stroke-width="0.7"/>
+                <!-- Highlight -->
+                <path d="M 8 244 Q 10 226 38 218" fill="none" stroke="rgba(255,255,255,0.045)" stroke-width="2.5" stroke-linecap="round"/>
+                <!-- Orange accent line -->
+                <line x1="16" y1="268" x2="104" y2="230" stroke="rgba(232,80,26,0.28)" stroke-width="0.8" stroke-linecap="round"/>
+                <!-- Shoulder indent curve -->
+                <path d="M 46 246 Q 60 240 76 238 Q 95 236 110 240" fill="none" stroke="rgba(255,255,255,0.035)" stroke-width="1.5"/>
+
+                <!-- ── RIGHT SHOULDER ── -->
+                <path d="M 276 262 Q 276 228 240 218 L 168 224 L 168 370 L 276 370 Z"
+                      fill="url(#lg-sr)" stroke="rgba(232,80,26,0.1)" stroke-width="0.6"/>
+                <ellipse cx="204" cy="221" rx="38" ry="13" fill="#2c2c2c" stroke="rgba(232,80,26,0.14)" stroke-width="0.7"/>
+                <path d="M 272 244 Q 270 226 242 218" fill="none" stroke="rgba(255,255,255,0.045)" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="264" y1="268" x2="176" y2="230" stroke="rgba(232,80,26,0.28)" stroke-width="0.8" stroke-linecap="round"/>
+                <path d="M 234 246 Q 220 240 204 238 Q 185 236 170 240" fill="none" stroke="rgba(255,255,255,0.035)" stroke-width="1.5"/>
+
+                <!-- ── CHEST ── -->
+                <path d="M 112 220 L 168 220 L 176 370 L 104 370 Z"
+                      fill="url(#lg-ch)" stroke="rgba(232,80,26,0.12)" stroke-width="0.6"/>
+                <!-- Chest center armor panel -->
+                <rect x="122" y="234" width="36" height="82" rx="5"
+                      fill="rgba(232,80,26,0.04)" stroke="rgba(232,80,26,0.22)" stroke-width="0.6"/>
+                <!-- Horizontal scan lines on chest -->
+                <line x1="106" y1="252" x2="174" y2="252" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
+                <line x1="105" y1="268" x2="175" y2="268" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
+                <line x1="104" y1="284" x2="176" y2="284" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/>
+                <!-- Collar detail -->
+                <path d="M 112 220 Q 140 228 168 220" fill="none" stroke="rgba(232,80,26,0.22)" stroke-width="0.8"/>
+                <!-- Chest indicator lights -->
+                <rect id="aria-ind-1" x="129" y="298" width="7" height="7" rx="3.5" fill="#E8501A"/>
+                <rect id="aria-ind-2" x="140" y="298" width="7" height="7" rx="3.5" fill="#E8501A"/>
+                <rect id="aria-ind-3" x="151" y="298" width="7" height="7" rx="3.5" fill="#E8501A"/>
+                <!-- Chest glow strip -->
+                <rect x="125" y="308" width="30" height="2" rx="1" fill="rgba(232,80,26,0.3)" filter="url(#glows)"/>
+
+                <!-- ── HEAD / HELMET ── -->
+                <!-- Main dome -->
+                <path d="M 68 184
+                         L 68 118
+                         Q 68 42 140 42
+                         Q 212 42 212 118
+                         L 212 184
+                         Q 192 194 140 196
+                         Q 88 194 68 184 Z"
+                      fill="url(#rg-hd)"
+                      stroke="rgba(72,72,72,0.45)"
+                      stroke-width="0.8"/>
+
+                <!-- Helmet top gloss -->
+                <path d="M 86 54 Q 118 42 176 58 Q 148 46 140 44 Q 110 44 86 54 Z"
+                      fill="rgba(255,255,255,0.065)"/>
+                <!-- Left side gloss -->
+                <path d="M 70 104 Q 70 150 74 178" fill="none"
+                      stroke="rgba(255,255,255,0.05)" stroke-width="4" stroke-linecap="round"/>
+                <!-- Right side gloss -->
+                <path d="M 210 104 Q 210 150 206 178" fill="none"
+                      stroke="rgba(255,255,255,0.05)" stroke-width="4" stroke-linecap="round"/>
+                <!-- Deep side shadows -->
+                <path d="M 68 130 Q 68 158 70 182" fill="none"
+                      stroke="rgba(0,0,0,0.35)" stroke-width="10" stroke-linecap="round"/>
+                <path d="M 212 130 Q 212 158 210 182" fill="none"
+                      stroke="rgba(0,0,0,0.35)" stroke-width="10" stroke-linecap="round"/>
+
+                <!-- Helmet orange edge trims -->
+                <path d="M 68 116 L 68 172 Q 68 185 84 190"
+                      fill="none" stroke="rgba(232,80,26,0.48)" stroke-width="1.2" stroke-linecap="round"/>
+                <path d="M 212 116 L 212 172 Q 212 185 196 190"
+                      fill="none" stroke="rgba(232,80,26,0.48)" stroke-width="1.2" stroke-linecap="round"/>
+                <!-- Crown arc trim -->
+                <path d="M 92 52 Q 140 42 188 52"
+                      fill="none" stroke="rgba(232,80,26,0.2)" stroke-width="0.8" stroke-linecap="round"/>
+
+                <!-- ── VISOR ASSEMBLY ── -->
+                <!-- Outer bevel / recess -->
+                <rect x="76" y="102" width="128" height="40" rx="10"
+                      fill="#040202" stroke="rgba(38,18,6,0.95)" stroke-width="1.2"/>
+                <!-- Glass surface -->
+                <rect x="78" y="104" width="124" height="36" rx="8" fill="url(#lg-vs)"/>
+                <!-- Glass top sheen -->
+                <rect x="78" y="104" width="124" height="6" rx="4" fill="rgba(255,255,255,0.025)"/>
+                <!-- Floor ambient bounce -->
+                <ellipse cx="140" cy="140" rx="60" ry="8" fill="rgba(232,80,26,0.06)"/>
+
+                <!-- MAIN VISOR LED BAR -->
+                <rect id="aria-visor" x="86" y="117" width="108" height="10" rx="5"
+                      fill="#E8501A" filter="url(#glow)"
+                      class="aria-visor-glow"/>
+                <!-- Inner bright core -->
+                <rect id="aria-visor-core" x="100" y="119" width="80" height="6" rx="3"
+                      fill="rgba(255,215,175,0.5)"/>
+                <!-- End caps glow -->
+                <rect x="86" y="117" width="14" height="10" rx="3" fill="rgba(255,140,70,0.22)"/>
+                <rect x="180" y="117" width="14" height="10" rx="3" fill="rgba(255,140,70,0.22)"/>
+
+                <!-- SCAN LINE (thinking only, shown via CSS) -->
+                <rect id="aria-scanline" x="78" y="104" width="7" height="36" rx="3.5"
+                      fill="rgba(232,80,26,0.9)" filter="url(#glows)"/>
+
+                <!-- ── CHIN / LOWER FACE ── -->
+                <path d="M 86 180 Q 86 196 112 200 Q 140 204 168 200 Q 194 196 194 180"
+                      fill="rgba(14,6,2,0.96)" stroke="rgba(232,80,26,0.17)" stroke-width="0.7"/>
+                <!-- Vent grilles -->
+                <line x1="106" y1="188" x2="120" y2="188" stroke="rgba(232,80,26,0.3)"  stroke-width="1"   stroke-linecap="round"/>
+                <line x1="124" y1="188" x2="132" y2="188" stroke="rgba(232,80,26,0.18)" stroke-width="0.8" stroke-linecap="round"/>
+                <line x1="136" y1="188" x2="144" y2="188" stroke="rgba(232,80,26,0.18)" stroke-width="0.8" stroke-linecap="round"/>
+                <line x1="148" y1="188" x2="162" y2="188" stroke="rgba(232,80,26,0.3)"  stroke-width="1"   stroke-linecap="round"/>
+                <!-- Chin bottom accent -->
+                <path d="M 100 198 Q 140 206 180 198"
+                      fill="none" stroke="rgba(232,80,26,0.28)" stroke-width="0.7" stroke-linecap="round"/>
+
+              </g><!-- /fade mask -->
+            </svg>
+            <!-- ═══ END ROBOT SVG ═══ -->
+
+          </div>
+        </div>
+
+        <!-- Identity -->
+        <div class="aria-identity">
+          <h3 class="aria-name">ARIA</h3>
+          <p class="aria-subtitle">Agente de Automatizaci&#243;n &middot; KOVA</p>
+          <div class="aria-status">
+            <span class="aria-status-dot"></span>
+            En l&#237;nea ahora
+          </div>
+        </div>
+
+        <!-- Capabilities -->
+        <div class="aria-caps">
+          <div class="aria-cap">&#128269; Analiza tu operaci&#243;n</div>
+          <div class="aria-cap">&#9889; Detecta qu&#233; automatizar</div>
+          <div class="aria-cap">&#127919; Te dice por d&#243;nde empezar</div>
+        </div>
       </div>
-      <div class="scroll-hint__chevron">
-        <svg width="18" height="11" viewBox="0 0 18 11" fill="none">
-          <path d="M1 1l8 8 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+
+      <!-- RIGHT: Chat -->
+      <div class="aria-grid__right">
+        <div class="aria-chat">
+          <!-- Header -->
+          <div class="aria-chat-header">
+            <div class="aria-chat-header-avatar">
+              <svg width="20" height="20" viewBox="0 0 280 370" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="76" y="102" width="128" height="40" rx="10" fill="#1a0800"/>
+                <rect x="86" y="117" width="108" height="10" rx="5" fill="#E8501A"/>
+                <path d="M68 184 L68 118 Q68 42 140 42 Q212 42 212 118 L212 184 Q192 194 140 196 Q88 194 68 184 Z" fill="#1e1e1e" stroke="rgba(232,80,26,0.4)" stroke-width="4"/>
+              </svg>
+            </div>
+            <div class="aria-chat-header-info">
+              <span class="aria-chat-header-name">ARIA</span>
+              <span class="aria-chat-header-status">En l&#237;nea</span>
+            </div>
+          </div>
+          <!-- Messages -->
+          <div class="aria-messages" id="aria-messages"></div>
+          <!-- Typing indicator -->
+          <div class="aria-typing" id="aria-typing">
+            <div class="aria-typing__dots">
+              <div class="aria-typing__dot"></div>
+              <div class="aria-typing__dot"></div>
+              <div class="aria-typing__dot"></div>
+            </div>
+          </div>
+          <!-- Input -->
+          <div class="aria-input-area">
+            <input type="text" class="aria-input" id="aria-input"
+                   placeholder="Cont&#225;me sobre tu negocio..." autocomplete="off"/>
+            <button class="aria-send" id="aria-send" aria-label="Enviar">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M3 9h12M9 3l6 6-6 6" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <!-- Footer hint -->
+          <div class="aria-chat-footer">ARIA &middot; Responde en segundos &middot; Gratis</div>
+        </div>
       </div>
-    </div>
+
+    </div><!-- /aria-grid -->
   </section>
+
+  <!-- ARIA Logic & Robot Animations -->
+  <script>
+  /* ── State ── */
+  var ARIA_IDLE = "idle", ARIA_THINKING = "thinking", ARIA_SPEAKING = "speaking";
+  var ariaState = ARIA_IDLE;
+
+  function setAriaState(s) {
+    ariaState = s;
+    var av = document.getElementById("aria-avatar");
+    if (av) av.className = "aria--" + s;
+  }
+
+  /* ── Typewriter ── */
+  var ariaHistory = [];
+  async function typeWriter(el, text, speed) {
+    speed = speed || 26;
+    setAriaState(ARIA_SPEAKING);
+    el.textContent = "";
+    for (var i = 0; i < text.length; i++) {
+      el.textContent += text[i];
+      scrollChat();
+      await new Promise(function(r){ setTimeout(r, speed); });
+    }
+    setAriaState(ARIA_IDLE);
+  }
+
+  function scrollChat() {
+    var m = document.getElementById("aria-messages");
+    if (m) m.scrollTop = m.scrollHeight;
+  }
+
+  function addBubble(role) {
+    var msgs = document.getElementById("aria-messages");
+    var bubble = document.createElement("div");
+    bubble.className = "aria-bubble aria-bubble--" + role;
+    if (role === "agent") {
+      var av = document.createElement("div");
+      av.className = "aria-bubble__avatar"; bubble.appendChild(av);
+    }
+    var content = document.createElement("div");
+    content.className = "aria-bubble__content";
+    bubble.appendChild(content);
+    msgs.appendChild(bubble);
+    scrollChat();
+    return content;
+  }
+
+  function showTyping(v) {
+    var t = document.getElementById("aria-typing");
+    if (t) t.style.display = v ? "flex" : "none";
+    if (v) scrollChat();
+  }
+
+  async function sendToARIA(userText) {
+    ariaHistory.push({ role: "user", content: userText });
+    setAriaState(ARIA_THINKING);
+    showTyping(true);
+    try {
+      var res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ messages: ariaHistory })
+      });
+      if (!res.ok) throw new Error("err");
+      var data = await res.json();
+      var txt = data.content || "Disculp&#225;, hubo un error. Escrib&#237;me directo por WhatsApp.";
+      ariaHistory.push({ role: "assistant", content: txt });
+      showTyping(false);
+      await typeWriter(addBubble("agent"), txt);
+    } catch(e) {
+      showTyping(false);
+      await typeWriter(addBubble("agent"), "Disculp&#225;, tuve un problema t&#233;cnico. Escrib&#237;me al WhatsApp y te respondo enseguida.");
+      setAriaState(ARIA_IDLE);
+    }
+  }
+
+  function handleSend() {
+    var inp = document.getElementById("aria-input");
+    var txt = inp ? inp.value.trim() : "";
+    if (!txt) return;
+    var c = addBubble("user"); c.textContent = txt;
+    inp.value = ""; scrollChat();
+    sendToARIA(txt);
+  }
+
+  /* ── Greeting ── */
+  var greeted = false;
+  function greetUser() {
+    if (greeted) return; greeted = true;
+    setTimeout(async function() {
+      setAriaState(ARIA_SPEAKING);
+      await typeWriter(addBubble("agent"),
+        "Hola, soy ARIA. Estoy ac&#225; para analizar tu operaci&#243;n y decirte exactamente qu&#233; pod&#233;s automatizar. &#191;Qu&#233; hace tu negocio?");
+    }, 600);
+  }
+
+  /* ── Visor Mouse Tracking ── */
+  function initVisорTracking() {
+    var robot = document.getElementById("aria-robot");
+    var visorCore = document.getElementById("aria-visor-core");
+    if (!robot || !visorCore) return;
+    var baseX = 100, baseWidth = 80;
+    document.addEventListener("mousemove", function(e) {
+      if (ariaState === ARIA_THINKING) return;
+      var rect = robot.getBoundingClientRect();
+      if (!rect.width) return;
+      var cx = rect.left + rect.width  * (140/280);
+      var dx = (e.clientX - cx) / (window.innerWidth * 0.5);
+      var clamp = Math.max(-1, Math.min(1, dx));
+      var shift = clamp * 14;
+      var newWidth = baseWidth - Math.abs(clamp) * 12;
+      visorCore.setAttribute("x", baseX + shift);
+      visorCore.setAttribute("width", newWidth);
+    });
+  }
+
+  /* ── Blink (visor flash) ── */
+  function initBlink() {
+    var av = document.getElementById("aria-avatar");
+    if (!av) return;
+    function blink() {
+      av.classList.add("aria-blink");
+      setTimeout(function(){ av.classList.remove("aria-blink"); }, 110);
+      setTimeout(blink, 2400 + Math.random() * 3600);
+    }
+    setTimeout(blink, 1500 + Math.random() * 2000);
+  }
+
+  /* ── Input focus: visor looks down ── */
+  function initInputFocus() {
+    var inp = document.getElementById("aria-input");
+    var core = document.getElementById("aria-visor-core");
+    if (!inp || !core) return;
+    inp.addEventListener("focus", function(){
+      core.setAttribute("x", "100"); core.setAttribute("y", "121");
+      core.setAttribute("height", "4");
+    });
+    inp.addEventListener("blur", function(){
+      core.setAttribute("y", "119"); core.setAttribute("height", "6");
+    });
+  }
+
+  /* ── Init ── */
+  document.addEventListener("DOMContentLoaded", function() {
+    var sendBtn = document.getElementById("aria-send");
+    if (sendBtn) sendBtn.addEventListener("click", handleSend);
+    var inp = document.getElementById("aria-input");
+    if (inp) inp.addEventListener("keydown", function(e){
+      if (e.key === "Enter" && !e.shiftKey){ e.preventDefault(); handleSend(); }
+    });
+
+    initVisорTracking();
+    initBlink();
+    initInputFocus();
+
+    var section = document.getElementById("aria-section");
+    if (section) {
+      var obs = new IntersectionObserver(function(entries){
+        if (entries[0].isIntersecting) greetUser();
+      }, { threshold: 0.25 });
+      obs.observe(section);
+    }
+  });
+  </script>
 
   <!-- MARQUEE -->
   <div class="marquee-wrap">
     <div class="marquee-track">
       <div class="marquee-inner marquee-inner--fwd">
         <div class="marquee-set">
-          <span class="m-tag">Automatización <em>·</em></span>
-          <span class="m-tag">IA <em>·</em></span>
-          <span class="m-tag">Marketing <em>·</em></span>
-          <span class="m-tag">SEO <em>·</em></span>
-          <span class="m-tag">RRSS <em>·</em></span>
-          <span class="m-tag">Marca Personal <em>·</em></span>
-          <span class="m-tag">Leads <em>·</em></span>
+          <span class="m-tag">Automatizaci&#243;n <em>&middot;</em></span>
+          <span class="m-tag">IA <em>&middot;</em></span>
+          <span class="m-tag">Marketing <em>&middot;</em></span>
+          <span class="m-tag">SEO <em>&middot;</em></span>
+          <span class="m-tag">RRSS <em>&middot;</em></span>
+          <span class="m-tag">Marca Personal <em>&middot;</em></span>
+          <span class="m-tag">Leads <em>&middot;</em></span>
         </div>
         <div class="marquee-set" aria-hidden="true">
-          <span class="m-tag">Automatización <em>·</em></span>
-          <span class="m-tag">IA <em>·</em></span>
-          <span class="m-tag">Marketing <em>·</em></span>
-          <span class="m-tag">SEO <em>·</em></span>
-          <span class="m-tag">RRSS <em>·</em></span>
-          <span class="m-tag">Marca Personal <em>·</em></span>
-          <span class="m-tag">Leads <em>·</em></span>
+          <span class="m-tag">Automatizaci&#243;n <em>&middot;</em></span>
+          <span class="m-tag">IA <em>&middot;</em></span>
+          <span class="m-tag">Marketing <em>&middot;</em></span>
+          <span class="m-tag">SEO <em>&middot;</em></span>
+          <span class="m-tag">RRSS <em>&middot;</em></span>
+          <span class="m-tag">Marca Personal <em>&middot;</em></span>
+          <span class="m-tag">Leads <em>&middot;</em></span>
         </div>
       </div>
     </div>
     <div class="marquee-track">
       <div class="marquee-inner marquee-inner--rev">
         <div class="marquee-set">
-          <span class="m-tag m-tag--dim">CRM <em>·</em></span>
-          <span class="m-tag m-tag--dim">n8n <em>·</em></span>
-          <span class="m-tag m-tag--dim">Make <em>·</em></span>
-          <span class="m-tag m-tag--dim">WhatsApp <em>·</em></span>
-          <span class="m-tag m-tag--dim">Email <em>·</em></span>
-          <span class="m-tag m-tag--dim">Agentes IA <em>·</em></span>
-          <span class="m-tag m-tag--dim">GoHighLevel <em>·</em></span>
+          <span class="m-tag m-tag--dim">CRM <em>&middot;</em></span>
+          <span class="m-tag m-tag--dim">n8n <em>&middot;</em></span>
+          <span class="m-tag m-tag--dim">Make <em>&middot;</em></span>
+          <span class="m-tag m-tag--dim">WhatsApp <em>&middot;</em></span>
+          <span class="m-tag m-tag--dim">Email <em>&middot;</em></span>
+          <span class="m-tag m-tag--dim">Agentes IA <em>&middot;</em></span>
+          <span class="m-tag m-tag--dim">GoHighLevel <em>&middot;</em></span>
         </div>
         <div class="marquee-set" aria-hidden="true">
-          <span class="m-tag m-tag--dim">CRM <em>·</em></span>
-          <span class="m-tag m-tag--dim">n8n <em>·</em></span>
-          <span class="m-tag m-tag--dim">Make <em>·</em></span>
-          <span class="m-tag m-tag--dim">WhatsApp <em>·</em></span>
-          <span class="m-tag m-tag--dim">Email <em>·</em></span>
-          <span class="m-tag m-tag--dim">Agentes IA <em>·</em></span>
-          <span class="m-tag m-tag--dim">GoHighLevel <em>·</em></span>
+          <span class="m-tag m-tag--dim">CRM <em>&middot;</em></span>
+          <span class="m-tag m-tag--dim">n8n <em>&middot;</em></span>
+          <span class="m-tag m-tag--dim">Make <em>&middot;</em></span>
+          <span class="m-tag m-tag--dim">WhatsApp <em>&middot;</em></span>
+          <span class="m-tag m-tag--dim">Email <em>&middot;</em></span>
+          <span class="m-tag m-tag--dim">Agentes IA <em>&middot;</em></span>
+          <span class="m-tag m-tag--dim">GoHighLevel <em>&middot;</em></span>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- QUÉ HACEMOS / SERVICIOS -->
+  <!-- QU&#201; HACEMOS -->
   <section class="servicios" id="servicios">
     <div class="container">
       <div class="section__header">
-        <h2 class="section__title reveal-text">Qué hacemos</h2>
-        <p class="section__sub reveal-text">Automatización e IA primero. Marketing para escalar.</p>
+        <h2 class="section__title reveal-text">Qu&#233; hacemos</h2>
+        <p class="section__sub reveal-text">Automatizaci&#243;n e IA primero. Marketing para escalar.</p>
       </div>
       <div class="cards bento">
-
-        <!-- 01 · Automatización & IA (wide) -->
+        <!-- 01 -->
         <div class="card tilt-card">
           <div class="card__glow"></div>
           <span class="card__num">01</span>
           <div class="card__visual">
             <div class="visual-chat">
               <div class="chat-msg chat-msg--user">Nuevo lead de Instagram</div>
-              <div class="chat-msg chat-msg--ai">Calificado y agendado automáticamente ✓</div>
+              <div class="chat-msg chat-msg--ai">Calificado y agendado autom&#225;ticamente &#10003;</div>
               <div class="chat-typing"><span></span><span></span><span></span></div>
             </div>
           </div>
-          <h3>Automatización &amp; IA</h3>
-          <p>Conectamos tus herramientas y desplegamos agentes que trabajan 24/7. CRM, leads, atención al cliente — todo en piloto automático.</p>
-          <span class="card__tag">n8n · Make · Agentes IA · CRM</span>
+          <h3>Automatizaci&#243;n &amp; IA</h3>
+          <p>Conectamos tus herramientas y desplegamos agentes que trabajan 24/7. CRM, leads, atenci&#243;n al cliente — todo en piloto autom&#225;tico.</p>
+          <span class="card__tag">n8n &middot; Make &middot; Agentes IA &middot; CRM</span>
           <div class="card__line"></div>
         </div>
-
-        <!-- 02 · Marketing & RRSS -->
+        <!-- 02 -->
         <div class="card tilt-card">
           <div class="card__glow"></div>
           <span class="card__num">02</span>
@@ -690,85 +1035,65 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
           </div>
           <h3>Marketing &amp; Redes Sociales</h3>
-          <p>Estrategia de contenido pensada para el algoritmo. Crecés en alcance y autoridad — con dirección, no al azar.</p>
-          <span class="card__tag">RRSS · Algoritmo · Contenido</span>
+          <p>Estrategia de contenido pensada para el algoritmo. Crec&#233;s en alcance y autoridad — con direcci&#243;n, no al azar.</p>
+          <span class="card__tag">RRSS &middot; Algoritmo &middot; Contenido</span>
           <div class="card__line"></div>
         </div>
-
-        <!-- 03 · SEO -->
+        <!-- 03 -->
         <div class="card tilt-card">
           <div class="card__glow"></div>
           <span class="card__num">03</span>
           <div class="card__visual">
             <div class="visual-flow">
-              <div class="flow-node">BÚSQUEDA</div>
-              <div class="flow-connector">
-                <div class="flow-line"></div>
-                <div class="flow-dot"></div>
-              </div>
-              <div class="flow-node flow-node--accent">POSICIÓN #1</div>
-              <div class="flow-connector">
-                <div class="flow-line"></div>
-                <div class="flow-dot" style="animation-delay:.6s"></div>
-              </div>
-              <div class="flow-node">TRÁFICO</div>
+              <div class="flow-node">B&#218;SQUEDA</div>
+              <div class="flow-connector"><div class="flow-line"></div><div class="flow-dot"></div></div>
+              <div class="flow-node flow-node--accent">POSICI&#211;N #1</div>
+              <div class="flow-connector"><div class="flow-line"></div><div class="flow-dot" style="animation-delay:.6s"></div></div>
+              <div class="flow-node">TR&#193;FICO</div>
             </div>
           </div>
           <h3>SEO &amp; Posicionamiento</h3>
-          <p>Aparecés primero en Google cuando te buscan. Tráfico orgánico constante, sin pagar por cada clic.</p>
-          <span class="card__tag">SEO · Google · Visibilidad</span>
+          <p>Aparec&#233;s primero en Google cuando te buscan. Tr&#225;fico org&#225;nico constante, sin pagar por cada clic.</p>
+          <span class="card__tag">SEO &middot; Google &middot; Visibilidad</span>
           <div class="card__line"></div>
         </div>
-
-        <!-- 04 · Marca Personal -->
+        <!-- 04 -->
         <div class="card tilt-card">
           <div class="card__glow"></div>
           <span class="card__num">04</span>
           <div class="card__visual">
             <div class="visual-flow">
               <div class="flow-node">IDENTIDAD</div>
-              <div class="flow-connector">
-                <div class="flow-line"></div>
-                <div class="flow-dot"></div>
-              </div>
+              <div class="flow-connector"><div class="flow-line"></div><div class="flow-dot"></div></div>
               <div class="flow-node flow-node--accent">AUTORIDAD</div>
-              <div class="flow-connector">
-                <div class="flow-line"></div>
-                <div class="flow-dot" style="animation-delay:.6s"></div>
-              </div>
+              <div class="flow-connector"><div class="flow-line"></div><div class="flow-dot" style="animation-delay:.6s"></div></div>
               <div class="flow-node">REFERENTE</div>
             </div>
           </div>
           <h3>Marca Personal</h3>
           <p>Construimos tu identidad digital. Tu historia, tu voz, tu diferencial. Que te elijan antes de siquiera comparar precios.</p>
-          <span class="card__tag">Branding · Voz · Autoridad</span>
+          <span class="card__tag">Branding &middot; Voz &middot; Autoridad</span>
           <div class="card__line"></div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- CÓMO TRABAJAMOS / PROCESO -->
+  <!-- C&#211;MO TRABAJAMOS -->
   <section class="proceso" id="proceso">
     <div class="container">
       <span class="proceso__label reveal-text">Nuestro proceso</span>
       <h2 class="section__title reveal-text">Solo <span class="proceso__accent">3 pasos</span> para automatizar</h2>
-      <p class="section__sub reveal-text">En menos de 72 horas tu sistema ya está funcionando.</p>
+      <p class="section__sub reveal-text">En menos de 72 horas tu sistema ya est&#225; funcionando.</p>
     </div>
-
     <div class="proceso__stage-wrap">
       <div class="proceso__stage">
-
-        <!-- Números fantasma -->
         <span class="ghost-num ghost-num--1">1</span>
         <span class="ghost-num ghost-num--2">2</span>
         <span class="ghost-num ghost-num--3">3</span>
-
-        <!-- Path SVG animado -->
         <svg class="proceso__svg" viewBox="0 0 1200 560" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
           <path class="proceso__path-bg" d="M 120 320 C 310 320 450 165 600 165 C 750 165 890 40 1090 40"/>
-          <path id="procesoPath"  class="proceso__path"    d="M 120 320 C 310 320 450 165 600 165 C 750 165 890 40 1090 40"/>
+          <path id="procesoPath" class="proceso__path" d="M 120 320 C 310 320 450 165 600 165 C 750 165 890 40 1090 40"/>
           <g class="dot-group" id="dotGroup1">
             <circle cx="120" cy="320" r="18" fill="var(--color-acento)"/>
             <path d="M 112 320 l 5 5 l 11 -11" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
@@ -782,529 +1107,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <path d="M 1082 40 l 5 5 l 11 -11" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
           </g>
         </svg>
-
-        <!-- Paso 1 -->
         <div class="paso paso--1">
-          <h3 class="paso__title">Diagnóstico</h3>
-          <p class="paso__desc">Entendemos tu operación y detectamos exactamente qué podés automatizar.</p>
+          <h3 class="paso__title">Diagn&#243;stico</h3>
+          <p class="paso__desc">Entendemos tu operaci&#243;n y detectamos exactamente qu&#233; pod&#233;s automatizar.</p>
         </div>
-
-        <!-- Paso 2 -->
         <div class="paso paso--2">
-          <h3 class="paso__title">Diseño</h3>
-          <p class="paso__desc">Mapeamos la solución exacta. Sin tecnología de más, sin complicaciones innecesarias.</p>
+          <h3 class="paso__title">Dise&#241;o</h3>
+          <p class="paso__desc">Mapeamos la soluci&#243;n exacta. Sin tecnolog&#237;a de m&#225;s, sin complicaciones innecesarias.</p>
         </div>
-
-        <!-- Paso 3 -->
         <div class="paso paso--3">
           <h3 class="paso__title">En marcha</h3>
           <p class="paso__desc">Construimos, testeamos y dejamos todo funcionando. Con soporte incluido.</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ARIA SECTION -->
-  <section id="aria-section" class="aria-section">
-    <div class="container" style="width:100%">
-      <div class="aria-section-header">
-        <div class="aria-section-kicker">Agente IA en vivo</div>
-        <h2 class="aria-section-title">Hablá con ARIA.<br>Ahora mismo.</h2>
-        <p class="aria-section-sub">Analizá tu negocio con nuestra IA. Gratis, en segundos, sin formularios.</p>
-      </div>
-      <div class="aria-inner">
-        <!-- LEFT: Agent presentation -->
-        <div class="aria-left">
-          <div class="aria-avatar-wrap">
-            <div class="aria-avatar aria--idle" id="aria-avatar">
-              <svg id="aria-face" width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <!-- Glow rings -->
-                <circle cx="100" cy="100" r="88" fill="none" stroke="rgba(232,80,26,0.12)" stroke-width="1" class="aria-ring-1"/>
-                <circle cx="100" cy="100" r="75" fill="none" stroke="rgba(232,80,26,0.18)" stroke-width="1" class="aria-ring-2"/>
-                <circle cx="100" cy="100" r="60" fill="none" stroke="rgba(232,80,26,0.1)" stroke-width="1" class="aria-ring-3"/>
-                <!-- Diamond face -->
-                <polygon id="aria-face-shape" points="100,12 178,100 100,188 22,100" fill="rgba(232,80,26,0.07)" stroke="rgba(232,80,26,0.45)" stroke-width="1.5"/>
-                <polygon points="100,38 155,100 100,162 45,100" fill="rgba(232,80,26,0.06)" stroke="rgba(232,80,26,0.2)" stroke-width="1"/>
-                <!-- Left eye -->
-                <g id="aria-eye-left">
-                  <circle cx="74" cy="90" r="15" fill="rgba(8,8,8,0.85)" stroke="rgba(232,80,26,0.5)" stroke-width="1.2"/>
-                  <circle id="aria-pupil-left" cx="74" cy="90" r="7" fill="#E8501A"/>
-                  <circle id="aria-pupil-left-hi" cx="76.5" cy="87.5" r="2.5" fill="rgba(255,255,255,0.55)"/>
-                </g>
-                <!-- Right eye -->
-                <g id="aria-eye-right">
-                  <circle cx="126" cy="90" r="15" fill="rgba(8,8,8,0.85)" stroke="rgba(232,80,26,0.5)" stroke-width="1.2"/>
-                  <circle id="aria-pupil-right" cx="126" cy="90" r="7" fill="#E8501A"/>
-                  <circle id="aria-pupil-right-hi" cx="128.5" cy="87.5" r="2.5" fill="rgba(255,255,255,0.55)"/>
-                </g>
-                <!-- Brows -->
-                <line id="aria-brow-left"  x1="61" y1="71" x2="83" y2="69" stroke="rgba(232,80,26,0.8)" stroke-width="2" stroke-linecap="round"/>
-                <line id="aria-brow-right" x1="117" y1="69" x2="139" y2="71" stroke="rgba(232,80,26,0.8)" stroke-width="2" stroke-linecap="round"/>
-                <!-- Mouth -->
-                <path id="aria-mouth" d="M 82 118 Q 100 126 118 118" fill="none" stroke="rgba(232,80,26,0.65)" stroke-width="1.8" stroke-linecap="round"/>
-                <!-- Core dot -->
-                <circle cx="100" cy="100" r="4" fill="#E8501A" class="aria-core-dot"/>
-              </svg>
-            </div>
-          </div>
-          <div>
-            <h3 class="aria-name">ARIA</h3>
-            <p class="aria-subtitle">Agente de Automatización · KOVA</p>
-          </div>
-          <div class="aria-status">
-            <span class="aria-status-dot"></span>
-            En línea ahora
-          </div>
-          <div class="aria-capabilities">
-            <div class="aria-cap">🔍 Analiza tu operación</div>
-            <div class="aria-cap">⚡ Detecta qué automatizar</div>
-            <div class="aria-cap">🎯 Te dice por dónde empezar</div>
-          </div>
-        </div>
-        <!-- RIGHT: Chat interface -->
-        <div class="aria-right">
-          <div class="aria-chat">
-            <!-- Header -->
-            <div class="aria-chat-header">
-              <div class="aria-chat-header-avatar">
-                <svg width="20" height="20" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <polygon points="100,12 178,100 100,188 22,100" fill="rgba(232,80,26,0.15)" stroke="#E8501A" stroke-width="8"/>
-                  <circle cx="74" cy="90" r="18" fill="#0a0a0a"/>
-                  <circle cx="74" cy="90" r="10" fill="#E8501A"/>
-                  <circle cx="126" cy="90" r="18" fill="#0a0a0a"/>
-                  <circle cx="126" cy="90" r="10" fill="#E8501A"/>
-                </svg>
-              </div>
-              <div class="aria-chat-header-info">
-                <span class="aria-chat-header-name">ARIA</span>
-                <span class="aria-chat-header-status">En línea</span>
-              </div>
-            </div>
-            <!-- Messages -->
-            <div class="aria-messages" id="aria-messages"></div>
-            <!-- Typing indicator -->
-            <div class="aria-typing" id="aria-typing">
-              <div class="aria-typing__dots">
-                <div class="aria-typing__dot"></div>
-                <div class="aria-typing__dot"></div>
-                <div class="aria-typing__dot"></div>
-              </div>
-            </div>
-            <!-- Input -->
-            <div class="aria-input-area">
-              <input type="text" class="aria-input" id="aria-input" placeholder="Contame sobre tu negocio..." autocomplete="off" />
-              <button class="aria-send" id="aria-send" aria-label="Enviar">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                  <path d="M3 9h12M9 3l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </button>
-            </div>
-            <!-- Footer hint -->
-            <div class="aria-chat-footer">ARIA · Responde en segundos · Gratis</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <script>
-  // ARIA Chat System
-  const ARIA_STATES = { IDLE: 'idle', THINKING: 'thinking', SPEAKING: 'speaking' };
-
-  function setAriaState(state) {
-    const avatar = document.getElementById('aria-avatar');
-    if (!avatar) return;
-    avatar.className = 'aria-avatar aria--' + state;
-  }
-
-  let ariaHistory = [];
-
-  async function typeWriter(el, text, speed) {
-    speed = speed || 28;
-    setAriaState(ARIA_STATES.SPEAKING);
-    el.textContent = '';
-    for (var i = 0; i < text.length; i++) {
-      el.textContent += text[i];
-      scrollChatToBottom();
-      await new Promise(function(r) { setTimeout(r, speed); });
-    }
-    setAriaState(ARIA_STATES.IDLE);
-  }
-
-  function scrollChatToBottom() {
-    var msgs = document.getElementById('aria-messages');
-    if (msgs) msgs.scrollTop = msgs.scrollHeight;
-  }
-
-  function addBubble(text, role) {
-    var msgs = document.getElementById('aria-messages');
-    var bubble = document.createElement('div');
-    bubble.className = 'aria-bubble aria-bubble--' + role;
-    if (role === 'agent') {
-      var avatar = document.createElement('div');
-      avatar.className = 'aria-bubble__avatar';
-      bubble.appendChild(avatar);
-    }
-    var content = document.createElement('div');
-    content.className = 'aria-bubble__content';
-    bubble.appendChild(content);
-    msgs.appendChild(bubble);
-    scrollChatToBottom();
-    return content;
-  }
-
-  function showTyping(show) {
-    var t = document.getElementById('aria-typing');
-    if (t) t.style.display = show ? 'flex' : 'none';
-    if (show) scrollChatToBottom();
-  }
-
-  async function sendToARIA(userText) {
-    ariaHistory.push({ role: 'user', content: userText });
-    setAriaState(ARIA_STATES.THINKING);
-    showTyping(true);
-
-    try {
-      var response = await fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: ariaHistory })
-      });
-
-      if (!response.ok) throw new Error('API error');
-
-      var data = await response.json();
-      var assistantText = data.content || 'Disculpá, hubo un error. Escribime directo por WhatsApp.';
-
-      ariaHistory.push({ role: 'assistant', content: assistantText });
-
-      showTyping(false);
-      var contentEl = addBubble('', 'agent');
-      await typeWriter(contentEl, assistantText);
-
-    } catch (err) {
-      showTyping(false);
-      var contentEl2 = addBubble('', 'agent');
-      await typeWriter(contentEl2, 'Disculpá, tuve un problema técnico. Escribime directo al WhatsApp y te respondo ahora.');
-      setAriaState(ARIA_STATES.IDLE);
-    }
-  }
-
-  function handleSend() {
-    var input = document.getElementById('aria-input');
-    var text = input ? input.value.trim() : '';
-    if (!text) return;
-
-    addBubble(text, 'user').textContent = text;
-    input.value = '';
-    scrollChatToBottom();
-    sendToARIA(text);
-  }
-
-  var ariaGreeted = false;
-
-  function greetUser() {
-    if (ariaGreeted) return;
-    ariaGreeted = true;
-
-    setTimeout(async function() {
-      setAriaState(ARIA_STATES.SPEAKING);
-      var contentEl = addBubble('', 'agent');
-      await typeWriter(contentEl, 'Hola, soy ARIA. Estoy acá para analizar tu operación y decirte exactamente qué podés automatizar. ¿Qué hace tu negocio?');
-    }, 800);
-  }
-
-  /* ── Face expressions ── */
-  function setAriaFace(state) {
-    var browL  = document.getElementById('aria-brow-left');
-    var browR  = document.getElementById('aria-brow-right');
-    var mouth  = document.getElementById('aria-mouth');
-    if (!browL) return;
-    if (state === 'thinking') {
-      browL.setAttribute('x1','64'); browL.setAttribute('y1','74'); browL.setAttribute('x2','84'); browL.setAttribute('y2','69');
-      browR.setAttribute('x1','116'); browR.setAttribute('y1','69'); browR.setAttribute('x2','136'); browR.setAttribute('y2','74');
-      mouth.setAttribute('d','M 86 118 Q 100 118 114 118');
-    } else if (state === 'speaking') {
-      browL.setAttribute('x1','61'); browL.setAttribute('y1','71'); browL.setAttribute('x2','83'); browL.setAttribute('y2','69');
-      browR.setAttribute('x1','117'); browR.setAttribute('y1','69'); browR.setAttribute('x2','139'); browR.setAttribute('y2','71');
-      mouth.setAttribute('d','M 80 115 Q 100 128 120 115');
-    } else {
-      browL.setAttribute('x1','61'); browL.setAttribute('y1','71'); browL.setAttribute('x2','83'); browL.setAttribute('y2','69');
-      browR.setAttribute('x1','117'); browR.setAttribute('y1','69'); browR.setAttribute('x2','139'); browR.setAttribute('y2','71');
-      mouth.setAttribute('d','M 82 118 Q 100 126 118 118');
-    }
-  }
-
-  /* Patch setAriaState to also update face */
-  var _origSetAriaState = setAriaState;
-  setAriaState = function(state) {
-    _origSetAriaState(state);
-    setAriaFace(state);
-  };
-
-  /* ── Eye tracking ── */
-  function initAriaEyes() {
-    var face = document.getElementById('aria-face');
-    if (!face) return;
-
-    var eyes = [
-      { pupil: document.getElementById('aria-pupil-left'),  hi: document.getElementById('aria-pupil-left-hi'),  bx: 74,  by: 90, maxR: 6 },
-      { pupil: document.getElementById('aria-pupil-right'), hi: document.getElementById('aria-pupil-right-hi'), bx: 126, by: 90, maxR: 6 }
-    ];
-
-    document.addEventListener('mousemove', function(e) {
-      var rect = face.getBoundingClientRect();
-      if (!rect.width) return;
-      var sc = rect.width / 200;
-      eyes.forEach(function(eye) {
-        var ex = rect.left + eye.bx * sc;
-        var ey = rect.top  + eye.by * sc;
-        var dx = e.clientX - ex;
-        var dy = e.clientY - ey;
-        var dist = Math.sqrt(dx*dx + dy*dy) || 1;
-        var t = Math.min(dist, 120) / 120;
-        var mx = (dx/dist) * t * eye.maxR;
-        var my = (dy/dist) * t * eye.maxR;
-        eye.pupil.setAttribute('cx', eye.bx + mx);
-        eye.pupil.setAttribute('cy', eye.by + my);
-        eye.hi.setAttribute('cx', eye.bx + mx + 2.5);
-        eye.hi.setAttribute('cy', eye.by + my - 2.5);
-      });
-    });
-
-    /* Input focus → ARIA looks down at chat */
-    var inp = document.getElementById('aria-input');
-    if (inp) {
-      inp.addEventListener('focus', function() {
-        eyes.forEach(function(eye) {
-          eye.pupil.setAttribute('cx', eye.bx);
-          eye.pupil.setAttribute('cy', eye.by + 5);
-          eye.hi.setAttribute('cx', eye.bx + 2.5);
-          eye.hi.setAttribute('cy', eye.by + 2.5);
-        });
-      });
-      inp.addEventListener('blur', function() {
-        eyes.forEach(function(eye) {
-          eye.pupil.setAttribute('cx', eye.bx);
-          eye.pupil.setAttribute('cy', eye.by);
-          eye.hi.setAttribute('cx', eye.bx + 2.5);
-          eye.hi.setAttribute('cy', eye.by - 2.5);
-        });
-      });
-    }
-  }
-
-  /* ── Blink ── */
-  function initAriaBlink() {
-    var avatar = document.getElementById('aria-avatar');
-    if (!avatar) return;
-    function blink() {
-      avatar.classList.add('aria-blink');
-      setTimeout(function() { avatar.classList.remove('aria-blink'); }, 130);
-      setTimeout(blink, 2200 + Math.random() * 3800);
-    }
-    setTimeout(blink, 1800 + Math.random() * 2000);
-  }
-
-  document.addEventListener('DOMContentLoaded', function() {
-    var sendBtn = document.getElementById('aria-send');
-    if (sendBtn) sendBtn.addEventListener('click', handleSend);
-
-    var input = document.getElementById('aria-input');
-    if (input) {
-      input.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter' && !e.shiftKey) {
-          e.preventDefault();
-          handleSend();
-        }
-      });
-    }
-
-    initAriaEyes();
-    initAriaBlink();
-
-    var section = document.getElementById('aria-section');
-    if (section) {
-      var observer = new IntersectionObserver(function(entries) {
-        if (entries[0].isIntersecting) greetUser();
-      }, { threshold: 0.3 });
-      observer.observe(section);
-    }
-  });
-  </script>
-
-  <!-- PLANES -->
-  <section class="planes" id="planes">
-    <div class="container">
-      <span class="planes__kicker">Inversión</span>
-      <h2 class="section__title">Elegí tu plan.<br><span class="accent-heading">Empezá esta semana.</span></h2>
-      <p class="section__sub" style="max-width:520px">Sin contratos anuales, sin letra chica. Empezamos rápido y escalamos a tu ritmo.</p>
-
-      <div class="planes__grid">
-
-        <!-- STARTER -->
-        <div class="plan-card">
-          <div class="plan-card__tier">Para empezar</div>
-          <div class="plan-card__name">Starter</div>
-          <div class="plan-card__tagline">Ideal para solopreneurs y negocios que arrancan.</div>
-          <div class="plan-card__price">
-            <span class="plan-card__currency">$</span><span class="plan-card__amount">497</span><span class="plan-card__period">/mes</span>
-          </div>
-          <ul class="plan-card__list">
-            <li>1 red social gestionada</li>
-            <li>12 posts/mes con copy y diseño</li>
-            <li>Estrategia de contenido mensual</li>
-            <li>Análisis de algoritmo y métricas</li>
-            <li>Reporte mensual de resultados</li>
-            <li>Soporte por WhatsApp</li>
-          </ul>
-          <a href="#contacto" class="btn btn--outline magnetic" style="width:100%;justify-content:center">Empezar →</a>
-          <p class="plan-card__note">Sin permanencia mínima</p>
-        </div>
-
-        <!-- GROWTH -->
-        <div class="plan-card plan-card--featured">
-          <span class="plan-badge">⭐ Más elegido</span>
-          <div class="plan-card__tier">Para crecer</div>
-          <div class="plan-card__name">Growth</div>
-          <div class="plan-card__tagline">Marketing completo + automatización básica.</div>
-          <div class="plan-card__price">
-            <span class="plan-card__currency">$</span><span class="plan-card__amount">1.297</span><span class="plan-card__period">/mes</span>
-          </div>
-          <ul class="plan-card__list">
-            <li>2 redes sociales gestionadas</li>
-            <li>24 posts/mes + stories</li>
-            <li>SEO básico (4 keywords)</li>
-            <li>Email marketing mensual</li>
-            <li>Automatización de leads</li>
-            <li>Marca personal (perfil + bio)</li>
-            <li>Reportes semanales</li>
-            <li>Call mensual de estrategia</li>
-          </ul>
-          <a href="#contacto" class="btn btn--primary magnetic" style="width:100%;justify-content:center">Quiero Growth →</a>
-          <p class="plan-card__note">Resultados en 60 días o te devolvemos el mes</p>
-        </div>
-
-        <!-- SCALE -->
-        <div class="plan-card">
-          <div class="plan-card__tier">Para escalar</div>
-          <div class="plan-card__name">Scale</div>
-          <div class="plan-card__tagline">Todo lo que necesitás para dominar tu mercado.</div>
-          <div class="plan-card__price">
-            <span class="plan-card__amount" style="font-size:40px">Custom</span>
-          </div>
-          <ul class="plan-card__list">
-            <li>Marketing digital completo</li>
-            <li>SEO avanzado + link building</li>
-            <li>Automatización full (CRM, IA, flows)</li>
-            <li>Marca personal estratégica</li>
-            <li>Ads gestionados (Meta + Google)</li>
-            <li>Equipo dedicado exclusivo</li>
-            <li>Reportes en tiempo real</li>
-            <li>Acceso directo al equipo</li>
-          </ul>
-          <a href="#contacto" class="btn btn--outline magnetic" style="width:100%;justify-content:center">Hablemos →</a>
-          <p class="plan-card__note">Precio según alcance del proyecto</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="faq" id="faq">
-    <div class="container">
-      <div class="faq__grid">
-        <div class="faq__sticky">
-          <span class="desafio__kicker">FAQ</span>
-          <h2 class="faq__sticky-title">Las preguntas que todos hacen.</h2>
-          <p class="faq__sticky-sub">Si tu duda no está acá, escribinos. Respondemos en menos de 24hs.</p>
-          <a href="#contacto" class="btn btn--outline magnetic">Hacé tu pregunta →</a>
-        </div>
-
-        <div class="faq__list" id="faqList">
-
-          <div class="faq__item">
-            <button class="faq__trigger">
-              ¿En cuánto tiempo veo resultados?
-              <span class="faq__icon">+</span>
-            </button>
-            <div class="faq__answer">
-              <div class="faq__answer-inner">Depende del servicio. En RRSS, el alcance empieza a crecer desde el primer mes con la estrategia correcta. En SEO, los resultados orgánicos sólidos se ven entre 60 y 90 días. Las automatizaciones están activas en 72 horas. Somos honestos: no prometemos milagros instantáneos, pero sí resultados medibles y sostenibles.</div>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__trigger">
-              ¿Trabajan con negocios chicos o solo con empresas grandes?
-              <span class="faq__icon">+</span>
-            </button>
-            <div class="faq__answer">
-              <div class="faq__answer-inner">Con ambos. Tenemos un plan Starter pensado para solopreneurs y emprendedores que arrancan, y planes Scale para empresas que quieren dominar su mercado. Lo que importa no es el tamaño, sino las ganas de crecer con estrategia.</div>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__trigger">
-              ¿Qué diferencia a KOVA de una agencia de marketing tradicional?
-              <span class="faq__icon">+</span>
-            </button>
-            <div class="faq__answer">
-              <div class="faq__answer-inner">Tres cosas: primero, combinamos marketing estratégico con tecnología e IA, algo que pocas agencias hacen bien. Segundo, trabajamos con foco en resultados medibles, no en likes vacíos. Tercero, somos un equipo chico y dedicado — no sos un número más en una cartera de 80 clientes.</div>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__trigger">
-              ¿Puedo contratar solo un servicio?
-              <span class="faq__icon">+</span>
-            </button>
-            <div class="faq__answer">
-              <div class="faq__answer-inner">Sí. Podés empezar solo con RRSS, solo con SEO, o solo con automatización. Muchos clientes empiezan con un área y después expanden. No te obligamos a comprar un paquete si no lo necesitás. La idea es que veas resultados en lo que más te duele hoy.</div>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__trigger">
-              ¿Necesito saber de marketing para trabajar con KOVA?
-              <span class="faq__icon">+</span>
-            </button>
-            <div class="faq__answer">
-              <div class="faq__answer-inner">Para nada. Justamente para eso estamos nosotros. Vos nos contás tu negocio, tu público y tus objetivos. Nosotros traducimos eso en estrategia, contenido, automatización y resultados. Tu trabajo es hacer lo que hacés bien; el nuestro, que te encuentren y te elijan.</div>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__trigger">
-              ¿Hacen contratos largos o hay permanencia mínima?
-              <span class="faq__icon">+</span>
-            </button>
-            <div class="faq__answer">
-              <div class="faq__answer-inner">No. Trabajamos mes a mes. Creemos que la mejor forma de retener un cliente es con resultados, no con cláusulas de permanencia. Podés pausar o cancelar cuando quieras. Dicho eso, los mejores resultados vienen con consistencia: recomendamos al menos 3 meses para ver el impacto real.</div>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__trigger">
-              ¿Cómo es el proceso para empezar?
-              <span class="faq__icon">+</span>
-            </button>
-            <div class="faq__answer">
-              <div class="faq__answer-inner">Es simple: 1) Mandás tu consulta por el formulario o WhatsApp. 2) Hacemos una llamada de 30 minutos para entender tu negocio. 3) Te presentamos un plan concreto con objetivos y tiempos. 4) Si te convence, arrancamos. Todo en menos de una semana.</div>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__trigger">
-              ¿Qué pasa si no veo los resultados prometidos?
-              <span class="faq__icon">+</span>
-            </button>
-            <div class="faq__answer">
-              <div class="faq__answer-inner">El plan Growth tiene garantía: si en 60 días no ves mejoras medibles, te devolvemos el mes. Nunca prometemos lo que no podemos entregar — por eso primero auditamos tu situación y definimos objetivos realistas. La transparencia es parte de cómo trabajamos.</div>
-            </div>
-          </div>
-
         </div>
       </div>
     </div>
@@ -1313,69 +1126,45 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- CONTACTO -->
   <section id="contacto" style="padding:100px 0;background:#0a0a0a;">
     <div class="container" style="max-width:680px;">
-      <h2 style="font-size:clamp(2rem,5vw,3rem);font-weight:800;color:#fff;margin-bottom:12px;">¿Listo para crecer en serio?</h2>
-      <p style="color:#aaa;font-size:1.1rem;margin-bottom:40px;">Contanos en qué área querés avanzar y armamos una estrategia para vos.</p>
+      <h2 style="font-size:clamp(2rem,5vw,3rem);font-weight:800;color:#fff;margin-bottom:12px;">&#191;Listo para crecer en serio?</h2>
+      <p style="color:#aaa;font-size:1.1rem;margin-bottom:40px;">Cont&#225;nos en qu&#233; &#225;rea quer&#233;s avanzar y armamos una estrategia para vos.</p>
       <form id="contactoForm" style="display:flex;flex-direction:column;gap:16px;">
-        <div class="contact-row" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
           <input type="text" name="nombre" placeholder="Tu nombre" required
-            style="background:#1a1a1a;border:1px solid #333;border-radius:10px;padding:16px;color:#fff;font-size:15px;outline:none;width:100%;box-sizing:border-box;" />
+            style="background:#1a1a1a;border:1px solid #333;border-radius:10px;padding:16px;color:#fff;font-size:15px;outline:none;width:100%;box-sizing:border-box;"/>
           <input type="email" name="email" placeholder="Tu email" required
-            style="background:#1a1a1a;border:1px solid #333;border-radius:10px;padding:16px;color:#fff;font-size:15px;outline:none;width:100%;box-sizing:border-box;" />
+            style="background:#1a1a1a;border:1px solid #333;border-radius:10px;padding:16px;color:#fff;font-size:15px;outline:none;width:100%;box-sizing:border-box;"/>
         </div>
-        <input type="text" name="area" id="contactoArea" placeholder="¿En qué área querés crecer? (RRSS, SEO, automatización...)" required
-          style="background:#1a1a1a;border:1px solid #333;border-radius:10px;padding:16px;color:#fff;font-size:15px;outline:none;box-sizing:border-box;" />
-        <textarea name="mensaje" placeholder="Contanos más sobre tu negocio y qué resultado estás buscando..." rows="4"
+        <input type="text" name="area" id="contactoArea" placeholder="&#191;En qu&#233; &#225;rea quer&#233;s crecer? (RRSS, SEO, automatizaci&#243;n...)" required
+          style="background:#1a1a1a;border:1px solid #333;border-radius:10px;padding:16px;color:#fff;font-size:15px;outline:none;box-sizing:border-box;"/>
+        <textarea name="mensaje" placeholder="Cont&#225;nos m&#225;s sobre tu negocio y qu&#233; resultado est&#225;s buscando..." rows="4"
           style="background:#1a1a1a;border:1px solid #333;border-radius:10px;padding:16px;color:#fff;font-size:15px;outline:none;resize:vertical;box-sizing:border-box;font-family:inherit;"></textarea>
         <button type="submit" id="contactoSubmit"
           style="background:#e8501a;color:#fff;border:none;border-radius:10px;padding:16px 32px;font-size:16px;font-weight:700;cursor:pointer;align-self:flex-start;font-family:inherit;">
-          Enviar mensaje →
+          Enviar mensaje &#8594;
         </button>
       </form>
     </div>
   </section>
 
-  <!-- TICKER -->
-  <div class="ticker">
-    <div class="ticker__inner">
-      <div class="ticker__set">
-        <span class="ticker__item">Ventas<span class="ticker__sep">·</span></span>
-        <span class="ticker__item">Agentes de IA<span class="ticker__sep">·</span></span>
-        <span class="ticker__item">Marketing<span class="ticker__sep">·</span></span>
-        <span class="ticker__item">Posicionamiento<span class="ticker__sep">·</span></span>
-        <span class="ticker__item">SEO<span class="ticker__sep">·</span></span>
-        <span class="ticker__item">Automatizaciones<span class="ticker__sep">·</span></span>
-        <span class="ticker__item">Ahorro de Tiempo<span class="ticker__sep">·</span></span>
-      </div>
-      <div class="ticker__set" aria-hidden="true">
-        <span class="ticker__item">Ventas<span class="ticker__sep">·</span></span>
-        <span class="ticker__item">Agentes de IA<span class="ticker__sep">·</span></span>
-        <span class="ticker__item">Marketing<span class="ticker__sep">·</span></span>
-        <span class="ticker__item">Posicionamiento<span class="ticker__sep">·</span></span>
-        <span class="ticker__item">SEO<span class="ticker__sep">·</span></span>
-        <span class="ticker__item">Automatizaciones<span class="ticker__sep">·</span></span>
-        <span class="ticker__item">Ahorro de Tiempo<span class="ticker__sep">·</span></span>
-      </div>
-    </div>
-  </div>
-
-  <!-- FOOTER V2 -->
+  <!-- FOOTER -->
   <footer class="footer-v2">
     <div class="container">
       <div class="footer-v2__top">
         <div>
-          <img src="src/logo.svg" alt="KOVA" style="height:32px;width:auto;opacity:0.85;" />
+          <img src="src/logo.svg" alt="KOVA" style="height:32px;width:auto;opacity:0.85;"/>
           <p class="footer-v2__brand-desc">Automatizamos operaciones con IA y desarrollamos estrategias de marketing para que tu negocio escale sin sumar gente.</p>
           <div class="footer-v2__social">
-            <a href="https://www.instagram.com/kovasystems_ia/" class="footer-v2__social-link" aria-label="Instagram" target="_blank" rel="noopener">📸</a>
-            <a href="#" class="footer-v2__social-link" aria-label="LinkedIn">💼</a>
-            <a href="#" class="footer-v2__social-link" aria-label="TikTok">🎵</a>
-            <a href="#" class="footer-v2__social-link" aria-label="WhatsApp">💬</a>
+            <a href="https://www.instagram.com/kovasystems_ia/" class="footer-v2__social-link" aria-label="Instagram" target="_blank" rel="noopener">&#128248;</a>
+            <a href="#" class="footer-v2__social-link" aria-label="LinkedIn">&#128188;</a>
+            <a href="#" class="footer-v2__social-link" aria-label="TikTok">&#127925;</a>
+            <a href="#" class="footer-v2__social-link" aria-label="WhatsApp">&#128172;</a>
           </div>
         </div>
         <div>
           <p class="footer-v2__col-title">Servicios</p>
           <ul class="footer-v2__links">
-            <li><a href="servicios.html">Automatización &amp; IA</a></li>
+            <li><a href="servicios.html">Automatizaci&#243;n &amp; IA</a></li>
             <li><a href="servicios.html">Marketing &amp; RRSS</a></li>
             <li><a href="servicios.html">SEO &amp; Posicionamiento</a></li>
             <li><a href="servicios.html">Marca Personal</a></li>
@@ -1386,40 +1175,37 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <ul class="footer-v2__links">
             <li><a href="index.html">Inicio</a></li>
             <li><a href="servicios.html">Servicios</a></li>
-            <li><a href="#planes">Planes</a></li>
             <li><a href="#contacto">Contacto</a></li>
           </ul>
         </div>
         <div>
           <p class="footer-v2__col-title">Contacto</p>
           <ul class="footer-v2__links">
-            <li><a href="mailto:hola@kova.agency">hola@kova.agency</a></li>
-            <li><a href="#contacto">WhatsApp</a></li>
-            <li><a href="#faq">Preguntas frecuentes</a></li>
+            <li><a href="mailto:hola@kova-systems.com">hola@kova-systems.com</a></li>
+            <li><a href="https://wa.me/542615336300" target="_blank" rel="noopener">WhatsApp</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-v2__bottom">
-        <span class="footer-v2__copy">© 2026 KOVA. Todos los derechos reservados.</span>
-        <span class="footer-v2__made">Hecho con <span>♥</span> y mucho código</span>
+        <span class="footer-v2__copy">&#169; 2026 KOVA. Todos los derechos reservados.</span>
+        <span class="footer-v2__made">Hecho con <span>&#9829;</span> y mucho c&#243;digo</span>
       </div>
     </div>
   </footer>
 
   <!-- WHATSAPP FLOATING BUTTON -->
   <a href="https://wa.me/542615336300?text=Hola%20KOVA%2C%20quiero%20info%20sobre%20sus%20servicios"
-     class="whatsapp-float"
-     target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+     class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
       <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.532 5.845L.057 23.943l6.284-1.648A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.866 9.866 0 01-5.022-1.371l-.36-.214-3.733.979.996-3.638-.234-.374A9.868 9.868 0 012.1 12c0-5.464 4.436-9.9 9.9-9.9 5.464 0 9.9 4.436 9.9 9.9 0 5.464-4.436 9.9-9.9 9.9z"/>
     </svg>
-    <span class="whatsapp-float__text">¿Hablamos?</span>
+    <span class="whatsapp-float__text">&#191;Hablamos?</span>
   </a>
 
   <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="src/main.js?v=7"></script>
+  <script src="src/main.js?v=8"></script>
 </body>
 </html>

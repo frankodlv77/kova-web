@@ -57,18 +57,19 @@ function initAnimations() {
 function heroAnimation() {
   const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-  tl.to('#heroTag', { opacity: 1, y: 0, duration: 0.7, delay: 0.1 })
-    .to('#heroTitle', { opacity: 1, y: 0, duration: 0.9 }, '-=0.4')
-    .to('#heroSub', { opacity: 1, y: 0, duration: 0.8 }, '-=0.5')
-    .to('#heroCta', { opacity: 1, y: 0, duration: 0.7 }, '-=0.4')
-    .fromTo('#heroFormCard', { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.9, ease: 'power3.out' }, '-=0.3')
-    .to('#scrollHint', { opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.2');
-
-  // Hide scroll hint on scroll
-  window.addEventListener('scroll', () => {
-    const hint = document.getElementById('scrollHint');
-    if (hint) hint.style.opacity = window.scrollY > 80 ? '0' : '';
-  }, { passive: true });
+  // ARIA hero entrance
+  tl.fromTo('.aria-hero__kicker',
+      { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, delay: 0.1 })
+    .fromTo('.aria-hero__title',
+      { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.9 }, '-=0.35')
+    .fromTo('.aria-hero__sub',
+      { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7 }, '-=0.5')
+    .fromTo('.aria-robot-wrap',
+      { opacity: 0, x: -32, scale: 0.96 }, { opacity: 1, x: 0, scale: 1, duration: 1, ease: 'power3.out' }, '-=0.5')
+    .fromTo('.aria-grid__right',
+      { opacity: 0, x: 32 }, { opacity: 1, x: 0, duration: 0.9, ease: 'power3.out' }, '-=0.7')
+    .fromTo('.aria-identity, .aria-caps',
+      { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, stagger: 0.12, ease: 'power2.out' }, '-=0.4');
 }
 
 /* =====================
