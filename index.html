@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MWRKQDM6');</script>
+  <!-- End Google Tag Manager -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KOVA | Marketing Digital, SEO y Marca Personal | Argentina</title>
-  <meta name="description" content="KOVA es una agencia de marketing digital que hace crecer tu negocio con RRSS, SEO, marca personal y automatización. Estrategia real, resultados concretos." />
+  <title>KOVA | Automatización e IA para tu negocio | Argentina</title>
+  <meta name="description" content="Automatizamos tu operación con IA. Leads, ventas, atención al cliente — en piloto automático. KOVA: agencia de automatización e IA." />
   <meta name="robots" content="index, follow" />
   <meta name="google-site-verification" content="c5fc0ge6DjNsde5BiWqNTT-cnBHS8_lQSt4qtI40zp4" />
   <link rel="canonical" href="https://kova-systems.com/" />
@@ -14,16 +21,16 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://kova-systems.com/" />
-  <meta property="og:title" content="KOVA — Agencia de Crecimiento Digital" />
-  <meta property="og:description" content="Hacemos crecer tu negocio con RRSS, SEO, marca personal y automatización. Estrategia real, resultados concretos." />
+  <meta property="og:title" content="KOVA — Automatización e IA para tu negocio" />
+  <meta property="og:description" content="Automatizamos tu operación con IA. Leads, ventas, atención al cliente — en piloto automático." />
   <meta property="og:image" content="https://kova-systems.com/src/og-image.svg" />
   <meta property="og:locale" content="es_AR" />
   <meta property="og:site_name" content="KOVA" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="KOVA — Agencia de Crecimiento Digital" />
-  <meta name="twitter:description" content="Hacemos crecer tu negocio con RRSS, SEO, marca personal y automatización." />
+  <meta name="twitter:title" content="KOVA — Automatización e IA para tu negocio" />
+  <meta name="twitter:description" content="Automatizamos tu operación con IA. Leads, ventas, atención al cliente — en piloto automático." />
   <meta name="twitter:image" content="https://kova-systems.com/src/og-image.svg" />
 
   <!-- Schema.org -->
@@ -33,10 +40,10 @@
     "@type": "ProfessionalService",
     "name": "KOVA",
     "url": "https://kova-systems.com",
-    "description": "Agencia de marketing digital especializada en RRSS, SEO, marca personal y automatización.",
+    "description": "Automatizamos operaciones con IA y desarrollamos estrategias de marketing para que tu negocio escale sin sumar gente.",
     "areaServed": "AR",
     "inLanguage": "es",
-    "serviceType": ["Marketing Digital", "SEO", "Redes Sociales", "Marca Personal", "Automatización"],
+    "serviceType": ["Automatización", "Agentes IA", "Marketing Digital", "SEO", "Redes Sociales", "Marca Personal"],
     "sameAs": ["https://www.instagram.com/kovasystems_ia/"]
   }
   </script>
@@ -45,9 +52,411 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=DM+Sans:wght@300;400;500&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="src/tokens.css" />
-  <link rel="stylesheet" href="src/styles.css?v=2" />
+  <link rel="stylesheet" href="src/styles.css?v=3" />
+
+  <style>
+  /* ══════════════════════════════════════════════════════
+     ARIA Section
+  ══════════════════════════════════════════════════════ */
+  .aria-section {
+    min-height: 100vh;
+    background: #050505;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: clamp(80px, 12vh, 120px) 0;
+  }
+  .aria-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(232,80,26,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .aria-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .aria-left {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .aria-avatar-wrap {
+    display: flex;
+    justify-content: center;
+  }
+  .aria-avatar {
+    width: 140px;
+    height: 140px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .aria-avatar svg {
+    transition: filter 0.4s ease;
+  }
+  .aria--idle .aria-avatar-ring {
+    animation: ariaIdleRing 3s ease-in-out infinite;
+  }
+  .aria--thinking .aria-avatar-ring {
+    animation: ariaThinkRing 1s ease-in-out infinite;
+  }
+  .aria--speaking .aria-avatar-ring {
+    animation: ariaSpeakRing 0.6s ease-in-out infinite;
+  }
+  .aria-avatar-particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .aria--thinking .aria-particle {
+    animation: ariaOrbit 2s linear infinite;
+  }
+  .aria-particle:nth-child(2) { animation-delay: -0.66s; }
+  .aria-particle:nth-child(3) { animation-delay: -1.33s; }
+  @keyframes ariaIdleRing {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.05); }
+  }
+  @keyframes ariaThinkRing {
+    0%, 100% { opacity: 0.6; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.12); }
+  }
+  @keyframes ariaSpeakRing {
+    0% { opacity: 0; transform: scale(1); }
+    50% { opacity: 0.9; transform: scale(1.2); }
+    100% { opacity: 0; transform: scale(1.4); }
+  }
+  @keyframes ariaOrbit {
+    from { transform: rotate(0deg) translateX(56px) rotate(0deg); }
+    to { transform: rotate(360deg) translateX(56px) rotate(-360deg); }
+  }
+  @keyframes ariaPulse {
+    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 8px rgba(232,80,26,0.5)); }
+    50% { transform: scale(1.03); filter: drop-shadow(0 0 20px rgba(232,80,26,0.8)); }
+  }
+  .aria-avatar svg .aria-core {
+    animation: ariaPulse 2.5s ease-in-out infinite;
+  }
+  .aria-name {
+    text-align: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 52px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin: 0;
+  }
+  .aria-subtitle {
+    text-align: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #555;
+    margin: 0;
+  }
+  .aria-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: #22C55E;
+  }
+  .aria-status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #22C55E;
+    animation: statusPulse 2s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+  @keyframes statusPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.4); }
+    50% { box-shadow: 0 0 0 6px rgba(34,197,94,0); }
+  }
+  .aria-capabilities {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 8px;
+  }
+  .aria-cap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #8A8A8A;
+    transition: border-color 0.25s, background 0.25s;
+  }
+  .aria-cap:hover {
+    border-color: rgba(232,80,26,0.25);
+    background: rgba(232,80,26,0.04);
+    color: #ccc;
+  }
+  .aria-chat {
+    background: rgba(255,255,255,0.035);
+    border: 1px solid rgba(255,255,255,0.07);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 24px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 580px;
+  }
+  .aria-chat-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    flex-shrink: 0;
+  }
+  .aria-chat-header-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(232,80,26,0.15);
+    border: 1px solid rgba(232,80,26,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .aria-chat-header-info { flex: 1; }
+  .aria-chat-header-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    display: block;
+    line-height: 1.2;
+  }
+  .aria-chat-header-status {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px;
+    color: #22C55E;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .aria-chat-header-status::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #22C55E;
+    display: block;
+  }
+  .aria-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    scroll-behavior: smooth;
+  }
+  .aria-messages::-webkit-scrollbar { width: 4px; }
+  .aria-messages::-webkit-scrollbar-track { background: transparent; }
+  .aria-messages::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+  .aria-bubble {
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+    animation: bubbleIn 0.3s cubic-bezier(0.34,1.56,0.64,1) both;
+  }
+  @keyframes bubbleIn {
+    from { opacity: 0; transform: translateY(12px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .aria-bubble__avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(232,80,26,0.15);
+    border: 1px solid rgba(232,80,26,0.3);
+    flex-shrink: 0;
+  }
+  .aria-bubble__content {
+    max-width: 80%;
+    padding: 12px 16px;
+    border-radius: 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    font-weight: 400;
+  }
+  .aria-bubble--agent .aria-bubble__content {
+    background: rgba(232,80,26,0.1);
+    border: 1px solid rgba(232,80,26,0.2);
+    color: #e0e0e0;
+    border-bottom-left-radius: 4px;
+  }
+  .aria-bubble--user {
+    flex-direction: row-reverse;
+  }
+  .aria-bubble--user .aria-bubble__content {
+    background: #E8501A;
+    color: #fff;
+    border-bottom-right-radius: 4px;
+  }
+  .aria-typing {
+    display: none;
+    align-items: center;
+    gap: 10px;
+    padding: 0 24px 8px;
+  }
+  .aria-typing__dots {
+    display: flex;
+    gap: 4px;
+    padding: 10px 14px;
+    background: rgba(232,80,26,0.08);
+    border: 1px solid rgba(232,80,26,0.15);
+    border-radius: 18px;
+    border-bottom-left-radius: 4px;
+  }
+  .aria-typing__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(232,80,26,0.6);
+    animation: typingBounce 1.2s ease-in-out infinite;
+  }
+  .aria-typing__dot:nth-child(2) { animation-delay: 0.2s; }
+  .aria-typing__dot:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes typingBounce {
+    0%, 60%, 100% { transform: translateY(0); }
+    30% { transform: translateY(-6px); }
+  }
+  .aria-input-area {
+    padding: 16px 24px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  .aria-input {
+    flex: 1;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 12px 16px;
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.25s, background 0.25s;
+  }
+  .aria-input::placeholder { color: #444; }
+  .aria-input:focus {
+    border-color: rgba(232,80,26,0.4);
+    background: rgba(232,80,26,0.04);
+  }
+  .aria-send {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: #E8501A;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.2s, transform 0.15s;
+    color: #fff;
+  }
+  .aria-send:hover { background: #C04010; transform: scale(1.05); }
+  .aria-send:active { transform: scale(0.97); }
+  .aria-chat-footer {
+    padding: 10px 24px;
+    border-top: 1px solid rgba(255,255,255,0.04);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #333;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .aria-section-header {
+    text-align: center;
+    margin-bottom: 72px;
+  }
+  .aria-section-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #E8501A;
+    margin-bottom: 20px;
+  }
+  .aria-section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(36px, 6vw, 72px);
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #fff;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+  }
+  .aria-section-sub {
+    font-size: 17px;
+    font-weight: 300;
+    color: #555;
+    line-height: 1.7;
+    max-width: 480px;
+    margin: 20px auto 0;
+  }
+  @media (max-width: 900px) {
+    .aria-inner {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    .aria-chat { height: 480px; }
+  }
+  @media (max-width: 600px) {
+    .aria-name { font-size: 40px; }
+    .aria-chat { height: 420px; }
+    .aria-messages { padding: 16px; }
+    .aria-input-area { padding: 12px 16px; }
+  }
+  </style>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MWRKQDM6"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
   <!-- SCROLL PROGRESS BAR -->
   <div class="scroll-progress" id="scrollProgress"></div>
@@ -89,7 +498,6 @@
         <div class="lang-switcher__option" data-lang="en" role="option">
           <span class="lang-switcher__option-flag">🇺🇸</span>
           <span class="lang-switcher__option-label">English</span>
-          
         </div>
       </div>
     </div>
@@ -113,12 +521,12 @@
   <!-- HERO -->
   <section class="hero">
     <div class="hero__content">
-      <span class="hero__tag" id="heroTag">Marketing · RRSS · SEO · Marca Personal · Automatización</span>
-      <h1 class="hero__title" id="heroTitle">Tu marca crece.<br><span class="hero__title--accent">Tu negocio escala.</span></h1>
-      <p class="hero__subtitle" id="heroSub">Diseñamos estrategias de marketing digital, posicionamiento orgánico y sistemas inteligentes que hacen crecer tu marca y escalar tu negocio. Sin vueltas.</p>
+      <span class="hero__tag" id="heroTag">Automatización · IA · Marketing · SEO</span>
+      <h1 class="hero__title" id="heroTitle">Tu negocio funciona solo.<br><span class="hero__title--accent">Nosotros lo armamos.</span></h1>
+      <p class="hero__subtitle" id="heroSub">Automatizamos procesos, desplegamos agentes de IA y conectamos tus herramientas para que escales sin sumar gente.</p>
       <div class="hero__cta" id="heroCta">
-        <a href="#contacto" class="btn btn--primary magnetic">Quiero crecer</a>
-        <a href="#servicios" class="btn btn--ghost magnetic">¿Qué hacemos?</a>
+        <a href="#aria-section" class="btn btn--primary magnetic">Hablá con ARIA</a>
+        <a href="https://wa.me/542615336300?text=Hola%20KOVA%2C%20quiero%20info%20sobre%20sus%20servicios" class="btn btn--ghost magnetic" target="_blank" rel="noopener">Hablemos</a>
       </div>
     </div>
     <div class="hero__visual">
@@ -161,26 +569,6 @@
       </svg>
     </div>
 
-    <!-- HERO FORM CARD -->
-    <div class="hero__form-card" id="heroFormCard">
-      <span class="hfc__eyebrow">Empezá hoy</span>
-      <h3 class="hfc__title">¿Listo para crecer?</h3>
-      <p class="hfc__sub">Dejá tus datos y te respondemos en menos de 24hs.</p>
-      <form class="hfc__form" id="heroContactForm">
-        <div class="hfc__field">
-          <input type="text" name="nombre" placeholder="Tu nombre" required />
-        </div>
-        <div class="hfc__field">
-          <input type="email" name="email" placeholder="Tu email" required />
-        </div>
-        <div class="hfc__field">
-          <input type="text" name="area" placeholder="¿En qué área querés crecer?" required />
-        </div>
-        <button type="submit" class="btn btn--primary hfc__btn">Quiero empezar →</button>
-      </form>
-      <p class="hfc__note">Sin spam · Respondemos en menos de 24hs</p>
-    </div>
-
     <!-- SCROLL INDICATOR -->
     <div class="scroll-hint" id="scrollHint">
       <div class="scroll-hint__mouse">
@@ -192,29 +580,6 @@
         </svg>
       </div>
     </div>
-
-  </section>
-
-  <!-- STATS -->
-  <section class="stats">
-    <div class="container stats__grid">
-      <div class="stat">
-        <span class="stat__num" data-count="5">0</span><span class="stat__unit">x</span>
-        <p class="stat__label">más alcance orgánico con estrategia de contenido</p>
-      </div>
-      <div class="stat">
-        <span class="stat__num" data-count="80">0</span><span class="stat__unit">%</span>
-        <p class="stat__label">reducción de tareas operativas manuales</p>
-      </div>
-      <div class="stat">
-        <span class="stat__num" data-count="3">0</span><span class="stat__unit">x</span>
-        <p class="stat__label">más leads calificados con funnel bien armado</p>
-      </div>
-      <div class="stat">
-        <span class="stat__num" data-count="90">0</span><span class="stat__unit">d</span>
-        <p class="stat__label">para ver resultados reales en posicionamiento SEO</p>
-      </div>
-    </div>
   </section>
 
   <!-- MARQUEE -->
@@ -222,81 +587,79 @@
     <div class="marquee-track">
       <div class="marquee-inner marquee-inner--fwd">
         <div class="marquee-set">
-          <span class="m-tag">Marketing Digital <em>·</em></span>
-          <span class="m-tag">RRSS &amp; Algoritmo <em>·</em></span>
-          <span class="m-tag">SEO &amp; Posicionamiento <em>·</em></span>
-          <span class="m-tag">Marca Personal <em>·</em></span>
-          <span class="m-tag">Captación de Leads <em>·</em></span>
-          <span class="m-tag">Contenido Estratégico <em>·</em></span>
           <span class="m-tag">Automatización <em>·</em></span>
+          <span class="m-tag">IA <em>·</em></span>
+          <span class="m-tag">Marketing <em>·</em></span>
+          <span class="m-tag">SEO <em>·</em></span>
+          <span class="m-tag">RRSS <em>·</em></span>
+          <span class="m-tag">Marca Personal <em>·</em></span>
+          <span class="m-tag">Leads <em>·</em></span>
         </div>
         <div class="marquee-set" aria-hidden="true">
-          <span class="m-tag">Marketing Digital <em>·</em></span>
-          <span class="m-tag">RRSS &amp; Algoritmo <em>·</em></span>
-          <span class="m-tag">SEO &amp; Posicionamiento <em>·</em></span>
-          <span class="m-tag">Marca Personal <em>·</em></span>
-          <span class="m-tag">Captación de Leads <em>·</em></span>
-          <span class="m-tag">Contenido Estratégico <em>·</em></span>
           <span class="m-tag">Automatización <em>·</em></span>
+          <span class="m-tag">IA <em>·</em></span>
+          <span class="m-tag">Marketing <em>·</em></span>
+          <span class="m-tag">SEO <em>·</em></span>
+          <span class="m-tag">RRSS <em>·</em></span>
+          <span class="m-tag">Marca Personal <em>·</em></span>
+          <span class="m-tag">Leads <em>·</em></span>
         </div>
       </div>
     </div>
     <div class="marquee-track">
       <div class="marquee-inner marquee-inner--rev">
         <div class="marquee-set">
-          <span class="m-tag m-tag--dim">Instagram <em>·</em></span>
-          <span class="m-tag m-tag--dim">TikTok <em>·</em></span>
-          <span class="m-tag m-tag--dim">LinkedIn <em>·</em></span>
-          <span class="m-tag m-tag--dim">Meta Ads <em>·</em></span>
-          <span class="m-tag m-tag--dim">Google Ads <em>·</em></span>
-          <span class="m-tag m-tag--dim">Email Marketing <em>·</em></span>
-          <span class="m-tag m-tag--dim">Funnels <em>·</em></span>
+          <span class="m-tag m-tag--dim">CRM <em>·</em></span>
           <span class="m-tag m-tag--dim">n8n <em>·</em></span>
+          <span class="m-tag m-tag--dim">Make <em>·</em></span>
+          <span class="m-tag m-tag--dim">WhatsApp <em>·</em></span>
+          <span class="m-tag m-tag--dim">Email <em>·</em></span>
+          <span class="m-tag m-tag--dim">Agentes IA <em>·</em></span>
+          <span class="m-tag m-tag--dim">GoHighLevel <em>·</em></span>
         </div>
         <div class="marquee-set" aria-hidden="true">
-          <span class="m-tag m-tag--dim">Instagram <em>·</em></span>
-          <span class="m-tag m-tag--dim">TikTok <em>·</em></span>
-          <span class="m-tag m-tag--dim">LinkedIn <em>·</em></span>
-          <span class="m-tag m-tag--dim">Meta Ads <em>·</em></span>
-          <span class="m-tag m-tag--dim">Google Ads <em>·</em></span>
-          <span class="m-tag m-tag--dim">Email Marketing <em>·</em></span>
-          <span class="m-tag m-tag--dim">Funnels <em>·</em></span>
+          <span class="m-tag m-tag--dim">CRM <em>·</em></span>
           <span class="m-tag m-tag--dim">n8n <em>·</em></span>
+          <span class="m-tag m-tag--dim">Make <em>·</em></span>
+          <span class="m-tag m-tag--dim">WhatsApp <em>·</em></span>
+          <span class="m-tag m-tag--dim">Email <em>·</em></span>
+          <span class="m-tag m-tag--dim">Agentes IA <em>·</em></span>
+          <span class="m-tag m-tag--dim">GoHighLevel <em>·</em></span>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- BAND — herramientas -->
-  <div class="tools-band">
-    <div class="container">
-      <span class="tools-band__label">Trabajamos con las herramientas que ya usás</span>
-      <div class="tools-band__logos">
-        <span>Instagram</span>
-        <span>Meta Ads</span>
-        <span>Google Ads</span>
-        <span>TikTok</span>
-        <span>LinkedIn</span>
-        <span>n8n</span>
-        <span>GoHighLevel</span>
-        <span>Make</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- SERVICIOS -->
+  <!-- QUÉ HACEMOS / SERVICIOS -->
   <section class="servicios" id="servicios">
     <div class="container">
       <div class="section__header">
-        <h2 class="section__title reveal-text">Lo que hacemos</h2>
-        <p class="section__sub reveal-text">Crecimiento real, estrategia concreta. Sin humo.</p>
+        <h2 class="section__title reveal-text">Qué hacemos</h2>
+        <p class="section__sub reveal-text">Automatización e IA primero. Marketing para escalar.</p>
       </div>
       <div class="cards bento">
 
-        <!-- 01 · Marketing & RRSS (wide) -->
+        <!-- 01 · Automatización & IA (wide) -->
         <div class="card tilt-card">
           <div class="card__glow"></div>
           <span class="card__num">01</span>
+          <div class="card__visual">
+            <div class="visual-chat">
+              <div class="chat-msg chat-msg--user">Nuevo lead de Instagram</div>
+              <div class="chat-msg chat-msg--ai">Calificado y agendado automáticamente ✓</div>
+              <div class="chat-typing"><span></span><span></span><span></span></div>
+            </div>
+          </div>
+          <h3>Automatización &amp; IA</h3>
+          <p>Conectamos tus herramientas y desplegamos agentes que trabajan 24/7. CRM, leads, atención al cliente — todo en piloto automático.</p>
+          <span class="card__tag">n8n · Make · Agentes IA · CRM</span>
+          <div class="card__line"></div>
+        </div>
+
+        <!-- 02 · Marketing & RRSS -->
+        <div class="card tilt-card">
+          <div class="card__glow"></div>
+          <span class="card__num">02</span>
           <div class="card__visual">
             <div class="visual-integrations">
               <div class="int-chip" style="--d:0s">Instagram</div>
@@ -307,38 +670,41 @@
               <div class="int-chip" style="--d:2s">Meta Ads</div>
             </div>
           </div>
-          <h3>Marketing & Redes Sociales</h3>
-          <p>Estrategia de contenido pensada para el algoritmo. Crecés en seguidores, alcance y autoridad — con dirección, no al azar.</p>
+          <h3>Marketing &amp; Redes Sociales</h3>
+          <p>Estrategia de contenido pensada para el algoritmo. Crecés en alcance y autoridad — con dirección, no al azar.</p>
           <span class="card__tag">RRSS · Algoritmo · Contenido</span>
           <div class="card__line"></div>
         </div>
 
-        <!-- 02 · SEO (narrow) -->
+        <!-- 03 · SEO -->
         <div class="card tilt-card">
           <div class="card__glow"></div>
-          <span class="card__num">02</span>
+          <span class="card__num">03</span>
           <div class="card__visual">
-            <div class="visual-chart">
-              <span class="chart-metric">+340% <em>tráfico orgánico</em></span>
-              <div class="chart-bars">
-                <div class="chart-bar" style="--bh:18%"></div>
-                <div class="chart-bar" style="--bh:32%"></div>
-                <div class="chart-bar" style="--bh:51%"></div>
-                <div class="chart-bar" style="--bh:74%"></div>
-                <div class="chart-bar chart-bar--hi" style="--bh:100%"></div>
+            <div class="visual-flow">
+              <div class="flow-node">BÚSQUEDA</div>
+              <div class="flow-connector">
+                <div class="flow-line"></div>
+                <div class="flow-dot"></div>
               </div>
+              <div class="flow-node flow-node--accent">POSICIÓN #1</div>
+              <div class="flow-connector">
+                <div class="flow-line"></div>
+                <div class="flow-dot" style="animation-delay:.6s"></div>
+              </div>
+              <div class="flow-node">TRÁFICO</div>
             </div>
           </div>
-          <h3>SEO & Posicionamiento</h3>
-          <p>Aparecé primero en Google cuando te buscan. Tráfico orgánico constante, sin pagar por cada clic.</p>
+          <h3>SEO &amp; Posicionamiento</h3>
+          <p>Aparecés primero en Google cuando te buscan. Tráfico orgánico constante, sin pagar por cada clic.</p>
           <span class="card__tag">SEO · Google · Visibilidad</span>
           <div class="card__line"></div>
         </div>
 
-        <!-- 03 · Marca Personal (narrow) -->
+        <!-- 04 · Marca Personal -->
         <div class="card tilt-card">
           <div class="card__glow"></div>
-          <span class="card__num">03</span>
+          <span class="card__num">04</span>
           <div class="card__visual">
             <div class="visual-flow">
               <div class="flow-node">IDENTIDAD</div>
@@ -355,416 +721,21 @@
             </div>
           </div>
           <h3>Marca Personal</h3>
-          <p>Construimos tu identidad digital. Tu historia, tu voz, tu diferencial. Que te elijan a vos antes de siquiera comparar precios.</p>
+          <p>Construimos tu identidad digital. Tu historia, tu voz, tu diferencial. Que te elijan antes de siquiera comparar precios.</p>
           <span class="card__tag">Branding · Voz · Autoridad</span>
           <div class="card__line"></div>
         </div>
 
-        <!-- 04 · Automatización & IA (wide) -->
-        <div class="card tilt-card">
-          <div class="card__glow"></div>
-          <span class="card__num">04</span>
-          <div class="card__visual">
-            <div class="visual-chat">
-              <div class="chat-msg chat-msg--user">Nuevo lead de Instagram</div>
-              <div class="chat-msg chat-msg--ai">Calificado y agendado automáticamente ✓</div>
-              <div class="chat-typing"><span></span><span></span><span></span></div>
-            </div>
-          </div>
-          <h3>Automatización & IA</h3>
-          <p>Tus procesos en piloto automático. CRM, leads, reportes, atención al cliente — todo corriendo sin que toques nada.</p>
-          <span class="card__tag">n8n · Make · Agentes IA</span>
-          <div class="card__line"></div>
-        </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════
-       ELEGÍ TU DESAFÍO — Interactive selector
-  ═══════════════════════════════════════════ -->
-  <section class="desafio" id="desafio">
-    <div class="container">
-      <div class="desafio__header">
-        <span class="desafio__kicker">Tu punto de partida</span>
-        <h2 class="section__title">¿Cuál es tu mayor <span class="accent-heading">desafío hoy?</span></h2>
-        <p class="section__sub">Tocá el área donde querés avanzar y te mostramos exactamente qué haríamos.</p>
-      </div>
-
-      <div class="desafio__layout">
-        <!-- TABS -->
-        <div class="desafio__tabs" role="tablist">
-          <button class="dtab active" data-tab="rrss" role="tab">
-            <span class="dtab__icon">📱</span>
-            <div class="dtab__info">
-              <span class="dtab__label">RRSS & Contenido</span>
-              <span class="dtab__sublabel">Algoritmo · Comunidad</span>
-            </div>
-            <span class="dtab__arrow">→</span>
-          </button>
-          <button class="dtab" data-tab="seo" role="tab">
-            <span class="dtab__icon">🔍</span>
-            <div class="dtab__info">
-              <span class="dtab__label">SEO & Google</span>
-              <span class="dtab__sublabel">Orgánico · Posicionamiento</span>
-            </div>
-            <span class="dtab__arrow">→</span>
-          </button>
-          <button class="dtab" data-tab="marca" role="tab">
-            <span class="dtab__icon">⭐</span>
-            <div class="dtab__info">
-              <span class="dtab__label">Marca Personal</span>
-              <span class="dtab__sublabel">Identidad · Autoridad</span>
-            </div>
-            <span class="dtab__arrow">→</span>
-          </button>
-          <button class="dtab" data-tab="auto" role="tab">
-            <span class="dtab__icon">⚡</span>
-            <div class="dtab__info">
-              <span class="dtab__label">Automatización</span>
-              <span class="dtab__sublabel">IA · Procesos · Escala</span>
-            </div>
-            <span class="dtab__arrow">→</span>
-          </button>
-        </div>
-
-        <!-- PANELS -->
-        <div class="desafio__panels">
-
-          <!-- RRSS panel -->
-          <div class="dpanel active" data-panel="rrss">
-            <span class="dpanel__eyebrow">Redes Sociales</span>
-            <h3 class="dpanel__title">Contenido que<br>crece solo.</h3>
-            <p class="dpanel__desc">No se trata de publicar más. Se trata de publicar con intención. Diseñamos una estrategia basada en el algoritmo de cada plataforma para que cada post trabaje a tu favor.</p>
-            <div class="dpanel__deliverables">
-              <span class="dpanel__item">Estrategia de contenido mensual</span>
-              <span class="dpanel__item">Calendario editorial</span>
-              <span class="dpanel__item">Análisis del algoritmo</span>
-              <span class="dpanel__item">Gestión de comunidad</span>
-              <span class="dpanel__item">Copy y creativos</span>
-              <span class="dpanel__item">Reporte de métricas</span>
-            </div>
-            <div class="dpanel__metric">
-              <span class="dpanel__metric-num">10x</span>
-              <span class="dpanel__metric-text">más alcance con estrategia de contenido vs. publicar sin plan</span>
-            </div>
-            <a href="#contacto" class="btn btn--primary magnetic">Quiero crecer en RRSS →</a>
-          </div>
-
-          <!-- SEO panel -->
-          <div class="dpanel" data-panel="seo">
-            <span class="dpanel__eyebrow">Posicionamiento Orgánico</span>
-            <h3 class="dpanel__title">Primero en Google.<br>Siempre.</h3>
-            <p class="dpanel__desc">Aparecer cuando te buscan es la forma más rentable de conseguir clientes. Sin pagar por cada clic. Auditamos, optimizamos y construimos autoridad orgánica en tu nicho.</p>
-            <div class="dpanel__deliverables">
-              <span class="dpanel__item">Auditoría técnica SEO</span>
-              <span class="dpanel__item">Investigación de keywords</span>
-              <span class="dpanel__item">Optimización on-page</span>
-              <span class="dpanel__item">Link building</span>
-              <span class="dpanel__item">Contenido optimizado</span>
-              <span class="dpanel__item">Seguimiento de posiciones</span>
-            </div>
-            <div class="dpanel__metric">
-              <span class="dpanel__metric-num">75%</span>
-              <span class="dpanel__metric-text">de los clics van al primer resultado. El segundo recibe el 12%.</span>
-            </div>
-            <a href="#contacto" class="btn btn--primary magnetic">Quiero rankear en Google →</a>
-          </div>
-
-          <!-- Marca panel -->
-          <div class="dpanel" data-panel="marca">
-            <span class="dpanel__eyebrow">Marca Personal</span>
-            <h3 class="dpanel__title">Que te elijan<br>antes de comparar.</h3>
-            <p class="dpanel__desc">Tu marca es lo que dicen de vos cuando no estás en la sala. Construimos tu identidad digital, tu tono, tu diferencial. Convertimos tu expertise en autoridad percibida.</p>
-            <div class="dpanel__deliverables">
-              <span class="dpanel__item">Propuesta de valor única</span>
-              <span class="dpanel__item">Identidad y tono de voz</span>
-              <span class="dpanel__item">Posicionamiento de nicho</span>
-              <span class="dpanel__item">Perfil de LinkedIn / IG</span>
-              <span class="dpanel__item">Estrategia de autoridad</span>
-              <span class="dpanel__item">Plan de contenido personal</span>
-            </div>
-            <div class="dpanel__metric">
-              <span class="dpanel__metric-num">3x</span>
-              <span class="dpanel__metric-text">más conversión tienen las marcas personales sólidas vs. perfiles sin identidad</span>
-            </div>
-            <a href="#contacto" class="btn btn--primary magnetic">Quiero construir mi marca →</a>
-          </div>
-
-          <!-- Auto panel -->
-          <div class="dpanel" data-panel="auto">
-            <span class="dpanel__eyebrow">Automatización & IA</span>
-            <h3 class="dpanel__title">Tu negocio corre<br>mientras dormís.</h3>
-            <p class="dpanel__desc">Conectamos tus herramientas, automatizamos tus procesos y desplegamos agentes de IA que trabajan 24/7. Leads calificados, CRM actualizado, reportes automáticos — sin tocar nada.</p>
-            <div class="dpanel__deliverables">
-              <span class="dpanel__item">Flujos de automatización</span>
-              <span class="dpanel__item">Agentes de IA personalizados</span>
-              <span class="dpanel__item">CRM automatizado</span>
-              <span class="dpanel__item">Email sequences</span>
-              <span class="dpanel__item">Reportes automáticos</span>
-              <span class="dpanel__item">Integración de herramientas</span>
-            </div>
-            <div class="dpanel__metric">
-              <span class="dpanel__metric-num">40h</span>
-              <span class="dpanel__metric-text">semanales promedio que recuperan nuestros clientes con automatización</span>
-            </div>
-            <a href="#contacto" class="btn btn--primary magnetic">Quiero automatizar →</a>
-          </div>
-
-        </div><!-- /panels -->
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════
-       KOVA LIVE — Sistema en vivo
-  ═══════════════════════════════════════════ -->
-  <section class="kova-live" id="kova-live">
-
-    <div class="container">
-      <div class="kl-header">
-        <span class="kl-kicker">Sistema en vivo</span>
-        <h2 class="kl-title">Esto pasa <em>ahora mismo</em><br>en los negocios de nuestros clientes.</h2>
-      </div>
-    </div>
-
-    <div class="kl-stage">
-      <!-- connection line -->
-      <div class="kl-connline"></div>
-
-      <!-- left: incoming tasks -->
-      <div class="kl-col kl-col--in" id="klIn">
-        <span class="kl-col__label">Tareas entrando</span>
-      </div>
-
-      <!-- center: brain -->
-      <div class="kl-brain">
-        <div class="kl-brain__rings" aria-hidden="true">
-          <div class="kl-ring kl-ring--1"></div>
-          <div class="kl-ring kl-ring--2"></div>
-          <div class="kl-ring kl-ring--3"></div>
-        </div>
-        <div class="kl-brain__core">
-          <span class="kl-brain__logo">KOVA</span>
-          <span class="kl-brain__sub">IA activa</span>
-        </div>
-        <div class="kl-brain__counter">
-          <span id="klCount">0</span>
-          <span class="kl-brain__counter-lbl">procesadas</span>
-        </div>
-      </div>
-
-      <!-- right: outputs -->
-      <div class="kl-col kl-col--out" id="klOut">
-        <span class="kl-col__label">Automatizado</span>
-      </div>
-    </div>
-
-    <div class="kl-stats">
-      <div class="kl-stat">
-        <span class="kl-stat__num">80<span style="font-size:34px;color:var(--color-acento)">%</span></span>
-        <span class="kl-stat__label">Menos trabajo manual</span>
-      </div>
-      <div class="kl-stat">
-        <span class="kl-stat__num">3<span style="font-size:34px;color:var(--color-acento)">x</span></span>
-        <span class="kl-stat__label">Más velocidad operativa</span>
-      </div>
-      <div class="kl-stat">
-        <span class="kl-stat__num">24<span style="font-size:34px;color:var(--color-acento)">/7</span></span>
-        <span class="kl-stat__label">Sin intervención humana</span>
-      </div>
-      <div class="kl-stat">
-        <span class="kl-stat__num">72<span style="font-size:34px;color:var(--color-acento)">h</span></span>
-        <span class="kl-stat__label">Implementación promedio</span>
-      </div>
-    </div>
-
-  </section>
-
-  <!-- DIAGNÓSTICO INTERACTIVO -->
-  <section class="diag" id="diagnostico">
-    <div class="diag__bg-grid" aria-hidden="true"></div>
-
-    <div class="container">
-
-      <!-- Header -->
-      <div class="diag__header">
-        <span class="diag__kicker">
-          <span class="diag__kicker-dot"></span>
-          Gratuito · 30 segundos
-        </span>
-        <h2 class="diag__title">Diagnosticá tu<br><em>negocio ahora.</em></h2>
-        <p class="diag__sub">Tres preguntas. Un plan concreto. Gratis.</p>
-      </div>
-
-      <!-- Card principal -->
-      <div class="diag__card" id="diagCard">
-
-        <!-- Progress -->
-        <div class="diag__prog-wrap">
-          <div class="diag__prog-track">
-            <div class="diag__prog-fill" id="diagProgFill"></div>
-          </div>
-          <span class="diag__prog-label" id="diagProgLabel">Paso 1 de 3</span>
-        </div>
-
-        <!-- ── PASO 1 ── -->
-        <div class="diag__step" id="dStep1">
-          <p class="diag__q">¿Qué tipo de negocio tenés?</p>
-          <div class="diag__grid diag__grid--4">
-            <button class="diag__opt" data-step="1" data-val="agencia">
-              <span class="diag__opt-icon">🏢</span>
-              <span class="diag__opt-label">Agencia de marketing</span>
-            </button>
-            <button class="diag__opt" data-step="1" data-val="ecommerce">
-              <span class="diag__opt-icon">🛒</span>
-              <span class="diag__opt-label">E-commerce / Tienda</span>
-            </button>
-            <button class="diag__opt" data-step="1" data-val="servicios">
-              <span class="diag__opt-icon">💼</span>
-              <span class="diag__opt-label">Empresa de servicios</span>
-            </button>
-            <button class="diag__opt" data-step="1" data-val="saas">
-              <span class="diag__opt-icon">⚙️</span>
-              <span class="diag__opt-label">SaaS / Tech</span>
-            </button>
-            <button class="diag__opt" data-step="1" data-val="inmobiliaria">
-              <span class="diag__opt-icon">🏠</span>
-              <span class="diag__opt-label">Inmobiliaria</span>
-            </button>
-            <button class="diag__opt" data-step="1" data-val="salud">
-              <span class="diag__opt-icon">🏥</span>
-              <span class="diag__opt-label">Salud / Bienestar</span>
-            </button>
-            <button class="diag__opt" data-step="1" data-val="educacion">
-              <span class="diag__opt-icon">🎓</span>
-              <span class="diag__opt-label">Educación / Cursos</span>
-            </button>
-            <button class="diag__opt" data-step="1" data-val="otro">
-              <span class="diag__opt-icon">✨</span>
-              <span class="diag__opt-label">Otro rubro</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- ── PASO 2 ── -->
-        <div class="diag__step diag__step--hidden" id="dStep2">
-          <button class="diag__back-btn" id="diagBack2">← Volver</button>
-          <p class="diag__q">¿Qué te come más tiempo? <span class="diag__q-hint">(elegí todos los que apliquen)</span></p>
-          <div class="diag__grid diag__grid--3">
-            <button class="diag__opt diag__opt--multi" data-step="2" data-val="leads" data-hours="8">
-              <span class="diag__opt-icon">📩</span>
-              <span class="diag__opt-label">Seguimiento de leads</span>
-            </button>
-            <button class="diag__opt diag__opt--multi" data-step="2" data-val="reportes" data-hours="5">
-              <span class="diag__opt-icon">📊</span>
-              <span class="diag__opt-label">Reportes y métricas</span>
-            </button>
-            <button class="diag__opt diag__opt--multi" data-step="2" data-val="onboarding" data-hours="6">
-              <span class="diag__opt-icon">🤝</span>
-              <span class="diag__opt-label">Onboarding de clientes</span>
-            </button>
-            <button class="diag__opt diag__opt--multi" data-step="2" data-val="factura" data-hours="4">
-              <span class="diag__opt-icon">🧾</span>
-              <span class="diag__opt-label">Facturación y admin</span>
-            </button>
-            <button class="diag__opt diag__opt--multi" data-step="2" data-val="contenido" data-hours="7">
-              <span class="diag__opt-icon">📱</span>
-              <span class="diag__opt-label">Publicar contenido</span>
-            </button>
-            <button class="diag__opt diag__opt--multi" data-step="2" data-val="atencion" data-hours="12">
-              <span class="diag__opt-icon">💬</span>
-              <span class="diag__opt-label">Atención al cliente</span>
-            </button>
-            <button class="diag__opt diag__opt--multi" data-step="2" data-val="crm" data-hours="6">
-              <span class="diag__opt-icon">🗂️</span>
-              <span class="diag__opt-label">Gestión del CRM</span>
-            </button>
-            <button class="diag__opt diag__opt--multi" data-step="2" data-val="captacion" data-hours="9">
-              <span class="diag__opt-icon">🎯</span>
-              <span class="diag__opt-label">Captación de leads</span>
-            </button>
-            <button class="diag__opt diag__opt--multi" data-step="2" data-val="agenda" data-hours="3">
-              <span class="diag__opt-icon">📅</span>
-              <span class="diag__opt-label">Agendar reuniones</span>
-            </button>
-          </div>
-          <div class="diag__actions">
-            <button class="diag__back-btn" id="diagBack2b">← Volver</button>
-            <button class="btn btn--primary diag__next-btn" id="diagNext2" disabled>Continuar →</button>
-          </div>
-        </div>
-
-        <!-- ── PASO 3 ── -->
-        <div class="diag__step diag__step--hidden" id="dStep3">
-          <button class="diag__back-btn" id="diagBack3">← Volver</button>
-          <p class="diag__q">¿Cuántas personas hay en tu equipo?</p>
-          <div class="diag__grid diag__grid--4">
-            <button class="diag__opt" data-step="3" data-val="solo" data-mult="1">
-              <span class="diag__opt-icon">🙋</span>
-              <span class="diag__opt-label">Solo yo</span>
-            </button>
-            <button class="diag__opt" data-step="3" data-val="2-5" data-mult="3">
-              <span class="diag__opt-icon">👥</span>
-              <span class="diag__opt-label">2 a 5 personas</span>
-            </button>
-            <button class="diag__opt" data-step="3" data-val="5-15" data-mult="8">
-              <span class="diag__opt-icon">🏬</span>
-              <span class="diag__opt-label">5 a 15 personas</span>
-            </button>
-            <button class="diag__opt" data-step="3" data-val="15+" data-mult="18">
-              <span class="diag__opt-icon">🏢</span>
-              <span class="diag__opt-label">Más de 15</span>
-            </button>
-          </div>
-          <p class="diag__q" style="margin-top:36px">¿Cuánto facturás por mes? <span class="diag__q-hint">(aproximado)</span></p>
-          <div class="diag__grid diag__grid--4">
-            <button class="diag__opt" data-step="3b" data-val="menos5k">
-              <span class="diag__opt-icon">🌱</span>
-              <span class="diag__opt-label">Menos de $5K</span>
-            </button>
-            <button class="diag__opt" data-step="3b" data-val="5k-20k">
-              <span class="diag__opt-icon">📈</span>
-              <span class="diag__opt-label">$5K – $20K</span>
-            </button>
-            <button class="diag__opt" data-step="3b" data-val="20k-100k">
-              <span class="diag__opt-icon">🚀</span>
-              <span class="diag__opt-label">$20K – $100K</span>
-            </button>
-            <button class="diag__opt" data-step="3b" data-val="mas100k">
-              <span class="diag__opt-icon">💎</span>
-              <span class="diag__opt-label">Más de $100K</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- ── RESULTADO ── -->
-        <div class="diag__step diag__step--hidden" id="dResult">
-          <div class="diag__result-header">
-            <span class="diag__result-badge">✓ Diagnóstico listo</span>
-            <h3 class="diag__result-title" id="diagResultTitle">Tu negocio tiene <em id="diagHoras">—</em> horas semanales recuperables.</h3>
-          </div>
-          <p class="diag__result-sub">Estas son las 3 automatizaciones que más impacto tendrían en tu operación:</p>
-          <div class="diag__result-cards" id="diagResultCards">
-            <!-- JS-generated -->
-          </div>
-          <div class="diag__result-cta">
-            <a href="#contacto" class="btn btn--primary magnetic diag__cta-btn">Quiero mi sistema personalizado →</a>
-            <button class="diag__reset" id="diagReset">Hacer de nuevo</button>
-          </div>
-        </div>
-
-      </div><!-- /diag__card -->
-    </div>
-  </section>
-
-  <!-- PROCESO -->
+  <!-- CÓMO TRABAJAMOS / PROCESO -->
   <section class="proceso" id="proceso">
     <div class="container">
-      <span class="proceso__label reveal-text">Nuestro método</span>
+      <span class="proceso__label reveal-text">Nuestro proceso</span>
       <h2 class="section__title reveal-text">Solo <span class="proceso__accent">3 pasos</span> para automatizar</h2>
-      <p class="section__sub reveal-text">En menos de 48 horas tu sistema ya está funcionando.</p>
+      <p class="section__sub reveal-text">En menos de 72 horas tu sistema ya está funcionando.</p>
     </div>
 
     <div class="proceso__stage-wrap">
@@ -796,150 +767,249 @@
         <!-- Paso 1 -->
         <div class="paso paso--1">
           <h3 class="paso__title">Diagnóstico</h3>
-          <p class="paso__desc">Entendemos tu operación y detectamos dónde estás perdiendo tiempo y plata.</p>
-          <span class="paso__time">*(Tiempo: 30 min)</span>
+          <p class="paso__desc">Entendemos tu operación y detectamos exactamente qué podés automatizar.</p>
         </div>
 
         <!-- Paso 2 -->
         <div class="paso paso--2">
           <h3 class="paso__title">Diseño</h3>
           <p class="paso__desc">Mapeamos la solución exacta. Sin tecnología de más, sin complicaciones innecesarias.</p>
-          <span class="paso__time">*(Tiempo: 24 horas)</span>
         </div>
 
         <!-- Paso 3 -->
         <div class="paso paso--3">
           <h3 class="paso__title">En marcha</h3>
-          <p class="paso__desc">Construimos, testeamos y dejamos todo funcionando. Con documentación y soporte.</p>
-          <span class="paso__time">*(Tiempo: 48 horas)</span>
+          <p class="paso__desc">Construimos, testeamos y dejamos todo funcionando. Con soporte incluido.</p>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════
-       RESULTADOS REALES — Casos de éxito
-  ═══════════════════════════════════════════ -->
-  <section class="resultados" id="resultados">
-    <div class="container">
-      <div class="section__header">
-        <span class="desafio__kicker">Casos reales</span>
-        <h2 class="section__title">Resultados que <span class="accent-heading">hablan solos.</span></h2>
-        <p class="section__sub">Negocios reales, números reales. Sin pantallazos editados.</p>
+  <!-- ARIA SECTION -->
+  <section id="aria-section" class="aria-section">
+    <div class="container" style="width:100%">
+      <div class="aria-section-header">
+        <div class="aria-section-kicker">Agente IA en vivo</div>
+        <h2 class="aria-section-title">Hablá con ARIA.<br>Ahora mismo.</h2>
+        <p class="aria-section-sub">Analizá tu negocio con nuestra IA. Gratis, en segundos, sin formularios.</p>
       </div>
-
-      <div class="res-grid">
-
-        <div class="res-card">
-          <span class="res-card__industry">📱 RRSS & Marca Personal</span>
-          <div class="res-card__metric">+1.750%</div>
-          <div class="res-card__metric-label">de crecimiento en alcance en 90 días</div>
-          <blockquote class="res-card__quote">"Antes publicaba al vacío. Con KOVA cada post genera consultas. Pasé de 800 a casi 15K seguidores en tres meses y los clientes me contactan a mí."</blockquote>
-          <div class="res-card__author">
-            <div class="res-card__avatar" style="background:rgba(232,80,26,0.15);color:var(--accent)">N</div>
-            <div>
-              <div class="res-card__author-name">Nicolás R.</div>
-              <div class="res-card__author-role">Coach de negocios</div>
+      <div class="aria-inner">
+        <!-- LEFT: Agent presentation -->
+        <div class="aria-left">
+          <div class="aria-avatar-wrap">
+            <div class="aria-avatar aria--idle" id="aria-avatar">
+              <!-- Animated SVG diamond -->
+              <svg width="140" height="140" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Outer ring -->
+                <circle cx="70" cy="70" r="65" stroke="rgba(232,80,26,0.15)" stroke-width="1" class="aria-avatar-ring"/>
+                <!-- Middle ring -->
+                <circle cx="70" cy="70" r="50" stroke="rgba(232,80,26,0.25)" stroke-width="1" class="aria-avatar-ring"/>
+                <!-- Diamond shape -->
+                <polygon points="70,20 110,70 70,120 30,70" fill="rgba(232,80,26,0.12)" stroke="rgba(232,80,26,0.6)" stroke-width="1.5" class="aria-core"/>
+                <!-- Inner diamond -->
+                <polygon points="70,42 95,70 70,98 45,70" fill="rgba(232,80,26,0.2)" stroke="rgba(232,80,26,0.8)" stroke-width="1"/>
+                <!-- Core -->
+                <circle cx="70" cy="70" r="10" fill="#E8501A" opacity="0.9"/>
+                <circle cx="70" cy="70" r="5" fill="white" opacity="0.8"/>
+              </svg>
+              <!-- Orbiting particles (shown when thinking) -->
+              <div class="aria-avatar-particles">
+                <div class="aria-particle" style="position:absolute;top:50%;left:50%;width:6px;height:6px;margin:-3px;border-radius:50%;background:#E8501A;transform-origin:0 0"></div>
+                <div class="aria-particle" style="position:absolute;top:50%;left:50%;width:4px;height:4px;margin:-2px;border-radius:50%;background:#FF7040;transform-origin:0 0;animation-delay:-0.66s"></div>
+                <div class="aria-particle" style="position:absolute;top:50%;left:50%;width:5px;height:5px;margin:-2.5px;border-radius:50%;background:#E8501A;transform-origin:0 0;animation-delay:-1.33s"></div>
+              </div>
             </div>
           </div>
-        </div>
-
-        <div class="res-card">
-          <span class="res-card__industry">🔍 SEO & Posicionamiento</span>
-          <div class="res-card__metric">+852%</div>
-          <div class="res-card__metric-label">tráfico orgánico en 4 meses</div>
-          <blockquote class="res-card__quote">"Pasamos de 1.200 a más de 11.400 visitas mensuales sin tocar un peso en ads. KOVA nos puso en el top 3 de Google para las keywords que más nos importaban."</blockquote>
-          <div class="res-card__author">
-            <div class="res-card__avatar" style="background:rgba(80,180,100,0.15);color:#50b464">V</div>
-            <div>
-              <div class="res-card__author-name">Valentina M.</div>
-              <div class="res-card__author-role">Tienda de indumentaria online</div>
-            </div>
+          <div>
+            <h3 class="aria-name">ARIA</h3>
+            <p class="aria-subtitle">Agente de Automatización · KOVA</p>
+          </div>
+          <div class="aria-status">
+            <span class="aria-status-dot"></span>
+            En línea ahora
+          </div>
+          <div class="aria-capabilities">
+            <div class="aria-cap">🔍 Analiza tu operación</div>
+            <div class="aria-cap">⚡ Detecta qué automatizar</div>
+            <div class="aria-cap">🎯 Te dice por dónde empezar</div>
           </div>
         </div>
-
-        <div class="res-card">
-          <span class="res-card__industry">⚡ Automatización & IA</span>
-          <div class="res-card__metric">38h</div>
-          <div class="res-card__metric-label">ahorradas por semana en trabajo manual</div>
-          <blockquote class="res-card__quote">"El sistema califica los leads, actualiza el CRM, manda los presupuestos y programa el seguimiento — todo automático. Triplicamos clientes sin sumar personal."</blockquote>
-          <div class="res-card__author">
-            <div class="res-card__avatar" style="background:rgba(100,120,232,0.15);color:#6478e8">M</div>
-            <div>
-              <div class="res-card__author-name">Marcos T.</div>
-              <div class="res-card__author-role">Agencia inmobiliaria</div>
+        <!-- RIGHT: Chat interface -->
+        <div class="aria-right">
+          <div class="aria-chat">
+            <!-- Header -->
+            <div class="aria-chat-header">
+              <div class="aria-chat-header-avatar">
+                <svg width="18" height="18" viewBox="0 0 140 140" fill="none">
+                  <polygon points="70,20 110,70 70,120 30,70" fill="rgba(232,80,26,0.5)" stroke="#E8501A" stroke-width="2"/>
+                  <circle cx="70" cy="70" r="8" fill="#E8501A"/>
+                </svg>
+              </div>
+              <div class="aria-chat-header-info">
+                <span class="aria-chat-header-name">ARIA</span>
+                <span class="aria-chat-header-status">En línea</span>
+              </div>
             </div>
+            <!-- Messages -->
+            <div class="aria-messages" id="aria-messages"></div>
+            <!-- Typing indicator -->
+            <div class="aria-typing" id="aria-typing">
+              <div class="aria-typing__dots">
+                <div class="aria-typing__dot"></div>
+                <div class="aria-typing__dot"></div>
+                <div class="aria-typing__dot"></div>
+              </div>
+            </div>
+            <!-- Input -->
+            <div class="aria-input-area">
+              <input type="text" class="aria-input" id="aria-input" placeholder="Contame sobre tu negocio..." autocomplete="off" />
+              <button class="aria-send" id="aria-send" aria-label="Enviar">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <path d="M3 9h12M9 3l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+            <!-- Footer hint -->
+            <div class="aria-chat-footer">ARIA · Responde en segundos · Gratis</div>
           </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- SPEED RACE — WOW section -->
-  <section class="speed-race" id="velocidad">
-    <div class="container">
-      <div class="speed-race__header">
-        <span class="speed-race__kicker">⚡ Velocidad Real</span>
-        <h2 class="section__title">Tu equipo humano <em style="color:var(--color-acento);font-style:normal">vs KOVA</em></h2>
-        <p class="section__sub" style="max-width:520px;margin:0 auto 0">Mismo trabajo. Diferente velocidad. Esto no es teoría.</p>
-      </div>
-    </div>
-
-    <div class="speed-race__track" id="raceTrack">
-      <div class="race-lane race-lane--human">
-        <span class="race-label race-label--human">Tu equipo</span>
-        <div class="race-bar-wrap">
-          <div class="race-bar race-bar--human" id="raceHuman"></div>
-        </div>
-        <span class="race-time race-time--human" id="raceTimeHuman" style="opacity:0">72h</span>
-      </div>
-      <div class="race-lane race-lane--kova">
-        <span class="race-label race-label--kova">KOVA IA</span>
-        <div class="race-bar-wrap">
-          <div class="race-bar race-bar--kova" id="raceKova"></div>
-        </div>
-        <span class="race-time race-time--kova" id="raceTimeKova" style="opacity:0">2h</span>
-      </div>
-    </div>
-
-    <button class="race-replay" id="raceReplay" onclick="replayRace()">↺ Repetir carrera</button>
-
-    <div class="race-tasks">
-      <div class="race-task">
-        <span class="race-task__icon">📩</span>
-        <span class="race-task__title">Responder leads</span>
-        <div class="race-task__times">
-          <span class="race-task__t race-task__t--human">4h</span>
-          <span class="race-task__arrow">→</span>
-          <span class="race-task__t race-task__t--kova">2s</span>
-        </div>
-      </div>
-      <div class="race-task">
-        <span class="race-task__icon">📊</span>
-        <span class="race-task__title">Reporte semanal</span>
-        <div class="race-task__times">
-          <span class="race-task__t race-task__t--human">3h</span>
-          <span class="race-task__arrow">→</span>
-          <span class="race-task__t race-task__t--kova">auto</span>
-        </div>
-      </div>
-      <div class="race-task">
-        <span class="race-task__icon">🎯</span>
-        <span class="race-task__title">Calificar leads</span>
-        <div class="race-task__times">
-          <span class="race-task__t race-task__t--human">2h</span>
-          <span class="race-task__arrow">→</span>
-          <span class="race-task__t race-task__t--kova">1s</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════
-       PLANES / PRICING
-  ═══════════════════════════════════════════ -->
+  <script>
+  // ARIA Chat System
+  const ARIA_STATES = { IDLE: 'idle', THINKING: 'thinking', SPEAKING: 'speaking' };
+
+  function setAriaState(state) {
+    const avatar = document.getElementById('aria-avatar');
+    if (!avatar) return;
+    avatar.className = 'aria-avatar aria--' + state;
+  }
+
+  let ariaHistory = [];
+
+  async function typeWriter(el, text, speed) {
+    speed = speed || 28;
+    setAriaState(ARIA_STATES.SPEAKING);
+    el.textContent = '';
+    for (var i = 0; i < text.length; i++) {
+      el.textContent += text[i];
+      scrollChatToBottom();
+      await new Promise(function(r) { setTimeout(r, speed); });
+    }
+    setAriaState(ARIA_STATES.IDLE);
+  }
+
+  function scrollChatToBottom() {
+    var msgs = document.getElementById('aria-messages');
+    if (msgs) msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  function addBubble(text, role) {
+    var msgs = document.getElementById('aria-messages');
+    var bubble = document.createElement('div');
+    bubble.className = 'aria-bubble aria-bubble--' + role;
+    if (role === 'agent') {
+      var avatar = document.createElement('div');
+      avatar.className = 'aria-bubble__avatar';
+      bubble.appendChild(avatar);
+    }
+    var content = document.createElement('div');
+    content.className = 'aria-bubble__content';
+    bubble.appendChild(content);
+    msgs.appendChild(bubble);
+    scrollChatToBottom();
+    return content;
+  }
+
+  function showTyping(show) {
+    var t = document.getElementById('aria-typing');
+    if (t) t.style.display = show ? 'flex' : 'none';
+    if (show) scrollChatToBottom();
+  }
+
+  async function sendToARIA(userText) {
+    ariaHistory.push({ role: 'user', content: userText });
+    setAriaState(ARIA_STATES.THINKING);
+    showTyping(true);
+
+    try {
+      var response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: ariaHistory })
+      });
+
+      if (!response.ok) throw new Error('API error');
+
+      var data = await response.json();
+      var assistantText = data.content || 'Disculpá, hubo un error. Escribime directo por WhatsApp.';
+
+      ariaHistory.push({ role: 'assistant', content: assistantText });
+
+      showTyping(false);
+      var contentEl = addBubble('', 'agent');
+      await typeWriter(contentEl, assistantText);
+
+    } catch (err) {
+      showTyping(false);
+      var contentEl2 = addBubble('', 'agent');
+      await typeWriter(contentEl2, 'Disculpá, tuve un problema técnico. Escribime directo al WhatsApp y te respondo ahora.');
+      setAriaState(ARIA_STATES.IDLE);
+    }
+  }
+
+  function handleSend() {
+    var input = document.getElementById('aria-input');
+    var text = input ? input.value.trim() : '';
+    if (!text) return;
+
+    addBubble(text, 'user').textContent = text;
+    input.value = '';
+    scrollChatToBottom();
+    sendToARIA(text);
+  }
+
+  var ariaGreeted = false;
+
+  function greetUser() {
+    if (ariaGreeted) return;
+    ariaGreeted = true;
+
+    setTimeout(async function() {
+      setAriaState(ARIA_STATES.SPEAKING);
+      var contentEl = addBubble('', 'agent');
+      await typeWriter(contentEl, 'Hola, soy ARIA. Estoy acá para analizar tu operación y decirte exactamente qué podés automatizar. ¿Qué hace tu negocio?');
+    }, 800);
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var sendBtn = document.getElementById('aria-send');
+    if (sendBtn) sendBtn.addEventListener('click', handleSend);
+
+    var input = document.getElementById('aria-input');
+    if (input) {
+      input.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' && !e.shiftKey) {
+          e.preventDefault();
+          handleSend();
+        }
+      });
+    }
+
+    var section = document.getElementById('aria-section');
+    if (section) {
+      var observer = new IntersectionObserver(function(entries) {
+        if (entries[0].isIntersecting) greetUser();
+      }, { threshold: 0.3 });
+      observer.observe(section);
+    }
+  });
+  </script>
+
+  <!-- PLANES -->
   <section class="planes" id="planes">
     <div class="container">
       <span class="planes__kicker">Inversión</span>
@@ -1017,60 +1087,7 @@
     </div>
   </section>
 
-  <!-- ROI CALCULATOR -->
-  <section class="roi-calc" id="roi">
-    <div class="container">
-      <div class="section__header" style="text-align:center">
-        <span class="roi__kicker">Calculá ahora</span>
-        <h2 class="section__title">¿Cuánto te cuesta <span style="color:var(--color-acento)">no automatizar?</span></h2>
-        <p class="section__sub" style="max-width:580px;margin:0 auto 56px">Poné los datos de tu negocio y mirá el número real. Sin adornos.</p>
-      </div>
-      <div class="roi__grid">
-        <!-- sliders -->
-        <div class="roi__sliders">
-          <div class="roi__control">
-            <label>Personas haciendo tareas manuales repetitivas</label>
-            <div class="roi__slider-wrap">
-              <input type="range" min="1" max="20" value="3" id="roiPersonas">
-              <span class="roi__val" id="roiPersonasVal">3</span>
-            </div>
-          </div>
-          <div class="roi__control">
-            <label>Horas semanales perdidas en esas tareas (por persona)</label>
-            <div class="roi__slider-wrap">
-              <input type="range" min="1" max="40" value="15" id="roiHoras">
-              <span class="roi__val" id="roiHorasVal">15h</span>
-            </div>
-          </div>
-          <div class="roi__control">
-            <label>Costo hora promedio de tu equipo (USD)</label>
-            <div class="roi__slider-wrap">
-              <input type="range" min="5" max="150" value="20" step="5" id="roiCosto">
-              <span class="roi__val" id="roiCostoVal">$20</span>
-            </div>
-          </div>
-        </div>
-        <!-- result card -->
-        <div class="roi__result">
-          <div class="roi__result-card">
-            <span class="roi__result-label">Perdés por año</span>
-            <div class="roi__result-num" id="roiTotal">$46,800</div>
-            <div class="roi__result-breakdown">
-              <div><span id="roiHorasYear">2,340</span> horas/año desperdiciadas</div>
-              <div>= <span id="roiWeekCost">$900</span> por semana</div>
-            </div>
-            <div class="roi__result-kova">Con KOVA recuperás el <span>80%</span></div>
-            <div class="roi__result-saving" id="roiSaving">$37,440/año</div>
-            <a href="#contacto" class="btn btn--primary magnetic" style="width:100%;justify-content:center;margin-top:8px;font-size:16px;padding:16px 28px">Quiero recuperar ese dinero →</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════
-       FAQ — Preguntas frecuentes
-  ═══════════════════════════════════════════ -->
+  <!-- FAQ -->
   <section class="faq" id="faq">
     <div class="container">
       <div class="faq__grid">
@@ -1167,90 +1184,6 @@
       </div>
     </div>
   </section>
-  <!-- BLOG PREVIEW -->
-  <section class="blog-preview" id="blog">
-    <div class="container">
-      <div class="blog-preview__header">
-        <div>
-          <span class="blog-preview__kicker">Del equipo KOVA</span>
-          <h2 class="blog-preview__title">Ideas que generan<br><em>resultados reales</em></h2>
-        </div>
-        <a href="blog.html" class="blog-preview__all">Ver todos los artículos →</a>
-      </div>
-      <div class="blog-preview__grid" id="blogPreviewGrid">
-
-        <!-- Post 1 -->
-        <article class="bpv-card">
-          <div class="bpv-card__vis">
-            <div class="bpv-vis bpv-vis--rrss">
-              <div class="bpv-bar" style="height:40%;animation-delay:0.1s;background:rgba(255,255,255,.1)"></div>
-              <div class="bpv-bar" style="height:60%;animation-delay:0.2s;background:rgba(255,255,255,.1)"></div>
-              <div class="bpv-bar" style="height:78%;animation-delay:0.3s;background:linear-gradient(to top,var(--color-acento),#ff8c4a)"></div>
-              <div class="bpv-bar" style="height:95%;animation-delay:0.4s;background:linear-gradient(to top,var(--color-acento),#ff8c4a)"></div>
-            </div>
-          </div>
-          <div class="bpv-card__body">
-            <span class="bpv-cat">RRSS</span>
-            <h3 class="bpv-card__title">Cómo triplicamos el alcance orgánico de un cliente en 90 días</h3>
-            <p class="bpv-card__excerpt">Sin publicidad paga. Solo estrategia de contenido, algoritmo y consistencia.</p>
-            <a href="blog.html" class="bpv-card__link">Leer artículo →</a>
-          </div>
-        </article>
-
-        <!-- Post 2 -->
-        <article class="bpv-card">
-          <div class="bpv-card__vis">
-            <div class="bpv-vis bpv-vis--seo" style="flex-direction:column;gap:8px;padding:20px;">
-              <div style="width:100%;max-width:200px;height:24px;border-radius:6px;background:rgba(232,80,26,.12);border:1px solid rgba(232,80,26,.35);display:flex;align-items:center;padding:0 10px;gap:8px;font-family:var(--fuente-ui);font-size:11px;">
-                <span style="color:var(--color-acento);font-weight:800;">#1</span>
-                <span style="color:var(--color-texto-secundario);">Tu negocio</span>
-              </div>
-              <div style="width:85%;max-width:200px;height:24px;border-radius:6px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;padding:0 10px;gap:8px;font-family:var(--fuente-ui);font-size:11px;">
-                <span style="color:var(--color-texto-tenue);font-weight:800;">#2</span>
-                <span style="color:var(--color-texto-tenue);">competidor-a</span>
-              </div>
-              <div style="width:70%;max-width:200px;height:24px;border-radius:6px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;padding:0 10px;gap:8px;font-family:var(--fuente-ui);font-size:11px;">
-                <span style="color:var(--color-texto-tenue);font-weight:800;">#3</span>
-                <span style="color:var(--color-texto-tenue);">competidor-b</span>
-              </div>
-            </div>
-          </div>
-          <div class="bpv-card__body">
-            <span class="bpv-cat">SEO</span>
-            <h3 class="bpv-card__title">Guía SEO 2026: cómo rankear en Google sin gastar en ads</h3>
-            <p class="bpv-card__excerpt">Las reglas del SEO cambiaron con la IA. La estrategia actualizada para aparecer primero.</p>
-            <a href="blog.html" class="bpv-card__link">Leer artículo →</a>
-          </div>
-        </article>
-
-        <!-- Post 3 -->
-        <article class="bpv-card">
-          <div class="bpv-card__vis">
-            <div class="bpv-vis" style="flex-direction:column;gap:10px;">
-              <div style="display:flex;align-items:center;gap:0;">
-                <div style="width:42px;height:42px;border-radius:10px;border:1px solid rgba(232,80,26,.3);background:rgba(232,80,26,.07);display:flex;align-items:center;justify-content:center;font-size:18px;">📧</div>
-                <div style="width:28px;height:1px;background:rgba(232,80,26,.4);position:relative;"><div style="position:absolute;right:-1px;top:-3px;width:6px;height:6px;border-top:1px solid rgba(232,80,26,.6);border-right:1px solid rgba(232,80,26,.6);transform:rotate(45deg)"></div></div>
-                <div style="width:48px;height:48px;border-radius:12px;border:1px solid rgba(232,80,26,.45);background:rgba(232,80,26,.1);display:flex;align-items:center;justify-content:center;font-size:22px;">⚡</div>
-                <div style="width:28px;height:1px;background:rgba(232,80,26,.4);position:relative;"><div style="position:absolute;right:-1px;top:-3px;width:6px;height:6px;border-top:1px solid rgba(232,80,26,.6);border-right:1px solid rgba(232,80,26,.6);transform:rotate(45deg)"></div></div>
-                <div style="width:42px;height:42px;border-radius:10px;border:1px solid rgba(232,80,26,.3);background:rgba(232,80,26,.07);display:flex;align-items:center;justify-content:center;font-size:18px;">📊</div>
-              </div>
-              <div style="text-align:center;">
-                <div style="font-family:var(--fuente-titulo);font-size:26px;font-weight:800;color:var(--color-acento);">12 hs</div>
-                <div style="font-family:var(--fuente-ui);font-size:10px;color:var(--color-texto-tenue);text-transform:uppercase;letter-spacing:.1em;">ahorradas por semana</div>
-              </div>
-            </div>
-          </div>
-          <div class="bpv-card__body">
-            <span class="bpv-cat">Automatización</span>
-            <h3 class="bpv-card__title">5 procesos que deberías automatizar ya mismo</h3>
-            <p class="bpv-card__excerpt">Seguimiento de leads, reportes, respuestas — estas automatizaciones liberan horas para crecer.</p>
-            <a href="blog.html" class="bpv-card__link">Leer artículo →</a>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
 
   <!-- CONTACTO -->
   <section id="contacto" style="padding:100px 0;background:#0a0a0a;">
@@ -1306,7 +1239,7 @@
       <div class="footer-v2__top">
         <div>
           <img src="src/logo.svg" alt="KOVA" style="height:32px;width:auto;opacity:0.85;" />
-          <p class="footer-v2__brand-desc">Agencia de crecimiento digital. Marketing, SEO, marca personal y automatización para negocios que quieren resultados reales.</p>
+          <p class="footer-v2__brand-desc">Automatizamos operaciones con IA y desarrollamos estrategias de marketing para que tu negocio escale sin sumar gente.</p>
           <div class="footer-v2__social">
             <a href="https://www.instagram.com/kovasystems_ia/" class="footer-v2__social-link" aria-label="Instagram" target="_blank" rel="noopener">📸</a>
             <a href="#" class="footer-v2__social-link" aria-label="LinkedIn">💼</a>
@@ -1317,10 +1250,10 @@
         <div>
           <p class="footer-v2__col-title">Servicios</p>
           <ul class="footer-v2__links">
-            <li><a href="servicios.html">Marketing & RRSS</a></li>
-            <li><a href="servicios.html">SEO & Posicionamiento</a></li>
+            <li><a href="servicios.html">Automatización &amp; IA</a></li>
+            <li><a href="servicios.html">Marketing &amp; RRSS</a></li>
+            <li><a href="servicios.html">SEO &amp; Posicionamiento</a></li>
             <li><a href="servicios.html">Marca Personal</a></li>
-            <li><a href="servicios.html">Automatización & IA</a></li>
           </ul>
         </div>
         <div>
@@ -1362,6 +1295,6 @@
   <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="src/main.js?v=4"></script>
+  <script src="src/main.js?v=6"></script>
 </body>
 </html>

@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MWRKQDM6');</script>
+  <!-- End Google Tag Manager -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>KOVA | RRSS, SEO, Automatización y Marca Personal | Argentina</title>
@@ -14,23 +21,23 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://kova-systems.com/servicios.html" />
-  <meta property="og:title" content="KOVA — Servicios de Marketing Digital" />
-  <meta property="og:description" content="RRSS, SEO, marca personal, automatización y sitios web. Elegí el servicio que necesita tu negocio." />
+  <meta property="og:title" content="KOVA — Servicios de Automatización e IA" />
+  <meta property="og:description" content="Automatización, IA, RRSS, SEO y marca personal. Cuatro áreas, una sola obsesión: que tu operación crezca." />
   <meta property="og:image" content="https://kova-systems.com/src/og-image.svg" />
   <meta property="og:locale" content="es_AR" />
   <meta property="og:site_name" content="KOVA" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="KOVA — Servicios de Marketing Digital" />
-  <meta name="twitter:description" content="RRSS, SEO, marca personal, automatización y sitios web." />
+  <meta name="twitter:title" content="KOVA — Servicios de Automatización e IA" />
+  <meta name="twitter:description" content="Automatización, IA, RRSS, SEO y marca personal." />
   <meta name="twitter:image" content="https://kova-systems.com/src/og-image.svg" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=DM+Sans:wght@300;400;500&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="src/tokens.css" />
-  <link rel="stylesheet" href="src/styles.css" />
+  <link rel="stylesheet" href="src/styles.css?v=4" />
 
   <style>
     /* ══════════════════════════════════════════════════════
@@ -153,40 +160,6 @@
     @keyframes bounce-down {
       0%, 100% { transform: translateY(0); }
       50%       { transform: translateY(4px); }
-    }
-
-    /* Floating stat cards */
-    .sv2-hero__stats {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      flex-shrink: 0;
-    }
-
-    .sv2-stat {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid var(--color-borde);
-      border-radius: 14px;
-      padding: 18px 24px;
-      min-width: 160px;
-    }
-
-    .sv2-stat__num {
-      font-family: var(--fuente-titulo);
-      font-size: 36px;
-      font-weight: 800;
-      color: var(--color-acento);
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-
-    .sv2-stat__lbl {
-      font-family: var(--fuente-ui);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--color-texto-tenue);
     }
 
     /* ── SERVICES ACCORDION ─────────────────────────────── */
@@ -594,75 +567,231 @@
 
     /* ── FINAL CTA ──────────────────────────────────────── */
     .sv2-cta {
-      padding: clamp(80px, 12vh, 120px) 0;
-      text-align: center;
+      padding: clamp(80px, 14vh, 140px) 0;
       position: relative;
       overflow: hidden;
+      border-top: 1px solid var(--color-borde);
+      text-align: left;
     }
 
     .sv2-cta__glow {
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(232,80,26,0.07) 0%, transparent 70%);
+      background:
+        radial-gradient(ellipse 55% 100% at 15% 50%, rgba(232,80,26,0.1) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 70% at 85% 60%, rgba(232,80,26,0.04) 0%, transparent 60%);
       pointer-events: none;
     }
 
-    .sv2-cta__inner {
+    .sv2-cta__split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
       position: relative;
       z-index: 1;
-      max-width: 640px;
-      margin: 0 auto;
     }
 
     .sv2-cta__badge {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
       font-family: var(--fuente-ui);
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--color-acento);
       border: 1px solid rgba(232,80,26,0.28);
       border-radius: 100px;
       padding: 7px 18px;
-      margin-bottom: 32px;
+      margin-bottom: 28px;
     }
 
-    .sv2-cta__title {
+    .sv2-cta__headline {
       font-family: var(--fuente-titulo);
-      font-size: clamp(36px, 6vw, 72px);
+      font-size: clamp(44px, 6vw, 80px);
       font-weight: 800;
       text-transform: uppercase;
-      line-height: 1.0;
+      line-height: 0.95;
       color: var(--color-texto);
       margin-bottom: 24px;
     }
 
-    .sv2-cta__sub {
-      font-size: 17px;
-      font-weight: 300;
-      color: var(--color-texto-secundario);
-      line-height: 1.65;
-      margin-bottom: 40px;
+    .sv2-cta__headline em {
+      font-style: normal;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(232,80,26,0.8);
     }
 
-    .sv2-cta__btns {
+    .sv2-cta__sub {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--color-texto-secundario);
+      line-height: 1.7;
+    }
+
+    .sv2-cta__right {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .sv2-cta__action {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--color-borde);
+      border-radius: 20px;
+      padding: 24px 28px;
+      text-decoration: none;
+      color: var(--color-texto);
+      transition: background 0.25s, border-color 0.25s, transform 0.25s;
+    }
+
+    .sv2-cta__action:hover {
+      background: rgba(232,80,26,0.06);
+      border-color: rgba(232,80,26,0.4);
+      transform: translateX(6px);
+    }
+
+    .sv2-cta__action--primary {
+      border-color: rgba(232,80,26,0.35);
+      background: rgba(232,80,26,0.07);
+    }
+
+    .sv2-cta__action-icon {
+      font-size: 24px;
+      width: 52px;
+      height: 52px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
+      background: rgba(232,80,26,0.12);
+      border-radius: 14px;
+      flex-shrink: 0;
+    }
+
+    .sv2-cta__action-title {
+      font-family: var(--fuente-titulo);
+      font-size: 20px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--color-texto);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .sv2-cta__action-sub {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--color-texto-tenue);
+    }
+
+    .sv2-cta__action-arrow {
+      margin-left: auto;
+      font-size: 20px;
+      color: var(--color-acento);
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+
+    .sv2-cta__action:hover .sv2-cta__action-arrow { transform: translateX(5px); }
+
+    /* ══════════════════════════════════════════════════════
+       PROCESO v2 — 2×2 grid con ghost numbers
+    ══════════════════════════════════════════════════════ */
+    .sv2-steps-v2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .sv2-step-v2 {
+      background: rgba(255,255,255,0.025);
+      border: 1px solid var(--color-borde);
+      border-radius: 20px;
+      padding: 44px 40px 36px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .sv2-step-v2:hover {
+      background: rgba(232,80,26,0.04);
+      border-color: rgba(232,80,26,0.25);
+    }
+
+    .sv2-step-v2:first-child {
+      border-color: rgba(232,80,26,0.45);
+      background: rgba(232,80,26,0.07);
+    }
+
+    .sv2-step-v2:first-child::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--color-acento), transparent);
+    }
+
+    .sv2-step-v2__ghost {
+      position: absolute;
+      bottom: -24px;
+      right: 12px;
+      font-family: var(--fuente-titulo);
+      font-size: clamp(100px, 13vw, 150px);
+      font-weight: 800;
+      color: rgba(232,80,26,0.055);
+      line-height: 1;
+      pointer-events: none;
+      letter-spacing: -0.02em;
+      user-select: none;
+    }
+
+    .sv2-step-v2__when {
+      display: inline-block;
+      font-family: var(--fuente-ui);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-acento);
+      background: rgba(232,80,26,0.1);
+      border: 1px solid rgba(232,80,26,0.22);
+      border-radius: 100px;
+      padding: 5px 14px;
+      margin-bottom: 20px;
+    }
+
+    .sv2-step-v2__name {
+      font-family: var(--fuente-titulo);
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--color-texto);
+      margin-bottom: 14px;
+      line-height: 1;
+    }
+
+    .sv2-step-v2__desc {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--color-texto-secundario);
+      line-height: 1.75;
+      max-width: 360px;
     }
 
     /* ── RESPONSIVE ─────────────────────────────────────── */
     @media (max-width: 1024px) {
-      .sv2-hero__stats { display: none; }
       .sv2-item__body-inner { grid-template-columns: 1fr; padding-left: 80px; }
       .sv2-price-card { position: static; }
       .sv2-steps { grid-template-columns: 1fr 1fr; gap: 40px; }
       .sv2-steps::before { display: none; }
+      .sv2-steps-v2 { grid-template-columns: 1fr; gap: 14px; }
+      .sv2-step-v2 { padding: 32px 28px; }
+      .sv2-step-v2__ghost { font-size: 100px; }
+      .sv2-cta__split { grid-template-columns: 1fr; gap: 48px; }
     }
 
     @media (max-width: 768px) {
@@ -670,6 +799,9 @@
       .sv2-item__body-inner { padding-left: 0; gap: 32px; }
       .sv2-item__num { display: none; }
       .sv2-item__price-preview { display: none; }
+      .sv2-cta__headline { font-size: clamp(38px, 10vw, 56px); }
+      .sv2-step-v2 { padding: 28px 22px; }
+      .sv2-step-v2__ghost { font-size: 80px; bottom: -16px; }
     }
 
     @media (max-width: 540px) {
@@ -681,6 +813,10 @@
 </head>
 
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MWRKQDM6"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
   <!-- LOADER -->
   <div class="loader" id="loader">
@@ -717,7 +853,6 @@
         <div class="lang-switcher__option" data-lang="en" role="option">
           <span class="lang-switcher__option-flag">🇺🇸</span>
           <span class="lang-switcher__option-label">English</span>
-          
         </div>
       </div>
     </div>
@@ -742,42 +877,26 @@
     <div class="sv2-hero__noise" aria-hidden="true"></div>
     <div class="sv2-hero__grid-lines" aria-hidden="true"></div>
 
-    <div class="container" style="position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;">
+    <div class="container" style="position:relative;z-index:1;">
       <div class="sv2-hero__inner">
-        <div class="sv2-hero__label" id="sv2Kicker">Servicios KOVA</div>
+        <div class="sv2-hero__label" id="sv2Kicker">Servicios · KOVA</div>
         <h1 class="sv2-hero__title" id="sv2Title">
-          Cada servicio.<br>
-          <span>Un resultado</span>
-          concreto.
+          Qué hacemos<br>
+          <span>y cómo lo hacemos</span>
         </h1>
         <p class="sv2-hero__sub" id="sv2Sub">
-          No vendemos paquetes genéricos. Trabajamos en las áreas donde tu negocio más necesita crecer — con estrategia, ejecución y métricas reales.
+          Cuatro áreas de trabajo. Una sola obsesión: que tu operación crezca sin frenarte.
         </p>
         <div class="sv2-hero__ctas" id="sv2Ctas">
-          <a href="#servicios" class="btn btn--primary magnetic">Ver servicios ↓</a>
-          <a href="index.html#contacto" class="btn btn--outline magnetic">Hablemos gratis →</a>
-        </div>
-      </div>
-
-      <div class="sv2-hero__stats" id="sv2Stats">
-        <div class="sv2-stat">
-          <div class="sv2-stat__num">+340%</div>
-          <div class="sv2-stat__lbl">Alcance orgánico</div>
-        </div>
-        <div class="sv2-stat">
-          <div class="sv2-stat__num">#1</div>
-          <div class="sv2-stat__lbl">Posición Google</div>
-        </div>
-        <div class="sv2-stat">
-          <div class="sv2-stat__num">12 hs</div>
-          <div class="sv2-stat__lbl">Ahorradas/semana</div>
+          <a href="#sv2-services" class="btn btn--primary magnetic">Ver servicios →</a>
+          <a href="https://wa.me/542615336300?text=Hola%20KOVA%2C%20quiero%20info%20sobre%20sus%20servicios" class="btn btn--outline magnetic" target="_blank" rel="noopener">Hablemos →</a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ── SERVICES ACCORDION ──────────────────────────── -->
-  <section class="sv2-services" id="servicios">
+  <section class="sv2-services" id="sv2-services">
     <div class="container">
       <div class="sv2-services__header">
         <h2 class="sv2-services__title">Nuestros servicios</h2>
@@ -839,8 +958,8 @@
           <span class="sv2-item__num">02</span>
           <div class="sv2-item__icon">🔍</div>
           <div class="sv2-item__meta">
-            <span class="sv2-item__tag">SEO & Posicionamiento</span>
-            <div class="sv2-item__name">SEO & Visibilidad Web</div>
+            <span class="sv2-item__tag">SEO &amp; Posicionamiento</span>
+            <div class="sv2-item__name">SEO &amp; Visibilidad Web</div>
             <div class="sv2-item__teaser">Aparecer primero en Google cuando te buscan.</div>
           </div>
           <span class="sv2-item__price-preview">$697/mes</span>
@@ -937,7 +1056,7 @@
           <span class="sv2-item__num">04</span>
           <div class="sv2-item__icon">⚡</div>
           <div class="sv2-item__meta">
-            <span class="sv2-item__tag">Automatización & IA</span>
+            <span class="sv2-item__tag">Automatización &amp; IA</span>
             <div class="sv2-item__name">Automatización</div>
             <div class="sv2-item__teaser">Sistemas que trabajan mientras vos dormís.</div>
           </div>
@@ -982,38 +1101,43 @@
     </div>
   </section>
 
-  <!-- ── PROCESO ─────────────────────────────────────── -->
+  <!-- ── PROCESO v2 ───────────────────────────────────── -->
   <section class="sv2-proceso">
     <div class="container">
       <div class="sv2-proceso__header">
         <span class="sv2-proceso__kicker">Cómo trabajamos</span>
         <h2 class="sv2-proceso__title">Del primer contacto<br>a resultados reales</h2>
       </div>
-      <div class="sv2-steps" id="sv2Steps">
-        <div class="sv2-step">
-          <div class="sv2-step__dot">01</div>
-          <span class="sv2-step__when">Día 1</span>
-          <div class="sv2-step__name">Diagnóstico</div>
-          <p class="sv2-step__desc">Analizamos tu situación actual, competencia y oportunidades. Sin compromiso.</p>
+      <div class="sv2-steps-v2" id="sv2Steps">
+
+        <div class="sv2-step-v2">
+          <div class="sv2-step-v2__ghost" aria-hidden="true">01</div>
+          <span class="sv2-step-v2__when">Día 1</span>
+          <div class="sv2-step-v2__name">Diagnóstico</div>
+          <p class="sv2-step-v2__desc">Analizamos tu situación actual, competencia y oportunidades. Sin compromiso, sin vueltas.</p>
         </div>
-        <div class="sv2-step">
-          <div class="sv2-step__dot">02</div>
-          <span class="sv2-step__when">Días 2–7</span>
-          <div class="sv2-step__name">Estrategia</div>
-          <p class="sv2-step__desc">Diseñamos el plan personalizado con objetivos, métricas y cronograma.</p>
+
+        <div class="sv2-step-v2">
+          <div class="sv2-step-v2__ghost" aria-hidden="true">02</div>
+          <span class="sv2-step-v2__when">Días 2–7</span>
+          <div class="sv2-step-v2__name">Estrategia</div>
+          <p class="sv2-step-v2__desc">Diseñamos el plan personalizado con objetivos, métricas y cronograma exacto.</p>
         </div>
-        <div class="sv2-step">
-          <div class="sv2-step__dot">03</div>
-          <span class="sv2-step__when">Semana 2</span>
-          <div class="sv2-step__name">Ejecución</div>
-          <p class="sv2-step__desc">Arrancamos la implementación. Vos aprobás, nosotros ejecutamos.</p>
+
+        <div class="sv2-step-v2">
+          <div class="sv2-step-v2__ghost" aria-hidden="true">03</div>
+          <span class="sv2-step-v2__when">Semana 2</span>
+          <div class="sv2-step-v2__name">Ejecución</div>
+          <p class="sv2-step-v2__desc">Arrancamos la implementación. Vos aprobás, nosotros ejecutamos con velocidad.</p>
         </div>
-        <div class="sv2-step">
-          <div class="sv2-step__dot">04</div>
-          <span class="sv2-step__when">Mes 1+</span>
-          <div class="sv2-step__name">Resultados</div>
-          <p class="sv2-step__desc">Medimos, optimizamos y escalamos lo que funciona cada mes.</p>
+
+        <div class="sv2-step-v2">
+          <div class="sv2-step-v2__ghost" aria-hidden="true">04</div>
+          <span class="sv2-step-v2__when">Mes 1+</span>
+          <div class="sv2-step-v2__name">Resultados</div>
+          <p class="sv2-step-v2__desc">Medimos, optimizamos y escalamos lo que funciona. Cada mes mejor que el anterior.</p>
         </div>
+
       </div>
     </div>
   </section>
@@ -1164,7 +1288,7 @@
                 <div class="wsp-dot"></div>
               </div>
               <div class="wc-style-opt__info">
-                <span class="wc-style-opt__name">Dark & Moderno</span>
+                <span class="wc-style-opt__name">Dark &amp; Moderno</span>
                 <span class="wc-style-opt__desc">Oscuro, premium, impactante. Como esta web.</span>
               </div>
             </button>
@@ -1175,7 +1299,7 @@
                 <div class="wsp-dot wsp-dot--dark"></div>
               </div>
               <div class="wc-style-opt__info">
-                <span class="wc-style-opt__name">Clean & Minimalista</span>
+                <span class="wc-style-opt__name">Clean &amp; Minimalista</span>
                 <span class="wc-style-opt__desc">Blanco, limpio, elegante. Menos es más.</span>
               </div>
             </button>
@@ -1186,7 +1310,7 @@
                 <div class="wsp-dot"></div>
               </div>
               <div class="wc-style-opt__info">
-                <span class="wc-style-opt__name">Creativo & Bold</span>
+                <span class="wc-style-opt__name">Creativo &amp; Bold</span>
                 <span class="wc-style-opt__desc">Colorido, con energía, diseño que se destaca.</span>
               </div>
             </button>
@@ -1246,20 +1370,43 @@
     </div>
   </section>
 
-  <!-- ── CTA FINAL ───────────────────────────────────── -->
+  <!-- ── CTA FINAL v2 ─────────────────────────────────── -->
   <section class="sv2-cta">
     <div class="sv2-cta__glow" aria-hidden="true"></div>
     <div class="container">
-      <div class="sv2-cta__inner" id="sv2Cta">
-        <div class="sv2-cta__badge">Sin contratos largos</div>
-        <h2 class="sv2-cta__title">¿Por dónde<br>querés empezar?</h2>
-        <p class="sv2-cta__sub">
-          Contanos cuál es tu mayor desafío ahora mismo. En 24 horas te respondemos con un plan concreto — gratis.
-        </p>
-        <div class="sv2-cta__btns">
-          <a href="index.html#contacto" class="btn btn--primary magnetic" style="font-size:16px;padding:16px 36px">Hablemos gratis →</a>
-          <a href="https://wa.me/542615336300?text=Hola%20KOVA%2C%20me%20interesa%20conocer%20sus%20servicios" target="_blank" rel="noopener" class="btn btn--outline magnetic">WhatsApp directo</a>
+      <div class="sv2-cta__split" id="sv2Cta">
+
+        <div class="sv2-cta__left">
+          <div class="sv2-cta__badge">Sin contratos largos · Resultados en 30 días</div>
+          <h2 class="sv2-cta__headline">
+            ¿Por dónde<br>
+            <em>querés</em><br>
+            empezar?
+          </h2>
+          <p class="sv2-cta__sub">
+            Contanos cuál es tu mayor desafío ahora mismo. En 24 horas te respondemos con un plan concreto — gratis, sin compromiso.
+          </p>
         </div>
+
+        <div class="sv2-cta__right">
+          <a href="index.html#contacto" class="sv2-cta__action sv2-cta__action--primary">
+            <div class="sv2-cta__action-icon">✉️</div>
+            <div>
+              <div class="sv2-cta__action-title">Hablemos gratis</div>
+              <div class="sv2-cta__action-sub">Te respondemos en menos de 24h</div>
+            </div>
+            <span class="sv2-cta__action-arrow">→</span>
+          </a>
+          <a href="https://wa.me/542615336300?text=Hola%20KOVA%2C%20me%20interesa%20conocer%20sus%20servicios" target="_blank" rel="noopener" class="sv2-cta__action">
+            <div class="sv2-cta__action-icon">📱</div>
+            <div>
+              <div class="sv2-cta__action-title">WhatsApp directo</div>
+              <div class="sv2-cta__action-sub">Respuesta inmediata</div>
+            </div>
+            <span class="sv2-cta__action-arrow">→</span>
+          </a>
+        </div>
+
       </div>
     </div>
   </section>
@@ -1277,6 +1424,7 @@
     <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
     </svg>
+    <span class="whatsapp-float__text">¿Hablamos?</span>
   </a>
 
   <!-- SCRIPTS -->
@@ -1301,7 +1449,6 @@
       if (!isOpen) {
         item.classList.add('open');
         item.querySelector('.sv2-item__trigger').setAttribute('aria-expanded', 'true');
-        // Smooth scroll to it after transition
         setTimeout(() => {
           item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }, 100);
@@ -1318,19 +1465,14 @@
         { opacity: 1, y: 0, duration: 0.9, stagger: 0.13, ease: 'power3.out' }
       );
 
-      gsap.fromTo('#sv2Stats .sv2-stat',
-        { opacity: 0, x: 40 },
-        { opacity: 1, x: 0, duration: 0.75, stagger: 0.15, ease: 'power3.out', delay: 0.5 }
-      );
-
       // Services items
       gsap.from('.sv2-item', {
         scrollTrigger: { trigger: '.sv2-services', start: 'top 80%' },
         opacity: 0, y: 32, duration: 0.6, stagger: 0.1, ease: 'power3.out'
       });
 
-      // Steps
-      gsap.from('#sv2Steps .sv2-step', {
+      // Steps v2
+      gsap.from('#sv2Steps .sv2-step-v2', {
         scrollTrigger: { trigger: '#sv2Steps', start: 'top 82%' },
         opacity: 0, y: 40, duration: 0.65, stagger: 0.12, ease: 'power3.out'
       });
