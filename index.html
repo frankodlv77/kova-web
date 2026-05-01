@@ -45,7 +45,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=DM+Sans:wght@300;400;500&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="src/tokens.css" />
-  <link rel="stylesheet" href="src/styles.css?v=5" />
+  <link rel="stylesheet" href="src/styles.css?v=6" />
 
   <style>
   /* ═══════════════════════════════════════════════════════════
@@ -137,7 +137,7 @@
   .aria-grid__right {}
 
   /* ═══════════════════════════════════════════════════════════
-     ROBOT AVATAR
+     ROBOT AVATAR — Lottie
   ═══════════════════════════════════════════════════════════ */
   .aria-robot-wrap {
     position: relative;
@@ -145,88 +145,16 @@
     justify-content: center;
     align-items: center;
   }
-  #aria-robot {
-    width: 300px;
-    height: 384px;
-    overflow: visible;
-    filter: drop-shadow(0 0 32px rgba(232,80,26,0.22)) drop-shadow(0 0 80px rgba(232,80,26,0.08));
+  #aria-lottie {
+    filter: drop-shadow(0 8px 48px rgba(232,80,26,0.18)) drop-shadow(0 0 80px rgba(232,80,26,0.06));
     transition: filter 0.45s ease;
   }
-  .aria--thinking #aria-robot {
-    filter: drop-shadow(0 0 50px rgba(232,80,26,0.5)) drop-shadow(0 0 100px rgba(232,80,26,0.15));
+  .aria--thinking #aria-lottie {
+    filter: drop-shadow(0 8px 60px rgba(232,80,26,0.42)) drop-shadow(0 0 100px rgba(232,80,26,0.12));
   }
-  .aria--speaking #aria-robot {
-    filter: drop-shadow(0 0 40px rgba(232,80,26,0.38)) drop-shadow(0 0 90px rgba(232,80,26,0.12));
+  .aria--speaking #aria-lottie {
+    filter: drop-shadow(0 8px 52px rgba(232,80,26,0.32)) drop-shadow(0 0 90px rgba(232,80,26,0.1));
   }
-  /* Robot gentle breathe */
-  @keyframes robot-breathe {
-    0%,100% { transform: translateY(0px); }
-    50%      { transform: translateY(-6px); }
-  }
-  #aria-robot { animation: robot-breathe 4.5s ease-in-out infinite; }
-  .aria--thinking #aria-robot,
-  .aria--speaking #aria-robot { animation: none; }
-
-  /* Spinning ambient ring */
-  @keyframes ring-spin {
-    from { transform: rotate(0deg); }
-    to   { transform: rotate(360deg); }
-  }
-  #aria-spin-ring {
-    transform-box: fill-box;
-    transform-origin: center;
-    animation: ring-spin 16s linear infinite;
-  }
-  .aria--thinking #aria-spin-ring { animation-duration: 3.5s; }
-  .aria--speaking #aria-spin-ring { animation-duration: 6s; }
-
-  /* Visor LED idle glow */
-  @keyframes visor-idle {
-    0%,100% { opacity: 0.88; }
-    50%      { opacity: 0.52; }
-  }
-  @keyframes visor-speak {
-    0%   { opacity: 1; }
-    18%  { opacity: 0.3; }
-    35%  { opacity: 1; }
-    58%  { opacity: 0.6; }
-    78%  { opacity: 1; }
-    100% { opacity: 1; }
-  }
-  .aria-visor-glow { animation: visor-idle 2.8s ease-in-out infinite; }
-  .aria--thinking .aria-visor-glow { animation: none; opacity: 0.28; }
-  .aria--speaking .aria-visor-glow { animation: visor-speak 0.55s ease-in-out infinite; }
-
-  /* Scan line for thinking */
-  @keyframes scan-sweep {
-    0%   { transform: translateX(0px); opacity: 0.9; }
-    100% { transform: translateX(152px); opacity: 0.9; }
-  }
-  .aria--thinking #aria-scanline {
-    display: block;
-    animation: scan-sweep 1.1s linear infinite;
-  }
-  #aria-scanline { display: none; }
-
-  /* Chest indicator lights */
-  @keyframes ind-a {
-    0%,100% { opacity: 0.85; }
-    50%      { opacity: 0.18; }
-  }
-  #aria-ind-1 { animation: ind-a 1.9s ease-in-out infinite; }
-  #aria-ind-2 { animation: ind-a 1.9s ease-in-out infinite 0.35s; }
-  #aria-ind-3 { animation: ind-a 1.9s ease-in-out infinite 0.7s; }
-  .aria--thinking #aria-ind-1 { animation-duration: 0.38s; }
-  .aria--thinking #aria-ind-2 { animation-duration: 0.38s; animation-delay: 0.12s; }
-  .aria--thinking #aria-ind-3 { animation-duration: 0.38s; animation-delay: 0.24s; }
-
-  /* Blink — eyes close/open */
-  @keyframes eye-blink {
-    0%,100% { transform: scaleY(1); }
-    45%,55% { transform: scaleY(0.06); }
-  }
-  .aria-blink #aria-eye-group-l,
-  .aria-blink #aria-eye-group-r { animation: eye-blink 0.15s ease-in-out 1; }
 
   /* ── ARIA identity text ── */
   .aria-identity { text-align: center; }
@@ -438,7 +366,7 @@
       grid-template-columns: 1fr;
       gap: 48px;
     }
-    #aria-robot { width: 240px; height: 306px; }
+    #aria-lottie { width: 260px !important; height: 260px !important; }
     .aria-chat { height: 480px; }
     .aria-hero { padding: 100px 20px 60px; }
   }
@@ -531,271 +459,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="aria-robot-wrap">
           <div class="aria--idle" id="aria-avatar">
 
-            <!-- ═══ PREMIUM HUMANOID ROBOT SVG v2 ═══ -->
-            <svg id="aria-robot" viewBox="0 0 320 430" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <!-- Head: white metallic, lit top-left -->
-                <radialGradient id="rg-hd2" cx="34%" cy="24%" r="72%">
-                  <stop offset="0%"   stop-color="#f2f2f2"/>
-                  <stop offset="38%"  stop-color="#cdcdcd"/>
-                  <stop offset="100%" stop-color="#898989"/>
-                </radialGradient>
-                <!-- Chest -->
-                <radialGradient id="rg-ch2" cx="38%" cy="28%" r="68%">
-                  <stop offset="0%"   stop-color="#e8e8e8"/>
-                  <stop offset="55%"  stop-color="#b4b4b4"/>
-                  <stop offset="100%" stop-color="#717171"/>
-                </radialGradient>
-                <!-- Left shoulder -->
-                <radialGradient id="rg-sl2" cx="60%" cy="25%" r="68%">
-                  <stop offset="0%"   stop-color="#dcdcdc"/>
-                  <stop offset="55%"  stop-color="#a8a8a8"/>
-                  <stop offset="100%" stop-color="#606060"/>
-                </radialGradient>
-                <!-- Right shoulder -->
-                <radialGradient id="rg-sr2" cx="38%" cy="25%" r="68%">
-                  <stop offset="0%"   stop-color="#dcdcdc"/>
-                  <stop offset="55%"  stop-color="#a8a8a8"/>
-                  <stop offset="100%" stop-color="#606060"/>
-                </radialGradient>
-                <!-- Neck cylinder -->
-                <linearGradient id="lg-nk2" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0%"   stop-color="#505050"/>
-                  <stop offset="28%"  stop-color="#cccccc"/>
-                  <stop offset="72%"  stop-color="#cccccc"/>
-                  <stop offset="100%" stop-color="#444444"/>
-                </linearGradient>
-                <!-- Eye socket -->
-                <radialGradient id="rg-es2" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%"   stop-color="#1c0a00"/>
-                  <stop offset="100%" stop-color="#050200"/>
-                </radialGradient>
-                <!-- Large glow -->
-                <filter id="gl-lg" x="-80%" y="-80%" width="260%" height="260%">
-                  <feGaussianBlur stdDeviation="9" result="b"/>
-                  <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-                </filter>
-                <!-- Med glow -->
-                <filter id="gl-md" x="-50%" y="-50%" width="200%" height="200%">
-                  <feGaussianBlur stdDeviation="5" result="b"/>
-                  <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-                </filter>
-                <!-- Small glow -->
-                <filter id="gl-sm" x="-30%" y="-30%" width="160%" height="160%">
-                  <feGaussianBlur stdDeviation="3" result="b"/>
-                  <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-                </filter>
-                <!-- Bottom fade -->
-                <linearGradient id="lg-fd2" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="55%"  stop-color="white"/>
-                  <stop offset="100%" stop-color="black"/>
-                </linearGradient>
-                <mask id="m-fd2">
-                  <rect width="320" height="430" fill="url(#lg-fd2)"/>
-                </mask>
-              </defs>
-
-              <!-- Ambient orange glow rings -->
-              <circle cx="160" cy="180" r="132" stroke="rgba(232,80,26,0.05)" stroke-width="1"/>
-              <circle cx="160" cy="180" r="114" stroke="rgba(232,80,26,0.08)" stroke-width="0.8"/>
-              <circle cx="160" cy="180" r="96"  stroke="rgba(232,80,26,0.04)" stroke-width="0.7"/>
-              <!-- Spinning dashed ring -->
-              <g id="aria-spin-ring">
-                <circle cx="160" cy="180" r="132" stroke="rgba(232,80,26,0.18)" stroke-width="1"
-                        stroke-dasharray="14 22" fill="none"/>
-              </g>
-              <!-- Warm floor glow behind robot -->
-              <ellipse cx="160" cy="320" rx="100" ry="30" fill="rgba(232,80,26,0.07)" filter="url(#gl-lg)"/>
-
-              <g mask="url(#m-fd2)">
-
-                <!-- ═══ LEFT ARM ═══ -->
-                <path d="M 2 298 Q 2 256 46 244 L 122 257 L 122 430 L 2 430 Z"
-                      fill="url(#rg-sl2)"/>
-                <path d="M 6 278 Q 10 254 42 244" fill="none" stroke="rgba(255,255,255,0.28)"
-                      stroke-width="2.5" stroke-linecap="round"/>
-                <path d="M 28 276 Q 62 262 112 258" fill="none"
-                      stroke="rgba(0,0,0,0.18)" stroke-width="0.9"/>
-                <line x1="18" y1="306" x2="114" y2="264"
-                      stroke="rgba(0,0,0,0.14)" stroke-width="1.5"/>
-                <!-- Left arm orange accent -->
-                <path d="M 38 284 Q 72 268 116 262"
-                      fill="none" stroke="rgba(232,80,26,0.3)" stroke-width="0.7" stroke-linecap="round"/>
-
-                <!-- ═══ RIGHT ARM ═══ -->
-                <path d="M 318 298 Q 318 256 274 244 L 198 257 L 198 430 L 318 430 Z"
-                      fill="url(#rg-sr2)"/>
-                <path d="M 314 278 Q 310 254 278 244" fill="none" stroke="rgba(255,255,255,0.28)"
-                      stroke-width="2.5" stroke-linecap="round"/>
-                <path d="M 292 276 Q 258 262 208 258" fill="none"
-                      stroke="rgba(0,0,0,0.18)" stroke-width="0.9"/>
-                <line x1="302" y1="306" x2="206" y2="264"
-                      stroke="rgba(0,0,0,0.14)" stroke-width="1.5"/>
-                <path d="M 282 284 Q 248 268 204 262"
-                      fill="none" stroke="rgba(232,80,26,0.3)" stroke-width="0.7" stroke-linecap="round"/>
-
-                <!-- ═══ SHOULDER CAPS ═══ -->
-                <ellipse cx="84"  cy="254" rx="46" ry="19" fill="url(#rg-sl2)"/>
-                <ellipse cx="73"  cy="247" rx="25" ry="11" fill="rgba(255,255,255,0.22)"/>
-                <path d="M 44 258 Q 72 248 116 254" fill="none" stroke="rgba(0,0,0,0.16)" stroke-width="1"/>
-                <path d="M 40 262 Q 74 252 118 258" fill="none" stroke="rgba(232,80,26,0.38)"
-                      stroke-width="0.9" stroke-linecap="round"/>
-
-                <ellipse cx="236" cy="254" rx="46" ry="19" fill="url(#rg-sr2)"/>
-                <ellipse cx="247" cy="247" rx="25" ry="11" fill="rgba(255,255,255,0.22)"/>
-                <path d="M 276 258 Q 248 248 204 254" fill="none" stroke="rgba(0,0,0,0.16)" stroke-width="1"/>
-                <path d="M 280 262 Q 246 252 202 258" fill="none" stroke="rgba(232,80,26,0.38)"
-                      stroke-width="0.9" stroke-linecap="round"/>
-
-                <!-- ═══ CHEST ═══ -->
-                <path d="M 122 254 L 198 254 L 210 430 L 110 430 Z"
-                      fill="url(#rg-ch2)"/>
-                <!-- Chest armor panel -->
-                <path d="M 132 268 L 188 268 L 196 355 L 124 355 Z"
-                      fill="rgba(255,255,255,0.09)" stroke="rgba(255,255,255,0.18)" stroke-width="0.8"/>
-                <!-- Inner panel -->
-                <path d="M 140 280 L 180 280 L 186 342 L 134 342 Z"
-                      fill="rgba(0,0,0,0.07)" stroke="rgba(0,0,0,0.09)" stroke-width="0.5"/>
-                <!-- Chest center glow (KOVA core) -->
-                <circle cx="160" cy="310" r="20" fill="rgba(232,80,26,0.05)"
-                        stroke="rgba(232,80,26,0.22)" stroke-width="1"/>
-                <circle cx="160" cy="310" r="11" fill="rgba(232,80,26,0.1)"
-                        stroke="rgba(232,80,26,0.38)" stroke-width="0.8"/>
-                <circle cx="160" cy="310" r="5" fill="#E8501A"
-                        class="aria-visor-glow" filter="url(#gl-sm)"/>
-                <!-- Chest horizontal lines -->
-                <line x1="122" y1="272" x2="198" y2="272" stroke="rgba(0,0,0,0.12)" stroke-width="0.8"/>
-                <line x1="120" y1="290" x2="200" y2="290" stroke="rgba(0,0,0,0.08)" stroke-width="0.6"/>
-                <!-- Collar -->
-                <path d="M 122 254 Q 160 263 198 254" fill="none"
-                      stroke="rgba(0,0,0,0.14)" stroke-width="1"/>
-                <!-- Indicator lights -->
-                <rect id="aria-ind-1" x="147" y="372" width="7" height="7" rx="3.5" fill="#E8501A"/>
-                <rect id="aria-ind-2" x="158" y="372" width="7" height="7" rx="3.5" fill="#E8501A"/>
-                <rect id="aria-ind-3" x="169" y="372" width="7" height="7" rx="3.5" fill="#E8501A"/>
-
-                <!-- ═══ NECK ═══ -->
-                <rect x="138" y="204" width="44" height="52" rx="10" fill="url(#lg-nk2)"/>
-                <line x1="138" y1="218" x2="182" y2="218" stroke="rgba(0,0,0,0.2)" stroke-width="1"/>
-                <line x1="138" y1="230" x2="182" y2="230" stroke="rgba(0,0,0,0.14)" stroke-width="0.8"/>
-                <line x1="138" y1="242" x2="182" y2="242" stroke="rgba(0,0,0,0.14)" stroke-width="0.8"/>
-                <rect x="150" y="206" width="12" height="48" rx="4" fill="rgba(255,255,255,0.2)"/>
-
-                <!-- ═══ HEAD / HELMET ═══ -->
-                <!-- Main dome -->
-                <path d="M 76 202
-                         L 76 120
-                         Q 76 34 160 34
-                         Q 244 34 244 120
-                         L 244 202
-                         Q 224 213 160 215
-                         Q 96 213 76 202 Z"
-                      fill="url(#rg-hd2)"
-                      stroke="rgba(140,140,140,0.35)"
-                      stroke-width="0.7"/>
-
-                <!-- Side depth shadows (left/right edges darker) -->
-                <path d="M 76 108 Q 76 158 79 200" fill="none"
-                      stroke="rgba(0,0,0,0.28)" stroke-width="12" stroke-linecap="round"/>
-                <path d="M 244 108 Q 244 158 241 200" fill="none"
-                      stroke="rgba(0,0,0,0.28)" stroke-width="12" stroke-linecap="round"/>
-
-                <!-- Top gloss (dome highlight) -->
-                <path d="M 96 46 Q 135 33 196 50 Q 162 38 130 40 Z"
-                      fill="rgba(255,255,255,0.5)"/>
-                <path d="M 108 42 Q 145 33 196 48"
-                      fill="none" stroke="rgba(255,255,255,0.38)"
-                      stroke-width="7" stroke-linecap="round"/>
-                <!-- Secondary gloss -->
-                <path d="M 100 52 Q 138 42 182 54"
-                      fill="none" stroke="rgba(255,255,255,0.2)"
-                      stroke-width="3" stroke-linecap="round"/>
-
-                <!-- Left side highlight -->
-                <path d="M 78 105 Q 78 152 82 196" fill="none"
-                      stroke="rgba(255,255,255,0.22)" stroke-width="5" stroke-linecap="round"/>
-                <!-- Right side (dimmer) -->
-                <path d="M 242 105 Q 242 152 238 196" fill="none"
-                      stroke="rgba(255,255,255,0.1)" stroke-width="3" stroke-linecap="round"/>
-
-                <!-- Orange trim edges -->
-                <path d="M 76 120 L 76 184 Q 76 200 94 207"
-                      fill="none" stroke="rgba(232,80,26,0.48)"
-                      stroke-width="1.2" stroke-linecap="round"/>
-                <path d="M 244 120 L 244 184 Q 244 200 226 207"
-                      fill="none" stroke="rgba(232,80,26,0.48)"
-                      stroke-width="1.2" stroke-linecap="round"/>
-                <!-- Crown orange arc -->
-                <path d="M 102 42 Q 160 32 218 42"
-                      fill="none" stroke="rgba(232,80,26,0.2)"
-                      stroke-width="0.8" stroke-linecap="round"/>
-
-                <!-- ═══ FACE PLATE (subtle recess) ═══ -->
-                <path d="M 90 126 Q 90 108 160 108 Q 230 108 230 126
-                         L 230 178 Q 230 192 160 194 Q 90 192 90 178 Z"
-                      fill="rgba(0,0,0,0.05)"/>
-
-                <!-- ═══ EYE SOCKETS ═══ -->
-                <!-- Left socket (dark, deep-set) -->
-                <ellipse cx="124" cy="142" rx="30" ry="21" fill="url(#rg-es2)"/>
-                <ellipse cx="124" cy="142" rx="27" ry="19"
-                         fill="#0b0302" stroke="rgba(232,80,26,0.2)" stroke-width="0.8"/>
-                <!-- Right socket -->
-                <ellipse cx="196" cy="142" rx="30" ry="21" fill="url(#rg-es2)"/>
-                <ellipse cx="196" cy="142" rx="27" ry="19"
-                         fill="#0b0302" stroke="rgba(232,80,26,0.2)" stroke-width="0.8"/>
-
-                <!-- ═══ EYES — glowing orange irises ═══ -->
-                <!-- Left eye -->
-                <g id="aria-eye-group-l" style="transform-box:fill-box;transform-origin:center">
-                  <!-- Outer halo -->
-                  <circle cx="124" cy="142" r="16" fill="#E8501A" opacity="0.18" filter="url(#gl-lg)"/>
-                  <!-- Main iris -->
-                  <circle id="aria-eye-l" cx="124" cy="142" r="12"
-                          fill="#E8501A" class="aria-visor-glow" filter="url(#gl-md)"/>
-                  <!-- Bright inner core -->
-                  <circle cx="124" cy="142" r="7" fill="rgba(255,195,140,0.75)"/>
-                  <!-- Specular highlight -->
-                  <circle id="aria-hi-l" cx="120" cy="138" r="3" fill="rgba(255,255,255,0.65)"/>
-                </g>
-                <!-- Right eye -->
-                <g id="aria-eye-group-r" style="transform-box:fill-box;transform-origin:center">
-                  <circle cx="196" cy="142" r="16" fill="#E8501A" opacity="0.18" filter="url(#gl-lg)"/>
-                  <circle id="aria-eye-r" cx="196" cy="142" r="12"
-                          fill="#E8501A" class="aria-visor-glow" filter="url(#gl-md)"/>
-                  <circle cx="196" cy="142" r="7" fill="rgba(255,195,140,0.75)"/>
-                  <circle id="aria-hi-r" cx="192" cy="138" r="3" fill="rgba(255,255,255,0.65)"/>
-                </g>
-
-                <!-- ═══ FACE DETAILS ═══ -->
-                <!-- Nose bridge -->
-                <line x1="160" y1="163" x2="160" y2="176"
-                      stroke="rgba(0,0,0,0.1)" stroke-width="1.8" stroke-linecap="round"/>
-                <!-- Cheek shadows -->
-                <ellipse cx="105" cy="168" rx="18" ry="13" fill="rgba(0,0,0,0.07)"/>
-                <ellipse cx="215" cy="168" rx="18" ry="13" fill="rgba(0,0,0,0.07)"/>
-                <!-- Mouth / chin line -->
-                <path d="M 140 185 Q 160 187 180 185"
-                      fill="none" stroke="rgba(232,80,26,0.22)"
-                      stroke-width="0.9" stroke-linecap="round"/>
-
-                <!-- ═══ LOWER FACE / CHIN ═══ -->
-                <path d="M 96 196 Q 96 212 124 217 Q 160 222 196 217 Q 224 212 224 196"
-                      fill="rgba(170,170,170,0.35)"
-                      stroke="rgba(200,200,200,0.25)" stroke-width="0.6"/>
-                <!-- Chin vent slits -->
-                <line x1="145" y1="208" x2="158" y2="208"
-                      stroke="rgba(232,80,26,0.25)" stroke-width="1" stroke-linecap="round"/>
-                <line x1="162" y1="208" x2="175" y2="208"
-                      stroke="rgba(232,80,26,0.25)" stroke-width="1" stroke-linecap="round"/>
-
-                <!-- ═══ SCAN LINE (thinking) ═══ -->
-                <rect id="aria-scanline" x="90" y="130" width="9" height="24" rx="4.5"
-                      fill="rgba(232,80,26,0.9)" filter="url(#gl-sm)"/>
-
-              </g><!-- /fade mask -->
-            </svg>
-            <!-- ═══ END ROBOT SVG ═══ -->
+            <!-- ═══ LOTTIE ROBOT ═══ -->
+            <dotlottie-player
+              id="aria-lottie"
+              src="https://assets-v2.lottiefiles.com/a/7732100c-1170-11ee-a2a9-077c2d1adb25/IAzOIL8EvP.lottie"
+              background="transparent"
+              speed="1"
+              loop
+              autoplay
+              style="width:340px;height:340px;">
+            </dotlottie-player>
 
           </div>
         </div>
@@ -874,6 +547,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     ariaState = s;
     var av = document.getElementById("aria-avatar");
     if (av) av.className = "aria--" + s;
+    setLottieSpeed(s);
+  }
+
+  function setLottieSpeed(s) {
+    var lp = document.getElementById("aria-lottie");
+    if (!lp || typeof lp.setSpeed !== "function") return;
+    if (s === "thinking") { lp.setSpeed(2.2); }
+    else if (s === "speaking") { lp.setSpeed(1.5); }
+    else { lp.setSpeed(1); }
   }
 
   /* ── Typewriter ── */
@@ -960,72 +642,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }, 600);
   }
 
-  /* ── Eye Mouse Tracking ── */
-  function initVisорTracking() {
-    var robot = document.getElementById("aria-robot");
-    var eyeL  = document.getElementById("aria-eye-l");
-    var eyeR  = document.getElementById("aria-eye-r");
-    var hiL   = document.getElementById("aria-hi-l");
-    var hiR   = document.getElementById("aria-hi-r");
-    if (!robot || !eyeL || !eyeR) return;
-
-    var eyes = [
-      { el: eyeL, hi: hiL, bx: 124, by: 142, hbx: 120, hby: 138, maxR: 8 },
-      { el: eyeR, hi: hiR, bx: 196, by: 142, hbx: 192, hby: 138, maxR: 8 }
-    ];
-
-    document.addEventListener("mousemove", function(e) {
-      if (ariaState === ARIA_THINKING) return;
-      var rect = robot.getBoundingClientRect();
-      if (!rect.width) return;
-      var sc = rect.width / 320;
-      eyes.forEach(function(eye) {
-        var ex = rect.left + eye.bx * sc;
-        var ey = rect.top  + eye.by * sc;
-        var dx = e.clientX - ex;
-        var dy = e.clientY - ey;
-        var dist = Math.sqrt(dx*dx + dy*dy) || 1;
-        var t = Math.min(dist, 150) / 150;
-        var mx = (dx/dist) * t * eye.maxR;
-        var my = (dy/dist) * t * eye.maxR;
-        eye.el.setAttribute("cx", eye.bx + mx);
-        eye.el.setAttribute("cy", eye.by + my);
-        if (eye.hi) {
-          eye.hi.setAttribute("cx", eye.hbx + mx);
-          eye.hi.setAttribute("cy", eye.hby + my);
-        }
-      });
-    });
-  }
-
-  /* ── Blink (visor flash) ── */
-  function initBlink() {
-    var av = document.getElementById("aria-avatar");
-    if (!av) return;
-    function blink() {
-      av.classList.add("aria-blink");
-      setTimeout(function(){ av.classList.remove("aria-blink"); }, 110);
-      setTimeout(blink, 2400 + Math.random() * 3600);
-    }
-    setTimeout(blink, 1500 + Math.random() * 2000);
-  }
-
-  /* ── Input focus: eyes look down ── */
-  function initInputFocus() {
-    var inp = document.getElementById("aria-input");
-    var eyeL = document.getElementById("aria-eye-l");
-    var eyeR = document.getElementById("aria-eye-r");
-    if (!inp) return;
-    inp.addEventListener("focus", function(){
-      if (eyeL) eyeL.setAttribute("cy", "147");
-      if (eyeR) eyeR.setAttribute("cy", "147");
-    });
-    inp.addEventListener("blur", function(){
-      if (eyeL) eyeL.setAttribute("cy", "142");
-      if (eyeR) eyeR.setAttribute("cy", "142");
-    });
-  }
-
   /* ── Init ── */
   document.addEventListener("DOMContentLoaded", function() {
     var sendBtn = document.getElementById("aria-send");
@@ -1034,10 +650,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     if (inp) inp.addEventListener("keydown", function(e){
       if (e.key === "Enter" && !e.shiftKey){ e.preventDefault(); handleSend(); }
     });
-
-    initVisорTracking();
-    initBlink();
-    initInputFocus();
 
     var section = document.getElementById("aria-section");
     if (section) {
@@ -1303,6 +915,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </svg>
     <span class="whatsapp-float__text">&#191;Hablamos?</span>
   </a>
+
+  <!-- dotLottie Player -->
+  <script src="https://cdn.jsdelivr.net/npm/@dotlottie/player-component@latest/dist/dotlottie-player.js"></script>
 
   <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
