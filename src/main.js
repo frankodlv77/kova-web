@@ -498,9 +498,11 @@ function setupKovaLive() {
       gsap.from('.kl-stat', { opacity: 0, y: 24, duration: 0.6, stagger: 0.1, ease: 'power3.out', delay: 0.5 });
       gsap.from(['.kl-col__label'], { opacity: 0, duration: 0.5, delay: 0.4 });
 
-      // kick off task loop
-      addTask();
-      setInterval(addTask, 1800);
+      // kick off task loop — only on non-mobile to avoid constant movement
+      if (window.innerWidth > 768) {
+        addTask();
+        setInterval(addTask, 1800);
+      }
     }
   });
 }
@@ -923,7 +925,7 @@ function setupScrollProgress() {
 function setupHeroTypewriter() {
   const tag = document.getElementById('heroTag');
   if (!tag) return;
-  const words = ['Marketing Digital', 'RRSS & Algoritmo', 'SEO & Posicionamiento', 'Marca Personal', 'Automatización & IA'];
+  const words = ['Automatización & IA', 'Marketing Digital', 'SEO & Posicionamiento', 'Marca Personal', 'RRSS & Contenido'];
   let i = 0;
   tag.textContent = words[0];
   setInterval(() => {
@@ -1098,15 +1100,10 @@ setupHamburger();
       '.nav__mobile-links li:nth-child(3) a': 'Planes',
       '.nav__mobile-links li:nth-child(4) a': 'Contacto',
       // HERO (index)
-      '#heroTag': 'Marketing · RRSS · SEO · Marca Personal · Automatización',
-      '#heroTitle': 'Tu marca crece.<br><span class="hero__title--accent">Tu negocio escala.</span>',
-      '#heroSub': 'Diseñamos estrategias de marketing digital, posicionamiento orgánico y sistemas inteligentes que hacen crecer tu marca y escalar tu negocio. Sin vueltas.',
-      '#heroCta': '<a href="#contacto" class="btn btn--primary magnetic">Quiero crecer</a><a href="#servicios" class="btn btn--ghost magnetic">¿Qué hacemos?</a>',
-      // HERO FORM CARD
-      '.hfc__eyebrow': 'Empezá hoy',
-      '.hfc__title': '¿Listo para crecer?',
-      '.hfc__sub': 'Dejá tus datos y te respondemos en menos de 24hs.',
-      '.hfc__submit': 'Quiero crecer →',
+      '#heroTag': 'Automatización · IA · Marketing · SEO',
+      '#heroTitle': 'Tu negocio funciona solo.<br><span class="hero__title--accent">Nosotros lo armamos.</span>',
+      '#heroSub': 'Automatizamos procesos, desplegamos agentes de IA y conectamos tus herramientas para que escales sin sumar gente.',
+      '#heroCta': '<a href="#aria-section" class="btn btn--primary magnetic">Hablá con ARIA</a><a href="https://wa.me/542615336300?text=Hola%20KOVA%2C%20quiero%20info%20sobre%20sus%20servicios" class="btn btn--ghost magnetic" target="_blank" rel="noopener">Hablemos</a>',
       // SERVICIOS section
       '.servicios .section__title': 'Lo que hacemos',
       '.servicios .section__sub': 'Crecimiento real, estrategia concreta. Sin humo.',
@@ -1162,15 +1159,10 @@ setupHamburger();
       '.nav__mobile-links li:nth-child(3) a': 'Plans',
       '.nav__mobile-links li:nth-child(4) a': 'Contact',
       // HERO (index)
-      '#heroTag': 'Marketing · Social Media · SEO · Personal Brand · Automation',
-      '#heroTitle': 'Your brand grows.<br><span class="hero__title--accent">Your business scales.</span>',
-      '#heroSub': 'We design digital marketing strategies, organic positioning and intelligent systems that grow your brand and scale your business. No fluff.',
-      '#heroCta': '<a href="#contacto" class="btn btn--primary magnetic">I want to grow</a><a href="#servicios" class="btn btn--ghost magnetic">What do we do?</a>',
-      // HERO FORM CARD
-      '.hfc__eyebrow': 'Start today',
-      '.hfc__title': 'Ready to grow?',
-      '.hfc__sub': 'Leave your details and we\'ll get back to you in less than 24hs.',
-      '.hfc__submit': 'Let\'s grow →',
+      '#heroTag': 'Automation · AI · Marketing · SEO',
+      '#heroTitle': 'Your business runs itself.<br><span class="hero__title--accent">We build the system.</span>',
+      '#heroSub': 'We automate processes, deploy AI agents and connect your tools so you can scale without hiring.',
+      '#heroCta': '<a href="#aria-section" class="btn btn--primary magnetic">Talk to ARIA</a><a href="https://wa.me/542615336300?text=Hola%20KOVA%2C%20quiero%20info%20sobre%20sus%20servicios" class="btn btn--ghost magnetic" target="_blank" rel="noopener">Let\'s talk</a>',
       // SERVICIOS section
       '.servicios .section__title': 'What we do',
       '.servicios .section__sub': 'Real growth, concrete strategy. No BS.',
